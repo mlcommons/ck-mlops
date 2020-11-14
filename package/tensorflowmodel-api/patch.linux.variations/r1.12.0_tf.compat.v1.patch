@@ -1,0 +1,13 @@
+diff --git a/research/object_detection/utils/label_map_util.py b/research/object_detection/utils/label_map_util.py
+index c395a716..913d7edb 100644
+--- a/research/object_detection/utils/label_map_util.py
++++ b/research/object_detection/utils/label_map_util.py
+@@ -129,7 +129,7 @@ def load_labelmap(path):
+   Returns:
+     a StringIntLabelMapProto
+   """
+-  with tf.gfile.GFile(path, 'r') as fid:
++  with tf.compat.v1.gfile.GFile(path, 'r') as fid:
+     label_map_string = fid.read()
+     label_map = string_int_label_map_pb2.StringIntLabelMap()
+     try:

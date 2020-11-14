@@ -1,0 +1,28 @@
+{
+  "customize": {
+    "extra_dir": "",
+    "version": "2012"
+  },
+  "deps": {
+    "compiler": {
+      "local": "yes",
+      "name": "C compiler",
+      "tags": "compiler,lang-c"
+    }
+  },
+  "end_full_path": {
+    "android": "lib$#sep#$librtlpolybench.a",
+    "linux": "lib/librtlpolybench.a",
+    "mingw": "lib\\librtlpolybench.a",
+    "win": "lib\\librtlpolybench.lib"
+  },
+  "process_script": "process",
+  "soft_uoa": "ac25cef24e429b24",
+  "suggested_path": "lib-rtl-polybench",
+  "tags": [
+    "lib",
+    "rtl",
+    "polybench",
+    "channel-stable"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "auto_detect": "yes",
+  "customize": {
+    "detect_bytes_per_pixel": "12",
+    "detect_data_type": "float32",
+    "detect_file_index_name": "image_list.txt",
+    "detect_preprocessed_ext": "rgbf32",
+    "env_prefix": "CK_ENV_DATASET_IMAGENET_PREPROCESSED",
+    "limit_recursion_dir_search": {
+      "linux": 3,
+      "win": 3
+    },
+    "soft_file_universal": "ILSVRC2012_val_00000001.rgbf32"
+  },
+  "deps": {},
+  "soft_name": "ImageNet dataset (preprocessed float32)",
+  "tags": [
+    "dataset",
+    "imagenet",
+    "preprocessed",
+    "rgbf32"
+  ]
+}

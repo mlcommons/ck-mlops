@@ -1,0 +1,11 @@
+{
+  "backup_data_uid": "8a9aacc9d97428a9",
+  "data_name": "custom-autotuning-wrapper",
+  "run_cmds": {
+    "default": {
+      "run_time": {
+        "run_cmd_main": "$<<CK_CUSTOM_AUTOTUNER_SCRIPT>>$"
+      }
+    }
+  }
+}

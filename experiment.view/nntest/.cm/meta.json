@@ -1,0 +1,71 @@
+{
+  "flat_keys": [
+    "##features#platform#platform#name",
+    "##choices#data_uoa",
+    "##choices#dataset_uoa",
+    "##choices#dataset_file",
+    "##characteristics#compile#compilation_success_bool",
+    "##characteristics#run#run_success_bool",
+    "##characteristics#run#output_check_failed_bool",
+    "##characteristics#run#execution_time",
+    "##characteristics#run#run_time_state#time_setup",
+    "##characteristics#run#run_time_state#time_test",
+    "##choices#env#*"
+  ],
+  "flat_keys_desc": [
+    {
+      "desc": "Platform"
+    },
+    {
+      "desc": "Test",
+      "module_uoa": "b0ac08fe1d3c2615",
+      "type": "uoa"
+    },
+    {
+      "desc": "Dataset",
+      "module_uoa": "8a7141c59cd335f5",
+      "type": "uoa"
+    },
+    {
+      "desc": "Dataset file"
+    },
+    {
+      "bg_color_if_false": "#cf4f4f",
+      "bg_color_if_true": "#4fcf4f",
+      "convert_none_to_false": "yes",
+      "desc": "Successful<br>compile?"
+    },
+    {
+      "bg_color_if_false": "#cf4f4f",
+      "bg_color_if_true": "#4fcf4f",
+      "convert_none_to_false": "yes",
+      "desc": "Successful<br>run?"
+    },
+    {
+      "bg_color_if_false": "#cf4f4f",
+      "bg_color_if_true": "#4fcf4f",
+      "convert_none_to_false": "yes",
+      "desc": "Output<br>correct?",
+      "invert_bool": "yes"
+    },
+    {
+      "desc": "Total test time<br>(sec.)",
+      "format": "%.6f"
+    },
+    {
+      "desc": "Setup time<br>(sec.)",
+      "format": "%.6f"
+    },
+    {
+      "desc": "Test time<br>(sec.)",
+      "format": "%.6f"
+    },
+    {
+      "add_br": "yes",
+      "align": "left",
+      "desc": "Environment",
+      "show_all": "yes",
+      "view_add_key": "yes"
+    }
+  ]
+}

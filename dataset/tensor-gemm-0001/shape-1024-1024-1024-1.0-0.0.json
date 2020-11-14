@@ -1,0 +1,7 @@
+{
+  "CK_GEMM_ALPHA": 1.0, 
+  "CK_GEMM_BETA": 0.0, 
+  "CK_GEMM_K": 1024, 
+  "CK_GEMM_M": 1024, 
+  "CK_GEMM_N": 1024
+}

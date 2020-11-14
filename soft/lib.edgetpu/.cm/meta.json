@@ -1,0 +1,19 @@
+{
+  "auto_detect": "yes",
+  "customize": {
+    "check_that_exists": "yes",
+    "env_prefix": "CK_ENV_LIB_EDGETPU",
+    "limit_recursion_dir_search": {
+      "linux": 4
+    },
+    "soft_file": {
+      "linux": "libedgetpu.so.1"
+    }
+  },
+  "soft_name": "EdgeTPU lib",
+  "tags": [
+    "lib",
+    "libedgetpu",
+    "edgetpu"
+  ]
+}

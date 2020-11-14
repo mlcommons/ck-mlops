@@ -1,0 +1,16 @@
+{
+  "backup_data_uid": "baa4c5ab99a0124e",
+  "backup_module_uid": "707ccdfe444cafac",
+  "backup_module_uoa": "platform",
+  "control": {
+    "engine": "CK",
+    "iso_datetime": "2020-11-14T21:43:55.263346",
+    "version": [
+      "1",
+      "17",
+      "0",
+      "1"
+    ]
+  },
+  "data_name": "HTC M8WHL"
+}

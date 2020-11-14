@@ -1,0 +1,142 @@
+{
+  "backup_data_uid": "4dfc90dabed20721",
+  "data_name": "mlperf-inference-vision",
+  "no_compile": "yes",
+  "no_target_file": "yes",
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "default": {
+      "ignore_return_code": "no",
+      "run_time": {
+        "fine_grain_timer_file": "tmp-ck-timer.json",
+        "post_process_via_ck": {
+          "script_name": "postprocess"
+        },
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../detect.py"
+      }
+    },
+    "direct": {
+      "ignore_return_code": "no",
+      "run_time": {
+        "fine_grain_timer_file": "tmp-ck-timer.json",
+        "post_process_via_ck": {
+          "script_name": "postprocess"
+        },
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ $<<CK_ENV_MLPERF_INFERENCE_V05>>$/classification_and_detection/python/main_extended.py --config=$<<CK_ENV_LOADGEN_CONFIG_FILE>>$ --profile=$<<CK_LOADGEN_REF_PROFILE>>$ --dataset-path=$<<CK_ENV_DATASET_COCO>>$ --model=$<<CK_ENV_TENSORFLOW_MODEL_FROZEN_GRAPH>>$ --dataset-height=$<<CK_ENV_TENSORFLOW_MODEL_DEFAULT_HEIGHT>>$ --dataset-width=$<<CK_ENV_TENSORFLOW_MODEL_DEFAULT_WIDTH>>$ --model-name='$<<CK_ENV_TENSORFLOW_MODEL_MODEL_NAME>>$' --backend=$<<CK_LOADGEN_BACKEND>>$ --backend-params=BATCH_SIZE:$<<CK_LOADGEN_TENSORRT_BATCH_SIZE>>$,TENSORRT_PRECISION:$<<CK_LOADGEN_TENSORRT_PRECISION>>$,TENSORRT_DYNAMIC:$<<CK_LOADGEN_TENSORRT_DYNAMIC>>$ --scenario=$<<CK_LOADGEN_SCENARIO>>$ $<<CK_LOADGEN_MODE>>$ $<<CK_LOADGEN_EXTRA_PARAMS>>$"
+      }
+    },
+    "help": {
+      "ignore_return_code": "no",
+      "run_time": {
+        "fine_grain_timer_file": "tmp-ck-timer.json",
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ $<<CK_ENV_MLPERF_INFERENCE_V05>>$/classification_and_detection/python/main_extended.py --help"
+      }
+    }
+  },
+  "run_deps": {
+    "dataset": {
+      "local": "yes",
+      "name": "Object Detection dataset",
+      "no_tags": "preprocessed",
+      "sort": 20,
+      "tags": "dataset,object-detection"
+    },
+    "lib-python-loadgen": {
+      "local": "yes",
+      "name": "Python MLPerf LoadGen library",
+      "sort": 46,
+      "tags": "lib,python-package,mlperf,loadgen"
+    },
+    "lib-python-matplotlib": {
+      "local": "yes",
+      "name": "Python Matplotlib library",
+      "sort": 45,
+      "tags": "lib,python-package,matplotlib"
+    },
+    "lib-python-numpy": {
+      "local": "yes",
+      "name": "Python NumPy library",
+      "sort": 60,
+      "tags": "lib,python-package,numpy"
+    },
+    "lib-python-opencv": {
+      "local": "yes",
+      "name": "Python OpenCV library",
+      "sort": 50,
+      "tags": "lib,python-package,cv2"
+    },
+    "lib-python-pillow": {
+      "local": "yes",
+      "name": "Python Pillow library",
+      "sort": 51,
+      "tags": "lib,python-package,pillow"
+    },
+    "lib-tensorflow": {
+      "local": "yes",
+      "name": "TensorFlow library",
+      "no_tags": "tensorflow_cc,vstatic,source",
+      "sort": 70,
+      "tags": "lib,tensorflow"
+    },
+    "loadgen-config-file": {
+      "add_to_path": "no",
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Loadgen config file",
+      "sort": 10,
+      "tags": "loadgen,config"
+    },
+    "mlperf-inference-src": {
+      "add_to_path": "no",
+      "local": "yes",
+      "name": "MLPerf Inference source",
+      "sort": 1,
+      "tags": "mlperf,inference,source,dividiti.vision_with_ck"
+    },
+    "python": {
+      "local": "yes",
+      "name": "Python interpreter",
+      "sort": 5,
+      "tags": "compiler,python"
+    },
+    "tool-coco": {
+      "local": "yes",
+      "name": "Python API for COCO",
+      "sort": 40,
+      "tags": "tool,coco"
+    },
+    "weights": {
+      "local": "yes",
+      "name": "TensorFlow Object Detection model",
+      "sort": 30,
+      "tags": "model,tf,object-detection"
+    }
+  },
+  "run_vars": {
+    "CK_BATCH_COUNT": 1,
+    "CK_LOADGEN_BACKEND": "tensorflow",
+    "CK_LOADGEN_EXTRA_PARAMS": "",
+    "CK_LOADGEN_MODE": "--accuracy",
+    "CK_LOADGEN_REF_PROFILE": "default_tf_object_det_zoo",
+    "CK_LOADGEN_SCENARIO": "SingleStream",
+    "CK_LOADGEN_TENSORRT_BATCH_SIZE": "1",
+    "CK_LOADGEN_TENSORRT_DYNAMIC": "0",
+    "CK_LOADGEN_TENSORRT_PRECISION": "FP32",
+    "CK_MAX_LATENCY": 0.1,
+    "CK_METRIC_TYPE": "COCO",
+    "CK_SAVE_IMAGES": "NO",
+    "CK_SILENT_MODE": "NO",
+    "CK_SKIP_IMAGES": 0,
+    "CK_TF_CPU_NUM_OF_PROCESSORS": 0,
+    "CK_TF_GPU_MEMORY_PERCENT": 50
+  },
+  "tags": [
+    "object-detection",
+    "tf",
+    "lang-python",
+    "mlperf",
+    "vision"
+  ],
+  "template_type": "MLPerf Inference official vision application"
+}

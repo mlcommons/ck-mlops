@@ -1,0 +1,197 @@
+{
+  "backup_data_uid": "9978e9248efbd46b",
+  "build_compiler_vars": {},
+  "compile_deps": {
+    "library": {
+      "local": "yes",
+      "name": "NNTest library",
+      "sort": 2,
+      "tags": "lib,nntest"
+    }
+  },
+  "data_name": "lstm-rnnt-dec",
+  "main_language": "python",
+  "no_compile": "yes",
+  "no_target_file": "yes",
+  "only_for_target_os_tags": [
+    "linux"
+  ],
+  "pass_env_to_resolve": "yes",
+  "print_files_after_run": [
+    "tmp-stderr.tmp"
+  ],
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "default": {
+      "add_dataset_file_to_env": "yes",
+      "dataset_tags": [
+        "dataset",
+        "nntest",
+        "tensor-lstm",
+        "dec"
+      ],
+      "ignore_return_code": "no",
+      "run_time": {
+        "fine_grain_timer_file": "tmp-ck-timer.json",
+        "output_invariant_of_repeat": "yes",
+        "post_process_cmds": [
+          "python $#ck_take_from_{script:4ae4f08be053a2b8}#$process.py"
+        ],
+        "post_process_via_ck": "yes",
+        "pre_process_via_ck": {
+          "data_uoa": "4ae4f08be053a2b8",
+          "module_uoa": "script",
+          "script_name": "process"
+        },
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../lstm.py",
+        "run_cmd_out1": "tmp-stdout.tmp",
+        "run_cmd_out2": "tmp-stderr.tmp",
+        "run_correctness_extra_keys_from_dataset_file_json": "yes",
+        "run_correctness_output_files": [
+          "tmp-ck-output.json"
+        ],
+        "run_correctness_vars": [
+          "CK_IN_SHAPE_N",
+          "CK_SEED"
+        ],
+        "run_input_files": [],
+        "run_output_files": [
+          "tmp-ck-timer.json",
+          "tmp-ck-output.bin",
+          "tmp-ck-output.json"
+        ]
+      }
+    }
+  },
+  "run_deps": {
+    "library": {
+      "local": "yes",
+      "name": "PyTorch",
+      "sort": 1,
+      "tags": "lib,pytorch"
+    },
+    "plugins-dec-glow": {
+      "enable_if_env": [
+        {
+          "CK_RNNT_DEC_BACKEND": [
+            "glow"
+          ]
+        }
+      ],
+      "local": "yes",
+      "name": "GLOW LSTM RNNT Dec plugin",
+      "sort": 120,
+      "tags": "nntest,plugin,rnnt-dec,glow",
+      "update_tags_if_env": {
+        "naive": [
+          {
+            "CK_RNNT_DEC": "naive"
+          }
+        ],
+        "orig": [
+          {
+            "CK_RNNT_DEC": "orig"
+          }
+        ]
+      }
+    },
+    "plugins-dec-onnx": {
+      "enable_if_env": [
+        {
+          "CK_RNNT_DEC_BACKEND": [
+            "onnx"
+          ]
+        }
+      ],
+      "local": "yes",
+      "name": "ONNX LSTM RNNT Dec plugin",
+      "sort": 120,
+      "tags": "nntest,plugin,rnnt-dec,onnx",
+      "update_tags_if_env": {
+        "naive": [
+          {
+            "CK_RNNT_DEC": "naive"
+          }
+        ],
+        "orig": [
+          {
+            "CK_RNNT_DEC": "orig"
+          }
+        ]
+      }
+    },
+    "plugins-dec-pytorch": {
+      "enable_if_env": [
+        {
+          "CK_RNNT_DEC_BACKEND": [
+            "pytorch"
+          ]
+        }
+      ],
+      "local": "yes",
+      "name": "Pytorch LSTM RNNT Dec plugin",
+      "sort": 120,
+      "tags": "nntest,plugin,rnnt-dec,pytorch",
+      "update_tags_if_env": {
+        "naive": [
+          {
+            "CK_RNNT_DEC": "naive"
+          }
+        ],
+        "orig": [
+          {
+            "CK_RNNT_DEC": "orig"
+          }
+        ],
+        "orig-quant": [
+          {
+            "CK_RNNT_DEC": "orig-quant"
+          }
+        ]
+      }
+    },
+    "python": {
+      "local": "yes",
+      "name": "Python interpreter",
+      "sort": 0,
+      "tags": "compiler,python"
+    },
+    "weights": {
+      "enable_if_env": [
+        {
+          "CK_LSTM_PYTORCH_WEIGHTS": [
+            1,
+            "1",
+            "YES",
+            "yes"
+          ]
+        }
+      ],
+      "local": "yes",
+      "name": "PyTorch weights",
+      "sort": 10,
+      "tags": "model,pytorch"
+    }
+  },
+  "run_vars": {
+    "CK_ABS_DIFF_THRESHOLD": 0.001,
+    "CK_IN_SHAPE_N": 1,
+    "CK_OUT_RAW_DATA": "tmp-ck-output.bin",
+    "CK_RNNT_DEC": "orig",
+    "CK_RNNT_DEC_BACKEND": "pytorch"
+  },
+  "source_files": [
+    "lstm.py"
+  ],
+  "species": [
+    "6bd431f979ccac7b"
+  ],
+  "tags": [
+    "nntest",
+    "lstm",
+    "pytorch",
+    "float32"
+  ],
+  "version": "1.0.0"
+}

@@ -1,0 +1,16 @@
+{
+  "backup_data_uid": "d0994a218fa75dea",
+  "backup_module_uid": "88eef0cd8c43b68a",
+  "backup_module_uoa": "docker",
+  "control": {
+    "engine": "CK",
+    "iso_datetime": "2020-11-14T21:43:45.619935",
+    "version": [
+      "1",
+      "17",
+      "0",
+      "1"
+    ]
+  },
+  "data_name": "object-detection-openvino.ubuntu-18.04"
+}

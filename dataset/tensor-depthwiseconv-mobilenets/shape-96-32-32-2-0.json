@@ -1,0 +1,7 @@
+{
+  "CK_IN_SHAPE_C": 96, 
+  "CK_IN_SHAPE_H": 32, 
+  "CK_IN_SHAPE_W": 32, 
+  "CK_DEPTHWISE_STRIDE": 2, 
+  "CK_DEPTHWISE_PAD": 0
+}

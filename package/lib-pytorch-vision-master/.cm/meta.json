@@ -1,0 +1,45 @@
+{
+  "customize": {
+    "extra_dir": "",
+    "install_env": {
+      "PACKAGE_URL": "https://github.com/pytorch/vision"
+    },
+    "use_git_revision": "yes",
+    "version": "master"
+  },
+  "deps": {
+    "lib.pytorch": {
+      "local": "yes",
+      "name": "PyTorch library",
+      "sort": 30,
+      "tags": "lib,pytorch"
+    },
+    "python": {
+      "add_to_path": "yes",
+      "local": "yes",
+      "name": "Python",
+      "sort": 20,
+      "tags": "compiler,python"
+    }
+  },
+  "end_full_path_universal": "lib$#sep#$torchvision$#sep#$__init__.py",
+  "need_cpu_info": "yes",
+  "only_for_host_os_tags": [
+    "linux",
+    "windows"
+  ],
+  "only_for_target_os_tags": [
+    "linux",
+    "windows"
+  ],
+  "package_extra_name": "",
+  "process_script": "install",
+  "soft_uoa": "9909041c40c481d9",
+  "suggested_path": "pytorch-vision",
+  "tags": [
+    "lib",
+    "pytorch-vision",
+    "vmaster",
+    "channel-stable"
+  ]
+}

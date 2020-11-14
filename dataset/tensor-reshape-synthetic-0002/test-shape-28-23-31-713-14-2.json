@@ -1,0 +1,8 @@
+{
+    "CK_IN_SHAPE_C": 28,
+    "CK_IN_SHAPE_H": 23,
+    "CK_IN_SHAPE_W": 31,
+    "CK_OUT_SHAPE_C": 713,
+    "CK_OUT_SHAPE_H": 14,
+    "CK_OUT_SHAPE_W": 2
+}

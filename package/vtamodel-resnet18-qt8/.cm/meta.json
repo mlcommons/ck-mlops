@@ -1,0 +1,42 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "extra_dir": "",
+    "file_labels": "synset.txt",
+    "file_model": "resnet18_qt8.json",
+    "file_weights": "resnet18_qt8.params",
+    "install_env": {
+      "PACKAGE_NAME": "vtamodel_resnet18_qt8.tar.bz2",
+      "PACKAGE_NAME1": "vtamodel_resnet18_qt8.tar",
+      "PACKAGE_SKIP_LINUX_MAKE": "YES",
+      "PACKAGE_UNBZIP": "YES",
+      "PACKAGE_UNTAR": "YES",
+      "PACKAGE_URL": "http://cKnowledge.org/ai/data",
+      "PACKAGE_WGET": "YES",
+      "VTA_MODEL": "resnet18_qt8.json",
+      "VTA_MODEL_LABELS": "synset.txt",
+      "VTA_MODEL_WEIGHTS": "resnet18_qt8.params"
+    },
+    "no_os_in_suggested_path": "yes",
+    "version": "20180701"
+  },
+  "end_full_path_universal": "resnet18_qt8.params",
+  "package_extra_name": " (resnet 18, int8, 20180701)",
+  "process_script": "install",
+  "soft_uoa": "5cd477e80e72a9dc",
+  "suggested_path": "vta-model-resnet18-qt8",
+  "tags": [
+    "vtamodel",
+    "release",
+    "weights",
+    "resenet",
+    "resnet18",
+    "vint8",
+    "qt8",
+    "channel-stable"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "cd9ccc74060b3d18",
+    "module_uoa": "script"
+  }
+}

@@ -1,0 +1,4 @@
+,W,H,C_IN,KERNEL,C_OUT,STRIDE,PAD,,Layer name
+InceptionV3,35,35,48,5,64,1,2,,Branch_1_Conv2d_0b
+InceptionV3,35,35,48,5,64,1,2,,Branch_1_Conv_1_0c
+InceptionV3,35,35,48,5,64,1,2,,Branch_1_Conv2d_0b

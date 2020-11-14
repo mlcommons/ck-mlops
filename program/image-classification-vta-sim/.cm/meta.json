@@ -1,0 +1,132 @@
+{
+  "backup_data_uid": "7f04e452dbbbdbba",
+  "data_name": "image-classification-vta-sim",
+  "no_compile": "yes",
+  "no_target_file": "yes",
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "classify": {
+      "dataset_tags": [
+        "image",
+        "jpeg",
+        "dataset"
+      ],
+      "ignore_return_code": "no",
+      "run_deps": {
+        "lib-python-matplotlib": {
+          "local": "yes",
+          "name": "Python matplotlib library",
+          "skip_default": "yes",
+          "sort": 26,
+          "tags": "lib,python-package,matplotlib"
+        },
+        "lib-python-requests": {
+          "local": "yes",
+          "name": "Python requests library",
+          "skip_default": "yes",
+          "sort": 25,
+          "tags": "lib,python-package,requests"
+        },
+        "lib-tvm": {
+          "local": "yes",
+          "name": "TVM library",
+          "skip_default": "yes",
+          "sort": 20,
+          "tags": "lib,tvm"
+        },
+        "model": {
+          "force_target_as_host": "yes",
+          "local": "yes",
+          "name": "VTA model (net and weights)",
+          "skip_default": "yes",
+          "sort": 50,
+          "tags": "vtamodel,release"
+        },
+        "python": {
+          "local": "yes",
+          "name": "Python",
+          "sort": 0,
+          "tags": "compiler,python"
+        }
+      },
+      "run_time": {
+        "fine_grain_timer_file": "tmp-ck-timer.json",
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../classify.py $#dataset_path#$$#dataset_filename#$",
+        "run_output_files": [
+          "tmp-ck-timer.json"
+        ]
+      }
+    },
+    "test": {
+      "ignore_return_code": "no",
+      "run_deps": {
+        "dataset-imagenet-aux": {
+          "force_target_as_host": "yes",
+          "local": "yes",
+          "name": "ImageNet dataset (aux)",
+          "sort": 70,
+          "tags": "dataset,imagenet,val"
+        },
+        "dataset-imagenet-val": {
+          "force_target_as_host": "yes",
+          "local": "yes",
+          "name": "ImageNet dataset (val)",
+          "sort": 60,
+          "tags": "dataset,imagenet,aux"
+        },
+        "lib-python-matplotlib": {
+          "local": "yes",
+          "name": "Python matplotlib library",
+          "skip_default": "yes",
+          "sort": 26,
+          "tags": "lib,python-package,matplotlib"
+        },
+        "lib-python-requests": {
+          "local": "yes",
+          "name": "Python requests library",
+          "skip_default": "yes",
+          "sort": 25,
+          "tags": "lib,python-package,requests"
+        },
+        "lib-tvm": {
+          "local": "yes",
+          "name": "TVM library",
+          "skip_default": "yes",
+          "sort": 20,
+          "tags": "lib,tvm"
+        },
+        "model": {
+          "force_target_as_host": "yes",
+          "local": "yes",
+          "name": "VTA model (net and weights)",
+          "sort": 50,
+          "tags": "vtamodel,release"
+        },
+        "python": {
+          "local": "yes",
+          "name": "Python",
+          "sort": 0,
+          "tags": "compiler,python"
+        }
+      },
+      "run_time": {
+        "fine_grain_timer_file": "tmp-ck-timer.json",
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../classify.py",
+        "run_output_files": [
+          "tmp-ck-timer.json"
+        ]
+      }
+    }
+  },
+  "run_vars": {
+    "STAT_REPEAT": 5
+  },
+  "tags": [
+    "tvm-fpga-demo",
+    "request",
+    "request-tournament",
+    "request-asplos18",
+    "demo"
+  ]
+}

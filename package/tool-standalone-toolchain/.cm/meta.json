@@ -1,0 +1,100 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "install_env": {
+      "PACKAGE_VERSION": "24",
+      "_API_LEVEL": "24",
+      "_TARGET_ARCH": "arm64",
+      "_WHICH_STL": ""
+    },
+    "no_os_in_suggested_path": "yes",
+    "no_ver_in_suggested_path": "yes",
+    "skip_file_check": "yes"
+  },
+  "deps": {
+    "ndk-toolchain": {
+      "local": "yes",
+      "name": "NDK toolchain",
+      "sort": 10,
+      "tags": "ndk,toolchain"
+    },
+    "python": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Python interpreter",
+      "sort": 100,
+      "tags": "compiler,lang-python"
+    }
+  },
+  "end_full_path_universal": "install$#sep#$AndroidVersion.txt",
+  "only_for_host_os_tags": [],
+  "only_for_target_os_tags": [],
+  "process_script": "install",
+  "soft_uoa": "tool.toolchain.standalone",
+  "suggested_path": "tool-standalone-toolchain",
+  "tags": [
+    "android",
+    "ndk",
+    "standalone-toolchain",
+    "tool"
+  ],
+  "variations": {
+    "api.24": {
+      "extra_env": {
+        "PACKAGE_VERSION": "24",
+        "_API_LEVEL": "24"
+      }
+    },
+    "api.28": {
+      "extra_env": {
+        "PACKAGE_VERSION": "28",
+        "_API_LEVEL": "28"
+      }
+    },
+    "arm": {
+      "extra_env": {
+        "_TARGET_ARCH": "arm"
+      }
+    },
+    "arm64": {
+      "extra_env": {
+        "_TARGET_ARCH": "arm64"
+      }
+    },
+    "gnustl": {
+      "extra_env": {
+        "_WHICH_STL": "gnustl"
+      }
+    },
+    "libc++": {
+      "extra_env": {
+        "_WHICH_STL": "libc++"
+      }
+    },
+    "mips": {
+      "extra_env": {
+        "_TARGET_ARCH": "mips"
+      }
+    },
+    "mips64": {
+      "extra_env": {
+        "_TARGET_ARCH": "mips64"
+      }
+    },
+    "stlport": {
+      "extra_env": {
+        "_WHICH_STL": "stlport"
+      }
+    },
+    "x86": {
+      "extra_env": {
+        "_TARGET_ARCH": "x86"
+      }
+    },
+    "x86_64": {
+      "extra_env": {
+        "_TARGET_ARCH": "x86_64"
+      }
+    }
+  }
+}

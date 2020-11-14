@@ -1,0 +1,107 @@
+{
+  "backup_data_uid": "61234d5d8f0cd62d",
+  "data_name": "image-classification-tvm",
+  "no_compile": "yes",
+  "no_target_file": "yes",
+  "print_files_after_run": [
+    "tmp-stdout.tmp",
+    "tmp-stderr.tmp"
+  ],
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "classify_cpu": {
+      "dataset_tags": [
+        "image",
+        "jpeg",
+        "dataset"
+      ],
+      "ignore_return_code": "no",
+      "run_deps": {
+        "lib-mxnet": {
+          "local": "yes",
+          "name": "MXNet library",
+          "skip_pruning_by_other_deps": "yes",
+          "sort": 9,
+          "tags": "lib,mxnet,vprebuilt,vcpu"
+        },
+        "lib-tvm": {
+          "local": "yes",
+          "name": "TVM library with LLVM",
+          "skip_pruning_by_other_deps": "yes",
+          "sort": 30,
+          "tags": "lib,tvm,vllvm,vcpu"
+        },
+        "mxnet-model": {
+          "local": "yes",
+          "name": "MXNet model",
+          "skip_pruning_by_other_deps": "yes",
+          "sort": 20,
+          "tags": "mxnetmodel"
+        }
+      },
+      "run_time": {
+        "fine_grain_timer_file": "tmp-ck-timer.json",
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../classify.py --image=$#dataset_path#$$#dataset_filename#$",
+        "run_output_files": [
+          "tmp-ck-timer.json"
+        ]
+      }
+    },
+    "classify_cuda": {
+      "dataset_tags": [
+        "image",
+        "jpeg",
+        "dataset"
+      ],
+      "ignore_return_code": "no",
+      "run_deps": {
+        "lib-mxnet": {
+          "local": "yes",
+          "name": "MXNet library",
+          "skip_pruning_by_other_deps": "yes",
+          "sort": 9,
+          "tags": "lib,mxnet,vprebuilt,vcpu"
+        },
+        "lib-tvm": {
+          "local": "yes",
+          "name": "TVM library with LLVM",
+          "skip_pruning_by_other_deps": "yes",
+          "sort": 30,
+          "tags": "lib,tvm,vllvm,vcuda"
+        },
+        "mxnet-model": {
+          "local": "yes",
+          "name": "MXNet model",
+          "skip_pruning_by_other_deps": "yes",
+          "sort": 20,
+          "tags": "mxnetmodel"
+        }
+      },
+      "run_time": {
+        "fine_grain_timer_file": "tmp-ck-timer.json",
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../classify.py --image=$#dataset_path#$$#dataset_filename#$ --target=cuda",
+        "run_output_files": [
+          "tmp-ck-timer.json"
+        ]
+      }
+    }
+  },
+  "run_deps": {
+    "python": {
+      "local": "yes",
+      "name": "python",
+      "sort": 1,
+      "tags": "compiler,lang-python,python"
+    }
+  },
+  "run_vars": {
+    "CK_BATCH_SIZE": 1,
+    "CK_TVM_DTYPE": "float32",
+    "CK_TVM_MODEL": "mobilenet"
+  },
+  "tags": [
+    "bechmark",
+    "tvm"
+  ]
+}

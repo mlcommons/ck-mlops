@@ -1,0 +1,9 @@
+{
+  "CK_IN_SHAPE_C": 80, 
+  "CK_IN_SHAPE_H": 73, 
+  "CK_IN_SHAPE_W": 73, 
+  "CK_OUT_SHAPE_C": 192, 
+  "CK_CONV_KERNEL": 3, 
+  "CK_CONV_STRIDE": 1, 
+  "CK_CONV_PAD": 0
+}

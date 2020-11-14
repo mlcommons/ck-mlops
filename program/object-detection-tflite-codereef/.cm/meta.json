@@ -1,0 +1,191 @@
+{
+  "backup_data_uid": "2aa4d87983bafb55",
+  "compile_deps": {
+    "compiler": {
+      "local": "yes",
+      "name": "C++ compiler",
+      "sort": 0,
+      "tags": "compiler,lang-cpp"
+    },
+    "lib-tflite": {
+      "local": "yes",
+      "name": "TensorFlow Lite library",
+      "sort": 20,
+      "tags": "lib,tflite,vstatic",
+      "version_from": [
+        1,
+        13,
+        1
+      ]
+    },
+    "lib-xopenme": {
+      "local": "yes",
+      "name": "xOpenME library",
+      "sort": 100,
+      "tags": "lib,xopenme"
+    }
+  },
+  "compiler_add_include_as_env_from_deps": [
+    "CK_ENV_LIB_STDCPP_INCLUDE",
+    "CK_ENV_LIB_STDCPP_INCLUDE_EXTRA",
+    "CK_ENV_LIB_TF_INCLUDE0",
+    "CK_ENV_LIB_TF_INCLUDE1",
+    "CK_ENV_LIB_TF_INCLUDE2"
+  ],
+  "compiler_env": "CK_CXX",
+  "compiler_flags_as_env": "$<<CK_COMPILER_FLAG_CPP11>>$ $<<CK_ENV_LIB_TF_DEF>>$ -Wall -Wno-sign-compare",
+  "data_name": "object-detection-tflite-codereef",
+  "extra_ld_vars": "$<<CK_ENV_LIB_TF_LINK_OPTIONS>>$ $<<CK_ENV_LIB_TF_LIBS_DIRS>>$ $<<CK_ENV_LIB_TF_LIBS>>$",
+  "linker_add_lib_as_env": [
+    "CK_CXX_EXTRA",
+    "CK_ENV_LIB_STDCPP_DYNAMIC"
+  ],
+  "main_language": "cpp",
+  "need_cpu_info": "yes",
+  "only_for_target_os_tags": [
+    "linux",
+    "android"
+  ],
+  "pass_env_to_resolve": "yes",
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "default": {
+      "ignore_return_code": "no",
+      "run_time": {
+        "copy_env_to_remote": [
+          "CK_ENV_TENSORFLOW_MODEL_CLASSES",
+          "CK_ENV_TENSORFLOW_MODEL_DATASET_TYPE",
+          "CK_ENV_TENSORFLOW_MODEL_IMAGE_HEIGHT",
+          "CK_ENV_TENSORFLOW_MODEL_IMAGE_WIDTH",
+          "CK_ENV_TENSORFLOW_MODEL_IMAGE_CHANNELS",
+          "CK_ENV_TENSORFLOW_MODEL_MAX_DETECTIONS",
+          "CK_ENV_TENSORFLOW_MODEL_NEED_BACKGROUND_CORRECTION",
+          "CK_ENV_TENSORFLOW_MODEL_NORMALIZE_DATA",
+          "CK_ENV_TENSORFLOW_MODEL_NUM_CLASSES",
+          "CK_ENV_TENSORFLOW_MODEL_SUBTRACT_MEAN",
+          "CK_ENV_TENSORFLOW_MODEL_TFLITE_GRAPH_REGULAR_NMS",
+          "CK_ENV_TENSORFLOW_MODEL_TFLITE_GRAPH_FAST_NMS",
+          "CK_ENV_TENSORFLOW_MODEL_TFLITE_GRAPH_NO_NMS",
+          "CK_ENV_TENSORFLOW_MODEL_NMS_SCORE_THRESHOLD",
+          "CK_ENV_TENSORFLOW_MODEL_NMS_IOU_THRESHOLD",
+          "CK_ENV_TENSORFLOW_MODEL_SCALE_H",
+          "CK_ENV_TENSORFLOW_MODEL_SCALE_W",
+          "CK_ENV_TENSORFLOW_MODEL_SCALE_X",
+          "CK_ENV_TENSORFLOW_MODEL_SCALE_Y",
+          "CK_ENV_DATASET_OBJ_DETECTION_PREPROCESSED_SUBSET_FOF"
+        ],
+        "fine_grain_timer_file": "tmp-ck-timer.json",
+        "post_process_via_ck": {
+          "data_uoa": "24c98b0cee248d93",
+          "module_uoa": "script",
+          "script_name": "iniless_postprocess"
+        },
+        "pre_process_via_ck": {
+          "data_uoa": "24c98b0cee248d93",
+          "module_uoa": "script",
+          "script_name": "schindler"
+        },
+        "run_cmd_main": "$#BIN_FILE#$",
+        "run_input_files": [
+          "$<<CK_ENV_LIB_STDCPP_DYNAMIC>>$",
+          "$<<CK_ENV_TENSORFLOW_MODEL_ROOT>>$/detect_fast_nms.tflite",
+          "$<<CK_ENV_TENSORFLOW_MODEL_ROOT>>$/detect_no_nms.tflite",
+          "$<<CK_ENV_TENSORFLOW_MODEL_ROOT>>$/detect_regular_nms.tflite",
+          "$<<CK_ENV_TENSORFLOW_MODEL_ROOT>>$/flatlabels.txt"
+        ],
+        "run_make_directories": [
+          "detections"
+        ],
+        "run_output_files": [
+          "detections",
+          "tmp-ck-timer.json"
+        ]
+      }
+    }
+  },
+  "run_deps": {
+    "dataset": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Preprocessed images",
+      "sort": 20,
+      "tags": "dataset,object-detection,preprocessed"
+    },
+    "lib-python-matplotlib": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Python Matplotlib library",
+      "sort": 60,
+      "tags": "lib,python-package,matplotlib"
+    },
+    "lib-python-numpy": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Python NumPy library",
+      "sort": 40,
+      "tags": "lib,python-package,numpy"
+    },
+    "lib-python-pillow": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Python Pillow library",
+      "sort": 50,
+      "tags": "lib,python-package,pillow"
+    },
+    "python": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Python interpreter",
+      "sort": 30,
+      "tags": "compiler,lang-python"
+    },
+    "tensorflow-model-api": {
+      "comment": "may be needed by iniless_postprocess",
+      "local": "yes",
+      "name": "Tensorflow models api",
+      "sort": 80,
+      "tags": "tensorflow,model,api"
+    },
+    "tool-coco": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Python API for COCO",
+      "sort": 90,
+      "tags": "tool,coco"
+    },
+    "weights": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Object Detection model",
+      "sort": 20,
+      "tags": "model,tflite,object-detection"
+    }
+  },
+  "run_vars": {
+    "CK_ANNOTATIONS_OUT_DIR": "annotations",
+    "CK_BATCH_COUNT": 1,
+    "CK_BATCH_SIZE": 1,
+    "CK_DETECTIONS_OUT_DIR": "detections",
+    "CK_PREPROCESSED_OUT_DIR": "preprocessed",
+    "CK_RESULTS_OUT_DIR": "results",
+    "CK_SILENT_MODE": 0,
+    "CK_SKIP_IMAGES": 0,
+    "CK_TIMER_FILE": "tmp-ck-timer.json",
+    "USE_NEON": "NO",
+    "USE_OPENCL": "NO"
+  },
+  "skip_bin_ext": "yes",
+  "source_files": [
+    "detect.cpp"
+  ],
+  "tags": [
+    "tensorflow-lite",
+    "object-detection",
+    "tflite",
+    "lang-cpp"
+  ],
+  "target_file": "detect",
+  "template": "yes",
+  "template_type": "Object Detection via TFLite (C++)"
+}

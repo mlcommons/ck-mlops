@@ -1,0 +1,80 @@
+@echo off
+
+rem
+rem Installation script for CK packages.
+rem
+rem See CK LICENSE.txt for licensing details.
+rem See CK Copyright.txt for copyright details.
+rem
+rem Developer(s): Grigori Fursin, 2017
+rem
+
+rem PACKAGE_DIR
+rem INSTALL_DIR
+
+if "%CAFFE_BUILD_PYTHON%" == "ON" (
+  echo.
+  echo You are compiling Caffe2 with Python support!
+  echo To use it you need to set up CK env as following ^(after installation^)^:
+  echo.
+  echo "ck xset env tags=lib,caffe2 & call tmp-ck-env.bat & ipython2"
+  echo.
+  set /p id="Press enter to continue"
+)
+
+cd /d %INSTALL_DIR%\src
+mkdir build_host_protoc
+cd /d %INSTALL_DIR%\src\build_host_protoc
+
+echo **************************************************************
+echo Configuring protobuf for Caffe 2 ...
+
+cmake ..\third_party\protobuf\cmake ^
+      -G"%CK_CMAKE_GENERATOR%" ^
+      -DCMAKE_BUILD_TYPE:STRING=%CMAKE_CONFIG% ^
+      -DCMAKE_INSTALL_PREFIX=. ^
+      -Dprotobuf_BUILD_TESTS=OFF
+
+if %errorlevel% neq 0 (
+ echo.
+ echo Error: protobuf configure failed ...
+ goto err
+)
+
+echo **************************************************************
+echo Building protobuf for Caffe2
+cmake --build . --config %CMAKE_CONFIG% --target INSTALL 
+
+if %errorlevel% neq 0 (
+ echo.
+ echo Error: protobuf build failed ...
+ goto err
+)
+
+echo **************************************************************
+echo Preparing vars for Caffe 2 ...
+
+set CK_CXX_FLAGS_FOR_CMAKE=
+set CK_CXX_FLAGS_ANDROID_TYPICAL=
+
+set CK_CMAKE_EXTRA=%CK_CMAKE_EXTRA% ^
+ -DCMAKE_BUILD_TYPE:STRING=%CMAKE_CONFIG% ^
+ -DCMAKE_VERBOSE_MAKEFILE=1 ^
+ -DBUILD_TEST=OFF ^
+ -DBUILD_SHARED_LIBS=OFF ^
+ -DUSE_CUDA=%USE_CUDA% ^
+ -DUSE_NNPACK=OFF ^
+ -DUSE_GLOG=OFF ^
+ -DUSE_GFLAGS=OFF ^
+ -DUSE_LMDB=OFF ^
+ -DUSE_LEVELDB=OFF ^
+ -DUSE_ROCKSDB=OFF ^
+ -DUSE_OPENCV=OFF ^
+ -DBUILD_SHARED_LIBS=OFF ^
+ -DBUILD_PYTHON=%CAFFE_BUILD_PYTHON% ^
+ -DCAFFE2_CUSTOM_PROTOC_EXECUTABLE=%INSTALL_DIR%\src\build_host_protoc\bin\protoc.exe
+
+exit /b 0
+
+:err
+exit /b 1

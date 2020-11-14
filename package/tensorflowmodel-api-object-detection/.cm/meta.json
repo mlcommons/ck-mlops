@@ -1,0 +1,58 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "install_env": {
+      "PACKAGE_GIT": "YES",
+      "PACKAGE_SKIP_LINUX_MAKE": "YES",
+      "PACKAGE_SUB_DIR": "models",
+      "PACKAGE_URL": "https://github.com/guilo0/tensorflow-models-object-detection.git",
+      "PACKAGE_VERSION": "master"
+    },
+    "no_os_in_suggested_path": "yes",
+    "no_ver_in_suggested_path": "no"
+  },
+  "deps": {
+    "protobuf": {
+      "local": "yes",
+      "name": "ProtoBuf host library 3.0.x (Linux)",
+      "tags": "lib,protobuf-host",
+      "update_tags_by_target_os_uoa": {
+        "linux-32": "v3.0",
+        "linux-64": "v3.0"
+      }
+    }
+  },
+  "end_full_path": {
+    "linux": "models/research/object_detection/README.md"
+  },
+  "only_for_host_os_tags": [
+    "linux"
+  ],
+  "only_for_target_os_tags": [
+    "linux"
+  ],
+  "package_extra_name": " (object detection)",
+  "process_script": "install",
+  "soft_uoa": "72ca45fb219ff46c",
+  "suggested_path": "tensorflowmodel-api-object-detection",
+  "tags": [
+    "tensorflowmodel-object-detection",
+    "tensorflow",
+    "model",
+    "api",
+    "object-detection",
+    "channel-stable"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "cd9ccc74060b3d18",
+    "module_uoa": "script"
+  },
+  "variations": {
+    "r1.12.0": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "r1.12.0",
+        "PACKAGE_VERSION": "1.12.0"
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+You can download python from the following website:
+* https://www.python.org/downloads/windows/
+
+You can also install Anaconda Python (scientific distribution) from the following website:
+* https://www.continuum.io/downloads
+ 

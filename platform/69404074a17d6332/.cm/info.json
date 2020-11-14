@@ -1,0 +1,16 @@
+{
+  "backup_data_uid": "69404074a17d6332",
+  "backup_module_uid": "707ccdfe444cafac",
+  "backup_module_uoa": "platform",
+  "control": {
+    "engine": "CK",
+    "iso_datetime": "2020-11-14T21:43:51.154827",
+    "version": [
+      "1",
+      "17",
+      "0",
+      "1"
+    ]
+  },
+  "data_name": "ZTE B2017G"
+}

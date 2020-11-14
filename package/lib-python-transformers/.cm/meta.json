@@ -1,0 +1,61 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "install_env": {
+      "PIP_INSTALL_OPTIONS": "--ignore-installed",
+      "PYTHON_PACKAGE_NAME": "transformers"
+    },
+    "package_extra_name": " (original)",
+    "supported_versions": [
+      "2.0.0",
+      "2.1.0",
+      "2.1.1",
+      "2.2.0",
+      "2.2.1",
+      "2.2.2",
+      "2.3.0",
+      "2.4.0",
+      "2.4.1",
+      "2.5.0",
+      "2.5.1",
+      "2.6.0",
+      "2.7.0",
+      "2.8.0",
+      "2.9.0",
+      "2.9.1",
+      "2.10.0",
+      "2.11.0",
+      "3.0.0",
+      "3.0.1",
+      "3.0.2",
+      "3.1.0",
+      "3.2.0",
+      "3.3.0",
+      "3.3.1"
+    ]
+  },
+  "deps": {
+    "python": {
+      "add_to_path": "yes",
+      "local": "yes",
+      "name": "Python interpreter",
+      "sort": 10,
+      "tags": "compiler,python"
+    }
+  },
+  "end_full_path_universal": "build$#sep#$transformers$#sep#$__init__.py",
+  "only_for_host_os_tags": [],
+  "only_for_target_os_tags": [
+    "windows",
+    "linux"
+  ],
+  "process_script": "install",
+  "soft_uoa": "f965f8f74eae87ce",
+  "suggested_path": "lib-python-transformers",
+  "tags": [
+    "lib",
+    "python-package",
+    "transformers",
+    "original"
+  ]
+}

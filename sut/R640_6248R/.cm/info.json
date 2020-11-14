@@ -1,0 +1,16 @@
+{
+  "backup_data_uid": "2447191b44450a65",
+  "backup_module_uid": "194e44c4cacd5101",
+  "backup_module_uoa": "sut",
+  "control": {
+    "engine": "CK",
+    "iso_datetime": "2020-11-14T21:43:45.128891",
+    "version": [
+      "1",
+      "17",
+      "0",
+      "1"
+    ]
+  },
+  "data_name": "R640_6248R"
+}

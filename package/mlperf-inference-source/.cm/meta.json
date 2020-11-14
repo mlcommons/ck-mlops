@@ -1,0 +1,112 @@
+{
+  "customize": {
+    "extra_dir": "",
+    "git_src_dir": "inference",
+    "install_env": {
+      "PACKAGE_BUILD_TYPE": "none",
+      "PACKAGE_GIT": "YES",
+      "PACKAGE_GIT_SUBMODULES": "YES",
+      "PACKAGE_PATCH": "YES",
+      "PACKAGE_SKIP_CLEAN_SRC_DIR": "YES",
+      "PACKAGE_SKIP_LINUX_MAKE": "YES",
+      "PACKAGE_SUB_DIR": "inference"
+    },
+    "no_os_in_suggested_path": "yes",
+    "no_ver_in_suggested_path": "yes",
+    "use_git_revision": "yes",
+    "version": "master"
+  },
+  "end_full_path_universal": "inference$#sep#$loadgen$#sep#$README.md",
+  "process_script": "install",
+  "soft_uoa": "mlperf.inference.source",
+  "suggested_path": "mlperf-inference",
+  "tags": [
+    "uninstalled",
+    "mlperf",
+    "inference",
+    "src",
+    "source"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "cd9ccc74060b3d18",
+    "module_uoa": "script"
+  },
+  "variations": {
+    "dividiti.bert": {
+      "extra_customize": {
+        "package_extra_name": " (for program:bert-reference-loadgen-py)"
+      },
+      "extra_env": {
+        "PACKAGE_GIT_CLONE_FLAGS": "-b dvdt-bert",
+        "PACKAGE_URL": "https://github.com/dividiti/inference"
+      }
+    },
+    "dividiti.master": {
+      "extra_customize": {
+        "package_extra_name": " (dividiti's fork)"
+      },
+      "extra_env": {
+        "PACKAGE_URL": "https://github.com/dividiti/inference"
+      }
+    },
+    "dividiti.rnnt": {
+      "extra_customize": {
+        "package_extra_name": " (with dividiti's tweaks for RNN-T)",
+        "version": "vdvdt.rnnt"
+      },
+      "extra_env": {
+        "PACKAGE_GIT_CLONE_FLAGS": "-b dvdt-rnnt",
+        "PACKAGE_URL": "https://github.com/dividiti/inference"
+      }
+    },
+    "dividiti.v0.5-intel": {
+      "extra_customize": {
+        "package_extra_name": " (for the CK-tweaked MLPerf Inference OpenVINO app)",
+        "version": "v0.5-intel"
+      },
+      "extra_env": {
+        "PACKAGE_GIT_CLONE_FLAGS": "-b v0.5-intel",
+        "PACKAGE_URL": "https://github.com/dividiti/inference"
+      }
+    },
+    "dividiti.vision_with_ck": {
+      "extra_customize": {
+        "package_extra_name": " (for the CK-tweaked MLPerf Inference vision app)",
+        "version": "vision_with_ck"
+      },
+      "extra_env": {
+        "PACKAGE_GIT_CLONE_FLAGS": "-b vision_with_ck",
+        "PACKAGE_URL": "https://github.com/dividiti/inference"
+      }
+    },
+    "r0.7": {
+      "extra_customize": {
+        "package_extra_name": " (official v0.7 branch)",
+        "version": "r0.7"
+      },
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "r0.7",
+        "PACKAGE_URL": "https://github.com/mlperf/inference"
+      },
+      "on_by_default": "yes"
+    },
+    "upstream.master": {
+      "extra_customize": {
+        "package_extra_name": " (upstream repository - default)"
+      },
+      "extra_env": {
+        "PACKAGE_URL": "https://github.com/mlperf/inference"
+      },
+      "on_by_default": "no"
+    },
+    "upstream.pr679": {
+      "extra_customize": {
+        "package_extra_name": " (PR#679: v0.7 checker)"
+      },
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "gs/v0.7checker",
+        "PACKAGE_URL": "https://github.com/guschmue/inference"
+      }
+    }
+  }
+}

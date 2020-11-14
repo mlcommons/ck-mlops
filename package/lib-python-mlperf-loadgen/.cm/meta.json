@@ -1,0 +1,57 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "install_env": {
+      "PIP_INSTALL_OPTIONS": "--ignore-installed",
+      "PYTHON_PACKAGE_NAME": "mlperf_loadgen"
+    },
+    "no_ver_in_suggested_path": "yes",
+    "version": "master"
+  },
+  "deps": {
+    "compiler": {
+      "add_to_path": "no",
+      "local": "yes",
+      "name": "C++ compiler",
+      "sort": 15,
+      "tags": "compiler,lang-cpp"
+    },
+    "lib-python-absl": {
+      "local": "yes",
+      "name": "Python Abseil library",
+      "sort": 30,
+      "tags": "lib,python-package,absl"
+    },
+    "mlperf-inference": {
+      "add_to_path": "no",
+      "local": "yes",
+      "name": "MLPerf Inference source",
+      "sort": 10,
+      "tags": "mlperf,inference,source"
+    },
+    "python": {
+      "add_to_path": "yes",
+      "local": "yes",
+      "name": "Python interpreter",
+      "sort": 20,
+      "tags": "compiler,python"
+    }
+  },
+  "end_full_path_universal": "build$#sep#$__init__.py",
+  "only_for_host_os_tags": [],
+  "only_for_target_os_tags": [
+    "linux"
+  ],
+  "process_script": "install",
+  "soft_uoa": "4817b4c5316f6cb5",
+  "suggested_path": "lib-python-mlperf-loadgen",
+  "tags": [
+    "lib",
+    "python-package",
+    "mlperf",
+    "loadgen",
+    "mlperf_loadgen",
+    "mlperf-loadgen",
+    "vmaster"
+  ]
+}

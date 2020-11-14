@@ -1,0 +1,39 @@
+{
+  "dataset_files": [
+    "shape-2048-1-1-1000-1-1",
+    "shape-256-6-6-4096-1-1",
+    "shape-4096-1-1-4096-1-1",
+    "shape-4096-1-1-1000-1-1",
+    "shape-512-7-7-4096-1-1",
+    "shape-10-6-6-20-1-1"
+  ],
+  "desc_dataset_files": {
+    "shape-10-6-6-20-1-1": {
+      "name": "test-shapes test1 input 6x6x10 output 1x1x20"
+    },
+    "shape-2048-1-1-1000-1-1": {
+      "name": "Inception v3 fc1 input 1x1x2048 output 1x1x1000"
+    },
+    "shape-256-6-6-4096-1-1": {
+      "name": "AlexNet fc6 input 6x6x256 output 1x1x4096"
+    },
+    "shape-4096-1-1-1000-1-1": {
+      "name": "AlexNet fc8 input 1x1x4096 output 1x1x1000"
+    },
+    "shape-4096-1-1-4096-1-1": {
+      "name": "AlexNet fc7 input 1x1x4096 output 1x1x4096"
+    },
+    "shape-512-7-7-4096-1-1": {
+      "name": "VGG-16 fc6 input 7x7x512 output 1x1x4096"
+    }
+  },
+  "tags": [
+    "dataset",
+    "nntest",
+    "tensor-fullyconnected",
+    "fully-connected",
+    "fully_connected",
+    "fullyconnected",
+    "innerproduct"
+  ]
+}

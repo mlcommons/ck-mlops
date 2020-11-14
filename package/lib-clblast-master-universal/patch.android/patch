@@ -1,0 +1,21 @@
+diff -ruN src/CMakeLists.txt src-new/CMakeLists.txt
+--- src/CMakeLists.txt	2018-11-28 13:07:27.571200425 +0000
++++ src-new/CMakeLists.txt	2018-11-28 13:39:22.188090776 +0000
+@@ -148,7 +148,7 @@
+ if(OPENCL)
+   # Requires OpenCL. It is found through the included "FindOpenCL.cmake" in CMAKE_MODULE_PATH.
+   find_package(OpenCL REQUIRED)
+-  set(API_LIBRARIES ${OPENCL_LIBRARIES})
++  set(API_LIBRARIES ${OPENCL_LIBRARIES} ${CMAKE_EXE_LINKER_LIBS} ${CK_REF_LIBRARIES})
+   set(API_INCLUDE_DIRS ${OPENCL_INCLUDE_DIRS})
+ elseif(CUDA)
+   # For CUDA, the "FindCUDA.cmake" is part of CMake
+@@ -173,7 +173,7 @@
+   # "FindCBLAS.cmake", "FindMKL.cmake", and "FindcuBLAS.cmake" are included.
+   if(CLIENTS OR TESTS)
+     find_package(CBLAS)
+-    find_package(MKL)
++#    find_package(MKL)
+     if(OPENCL)
+       find_package(clBLAS)
+     endif()

@@ -1,0 +1,22 @@
+{
+  "auto_detect": "yes",
+  "customize": {
+    "add_include_path": "no",
+    "env_prefix": "CK_NNTEST_PLUGIN",
+    "limit_recursion_dir_search": {
+      "linux": 4,
+      "win": 4
+    },
+    "skip_add_to_bin": "yes",
+    "soft_file": {
+      "linux": "plugins/plugin.py"
+    }
+  },
+  "soft_name": "NNTest Plugin",
+  "tags": [
+    "nntest",
+    "plugin",
+    "plugins",
+    "hotswap"
+  ]
+}

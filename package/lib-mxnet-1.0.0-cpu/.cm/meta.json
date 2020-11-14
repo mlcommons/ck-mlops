@@ -1,0 +1,46 @@
+{
+  "customize": {
+    "extra_dir": "",
+    "install_env": {
+      "MXNET_PACKAGE_VER": "1.0.0"
+    },
+    "version": "1.0.0"
+  },
+  "deps": {
+    "python": {
+      "local": "yes",
+      "name": "Python",
+      "sort": 20,
+      "tags": "compiler,python"
+    }
+  },
+  "end_full_path_universal": "lib$#sep#$mxnet$#sep#$__init__.py",
+  "need_cpu_info": "yes",
+  "only_for_host_os_tags": [
+    "linux",
+    "windows"
+  ],
+  "only_for_target_os_tags": [
+    "linux",
+    "windows"
+  ],
+  "package_extra_name": " (prebuilt, cpu)",
+  "process_script": "install",
+  "soft_uoa": "73c2ba9aa134e3da",
+  "suggested_path": "mxnet-prebuilt-cpu",
+  "tags": [
+    "lib",
+    "mxnet",
+    "mxnet-cpu",
+    "v1.0.0",
+    "v1.0",
+    "v1",
+    "vprebuilt",
+    "vcpu",
+    "channel-stable"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "720d42842c47ec84",
+    "module_uoa": "package"
+  }
+}

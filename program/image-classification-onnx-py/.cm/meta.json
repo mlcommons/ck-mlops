@@ -1,0 +1,119 @@
+{
+  "backup_data_uid": "51b7e87487587f51",
+  "build_compiler_vars": {},
+  "data_name": "image-classification-onnx-py",
+  "main_language": "python",
+  "no_compile": "yes",
+  "no_target_file": "yes",
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "barebones": {
+      "ignore_return_code": "no",
+      "run_time": {
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../onnx_classify.py"
+      }
+    },
+    "preprocessed": {
+      "ignore_return_code": "no",
+      "run_time": {
+        "_pre_process_via_ck": {
+          "data_uoa": "b98ee24399ef4c3a",
+          "function_name": "ck_preprocess",
+          "module_uoa": "script",
+          "script_name": "preprocess"
+        },
+        "fine_grain_timer_file": "tmp-ck-timer.json",
+        "post_process_via_ck": {
+          "data_uoa": "b98ee24399ef4c3a",
+          "module_uoa": "script",
+          "script_name": "postprocess"
+        },
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../onnx_classify_preprocessed.py",
+        "run_output_files": [
+          "tmp-ck-timer.json"
+        ]
+      }
+    }
+  },
+  "run_deps": {
+    "imagenet-aux": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "ImageNet dataset (aux)",
+      "sort": 10,
+      "tags": "dataset,imagenet,aux"
+    },
+    "imagenet-helper": {
+      "local": "yes",
+      "name": "Python ImageNet helper functions and metadata",
+      "sort": 35,
+      "tags": "lib,python-package,imagenet-helper"
+    },
+    "images": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "ImageNet dataset (preprocessed subset)",
+      "sort": 30,
+      "tags": "dataset,imagenet,preprocessed"
+    },
+    "lib-python-numpy": {
+      "local": "yes",
+      "name": "Python NumPy library",
+      "sort": 40,
+      "tags": "lib,python-package,numpy"
+    },
+    "lib-python-onnx": {
+      "local": "yes",
+      "name": "Python ONNX library",
+      "sort": 60,
+      "tags": "lib,python-package,onnx"
+    },
+    "lib-python-onnxruntime": {
+      "local": "yes",
+      "name": "Python ONNX runtime",
+      "sort": 70,
+      "tags": "lib,python-package,onnxruntime"
+    },
+    "lib-python-pillow": {
+      "local": "yes",
+      "name": "Python Pillow library",
+      "sort": 50,
+      "tags": "lib,python-package,pillow"
+    },
+    "lib-python-scipy": {
+      "local": "yes",
+      "name": "Python SciPy library",
+      "sort": 45,
+      "tags": "lib,python-package,scipy"
+    },
+    "weights": {
+      "local": "yes",
+      "name": "ONNX model",
+      "pass_matching_tags_to": {
+        "side.": [
+          "images"
+        ]
+      },
+      "sort": 20,
+      "tags": "model,image-classification,onnx"
+    }
+  },
+  "run_vars": {
+    "CK_BATCH_COUNT": 1,
+    "CK_BATCH_SIZE": 1,
+    "CK_CROP_PERCENT": 87.5,
+    "CK_IMAGE_FILE": "",
+    "CK_RECREATE_CACHE": "NO",
+    "CK_RESULTS_DIR": "predictions",
+    "CK_SILENT_MODE": 0,
+    "CK_SKIP_IMAGES": 0,
+    "CK_TMP_IMAGE_SIZE": 0,
+    "IMAGE_FILENAME": "ILSVRC2012_val_00000290.JPEG"
+  },
+  "tags": [
+    "image-classification",
+    "onnx",
+    "lang-python"
+  ]
+}

@@ -1,0 +1,216 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "git_src_dir": "openvino",
+    "install_env": {
+      "PACKAGE_BUILD_TYPE": "skip",
+      "PACKAGE_GIT": "YES",
+      "PACKAGE_GIT_SUBMODULES": "YES",
+      "PACKAGE_PATCH": "YES",
+      "PACKAGE_PATCH_LIST": "\\$<<ORIGINAL_PACKAGE_DIR>>$/patch.\\$<<CK_TARGET_OS_ID>>$/* \\$<<ORIGINAL_PACKAGE_DIR>>$/patch.variations/\\$<<PACKAGE_PATCH__2019__DISABLE_WERROR>>$ \\$<<ORIGINAL_PACKAGE_DIR>>$/patch.variations/\\$<<PACKAGE_PATCH__2019__DISABLE_WERROR_THIRDPARTY_MKLDNN>>$ \\$<<ORIGINAL_PACKAGE_DIR>>$/patch.variations/\\$<<PACKAGE_PATCH__2019__DISABLE_WERROR_THIRDPARTY_ADE>>$ \\$<<ORIGINAL_PACKAGE_DIR>>$/patch.\\$<<CK_TARGET_OS_ID>>$/* \\$<<ORIGINAL_PACKAGE_DIR>>$/patch.variations/\\$<<PACKAGE_PATCH__2020__DISABLE_WERROR>>$ \\$<<ORIGINAL_PACKAGE_DIR>>$/patch.variations/\\$<<PACKAGE_PATCH__2020__DISABLE_WERROR_THIRDPARTY_MKLDNN>>$ \\$<<ORIGINAL_PACKAGE_DIR>>$/patch.variations/\\$<<PACKAGE_PATCH__2020__LINUX_OS_NAME>>$",
+      "PACKAGE_PATCH__2019__DISABLE_WERROR": "",
+      "PACKAGE_PATCH__2019__DISABLE_WERROR_THIRDPARTY_ADE": "",
+      "PACKAGE_PATCH__2019__DISABLE_WERROR_THIRDPARTY_MKLDNN": "",
+      "PACKAGE_PATCH__2020__DISABLE_WERROR": "",
+      "PACKAGE_PATCH__2020__DISABLE_WERROR_THIRDPARTY_MKLDNN": "",
+      "PACKAGE_PATCH__2020__LINUX_OS_NAME": "",
+      "PACKAGE_SKIP_CLEAN_OBJ": "YES",
+      "PACKAGE_SKIP_CLEAN_SRC_DIR": "YES",
+      "PACKAGE_SKIP_LINUX_MAKE": "YES",
+      "PACKAGE_SUB_DIR": "openvino",
+      "PACKAGE_URL": "https://github.com/openvinotoolkit/openvino"
+    },
+    "no_ver_in_suggested_path": "yes",
+    "version": "master"
+  },
+  "deps": {
+    "cmake": {
+      "add_to_path": "no",
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "CMake tool",
+      "skip_from_bat": "yes",
+      "sort": 20,
+      "tags": "tool,cmake",
+      "version_from": [
+        3,
+        7,
+        2
+      ]
+    },
+    "compiler": {
+      "add_to_path": "no",
+      "local": "yes",
+      "name": "C++ compiler",
+      "sort": 40,
+      "tags": "compiler,lang-cpp"
+    },
+    "cython": {
+      "add_to_path": "no",
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Cython compiler",
+      "sort": 60,
+      "tags": "python-package,cython"
+    },
+    "open-model-zoo": {
+      "add_to_path": "no",
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Open Model Zoo",
+      "sort": 55,
+      "tags": "lib,open-model-zoo"
+    },
+    "opencv": {
+      "add_to_path": "no",
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "OpenCV library",
+      "no_tags": "python-package",
+      "sort": 50,
+      "tags": "lib,opencv",
+      "version_from": [
+        3,
+        4
+      ],
+      "version_to": [
+        3,
+        4,
+        99
+      ]
+    },
+    "python": {
+      "add_to_path": "no",
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Python interpreter",
+      "sort": 70,
+      "tags": "compiler,python"
+    }
+  },
+  "end_full_path_universal": "lib/libinference_engine.so",
+  "need_cpu_info": "yes",
+  "only_for_host_os_tags": [
+    "linux"
+  ],
+  "only_for_target_os_tags": [
+    "linux"
+  ],
+  "process_script": "install",
+  "soft_uoa": "455b809caa0daa92",
+  "suggested_path": "lib-openvino",
+  "tags": [
+    "lib",
+    "openvino",
+    "dldt"
+  ],
+  "use_preprocess_scripts_from_another_entry": {
+    "COMMENT data_uid": "fd44428fbc77f77f",
+    "data_uoa": "process-compiler-for-cmake",
+    "module_uoa": "script"
+  },
+  "use_scripts_from_another_entry": {
+    "COMMENT data_uid": "cd9ccc74060b3d18",
+    "data_uoa": "download-and-install-package",
+    "module_uoa": "script"
+  },
+  "variations": {
+    "2019_R3": {
+      "extra_customize": {
+        "version": "2019_R3"
+      },
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "2019_R3",
+        "PACKAGE_PATCH__2019__DISABLE_WERROR": "2019_disable_werror.patch",
+        "PACKAGE_PATCH__2019__DISABLE_WERROR_THIRDPARTY_ADE": "2019_disable_werror_thirdparty_ade.patch",
+        "PACKAGE_PATCH__2019__DISABLE_WERROR_THIRDPARTY_MKLDNN": "2019_disable_werror_thirdparty_mkl-dnn.patch"
+      }
+    },
+    "2019_R3.1": {
+      "extra_customize": {
+        "version": "2019_R3.1"
+      },
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "2019_R3.1",
+        "PACKAGE_PATCH__2019__DISABLE_WERROR": "2019_disable_werror.patch",
+        "PACKAGE_PATCH__2019__DISABLE_WERROR_THIRDPARTY_ADE": "2019_disable_werror_thirdparty_ade.patch",
+        "PACKAGE_PATCH__2019__DISABLE_WERROR_THIRDPARTY_MKLDNN": "2019_disable_werror_thirdparty_mkl-dnn.patch"
+      }
+    },
+    "2020": {
+      "extra_customize": {
+        "version": "2020"
+      },
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "2020",
+        "PACKAGE_PATCH__2019__DISABLE_WERROR_THIRDPARTY_ADE": "2019_disable_werror_thirdparty_ade.patch",
+        "PACKAGE_PATCH__2020__DISABLE_WERROR": "2020_disable_werror.patch",
+        "PACKAGE_PATCH__2020__DISABLE_WERROR_THIRDPARTY_MKLDNN": "2020_disable_werror_thirdparty_mkl-dnn.patch",
+        "PACKAGE_PATCH__2020__LINUX_OS_NAME": "2020_linux_os_name.patch"
+      },
+      "on_by_default": "yes"
+    },
+    "2020.1": {
+      "extra_customize": {
+        "version": "2020.1"
+      },
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "2020.1"
+      }
+    },
+    "2020.2": {
+      "extra_customize": {
+        "version": "2020.2"
+      },
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "2020.2",
+        "PACKAGE_PATCH__2019__DISABLE_WERROR_THIRDPARTY_ADE": "2019_disable_werror_thirdparty_ade.patch",
+        "PACKAGE_PATCH__2020__DISABLE_WERROR": "2020_disable_werror.patch",
+        "PACKAGE_PATCH__2020__DISABLE_WERROR_THIRDPARTY_MKLDNN": "2020_disable_werror_thirdparty_mkl-dnn.patch",
+        "PACKAGE_PATCH__2020__LINUX_OS_NAME": "2020_linux_os_name.patch"
+      }
+    },
+    "2020.3": {
+      "extra_customize": {
+        "version": "2020.3"
+      },
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "2020.3.0"
+      }
+    },
+    "2020.4": {
+      "extra_customize": {
+        "version": "2020.4"
+      },
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "2020.4"
+      }
+    },
+    "master": {
+      "extra_customize": {
+        "version": "master"
+      },
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "master"
+      },
+      "extra_tags": [
+        "vmaster"
+      ]
+    },
+    "pre-release": {
+      "extra_customize": {
+        "version": "pre-release"
+      },
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "pre-release",
+        "PACKAGE_PATCH__2019__DISABLE_WERROR": "2019_disable_werror.patch",
+        "PACKAGE_PATCH__2019__DISABLE_WERROR_THIRDPARTY_ADE": "2019_disable_werror_thirdparty_ade.patch",
+        "PACKAGE_PATCH__2019__DISABLE_WERROR_THIRDPARTY_MKLDNN": "2019_disable_werror_thirdparty_mkl-dnn.patch"
+      },
+      "extra_tags": [
+        "vpre-release",
+        "v0.5-intel"
+      ]
+    }
+  }
+}

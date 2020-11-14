@@ -1,0 +1,66 @@
+{
+  "backup_data_uid": "0bfecb4858004a23",
+  "data_name": "cntk",
+  "no_compile": "yes",
+  "no_target_file": "yes",
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "demo-feed-forward-net": {
+      "ignore_return_code": "no",
+      "run_deps": {
+        "lib-cntk": {
+          "local": "yes",
+          "name": "CNTK library",
+          "no_tags": "vsrc",
+          "skip_pruning_by_other_deps": "yes",
+          "sort": 10,
+          "tags": "lib,cntk"
+        },
+        "lib-mpi": {
+          "local": "yes",
+          "name": "Open MPI library",
+          "only_for_target_os_tags": [
+            "linux"
+          ],
+          "sort": 30,
+          "tags": "lib,openmpi"
+        }
+      },
+      "run_time": {
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../FeedForwardNet.py"
+      }
+    },
+    "ipython": {
+      "ignore_return_code": "yes",
+      "run_deps": {
+        "lib-cntk": {
+          "local": "yes",
+          "name": "CNTK library",
+          "no_tags": "vsrc",
+          "skip_pruning_by_other_deps": "yes",
+          "sort": 10,
+          "tags": "lib,cntk"
+        },
+        "lib-mpi": {
+          "local": "yes",
+          "name": "Open MPI library",
+          "only_for_target_os_tags": [
+            "linux"
+          ],
+          "skip_default": "yes",
+          "sort": 30,
+          "tags": "lib,openmpi"
+        }
+      },
+      "run_time": {
+        "run_cmd_main": "$<<CK_PYTHON_IPYTHON_BIN_FULL>>$"
+      }
+    }
+  },
+  "run_vars": {},
+  "tags": [
+    "cntk-demo",
+    "demo"
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "install_env": {
+      "ML_MODEL_DATA_LAYOUT": "NHWC",
+      "MODEL_IMAGE_HEIGHT": "224",
+      "MODEL_IMAGE_WIDTH": "224",
+      "MODEL_INPUT_LAYER_NAME": "input_tensor",
+      "MODEL_NORMALIZE_DATA": "0",
+      "MODEL_OUTPUT_LAYER_NAME": "softmax_tensor",
+      "MODEL_SUBTRACT_MEAN": "YES",
+      "PACKAGE_NAME": "converted_model.tflite",
+      "PACKAGE_VERSION": "1.5"
+    },
+    "no_os_in_suggested_path": "yes",
+    "no_ver_in_suggested_path": "yes",
+    "package_name": "TFLite-from-TF model (MLPerf ResNet)",
+    "skip_file_check": "yes"
+  },
+  "deps": {
+    "lib-tensorflow": {
+      "local": "yes",
+      "name": "TensorFlow library",
+      "sort": 10,
+      "tags": "lib,tensorflow,vprebuilt",
+      "version_from": [
+        1,
+        12,
+        0
+      ]
+    },
+    "model-source": {
+      "local": "yes",
+      "name": "Original TensorFlow model",
+      "sort": 20,
+      "tags": "model,image-classification,tf",
+      "update_tags_if_env": {
+        "mlperf,mobilenet,non-quantized": [
+          {
+            "ML_MODEL_TO_CONVERT": "mobilenet_v1_1.0_224"
+          }
+        ],
+        "mlperf,mobilenet,quantized": [
+          {
+            "ML_MODEL_TO_CONVERT": "mobilenet_v1_1.0_224_quant_2018_08_02"
+          }
+        ],
+        "mlperf,resnet": [
+          {
+            "ML_MODEL_TO_CONVERT": "resnet50_v1"
+          }
+        ]
+      }
+    }
+  },
+  "end_full_path_universal": "converted_model.tflite",
+  "only_for_host_os_tags": [],
+  "only_for_target_os_tags": [],
+  "process_script": "install",
+  "soft_uoa": "439b9f1757f27091",
+  "suggested_path": "model-tflite-converted-from-tf",
+  "tags": [
+    "model",
+    "image-classification",
+    "tflite",
+    "nhwc",
+    "mlperf",
+    "converted",
+    "converted-from-tf"
+  ],
+  "variations": {
+    "mobilenet": {
+      "extra_customize": {
+        "package_name": "TFLite-from-TF model (MLPerf MobileNet non-quantized)"
+      },
+      "extra_env": {
+        "ML_MODEL_TO_CONVERT": "mobilenet_v1_1.0_224",
+        "MODEL_INPUT_LAYER_NAME": "input",
+        "MODEL_NORMALIZE_DATA": "YES",
+        "MODEL_OUTPUT_LAYER_NAME": "MobilenetV1/Predictions/Reshape_1",
+        "MODEL_SUBTRACT_MEAN": "0",
+        "PACKAGE_VERSION": "1_1.0_224_2018_08_02"
+      }
+    },
+    "mobilenet-quantized": {
+      "extra_customize": {
+        "package_name": "TFLite-from-TF model (MLPerf MobileNet quantized)"
+      },
+      "extra_env": {
+        "ML_MODEL_TO_CONVERT": "mobilenet_v1_1.0_224_quant_2018_08_02",
+        "MODEL_INPUT_LAYER_NAME": "input",
+        "MODEL_NORMALIZE_DATA": "YES",
+        "MODEL_OUTPUT_LAYER_NAME": "MobilenetV1/Predictions/Reshape_1",
+        "MODEL_SUBTRACT_MEAN": "0",
+        "PACKAGE_VERSION": "1_1.0_224_2018_08_02"
+      }
+    },
+    "resnet": {
+      "extra_customize": {
+        "package_name": "TFLite-from-TF model (MLPerf ResNet)"
+      },
+      "extra_env": {
+        "ML_MODEL_GIVEN_CHANNEL_MEANS": "123.68 116.78 103.94",
+        "ML_MODEL_MODEL_NAME": "resnet50",
+        "ML_MODEL_TO_CONVERT": "resnet50_v1",
+        "MODEL_INPUT_LAYER_NAME": "input_tensor",
+        "MODEL_NORMALIZE_DATA": "0",
+        "MODEL_OUTPUT_LAYER_NAME": "softmax_tensor",
+        "MODEL_SUBTRACT_MEAN": "YES",
+        "PACKAGE_VERSION": "1.5"
+      }
+    }
+  }
+}

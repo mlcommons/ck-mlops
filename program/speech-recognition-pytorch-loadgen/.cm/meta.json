@@ -1,0 +1,377 @@
+{
+  "backup_data_uid": "796d7500b925946c",
+  "data_name": "speech-recognition-pytorch-loadgen",
+  "no_compile": "yes",
+  "no_target_file": "yes",
+  "pass_env_to_resolve": "yes",
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "accuracy": {
+      "ignore_return_code": "no",
+      "run_time": {
+        "post_process_via_ck": {
+          "data_uoa": "speech-recognition",
+          "module_uoa": "script",
+          "script_name": "loadgen_postprocess"
+        },
+        "pre_process_via_ck": {
+          "data_uoa": "speech-recognition",
+          "module_uoa": "script",
+          "script_name": "loadgen_preprocess"
+        },
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ $<<CK_ENV_MLPERF_INFERENCE>>$/speech_recognition/rnnt/run.py --dataset_dir  $<<CK_ENV_DATASET_AUDIO_PREPROCESSED_DIR>>$/../ --manifest $<<CK_ENV_DATASET_AUDIO_PREPROCESSED_DIR>>$/wav-list.json --pytorch_config_toml $<<CK_ENV_MLPERF_INFERENCE>>$/speech_recognition/rnnt/pytorch/configs/rnnt.toml --pytorch_checkpoint $<<CK_ENV_MODEL_PYTORCH>>$/rnnt.pt  --log_dir $<<PWD>>$ --scenario $<<CK_LOADGEN_SCENARIO>>$ --backend $<<CK_RNNT_BACKEND>>$ --accuracy --mlperf_conf $<<CK_ENV_MLPERF_INFERENCE_MLPERF_CONF>>$ --user_conf $<<CK_LOADGEN_USER_CONF>>$"
+      }
+    },
+    "instr": {
+      "ignore_return_code": "no",
+      "run_time": {
+        "fine_grain_timer_file": "tmp-ck-timer.json",
+        "post_process_via_ck": {
+          "data_uoa": "speech-recognition",
+          "module_uoa": "script",
+          "script_name": "loadgen_postprocess"
+        },
+        "pre_process_via_ck": {
+          "script_name": "loadgen_preprocess"
+        },
+        "run_cmd_main": "<<CK_ENV_COMPILER_PYTHON_FILE>>$ $<<CK_ENV_MLPERF_INFERENCE>>$/speech_recognition/rnnt/run.py --dataset_dir  $<<CK_ENV_DATASET_AUDIO_PREPROCESSED_DIR>>$/../ --manifest $<<CK_ENV_DATASET_AUDIO_PREPROCESSED_DIR>>$/wav-list.json --pytorch_config_toml $<<CK_ENV_MLPERF_INFERENCE>>$/speech_recognition/rnnt/pytorch/configs/rnnt.toml --pytorch_checkpoint $<<CK_ENV_MODEL_PYTORCH>>$/rnnt.pt  --log_dir $<<PWD>>$ --scenario $<<CK_LOADGEN_SCENARIO>>$ --backend $<<CK_RNNT_BACKEND>>$ --instr"
+      }
+    },
+    "performance": {
+      "ignore_return_code": "no",
+      "run_time": {
+        "post_process_via_ck": {
+          "data_uoa": "speech-recognition",
+          "module_uoa": "script",
+          "script_name": "loadgen_postprocess"
+        },
+        "pre_process_via_ck": {
+          "data_uoa": "speech-recognition",
+          "module_uoa": "script",
+          "script_name": "loadgen_preprocess"
+        },
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ $<<CK_ENV_MLPERF_INFERENCE>>$/speech_recognition/rnnt/run.py --dataset_dir  $<<CK_ENV_DATASET_AUDIO_PREPROCESSED_DIR>>$/../ --manifest $<<CK_ENV_DATASET_AUDIO_PREPROCESSED_DIR>>$/wav-list.json --pytorch_config_toml $<<CK_ENV_MLPERF_INFERENCE>>$/speech_recognition/rnnt/pytorch/configs/rnnt.toml --pytorch_checkpoint $<<CK_ENV_MODEL_PYTORCH>>$/rnnt.pt  --log_dir $<<PWD>>$ --scenario $<<CK_LOADGEN_SCENARIO>>$ --backend $<<CK_RNNT_BACKEND>>$ --mlperf_conf $<<CK_ENV_MLPERF_INFERENCE_MLPERF_CONF>>$ --user_conf $<<CK_LOADGEN_USER_CONF>>$"
+      }
+    }
+  },
+  "run_deps": {
+    "dataset-calibration": {
+      "enable_if_env": [
+        {
+          "CK_RNNT_DATASET": [
+            "calibration"
+          ]
+        }
+      ],
+      "local": "yes",
+      "name": "LibriSpeech calibration dataset (preprocessed)",
+      "sort": 20,
+      "tags": "dataset,librispeech,preprocessed,wav,calibration"
+    },
+    "dataset-dev-clean": {
+      "enable_if_env": [
+        {
+          "CK_RNNT_DATASET": [
+            "dev-clean"
+          ]
+        }
+      ],
+      "local": "yes",
+      "name": "LibriSpeech Dev-Clean dataset (preprocessed)",
+      "sort": 20,
+      "tags": "dataset,librispeech,preprocessed,wav,dev-clean"
+    },
+    "lib-python-loadgen": {
+      "local": "yes",
+      "name": "Python LoadGen library",
+      "sort": 60,
+      "tags": "lib,python-package,loadgen"
+    },
+    "mlperf-inference-src": {
+      "local": "yes",
+      "name": "MLPerf Inference source (with RNN-T tweaks)",
+      "sort": 50,
+      "tags": "mlperf,inference,source,dividiti.rnnt"
+    },
+    "plugins-dec-glow": {
+      "enable_if_env": [
+        {
+          "CK_RNNT_DEC_BACKEND": [
+            "glow"
+          ]
+        }
+      ],
+      "local": "yes",
+      "name": "GLOW LSTM RNNT Dec plugin",
+      "sort": 120,
+      "tags": "nntest,plugin,rnnt-dec,glow",
+      "update_tags_if_env": {
+        "naive": [
+          {
+            "CK_RNNT_DEC": "naive"
+          }
+        ],
+        "orig": [
+          {
+            "CK_RNNT_DEC": "orig"
+          }
+        ]
+      }
+    },
+    "plugins-dec-onnx": {
+      "enable_if_env": [
+        {
+          "CK_RNNT_DEC_BACKEND": [
+            "onnx"
+          ]
+        }
+      ],
+      "local": "yes",
+      "name": "ONNX LSTM RNNT Dec plugin",
+      "sort": 120,
+      "tags": "nntest,plugin,rnnt-dec,onnx",
+      "update_tags_if_env": {
+        "naive": [
+          {
+            "CK_RNNT_DEC": "naive"
+          }
+        ],
+        "orig": [
+          {
+            "CK_RNNT_DEC": "orig"
+          }
+        ]
+      }
+    },
+    "plugins-dec-pytorch": {
+      "enable_if_env": [
+        {
+          "CK_RNNT_DEC_BACKEND": [
+            "pytorch"
+          ]
+        }
+      ],
+      "local": "yes",
+      "name": "Pytorch LSTM RNNT Dec plugin",
+      "sort": 120,
+      "tags": "nntest,plugin,rnnt-dec,pytorch",
+      "update_tags_if_env": {
+        "naive": [
+          {
+            "CK_RNNT_DEC": "naive"
+          }
+        ],
+        "orig": [
+          {
+            "CK_RNNT_DEC": "orig"
+          }
+        ],
+        "orig-quant": [
+          {
+            "CK_RNNT_DEC": "orig-quant"
+          }
+        ]
+      }
+    },
+    "plugins-post-glow": {
+      "enable_if_env": [
+        {
+          "CK_RNNT_POST_BACKEND": [
+            "glow"
+          ]
+        }
+      ],
+      "local": "yes",
+      "name": "GLOW LSTM RNNT Post plugin",
+      "sort": 120,
+      "tags": "nntest,plugin,rnnt-post,glow",
+      "update_tags_if_env": {
+        "naive": [
+          {
+            "CK_RNNT_POST": "naive"
+          }
+        ],
+        "orig": [
+          {
+            "CK_RNNT_POST": "orig"
+          }
+        ]
+      }
+    },
+    "plugins-post-onnx": {
+      "enable_if_env": [
+        {
+          "CK_RNNT_POST_BACKEND": [
+            "onnx"
+          ]
+        }
+      ],
+      "local": "yes",
+      "name": "ONNX LSTM RNNT Post plugin",
+      "sort": 120,
+      "tags": "nntest,plugin,rnnt-post,onnx",
+      "update_tags_if_env": {
+        "naive": [
+          {
+            "CK_RNNT_POST": "naive"
+          }
+        ],
+        "orig": [
+          {
+            "CK_RNNT_POST": "orig"
+          }
+        ]
+      }
+    },
+    "plugins-post-pytorch": {
+      "enable_if_env": [
+        {
+          "CK_RNNT_POST_BACKEND": [
+            "pytorch"
+          ]
+        }
+      ],
+      "local": "yes",
+      "name": "Pytorch LSTM RNNT Post plugin",
+      "sort": 120,
+      "tags": "nntest,plugin,rnnt-post,pytorch",
+      "update_tags_if_env": {
+        "naive": [
+          {
+            "CK_RNNT_POST": "naive"
+          }
+        ],
+        "orig": [
+          {
+            "CK_RNNT_POST": "orig"
+          }
+        ],
+        "orig-quant": [
+          {
+            "CK_RNNT_POST": "orig-quant"
+          }
+        ]
+      }
+    },
+    "plugins-pre-glow": {
+      "enable_if_env": [
+        {
+          "CK_RNNT_PRE_BACKEND": [
+            "glow"
+          ]
+        }
+      ],
+      "local": "yes",
+      "name": "GLOW LSTM RNNT Pre plugin",
+      "sort": 120,
+      "tags": "nntest,plugin,rnnt-pre,glow",
+      "update_tags_if_env": {
+        "naive": [
+          {
+            "CK_RNNT_PRE": "naive"
+          }
+        ],
+        "orig": [
+          {
+            "CK_RNNT_PRE": "orig"
+          }
+        ]
+      }
+    },
+    "plugins-pre-onnx": {
+      "enable_if_env": [
+        {
+          "CK_RNNT_PRE_BACKEND": [
+            "onnx"
+          ]
+        }
+      ],
+      "local": "yes",
+      "name": "ONNX LSTM RNNT Pre plugin",
+      "sort": 120,
+      "tags": "nntest,plugin,rnnt-pre,onnx",
+      "update_tags_if_env": {
+        "naive": [
+          {
+            "CK_RNNT_PRE": "naive"
+          }
+        ],
+        "orig": [
+          {
+            "CK_RNNT_PRE": "orig"
+          }
+        ]
+      }
+    },
+    "plugins-pre-pytorch": {
+      "enable_if_env": [
+        {
+          "CK_RNNT_PRE_BACKEND": [
+            "pytorch"
+          ]
+        }
+      ],
+      "local": "yes",
+      "name": "Pytorch LSTM RNNT Pre plugin",
+      "sort": 120,
+      "tags": "nntest,plugin,rnnt-pre,pytorch",
+      "update_tags_if_env": {
+        "naive": [
+          {
+            "CK_RNNT_PRE": "naive"
+          }
+        ],
+        "orig": [
+          {
+            "CK_RNNT_PRE": "orig"
+          }
+        ],
+        "orig-quant": [
+          {
+            "CK_RNNT_PRE": "orig-quant"
+          }
+        ]
+      }
+    },
+    "python": {
+      "local": "yes",
+      "name": "Python interpreter",
+      "sort": 5,
+      "tags": "compiler,python"
+    },
+    "pytorch": {
+      "local": "yes",
+      "name": "PyTorch framework",
+      "sort": 15,
+      "tags": "lib,pytorch"
+    },
+    "weights": {
+      "local": "yes",
+      "name": "PyTorch RNN-T model",
+      "sort": 80,
+      "tags": "model,pytorch,rnnt"
+    }
+  },
+  "run_vars": {
+    "CK_ENV_MLPERF_INFERENCE_MLPERF_CONF": "$<<CK_ENV_MLPERF_INFERENCE>>$/mlperf.conf",
+    "CK_LOADGEN_SCENARIO": "Offline",
+    "CK_LOADGEN_USER_CONF": "user.conf",
+    "CK_MLPERF_PRE_USER_CONF_AND_AUDIT_CONFIG": "YES",
+    "CK_RNNT_BACKEND": "pytorch",
+    "CK_RNNT_DATASET": "dev-clean",
+    "CK_RNNT_DEC": "orig",
+    "CK_RNNT_DEC_BACKEND": "pytorch",
+    "CK_RNNT_POST": "orig",
+    "CK_RNNT_POST_BACKEND": "pytorch",
+    "CK_RNNT_PRE": "orig",
+    "CK_RNNT_PRE_BACKEND": "pytorch"
+  },
+  "tags": [
+    "speech-recognition",
+    "pytorch",
+    "rnnt",
+    "rnn-t",
+    "mlperf"
+  ]
+}

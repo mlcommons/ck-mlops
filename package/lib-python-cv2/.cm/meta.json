@@ -1,0 +1,92 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "comment": "Read about available variations here: https://pypi.org/project/opencv-python-headless/",
+    "install_env": {
+      "PIP_INSTALL_OPTIONS": "--ignore-installed"
+    }
+  },
+  "deps": {
+    "python": {
+      "add_to_path": "yes",
+      "local": "yes",
+      "name": "Python interpreter",
+      "sort": 10,
+      "tags": "compiler,python"
+    }
+  },
+  "end_full_path_universal": "build$#sep#$cv2$#sep#$__init__.py",
+  "only_for_host_os_tags": [],
+  "only_for_target_os_tags": [
+    "windows",
+    "linux"
+  ],
+  "process_script": "install",
+  "soft_uoa": "ed8216b834f1b8c4",
+  "suggested_path": "lib-python-cv2",
+  "tags": [
+    "lib",
+    "python-package",
+    "opencv",
+    "cv2"
+  ],
+  "template": "yes",
+  "template_type": "Python library",
+  "use_scripts_from_another_entry": {
+    "data_uoa": "e4d8d3d2c4c67902",
+    "module_uoa": "package"
+  },
+  "variations": {
+    "opencv-contrib-python": {
+      "extra_customize": {
+        "package_extra_name": " (OpenCV with contribs and GUI)"
+      },
+      "extra_env": {
+        "PYTHON_PACKAGE_NAME": "opencv-contrib-python"
+      },
+      "extra_tags": [
+        "with-gui",
+        "with-contribs"
+      ]
+    },
+    "opencv-contrib-python-headless": {
+      "extra_customize": {
+        "package_extra_name": " (OpenCV with contribs only)"
+      },
+      "extra_env": {
+        "PYTHON_PACKAGE_NAME": "opencv-contrib-python-headless"
+      },
+      "extra_tags": [
+        "without-gui",
+        "with-contribs",
+        "headless"
+      ]
+    },
+    "opencv-python": {
+      "extra_customize": {
+        "package_extra_name": " (OpenCV with GUI only)"
+      },
+      "extra_env": {
+        "PYTHON_PACKAGE_NAME": "opencv-python"
+      },
+      "extra_tags": [
+        "with-gui",
+        "without-contribs"
+      ],
+      "on_by_default": "yes"
+    },
+    "opencv-python-headless": {
+      "extra_customize": {
+        "package_extra_name": " (OpenCV without contribs or GUI)"
+      },
+      "extra_env": {
+        "PYTHON_PACKAGE_NAME": "opencv-python-headless"
+      },
+      "extra_tags": [
+        "without-gui",
+        "without-contribs",
+        "headless"
+      ]
+    }
+  }
+}

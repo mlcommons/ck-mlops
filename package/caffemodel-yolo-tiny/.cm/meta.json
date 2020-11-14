@@ -1,0 +1,50 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "extra_dir": "",
+    "file_with_weights": "yolo_tiny.caffemodel",
+    "force_ask_path": "yes",
+    "install_env": {
+      "MODEL_FILE": "yolo_tiny.caffemodel",
+      "MODEL_HASH_CALCULATOR": "sha1sum",
+      "MODEL_HASH_REF": "405fc5acd08a3bb12de8ee5e23a96bec22f08204",
+      "MODEL_URL": "http://cKnowledge.org/ai/data/yolo_tiny.caffemodel"
+    },
+    "no_os_in_suggested_path": "yes",
+    "no_ver_in_suggested_path": "yes",
+    "params": {
+      "none": {}
+    },
+    "skip_file_check": "yes",
+    "version": "unknown"
+  },
+  "end_full_path": {
+    "linux": "yolo_tiny.caffemodel",
+    "win": "yolo_tiny.caffemodel"
+  },
+  "only_for_host_os_tags": [
+    "windows",
+    "linux"
+  ],
+  "only_for_target_os_tags": [
+    "windows",
+    "linux"
+  ],
+  "package_extra_name": " (yolo,tiny)",
+  "process_script": "download",
+  "soft_uoa": "e2400aabc11d6cd1",
+  "suggested_path": "caffemodel-yolo-tiny",
+  "tags": [
+    "caffe",
+    "weights",
+    "caffemodel",
+    "yolo",
+    "tiny",
+    "channel-stable"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "download-caffemodel",
+    "module_uoa": "script",
+    "repo_uoa": "ck-caffe"
+  }
+}

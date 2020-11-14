@@ -1,0 +1,39 @@
+{
+  "customize": {
+    "extra_dir": "",
+    "install_env": {
+      "PACKAGE_VER": "0.9.1"
+    },
+    "version": "0.9.1"
+  },
+  "deps": {
+    "python": {
+      "add_to_path": "yes",
+      "local": "yes",
+      "name": "Python",
+      "sort": 20,
+      "tags": "compiler,python"
+    }
+  },
+  "end_full_path_universal": "lib$#sep#$mlflow$#sep#$__init__.py",
+  "need_cpu_info": "yes",
+  "only_for_host_os_tags": [
+    "linux"
+  ],
+  "only_for_target_os_tags": [
+    "linux"
+  ],
+  "package_extra_name": "",
+  "process_script": "install",
+  "soft_uoa": "43e2a913182d06f6",
+  "suggested_path": "mlflow",
+  "tags": [
+    "tool",
+    "mlflow",
+    "v0",
+    "v0.9",
+    "v0.9.1",
+    "vprebuilt",
+    "channel-stable"
+  ]
+}

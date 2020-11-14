@@ -1,0 +1,36 @@
+{
+  "dataset_files": [
+    "random-0-000000",
+    "random-0-000001",
+    "random-0-000002",
+    "random-0-000003",
+    "random-0-000004"
+  ],
+  "desc_dataset_files": {
+    "random-0-000000": {
+      "name": "LSTM random input 0"
+    },
+    "random-0-000001": {
+      "name": "LSTM random input 1"
+    },
+    "random-0-000002": {
+      "name": "LSTM random input 2"
+    },
+    "random-0-000003": {
+      "name": "LSTM random input 3"
+    },
+    "random-0-000004": {
+      "name": "LSTM random input 4"
+    }
+  },
+  "tags": [
+    "dataset",
+    "nntest",
+    "tensor-lstm",
+    "lstm",
+    "random",
+    "pre",
+    "post",
+    "dec"
+  ]
+}

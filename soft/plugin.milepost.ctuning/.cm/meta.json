@@ -1,0 +1,14 @@
+{
+  "customize": {
+    "add_to_path": "yes",
+    "env_prefix": "CK_ENV_PLUGIN_MILEPOST_CTUNING"
+  },
+  "soft_name": "MILEPOST cTuning plugin",
+  "tags": [
+    "plugin",
+    "milepost",
+    "ctuning",
+    "features",
+    "passes"
+  ]
+}

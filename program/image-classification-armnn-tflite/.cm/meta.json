@@ -1,0 +1,196 @@
+{
+  "backup_data_uid": "f58827594e4d8144",
+  "compile_deps": {
+    "compiler": {
+      "local": "yes",
+      "name": "C++ compiler",
+      "sort": 0,
+      "tags": "compiler,lang-cpp"
+    },
+    "lib-xopenme": {
+      "local": "yes",
+      "name": "xOpenME library",
+      "sort": 100,
+      "tags": "lib,xopenme"
+    },
+    "library": {
+      "comment": "Dynamic library added automatically to the Android-push list due to 'dynamic_library' customization",
+      "local": "yes",
+      "name": "ArmNN library (with TFLite support)",
+      "sort": 40,
+      "tags": "lib,armnn,tflite",
+      "update_tags_if_env": {
+        "neon": [
+          {
+            "USE_NEON": [
+              "on",
+              "ON",
+              "yes",
+              "YES",
+              "1"
+            ]
+          }
+        ],
+        "opencl": [
+          {
+            "USE_OPENCL": [
+              "on",
+              "ON",
+              "yes",
+              "YES",
+              "1"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "compiler_add_include_as_env_from_deps": [
+    "CK_ENV_LIB_STDCPP_INCLUDE",
+    "CK_ENV_LIB_STDCPP_INCLUDE_EXTRA",
+    "CK_ENV_LIB_TF_INCLUDE0",
+    "CK_ENV_LIB_TF_INCLUDE1",
+    "CK_ENV_LIB_ARMNN_LIB"
+  ],
+  "compiler_env": "CK_CXX",
+  "compiler_flags_as_env": "$<<CK_COMPILER_FLAG_CPP14>>$ -Wall -Wno-sign-compare",
+  "data_name": "image-classification-armnn-tflite",
+  "extra_ld_vars": "$<<CK_ENV_LIB_TF_LIBS_DIRS>>$ $<<CK_ENV_LIB_TF_LIBS>>$ -L$<<CK_ENV_LIB_BOOST_LIB>>$ -lboost_log -lboost_filesystem -lboost_atomic -lboost_date_time -lboost_regex -lboost_thread -lboost_chrono -lboost_system $<<CK_ENV_LIB_ARMCL_CL_STUB_RPATH_LINK>>$ -L$<<CK_ENV_LIB_ARMNN_LIB>>$ -larmnn -pthread -larmnnTfLiteParser",
+  "linker_add_lib_as_env": [
+    "CK_CXX_EXTRA",
+    "CK_ENV_LIB_STDCPP_DYNAMIC"
+  ],
+  "main_language": "cpp",
+  "only_for_target_os_tags": [
+    "linux",
+    "android"
+  ],
+  "pass_env_to_resolve": "yes",
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "default": {
+      "ignore_return_code": "yes",
+      "run_time": {
+        "copy_env_to_remote": [
+          "CK_ENV_DATASET_IMAGENET_PREPROCESSED_SUBSET_FOF",
+          "CK_ENV_DATASET_IMAGENET_PREPROCESSED_INPUT_SQUARE_SIDE",
+          "CK_ENV_TENSORFLOW_MODEL_INPUT_LAYER_NAME",
+          "CK_ENV_TENSORFLOW_MODEL_OUTPUT_LAYER_NAME",
+          "CK_ENV_TENSORFLOW_MODEL_NORMALIZE_DATA",
+          "CK_ENV_TENSORFLOW_MODEL_SUBTRACT_MEAN",
+          "ML_MODEL_GIVEN_CHANNEL_MEANS",
+          "ML_MODEL_DATA_LAYOUT"
+        ],
+        "fine_grain_timer_file": "tmp-ck-timer.json",
+        "post_process_via_ck": {
+          "data_uoa": "b98ee24399ef4c3a",
+          "module_uoa": "script",
+          "script_name": "postprocess"
+        },
+        "pre_process_via_ck": {
+          "data_uoa": "b98ee24399ef4c3a",
+          "module_uoa": "script",
+          "script_name": "schindler"
+        },
+        "run_cmd_main": "$#BIN_FILE#$",
+        "run_input_files": [
+          "$<<CK_ENV_LIB_STDCPP_DYNAMIC>>$",
+          "$<<CK_ENV_LIB_BOOST>>$/lib/libboost_log.so.1.64.0",
+          "$<<CK_ENV_LIB_BOOST>>$/lib/libboost_atomic.so.1.64.0",
+          "$<<CK_ENV_LIB_BOOST>>$/lib/libboost_chrono.so.1.64.0",
+          "$<<CK_ENV_LIB_BOOST>>$/lib/libboost_date_time.so.1.64.0",
+          "$<<CK_ENV_LIB_BOOST>>$/lib/libboost_filesystem.so.1.64.0",
+          "$<<CK_ENV_LIB_BOOST>>$/lib/libboost_log.so.1.64.0",
+          "$<<CK_ENV_LIB_BOOST>>$/lib/libboost_log_setup.so.1.64.0",
+          "$<<CK_ENV_LIB_BOOST>>$/lib/libboost_prg_exec_monitor.so.1.64.0",
+          "$<<CK_ENV_LIB_BOOST>>$/lib/libboost_program_options.so.1.64.0",
+          "$<<CK_ENV_LIB_BOOST>>$/lib/libboost_regex.so.1.64.0",
+          "$<<CK_ENV_LIB_BOOST>>$/lib/libboost_system.so.1.64.0",
+          "$<<CK_ENV_LIB_BOOST>>$/lib/libboost_thread.so.1.64.0",
+          "$<<CK_ENV_LIB_BOOST>>$/lib/libboost_timer.so.1.64.0",
+          "$<<CK_ENV_LIB_BOOST>>$/lib/libboost_unit_test_framework.so.1.64.0",
+          "$<<CK_ENV_LIB_ARMNN>>$/lib/libarmnnTfLiteParser.so",
+          "$<<CK_ENV_TENSORFLOW_MODEL_TFLITE_FILEPATH>>$"
+        ],
+        "run_output_files": [
+          "tmp-ck-timer.json",
+          "predictions"
+        ]
+      }
+    }
+  },
+  "run_deps": {
+    "imagenet-aux": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "ImageNet dataset (aux)",
+      "sort": 10,
+      "tags": "dataset,imagenet,aux"
+    },
+    "images": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "ImageNet dataset (preprocessed subset)",
+      "sort": 20,
+      "tags": "dataset,imagenet,preprocessed"
+    },
+    "lib-boost": {
+      "add_dict": "yes",
+      "comment": "Although transitive dependency of ArmNN, still have to add it manually in order to push its dynamic libraries to Android",
+      "local": "yes",
+      "name": "Boost library",
+      "only_for_target_os_tags": [
+        "android"
+      ],
+      "skip_default": "yes",
+      "sort": 5,
+      "tags": "lib,boost,for-armnn",
+      "version_from": [
+        1,
+        64,
+        0
+      ],
+      "version_to": [
+        1,
+        64,
+        0
+      ]
+    },
+    "weights": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "TensorFlow Lite model",
+      "no_tags": "mobilenet-all",
+      "sort": 30,
+      "tags": "model,tflite,image-classification"
+    }
+  },
+  "run_vars": {
+    "CK_BATCH_COUNT": 1,
+    "CK_BATCH_SIZE": 1,
+    "CK_CROP_PERCENT": 87.5,
+    "CK_IMAGE_FILE": "",
+    "CK_RECREATE_CACHE": "NO",
+    "CK_RESULTS_DIR": "predictions",
+    "CK_SILENT_MODE": 0,
+    "CK_SKIP_IMAGES": 0,
+    "CK_SUBTRACT_MEAN": "YES",
+    "CK_TMP_IMAGE_SIZE": 0,
+    "USE_NEON": "NO",
+    "USE_OPENCL": "NO"
+  },
+  "skip_bin_ext": "yes",
+  "source_files": [
+    "classification.cpp"
+  ],
+  "tags": [
+    "image-classification",
+    "tflite",
+    "armnn",
+    "lang-cpp"
+  ],
+  "target_file": "classification",
+  "template": "yes",
+  "template_type": "Image Classification via ArmNN (with TFLite support)"
+}

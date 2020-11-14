@@ -1,0 +1,16 @@
+{
+  "features": {
+    "cost": [
+      {
+        "currency": "EUR",
+        "date": "20170909",
+        "desc": "Google Nexus 7'' 32 Gb",
+        "price": 149,
+        "url": "https://www.fnac.com/Tablette-Google-Nexus-7-32-Go-Wifi-Nouvelle-version-2013/a6230978/w-4?omnsearchpos=3"
+      }
+    ],
+    "model": "NEXUS 7",
+    "name": "ASUS NEXUS 7",
+    "vendor": "ASUS"
+  }
+}

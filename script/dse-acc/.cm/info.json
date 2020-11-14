@@ -1,0 +1,16 @@
+{
+  "backup_data_uid": "0a8e77d3fb7f6a23",
+  "backup_module_uid": "84e27ad9dd12e734",
+  "backup_module_uoa": "script",
+  "control": {
+    "engine": "CK",
+    "iso_datetime": "2020-11-14T21:43:49.171083",
+    "version": [
+      "1",
+      "17",
+      "0",
+      "1"
+    ]
+  },
+  "data_name": "dse-acc"
+}

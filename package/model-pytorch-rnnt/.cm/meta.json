@@ -1,0 +1,37 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "extra_dir": "",
+    "force_ask_path": "no",
+    "install_env": {
+      "PACKAGE_NAME": "DistributedDataParallel_1576581068.9962234-epoch-100.pt",
+      "PACKAGE_SKIP_LINUX_MAKE": "YES",
+      "PACKAGE_UNZIP": "NO",
+      "PACKAGE_URL": "https://zenodo.org/record/3662521/files/",
+      "PACKAGE_WGET": "YES",
+      "PACKAGE_WGET_EXTRA": "-O rnnt.pt"
+    },
+    "model_file": "rnnt.pt",
+    "model_id": "rnnt",
+    "no_os_in_suggested_path": "yes",
+    "no_ver_in_suggested_path": "yes",
+    "version": "20200211"
+  },
+  "end_full_path": {
+    "linux": "rnnt.pt"
+  },
+  "package_extra_name": " (MLPerf RNN-T)",
+  "process_script": "install",
+  "soft_uoa": "34c70aa3ff65a22c",
+  "suggested_path": "model-pytorch-rnnt",
+  "tags": [
+    "pytorch",
+    "model",
+    "rnnt",
+    "rnn-t"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "cd9ccc74060b3d18",
+    "module_uoa": "script"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "install_env": {
+      "PIP_INSTALL_OPTIONS": "--ignore-installed",
+      "PYTHON_PACKAGE_NAME": "scipy"
+    }
+  },
+  "deps": {
+    "python": {
+      "add_to_path": "yes",
+      "local": "yes",
+      "name": "Python interpreter",
+      "sort": 10,
+      "tags": "compiler,python"
+    }
+  },
+  "end_full_path_universal": "build$#sep#$scipy$#sep#$__init__.py",
+  "only_for_host_os_tags": [],
+  "only_for_target_os_tags": [
+    "windows",
+    "linux"
+  ],
+  "process_script": "install",
+  "soft_uoa": "4460bdb0ade2a3df",
+  "suggested_path": "lib-python-scipy",
+  "tags": [
+    "lib",
+    "python-package",
+    "scipy",
+    "vmaster"
+  ]
+}

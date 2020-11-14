@@ -1,0 +1,79 @@
+{
+  "backup_data_uid": "19f241eab6bab8bd",
+  "data_name": "retrain-tfzoo-cocotokitti",
+  "no_compile": "yes",
+  "no_target_file": "yes",
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "a:create_dataset": {
+      "ignore_return_code": "no",
+      "run_deps": {
+        "dataset": {
+          "local": "yes",
+          "name": "Object Detection dataset",
+          "no_tags": "preprocessed",
+          "sort": 20,
+          "tags": "dataset,object-detection,kitti-full"
+        },
+        "weights": {
+          "local": "yes",
+          "name": "TensorFlow Object Detection model",
+          "sort": 30,
+          "tags": "model,tf,object-detection"
+        }
+      },
+      "run_time": {
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../create_ds.py"
+      }
+    },
+    "b:retrain": {
+      "ignore_return_code": "no",
+      "run_time": {
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../retrain.py"
+      }
+    },
+    "c:export_model": {
+      "ignore_return_code": "no",
+      "run_time": {
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../export.py"
+      }
+    }
+  },
+  "run_deps": {
+    "lib-tensorflow": {
+      "local": "yes",
+      "name": "TensorFlow library",
+      "no_tags": "tensorflow_cc,vstatic,source",
+      "sort": 70,
+      "tags": "lib,tensorflow"
+    },
+    "python": {
+      "local": "yes",
+      "name": "Python interpreter",
+      "sort": 5,
+      "tags": "compiler,python"
+    },
+    "tensorflow-model-api": {
+      "local": "yes",
+      "name": "Tensorflow models api",
+      "sort": 80,
+      "tags": "tensorflow,model,api"
+    },
+    "tool-coco": {
+      "local": "yes",
+      "name": "Python API for COCO",
+      "sort": 40,
+      "tags": "tool,coco"
+    }
+  },
+  "run_vars": {},
+  "tags": [
+    "object-detection",
+    "tf",
+    "lang-python",
+    "retrain",
+    "cocotokitti"
+  ],
+  "template_type": "Object Detection via TensorFlow (Python)"
+}

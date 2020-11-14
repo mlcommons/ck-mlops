@@ -1,0 +1,20 @@
+You can download and install latest (or required) OpenCL SDK here:
+
+For Intel GPUs:
+* https://software.intel.com/en-us/intel-opencl
+
+For Nvidia GPUs:
+* https://developer.nvidia.com/cuda-downloads
+
+For AMD GPUs:
+* http://developer.amd.com/tools-and-sdks/opencl-zone/amd-accelerated-parallel-processing-app-sdk/
+
+For MALI-based GPUs:
+* http://malideveloper.arm.com/resources/sdks/mali-opencl-sdk
+* http://malideveloper.arm.com/resources/drivers/
+
+NOTE that C++ headers are often not included by default.
+You may hence need to manually download them here:
+ * https://www.khronos.org/registry/cl/api/
+
+For example, https://www.khronos.org/registry/cl/api/1.2/cl.hpp

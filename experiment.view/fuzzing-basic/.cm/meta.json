@@ -1,0 +1,65 @@
+{
+  "flat_keys": [
+    "##choices#host_os",
+    "##choices#target_os",
+    "##features#platform#cpu#name",
+    "##features#platform#cpu#sub_name",
+    "##choices#compiler_description_uoa",
+    "##features#compiler_version#str",
+    "##choices#data_uoa",
+    "##choices#cmd_key",
+    "##choices#dataset_uoa",
+    "##choices#dataset_file",
+    "##choices#compiler_flags#*",
+    "##choices#compiler_vars#*"
+  ],
+  "flat_keys_desc": [
+    {
+      "desc": "Host OS",
+      "module_uoa": "0440cb72c2bc5cc6",
+      "type": "uoa"
+    },
+    {
+      "desc": "Target OS",
+      "module_uoa": "0440cb72c2bc5cc6",
+      "type": "uoa"
+    },
+    {
+      "desc": "CPU name"
+    },
+    {
+      "desc": "CPU sub-name"
+    },
+    {
+      "desc": "CK compiler description",
+      "module_uoa": "36ebc331048475bb",
+      "type": "uoa"
+    },
+    {
+      "desc": "Compiler version"
+    },
+    {
+      "desc": "Program UOA",
+      "module_uoa": "b0ac08fe1d3c2615",
+      "type": "uoa"
+    },
+    {
+      "desc": "CMD key"
+    },
+    {
+      "desc": "Dataset UOA",
+      "module_uoa": "8a7141c59cd335f5",
+      "type": "uoa"
+    },
+    {
+      "desc": "Dataset file"
+    },
+    {
+      "desc": "Compiler flags"
+    },
+    {
+      "desc": "Compiler vars",
+      "view_add_key": "yes"
+    }
+  ]
+}

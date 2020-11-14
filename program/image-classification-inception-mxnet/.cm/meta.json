@@ -1,0 +1,82 @@
+{
+  "backup_data_uid": "f4e6c8467de9f5a5",
+  "ck_to_env": {
+    "CK_AUX_TBD_SCRIPT": "script:1f6137fa79934028"
+  },
+  "data_name": "image-classification-inception-mxnet",
+  "no_compile": "yes",
+  "no_target_file": "yes",
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "train": {
+      "ignore_return_code": "no",
+      "run_deps": {
+        "lib-mxnet": {
+          "local": "yes",
+          "name": "MXNet library",
+          "sort": 10,
+          "tags": "lib,mxnet"
+        }
+      },
+      "run_time": {
+        "run_cmd_main": "$<<CK_AUX_TBD_SCRIPT>>$/scripts/imagenet-mxnet$#script_ext#$ inception-v3"
+      }
+    },
+    "train-and-profile": {
+      "ignore_return_code": "no",
+      "run_deps": {
+        "lib-mxnet": {
+          "local": "yes",
+          "name": "MXNet library (CUDA)",
+          "sort": 10,
+          "tags": "lib,mxnet,vcuda"
+        }
+      },
+      "run_time": {
+        "run_cmd_main": "$<<CK_AUX_TBD_SCRIPT>>$/scripts/imagenet-mxnet$#script_ext#$ inception-v3 --profile"
+      }
+    },
+    "train-and-profile-fp32": {
+      "ignore_return_code": "no",
+      "run_deps": {
+        "lib-mxnet": {
+          "local": "yes",
+          "name": "MXNet library (CUDA)",
+          "sort": 10,
+          "tags": "lib,mxnet,vcuda"
+        }
+      },
+      "run_time": {
+        "run_cmd_main": "$<<CK_AUX_TBD_SCRIPT>>$/scripts/imagenet-mxnet$#script_ext#$ inception-v3 --profile-fp32"
+      }
+    }
+  },
+  "run_deps": {
+    "imagenet-train": {
+      "local": "yes",
+      "name": "ImageNet dataset (train, MXNet)",
+      "sort": 10,
+      "tags": "dataset,imagenet,raw,train-mxnet"
+    },
+    "python": {
+      "local": "yes",
+      "name": "Python interpreter (v3+)",
+      "sort": 5,
+      "tags": "compiler,python",
+      "version_from": [
+        3
+      ]
+    }
+  },
+  "run_vars": {
+    "BATCH_SIZE": 32,
+    "GPU_NUM": 0,
+    "IMAGE_SHAPE": "3,299,299",
+    "NUM_EPOCHS_PER_DECAY": 100
+  },
+  "tags": [
+    "image-classification",
+    "mxnet-image-classification"
+  ]
+}

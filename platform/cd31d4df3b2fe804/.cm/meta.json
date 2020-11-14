@@ -1,0 +1,16 @@
+{
+  "features": {
+    "cost": [
+      {
+        "currency": "EUR",
+        "date": "20170909",
+        "desc": "Moto G4",
+        "price": 149,
+        "url": "https://www.motorola.fr/products/moto-g-play?gclid=EAIaIQobChMIg9X3ktaY1gIVDhHTCh1XTwe-EAQYBCABEgIejfD_BwE"
+      }
+    ],
+    "model": "MOTO G (4)",
+    "name": "MOTOROLA MOTO G (4)",
+    "vendor": "MOTOROLA"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "comment": "only sources without building",
+  "customize": {
+    "extra_dir": "",
+    "install_env": {
+      "VIENNACL_TAG": "release-1.7.1",
+      "VIENNACL_URL": "https://github.com/viennacl/viennacl-dev"
+    },
+    "version": "1.7.1"
+  },
+  "deps": {},
+  "end_full_path": {
+    "android": "src$#sep#$viennacl$#sep#$version.hpp",
+    "linux": "src/viennacl/version.hpp",
+    "mingw": "src\\viennacl\\version.hpp",
+    "win": "src\\viennacl\\version.hpp"
+  },
+  "only_for_host_os_tags": [
+    "linux"
+  ],
+  "process_script": "install",
+  "soft_uoa": "f41d49bd23afa84b",
+  "suggested_path": "lib-viennacl",
+  "tags": [
+    "vsrc",
+    "lib",
+    "blas",
+    "opencl-blas",
+    "viennacl",
+    "v1.7.1",
+    "v1.7",
+    "v1",
+    "channel-stable"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "features": {
+    "cost": [
+      {
+        "currency": "EUR",
+        "date": "20170401",
+        "desc": "Xiaomi Mi Max Dual SIM 32GB Gold",
+        "price": 235,
+        "url": "https://fr.mobileshop.eu/phablets/xiaomi/mi-max-dual-sim-32gb-or/"
+      }
+    ],
+    "model": "MAX",
+    "name": "XIAOMI MAX",
+    "vendor": "XIAOMI"
+  }
+}

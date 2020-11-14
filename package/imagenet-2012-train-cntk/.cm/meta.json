@@ -1,0 +1,48 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "extra_dir": "",
+    "no_os_in_suggested_path": "yes",
+    "no_ver_in_suggested_path": "yes",
+    "version": "2012"
+  },
+  "deps": {
+    "imagenet-train": {
+      "local": "yes",
+      "name": "ImageNet dataset (train)",
+      "skip_from_bat": "yes",
+      "sort": 20,
+      "tags": "dataset,imagenet,raw,train"
+    },
+    "imagenet-val": {
+      "local": "yes",
+      "name": "ImageNet dataset (val)",
+      "skip_from_bat": "yes",
+      "sort": 30,
+      "tags": "dataset,imagenet,raw,val"
+    },
+    "python": {
+      "local": "yes",
+      "name": "Python interpreter (v3+)",
+      "skip_from_bat": "yes",
+      "sort": 5,
+      "tags": "compiler,python",
+      "version_from": [
+        3
+      ]
+    }
+  },
+  "end_full_path_universal": "install$#sep#$val_map.txt",
+  "need_cpu_info": "no",
+  "process_script": "install",
+  "soft_uoa": "b20aff77947d0b59",
+  "suggested_path": "dataset-imagenet-ilsvrc2012-train-cntk",
+  "tags": [
+    "dataset",
+    "imagenet",
+    "raw",
+    "train-cntk",
+    "ilsvrc2012",
+    "channel-stable"
+  ]
+}

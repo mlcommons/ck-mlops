@@ -1,0 +1,17 @@
+,W,H,C_IN,KERNEL,C_OUT,STRIDE,PAD,,Layer name
+,,,,,,,,
+MobileNet_1.0_224,224,224,3,3,32,2,0,,Conv2d_0
+MobileNet_1.0_224,112,112,32,1,64,1,0,,Conv2d_1
+MobileNet_1.0_224,56,56,64,1,128,1,0,,Conv2d_2
+MobileNet_1.0_224,56,56,128,1,128,1,0,,Conv2d_3
+MobileNet_1.0_224,28,28,128,1,256,1,0,,Conv2d_4
+MobileNet_1.0_224,28,28,256,1,256,1,0,,Conv2d_5
+MobileNet_1.0_224,14,14,256,1,512,1,0,,Conv2d_6
+MobileNet_1.0_224,14,14,512,1,512,1,0,,Conv2d_7
+MobileNet_1.0_224,14,14,512,1,512,1,0,,Conv2d_8
+MobileNet_1.0_224,14,14,512,1,512,1,0,,Conv2d_9
+MobileNet_1.0_224,14,14,512,1,512,1,0,,Conv2d_10
+MobileNet_1.0_224,14,14,512,1,512,1,0,,Conv2d_11
+MobileNet_1.0_224,7,7,512,1,1024,1,0,,Conv2d_12
+MobileNet_1.0_224,7,7,1024,1,1024,1,0,,Conv2d_13
+MobileNet_1.0_224,1,1,1024,1,1001,1,0,,Logits_Conv2d_1c_1x1

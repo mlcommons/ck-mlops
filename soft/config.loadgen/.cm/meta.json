@@ -1,0 +1,126 @@
+{
+  "auto_detect": "no",
+  "customize": {
+    "check_that_exists": "yes",
+    "ck_version": 10,
+    "env_prefix": "CK_ENV_LOADGEN_CONFIG",
+    "skip_version": "yes",
+    "soft_file_universal": "audit.config"
+  },
+  "deps": {
+    "mlperf-inference-src": {
+      "add_to_path": "no",
+      "enable_if_env": [
+        {
+          "LOADGEN_CONFIG_SOURCE": [
+            "MLPERF_INFERENCE_GIT_CHECKOUT"
+          ]
+        }
+      ],
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "MLPerf Inference source",
+      "sort": 10,
+      "tags": "mlperf,inference,source",
+      "update_tags_if_env": {
+        "upstream.master": [
+          {
+            "CK_MLPERF_INFERENCE_BRANCH": "upstream.master"
+          }
+        ],
+        "upstream.pr518": [
+          {
+            "CK_MLPERF_INFERENCE_BRANCH": "upstream.pr518"
+          }
+        ]
+      }
+    }
+  },
+  "soft_name": "LoadGen Configuration file",
+  "tags": [
+    "loadgen",
+    "config",
+    "detected"
+  ],
+  "variations": {
+    "from.inference.master": {
+      "extra_customize": {
+        "soft_file_universal": "mlperf.conf",
+        "soft_name": "LoadGen Config default"
+      },
+      "extra_env": {
+        "CK_MLPERF_INFERENCE_BRANCH": "upstream.master",
+        "LOADGEN_CONFIG_SOURCE": "MLPERF_INFERENCE_GIT_CHECKOUT"
+      }
+    },
+    "from.inference.pr518": {
+      "extra_env": {
+        "CK_MLPERF_INFERENCE_BRANCH": "upstream.pr518",
+        "LOADGEN_CONFIG_SOURCE": "MLPERF_INFERENCE_GIT_CHECKOUT"
+      }
+    },
+    "image-classification-armnn-tflite": {
+      "extra_customize": {
+        "soft_file_universal": "image-classification-armnn-tflite-loadgen-conf$#sep#$user.conf",
+        "soft_name": "LoadGen Config for image-classification-armnn-tflite-loadgen"
+      },
+      "extra_env": {
+        "LOADGEN_CONFIG_SOURCE": "SOFT_ENTRY_INTERNAL"
+      }
+    },
+    "image-classification-tflite": {
+      "extra_customize": {
+        "soft_file_universal": "image-classification-tflite-loadgen-conf$#sep#$user.conf",
+        "soft_name": "LoadGen Config for image-classification-tflite-loadgen"
+      },
+      "extra_env": {
+        "LOADGEN_CONFIG_SOURCE": "SOFT_ENTRY_INTERNAL"
+      }
+    },
+    "original.mlperf.conf": {
+      "extra_customize": {
+        "soft_file_universal": "mlperf.conf",
+        "soft_name": "LoadGen Config - the original mlperf.conf"
+      },
+      "extra_env": {
+        "LOADGEN_CONFIG_SOURCE": "MLPERF_INFERENCE_GIT_CHECKOUT"
+      }
+    },
+    "test01": {
+      "extra_customize": {
+        "soft_file_universal": "audit$#sep#$nvidia$#sep#$TEST01$#sep#$audit.config",
+        "soft_name": "LoadGen Config for audit TEST01"
+      },
+      "extra_env": {
+        "LOADGEN_CONFIG_SOURCE": "MLPERF_INFERENCE_GIT_CHECKOUT"
+      }
+    },
+    "test04a": {
+      "extra_customize": {
+        "soft_file_universal": "audit$#sep#$nvidia$#sep#$TEST04-A$#sep#$audit.config",
+        "soft_name": "LoadGen Config for audit TEST04-A"
+      },
+      "extra_env": {
+        "LOADGEN_CONFIG_SOURCE": "MLPERF_INFERENCE_GIT_CHECKOUT"
+      }
+    },
+    "test04b": {
+      "extra_customize": {
+        "soft_file_universal": "audit$#sep#$nvidia$#sep#$TEST04-B$#sep#$audit.config",
+        "soft_name": "LoadGen Config for audit TEST04-B"
+      },
+      "extra_env": {
+        "LOADGEN_CONFIG_SOURCE": "MLPERF_INFERENCE_GIT_CHECKOUT"
+      }
+    },
+    "test05": {
+      "extra_customize": {
+        "soft_file_universal": "audit$#sep#$nvidia$#sep#$TEST05$#sep#$audit.config",
+        "soft_name": "LoadGen Config for audit TEST05"
+      },
+      "extra_env": {
+        "LOADGEN_CONFIG_SOURCE": "MLPERF_INFERENCE_GIT_CHECKOUT"
+      }
+    }
+  }
+}

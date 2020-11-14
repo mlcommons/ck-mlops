@@ -1,0 +1,174 @@
+{
+  "backup_data_uid": "678ca4901babba64",
+  "build_compiler_vars": {
+    "CPU_ONLY": "ON"
+  },
+  "compile_deps": {
+    "compiler": {
+      "local": "yes",
+      "name": "C++ compiler",
+      "sort": 0,
+      "tags": "compiler,lang-cpp"
+    },
+    "lib-blas": {
+      "local": "yes",
+      "name": "BLAS library",
+      "sort": 8,
+      "tags": "lib,blas,openblas"
+    },
+    "lib-boost": {
+      "local": "yes",
+      "name": "Boost library",
+      "skip_default": "yes",
+      "sort": 50,
+      "tags": "lib,boost"
+    },
+    "lib-gflags": {
+      "force_env_init": "yes",
+      "local": "yes",
+      "name": "GFlags library",
+      "skip_installed": {
+        "android": "yes",
+        "win": "yes"
+      },
+      "sort": 60,
+      "tags": "lib,gflags",
+      "update_tags_by_target_platform2": {
+        "android": "v2.2.0",
+        "win": "v2.2.0"
+      }
+    },
+    "lib-glog": {
+      "local": "yes",
+      "name": "GLog library",
+      "skip_installed": {
+        "android": "yes",
+        "win": "yes"
+      },
+      "sort": 70,
+      "tags": "lib,glog"
+    },
+    "lib-nntest": {
+      "local": "yes",
+      "name": "NNTest library",
+      "sort": 2,
+      "tags": "lib,nntest"
+    },
+    "lib-protobuf-host": {
+      "local": "yes",
+      "name": "ProtoBuf HOST library",
+      "only_for_target_os_tags": [
+        "linux",
+        "windows"
+      ],
+      "sort": 9,
+      "tags": "lib,protobuf-host,v3.1.0"
+    },
+    "library": {
+      "local": "yes",
+      "name": "Caffe library",
+      "no_tags": "ssd",
+      "skip_pruning_by_other_deps": "yes",
+      "sort": -5,
+      "tags": "lib,caffe,vcpu"
+    },
+    "xopenme": {
+      "local": "yes",
+      "name": "xOpenME library",
+      "sort": 100,
+      "tags": "lib,xopenme"
+    }
+  },
+  "compiler_add_include_as_env_from_deps": [
+    "CK_ENV_LIB_NNTEST_INCLUDE",
+    "CK_ENV_LIB_STDCPP_INCLUDE",
+    "CK_ENV_LIB_STDCPP_INCLUDE_EXTRA"
+  ],
+  "compiler_env": "CK_CXX",
+  "compiler_flags_as_env": "$<<CK_COMPILER_FLAG_CPP11>>$",
+  "data_name": "conv-caffe-cpu",
+  "extra_ld_vars": "$<<CK_ENV_LIB_GLOG_LFLAG>>$ $<<CK_ENV_LIB_BOOST_LFLAG_SYSTEM>>$",
+  "linker_add_lib_as_env": [
+    "CK_CXX_EXTRA",
+    "CK_ENV_LIB_STDCPP_STATIC"
+  ],
+  "main_language": "cpp",
+  "only_for_target_os_tags": [
+    "android",
+    "linux"
+  ],
+  "print_files_after_run": [
+    "tmp-stderr.tmp"
+  ],
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "default": {
+      "add_dataset_file_to_env": "yes",
+      "dataset_tags": [
+        "dataset",
+        "nntest",
+        "tensor-conv"
+      ],
+      "run_time": {
+        "fine_grain_timer_file": "tmp-ck-timer.json",
+        "output_invariant_of_repeat": "yes",
+        "post_process_cmds": [
+          "python $#ck_take_from_{script:3b59f57d587e82f6}#$process.py"
+        ],
+        "post_process_via_ck": "yes",
+        "pre_process_via_ck": {
+          "data_uoa": "3b59f57d587e82f6",
+          "module_uoa": "script",
+          "script_name": "process"
+        },
+        "program_output_uoa": "7184ef083693b882",
+        "run_cmd_main": "$#BIN_FILE#$",
+        "run_cmd_out1": "tmp-stdout.tmp",
+        "run_cmd_out2": "tmp-stderr.tmp",
+        "run_correctness_extra_keys_from_dataset_file_json": "yes",
+        "run_correctness_output_files": [
+          "tmp-ck-output.json"
+        ],
+        "run_correctness_vars": [
+          "CK_IN_SHAPE_N",
+          "CK_SEED"
+        ],
+        "run_input_files": [],
+        "run_output_files": [
+          "tmp-ck-timer.json",
+          "tmp-ck-output.bin",
+          "tmp-ck-output.json"
+        ]
+      },
+      "send_only_selected_file": "yes"
+    },
+    "dev_run": {
+      "run_time": {
+        "run_cmd_main": "$#BIN_FILE#$"
+      }
+    }
+  },
+  "run_vars": {
+    "CK_ABS_DIFF_THRESHOLD": 0.001,
+    "CK_IN_SHAPE_N": 1,
+    "CK_OUT_RAW_DATA": "tmp-ck-output.bin",
+    "CK_SEED": 42
+  },
+  "skip_bin_ext": "yes",
+  "source_files": [
+    "conv.cpp"
+  ],
+  "species": [
+    "bcd4643cc81b3f15"
+  ],
+  "tags": [
+    "nntest",
+    "caffe",
+    "conv",
+    "float32",
+    "vcpu"
+  ],
+  "target_file": "conv",
+  "version": "1.0.0"
+}

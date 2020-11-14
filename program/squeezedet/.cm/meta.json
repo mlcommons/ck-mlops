@@ -1,0 +1,135 @@
+{
+  "backup_data_uid": "df7d1490b8aae613",
+  "data_name": "squeezedet",
+  "no_compile": "yes",
+  "no_target_file": "yes",
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "default": {
+      "ignore_return_code": "no",
+      "run_time": {
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ $<<CK_ENV_DEMO_SQUEEZEDET_SRC>>$/demo.py --input_path=$<<CK_ENV_DEMO_SQUEEZEDET_ROOT>>$/data/sample.png --out_dir=out --checkpoint=$<<CK_ENV_MODEL_SQUEEZEDET_MODEL>>$ --demo_net=$<<CK_ENV_MODEL_SQUEEZEDET_ID>>$"
+      }
+    },
+    "image_benchmark": {
+      "ignore_return_code": "no",
+      "run_deps": {
+        "detection-dataset": {
+          "local": "yes",
+          "name": "Detection dataset",
+          "sort": 10,
+          "tags": "dataset,object-detection"
+        }
+      },
+      "run_time": {
+        "fine_grain_timer_file": "tmp-ck-timer.json",
+        "post_process_cmds": [
+          "python $#src_path_local#$postprocess_image_benchmark.py"
+        ],
+        "post_process_via_ck": "yes",
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../image_benchmark.py --image_dir=$<<CK_ENV_DATASET_IMAGE_DIR>>$ --checkpoint=$<<CK_ENV_MODEL_SQUEEZEDET_MODEL>>$ --demo_net=$<<CK_ENV_MODEL_SQUEEZEDET_ID>>$ --batch_count=$<<CK_BATCH_COUNT>>$ --batch_size=$<<CK_BATCH_SIZE>>$ --gpu_mem_limit=$<<CK_TF_GPU_MEMORY_PERCENT>>$"
+      }
+    },
+    "use_codereef": {
+      "ignore_return_code": "no",
+      "run_deps": {
+        "detection-dataset": {
+          "local": "yes",
+          "name": "Detection dataset",
+          "sort": 10,
+          "tags": "dataset,object-detection"
+        }
+      },
+      "run_time": {
+        "run_cmd_main": "../codereef$#script_ext#$",
+        "run_output_files": []
+      }
+    },
+    "use_continuous": {
+      "ignore_return_code": "no",
+      "run_deps": {
+        "detection-dataset": {
+          "local": "yes",
+          "name": "Detection dataset",
+          "sort": 10,
+          "tags": "dataset,object-detection"
+        }
+      },
+      "run_time": {
+        "run_cmd_main": "../continuous$#script_ext#$",
+        "run_cmd_out1": "tmp-output1.tmp",
+        "run_cmd_out2": "tmp-output2.tmp",
+        "run_output_files": [
+          "tmp-output1.tmp",
+          "tmp-output2.tmp"
+        ]
+      }
+    },
+    "use_webcam": {
+      "ignore_return_code": "no",
+      "run_time": {
+        "run_cmd_main": "../webcam$#script_ext#$",
+        "run_cmd_out1": "tmp-output1.tmp",
+        "run_cmd_out2": "tmp-output2.tmp",
+        "run_output_files": [
+          "tmp-output1.tmp",
+          "tmp-output2.tmp"
+        ]
+      }
+    }
+  },
+  "run_deps": {
+    "demo-squeezedet": {
+      "local": "yes",
+      "name": "SqueezeDet demo sources",
+      "sort": 20,
+      "tags": "tensorflow,demo,squeezedet"
+    },
+    "lib-tensorflow": {
+      "local": "yes",
+      "name": "Tensorflow library",
+      "sort": 40,
+      "tags": "lib,tensorflow",
+      "version_from": [
+        1,
+        4,
+        0
+      ],
+      "version_to": [
+        1,
+        10,
+        99
+      ]
+    },
+    "python": {
+      "local": "yes",
+      "name": "Python interpreter",
+      "sort": 5,
+      "tags": "compiler,python"
+    },
+    "squeezedet": {
+      "local": "yes",
+      "name": "SqueezeDet model",
+      "skip_default": "yes",
+      "sort": 30,
+      "tags": "model,tensorflow,squeezedetmodel"
+    }
+  },
+  "run_vars": {
+    "CK_BATCH_COUNT": 1,
+    "CK_BATCH_SIZE": 1,
+    "CK_TF_GPU_MEMORY_PERCENT": 33,
+    "TF_CPP_MIN_LOG_LEVEL": 3,
+    "TF_CPP_MIN_LOG_LEVEL_COMMENT": "Supress TF debug output"
+  },
+  "tags": [
+    "tensorflow",
+    "squeezedet",
+    "continuous",
+    "object-detection",
+    "webcam",
+    "codereef-workflow",
+    "codereef-workflow-stream"
+  ]
+}

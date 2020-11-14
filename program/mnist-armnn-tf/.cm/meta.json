@@ -1,0 +1,84 @@
+{
+  "backup_data_uid": "dee85e62d40959a9",
+  "compile_deps": {
+    "compiler": {
+      "local": "yes",
+      "name": "C++ compiler",
+      "sort": 10,
+      "tags": "compiler,lang-cpp"
+    },
+    "lib-armnn": {
+      "local": "yes",
+      "name": "ArmNN library",
+      "sort": 20,
+      "tags": "lib,armnn,tf",
+      "update_tags_if_env": {
+        "neon": [
+          {
+            "USE_NEON": [
+              "on",
+              "ON",
+              "yes",
+              "YES",
+              "1"
+            ]
+          }
+        ],
+        "opencl": [
+          {
+            "USE_OPENCL": [
+              "on",
+              "ON",
+              "yes",
+              "YES",
+              "1"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "compiler_env": "CK_CXX_FULL_PATH",
+  "compiler_flags_as_env": "$<<CK_CXX_COMPILER_STDLIB>>$ $<<CK_COMPILER_FLAG_CPP14>>$",
+  "data_name": "mnist-armnn-tf",
+  "extra_ld_vars": "$<<CK_CXX_COMPILER_STDLIB>>$ -L$<<CK_ENV_LIB_ARMNN_LIB>>$ -larmnn -lpthread -larmnnTfParser",
+  "main_language": "cpp",
+  "only_for_target_os_tags": [
+    "linux",
+    "windows"
+  ],
+  "pass_env_to_resolve": "yes",
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "minimal": {
+      "run_time": {
+        "run_cmd_main": "$#BIN_FILE#$ $<<CK_ENV_ARMNN_EXAMPLES_MODEL>>$ $<<CK_ENV_ARMNN_EXAMPLES_DATA>>$ $<<CK_FILE_NUMBER>>$"
+      }
+    }
+  },
+  "run_deps": {
+    "arm-examples": {
+      "local": "yes",
+      "name": "Arm software examples",
+      "sort": 10,
+      "tags": "armnn,model,dataset"
+    }
+  },
+  "run_vars": {
+    "CK_FILE_NUMBER": 0,
+    "USE_NEON": "NO",
+    "USE_OPENCL": "NO"
+  },
+  "source_files": [
+    "mnist_tf.cpp"
+  ],
+  "tags": [
+    "test",
+    "mnist",
+    "tf",
+    "armnn",
+    "lang-cpp"
+  ],
+  "target_file": "mnist"
+}

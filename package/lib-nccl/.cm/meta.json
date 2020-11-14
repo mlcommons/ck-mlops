@@ -1,0 +1,66 @@
+{
+  "customize": {
+    "extra_dir": "",
+    "git_src_dir": "src",
+    "install_env": {
+      "CUDA_ARC": "-arch=sm_37",
+      "PACKAGE_BUILD_TYPE": "make",
+      "PACKAGE_CONFIGURE_FLAGS": "",
+      "PACKAGE_COPY": "NO",
+      "PACKAGE_GIT": "YES",
+      "PACKAGE_GIT_CHECKOUT": "286916a1a37ca1fe8cd43e280f5c42ec29569fc5",
+      "PACKAGE_PATCH": "NO",
+      "PACKAGE_SKIP_CLEAN_INSTALL": "YES",
+      "PACKAGE_SKIP_CLEAN_OBJ": "NO",
+      "PACKAGE_SKIP_CLEAN_SRC_DIR": "YES",
+      "PACKAGE_SKIP_LINUX_MAKE": "YES",
+      "PACKAGE_SUB_DIR": "nccl",
+      "PACKAGE_SUB_DIR1": "install",
+      "PACKAGE_URL": "https://github.com/NVIDIA/nccl.git"
+    },
+    "version": "pre-2.3.5-5"
+  },
+  "deps": {
+    "compiler": {
+      "local": "yes",
+      "name": "C/C++ compiler",
+      "sort": 10,
+      "tags": "compiler,gcc,lang-cpp",
+      "version_from": [
+        6,
+        0,
+        0
+      ]
+    },
+    "cuda": {
+      "local": "yes",
+      "name": "Nvidia CUDA",
+      "sort": 0,
+      "tags": "compiler,cuda,lang-c-cuda"
+    }
+  },
+  "end_full_path": {
+    "linux": "install/lib/libnccl.so"
+  },
+  "need_cpu_info": "yes",
+  "only_for_host_os_tags": [
+    "linux",
+    "windows"
+  ],
+  "only_for_target_os_tags": [
+    "linux",
+    "windows"
+  ],
+  "process_script": "install",
+  "soft_uoa": "de774494bb69f2b0",
+  "suggested_path": "lib-nccl",
+  "tags": [
+    "lib",
+    "nccl",
+    "vmaster"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "cd9ccc74060b3d18",
+    "module_uoa": "script"
+  }
+}

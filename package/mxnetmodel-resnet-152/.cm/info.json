@@ -1,0 +1,18 @@
+{
+  "backup_data_uid": "2b1a670ef680b046",
+  "backup_module_uid": "1dc07ee0f4742028",
+  "backup_module_uoa": "package",
+  "control": {
+    "author": "Sergio Guadarrama",
+    "engine": "CK",
+    "iso_datetime": "2020-11-14T21:43:58.324922",
+    "license": "unrestricted (see readme.me)",
+    "version": [
+      "1",
+      "17",
+      "0",
+      "1"
+    ]
+  },
+  "data_name": "mxnetmodel-resnet-152"
+}

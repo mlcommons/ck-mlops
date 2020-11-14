@@ -1,0 +1,13 @@
+diff --git a/cmake/GlobalConfig.cmake b/cmake/GlobalConfig.cmake
+index 0476f40..3579614 100644
+--- a/cmake/GlobalConfig.cmake
++++ b/cmake/GlobalConfig.cmake
+@@ -51,7 +51,7 @@ endif()
+ # Compiler flags that are always set
+ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+ if(COMPILER_IS_GNU_LIKE)
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wall -Werror -Wold-style-cast -Wno-missing-braces -Wconversion -Wsign-conversion")
++    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wall -Wold-style-cast -Wno-missing-braces -Wconversion -Wsign-conversion")
+ elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL MSVC)
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHsc /MP")
+     add_definitions(-DNOMINMAX=1 -DNO_STRICT=1)

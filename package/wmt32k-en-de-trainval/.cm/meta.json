@@ -1,0 +1,55 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "extra_dir": "",
+    "no_os_in_suggested_path": "yes",
+    "no_ver_in_suggested_path": "yes",
+    "version": "2007"
+  },
+  "deps": {
+    "python": {
+      "local": "yes",
+      "name": "Python interpreter (v3+)",
+      "skip_from_bat": "yes",
+      "sort": 5,
+      "tags": "compiler,python",
+      "version_from": [
+        3
+      ]
+    },
+    "tensorflow": {
+      "local": "yes",
+      "name": "TensorFlow Library",
+      "skip_from_bat": "yes",
+      "sort": 10,
+      "tags": "lib,tensorflow"
+    },
+    "wmt32k-en-de-train": {
+      "local": "yes",
+      "name": "WMT32k English-German dataset (train)",
+      "skip_from_bat": "yes",
+      "sort": 20,
+      "tags": "dataset,wmt32k,raw,train"
+    },
+    "wmt32k-en-de-val": {
+      "local": "yes",
+      "name": "WMT32k English-German dataset (val)",
+      "skip_from_bat": "yes",
+      "sort": 30,
+      "tags": "dataset,wmt32k,raw,val"
+    }
+  },
+  "end_full_path_universal": "t2t_data/translate_ende_wmt32k-train-00000-of-00100",
+  "need_cpu_info": "no",
+  "process_script": "download-wmt-ende-wmt32k",
+  "soft_uoa": "46efa92a9e2b792a",
+  "suggested_path": "dataset-wmt32",
+  "tags": [
+    "dataset",
+    "tensor2tensor",
+    "raw",
+    "train-tf",
+    "machine-translation",
+    "transformer"
+  ]
+}

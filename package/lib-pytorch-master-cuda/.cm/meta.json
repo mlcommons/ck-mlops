@@ -1,0 +1,71 @@
+{
+  "customize": {
+    "extra_dir": "",
+    "install_env": {
+      "PACKAGE_URL": "https://github.com/pytorch/pytorch"
+    },
+    "use_git_revision": "yes",
+    "version": "master"
+  },
+  "deps": {
+    "cmake": {
+      "local": "yes",
+      "name": "CMake",
+      "sort": 5,
+      "tags": "tool,cmake"
+    },
+    "compiler": {
+      "local": "yes",
+      "name": "Compiler",
+      "sort": 10,
+      "tags": "compiler,lang-c"
+    },
+    "compiler.cuda": {
+      "add_to_path": "yes",
+      "local": "yes",
+      "name": "CUDA compiler >=7.0",
+      "sort": 40,
+      "tags": "compiler,lang-c-cuda"
+    },
+    "lib.cudnn": {
+      "add_to_path": "yes",
+      "local": "yes",
+      "name": "cuDNN library (cuDNN 6.0 required!)",
+      "sort": 50,
+      "tags": "lib,cudnn,dnn,cuda"
+    },
+    "python": {
+      "add_to_path": "yes",
+      "local": "yes",
+      "name": "Python",
+      "sort": 20,
+      "tags": "compiler,python"
+    }
+  },
+  "end_full_path_universal": "lib$#sep#$torch$#sep#$__init__.py",
+  "need_cpu_info": "yes",
+  "only_for_host_os_tags": [
+    "linux",
+    "windows"
+  ],
+  "only_for_target_os_tags": [
+    "linux",
+    "windows"
+  ],
+  "package_extra_name": " (cuda)",
+  "process_script": "install",
+  "soft_uoa": "954c41a2f8668a9b",
+  "suggested_path": "pytorch-cuda",
+  "tags": [
+    "lib",
+    "pytorch",
+    "pytorch-cuda",
+    "vmaster",
+    "vcuda",
+    "channel-stable"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "be0bc4c5f2434790",
+    "module_uoa": "package"
+  }
+}

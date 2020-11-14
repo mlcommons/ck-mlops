@@ -1,0 +1,147 @@
+{
+  "customize": {
+    "extra_dir": "",
+    "git_src_dir": "src",
+    "install_env": {
+      "PACKAGE_GIT": "YES",
+      "PACKAGE_LIB_RUY": "OFF",
+      "PACKAGE_LIB_XNNPACK": "OFF",
+      "PACKAGE_PATCH": "YES",
+      "PACKAGE_PATCH_LIST": "\\$<<ORIGINAL_PACKAGE_DIR>>$/patch.linux.variations/\\$<<PACKAGE_PATCH__PACKAGE>>$ \\$<<ORIGINAL_PACKAGE_DIR>>$/patch.linux.variations/\\$<<PACKAGE_PATCH__OFFSETOF>>$",
+      "PACKAGE_PATCH__OFFSETOF": "",
+      "PACKAGE_PATCH__PACKAGE": "",
+      "PACKAGE_SKIP_LINUX_MAKE": "YES",
+      "PACKAGE_SUB_DIR": "src",
+      "PACKAGE_URL": "https://github.com/tensorflow/tensorflow",
+      "PACKAGE_VERSION": "default"
+    },
+    "no_ver_in_suggested_path": "yes"
+  },
+  "deps": {
+    "cmake": {
+      "add_to_path": "no",
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "CMake tool",
+      "skip_from_bat": "yes",
+      "sort": 20,
+      "tags": "tool,cmake",
+      "version_from": [
+        3,
+        16,
+        0
+      ]
+    },
+    "compiler": {
+      "local": "yes",
+      "name": "C++ compiler",
+      "sort": 0,
+      "tags": "compiler,lang-cpp"
+    },
+    "lib-gtest": {
+      "add_to_path": "no",
+      "enable_if_env": {
+        "PACKAGE_LIB_XNNPACK": [
+          "ON"
+        ]
+      },
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "GTEST lib",
+      "sort": 10,
+      "tags": "lib,gtest"
+    },
+    "lib-xnnpack": {
+      "add_to_path": "no",
+      "enable_if_env": {
+        "PACKAGE_LIB_XNNPACK": [
+          "ON"
+        ]
+      },
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "XNNPACK lib",
+      "skip_from_bat": "yes",
+      "sort": 15,
+      "tags": "lib,xnnpack"
+    }
+  },
+  "end_full_path": {
+    "linux": "lib/libtensorflow-lite.a"
+  },
+  "need_cpu_info": "yes",
+  "only_for_host_os_tags": [
+    "linux"
+  ],
+  "only_for_target_os_tags": [
+    "linux"
+  ],
+  "package_extra_name": " (from sources, static)",
+  "process_script": "install",
+  "soft_uoa": "lib.tflite.static",
+  "suggested_path": "lib-tflite-src-static",
+  "tags": [
+    "lib",
+    "tensorflow",
+    "lite",
+    "tflite",
+    "tensorflow-lite",
+    "tensorflow-static",
+    "vsrc",
+    "vstatic",
+    "via-cmake"
+  ],
+  "use_preprocess_scripts_from_another_entry": {
+    "data_uoa": "fd44428fbc77f77f",
+    "module_uoa": "84e27ad9dd12e734"
+  },
+  "use_scripts_from_another_entry": {
+    "data_uoa": "cd9ccc74060b3d18",
+    "module_uoa": "script"
+  },
+  "variations": {
+    "default": {
+      "extra_env": {
+        "PACKAGE_LIB_RUY": "OFF",
+        "PACKAGE_LIB_XNNPACK": "OFF"
+      }
+    },
+    "rpi4": {
+      "extra_env": {
+        "EXTRA_CXXFLAGS": "-march=armv7-a+neon+vfpv4 -mfpu=neon-vfpv4 "
+      }
+    },
+    "v2.3.90": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "5c1c1085fe331de3",
+        "PACKAGE_PATCH__OFFSETOF": "v2.3.90_offsetof.patch",
+        "PACKAGE_PATCH__PACKAGE": "v2.3.90_package.patch",
+        "PACKAGE_VERSION": "2.3.90"
+      },
+      "on_by_default": "yes"
+    },
+    "v2.3.91": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "8a643858ce174b8b",
+        "PACKAGE_PATCH__OFFSETOF": "v2.3.90_offsetof.patch",
+        "PACKAGE_PATCH__PACKAGE": "v2.3.91_package.patch",
+        "PACKAGE_VERSION": "2.3.91"
+      },
+      "on_by_default": "no"
+    },
+    "with.eigen": {
+      "extra_env": {}
+    },
+    "with.ruy": {
+      "extra_env": {
+        "PACKAGE_LIB_RUY": "ON"
+      }
+    },
+    "with.xnnpack": {
+      "extra_env": {
+        "EXTRA_FLAGS": "-I${CK_ENV_LIB_XNNPACK_INCLUDE} -I${CK_ENV_LIB_GTEST_INCLUDE}",
+        "PACKAGE_LIB_XNNPACK": "ON"
+      }
+    }
+  }
+}

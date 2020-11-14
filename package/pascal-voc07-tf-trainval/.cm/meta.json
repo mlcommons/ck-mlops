@@ -1,0 +1,54 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "extra_dir": "",
+    "no_os_in_suggested_path": "yes",
+    "no_ver_in_suggested_path": "yes",
+    "version": "2007"
+  },
+  "deps": {
+    "pascal-voc07-train": {
+      "local": "yes",
+      "name": "PASCAL VOC07 object detection dataset (train)",
+      "skip_from_bat": "yes",
+      "sort": 20,
+      "tags": "dataset,pascal-voc07,raw,train"
+    },
+    "pascal-voc07-val": {
+      "local": "yes",
+      "name": "PASCAL VOC07 object detection dataset (val)",
+      "skip_from_bat": "yes",
+      "sort": 30,
+      "tags": "dataset,pascal-voc07,raw,val"
+    },
+    "python": {
+      "local": "yes",
+      "name": "Python interpreter (v3+)",
+      "skip_from_bat": "yes",
+      "sort": 5,
+      "tags": "compiler,python",
+      "version_from": [
+        3
+      ]
+    },
+    "tensorflow": {
+      "local": "yes",
+      "name": "TensorFlow Library",
+      "skip_from_bat": "yes",
+      "sort": 10,
+      "tags": "lib,tensorflow"
+    }
+  },
+  "end_full_path_universal": "dataset/pascal_train_2007.record",
+  "need_cpu_info": "no",
+  "process_script": "download-voc",
+  "soft_uoa": "40a5a942105e3639",
+  "suggested_path": "dataset-pascal-voc07-tf",
+  "tags": [
+    "dataset",
+    "pascal-voc07",
+    "raw",
+    "train-tf",
+    "object-detection"
+  ]
+}

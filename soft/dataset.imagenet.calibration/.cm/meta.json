@@ -1,0 +1,22 @@
+{
+  "auto_detect": "yes",
+  "customize": {
+    "check_that_exists": "yes",
+    "ck_version": 10,
+    "env_prefix": "CK_DATASET_IMAGENET_CALIBRATION",
+    "soft_file_universal": "*.xml"
+  },
+  "soft_name": "ImageNet calibration dataset",
+  "tags": [
+    "dataset",
+    "imagenet",
+    "calibration",
+    "cal",
+    "mlperf-inference",
+    "mlperf",
+    "inference",
+    "openvino"
+  ],
+  "template": "yes",
+  "template_type": "ImageNet calibration dataset"
+}

@@ -1,0 +1,15 @@
+{
+  "features": {
+    "cost": [
+      {
+        "currency": "EUR",
+        "date": "20161201",
+        "desc": "Archos 101e NEON",
+        "price": 90
+      }
+    ],
+    "model": "101E NEON",
+    "name": "ARCHOS 101E NEON",
+    "vendor": "ARCHOS"
+  }
+}

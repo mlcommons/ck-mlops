@@ -1,0 +1,22 @@
+{
+  "auto_detect": "yes",
+  "customize": {
+    "add_only_with_version": "yes",
+    "check_that_exists": "yes",
+    "ck_version": 10,
+    "env_prefix": "CK_ENV_LIB_MVNC",
+    "limit_recursion_dir_search": {
+      "linux": 5,
+      "win": 5
+    },
+    "soft_file": {
+      "linux": "ncsdk.conf",
+      "win": "ncsdk.conf"
+    }
+  },
+  "soft_name": "Movidius Neural Compute Stick library",
+  "tags": [
+    "lib",
+    "mvnc"
+  ]
+}

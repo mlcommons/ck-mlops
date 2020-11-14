@@ -1,0 +1,6 @@
+This is a small library for NN testing.
+
+Installation:
+
+    ck install package:lib-nntest
+

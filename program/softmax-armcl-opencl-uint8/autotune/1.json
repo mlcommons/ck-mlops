@@ -1,0 +1,28 @@
+{
+  "choices_order": [
+    [
+      "##env#CK_DIFF_MIN"
+    ], 
+    [
+      "##env#CK_IN_SHAPE_N"
+    ]
+  ], 
+  "choices_selection": [
+    {
+      "choice": [
+        0,
+        -127,
+        -255
+      ], 
+      "default": 0, 
+      "type": "loop"
+    }, 
+    {
+      "default": 1, 
+      "start": 1, 
+      "step": 1, 
+      "stop": 4, 
+      "type": "loop"
+    }
+  ]
+}

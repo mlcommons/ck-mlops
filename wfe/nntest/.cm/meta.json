@@ -1,0 +1,48 @@
+{
+  "extra_html_after_menu": "",
+  "share": " <!-- AddToAny BEGIN -->\n <div class=\"a2a_kit a2a_default_style\" style=\"margin:0 auto;font-size:12px;width:60px;\">\n  <a class=\"a2a_dd\" href=\"https://www.addtoany.com/share_save\">Share</a>\n </div>\n <script type=\"text/javascript\" src=\"//static.addtoany.com/menu/page.js\"></script>\n <!-- AddToAny END -->\n",
+  "template_file": "template.html",
+  "top_menu": [
+    {
+      "module_uoa": "",
+      "module_uoas": [
+        ""
+      ],
+      "name": "Dashboard",
+      "native_action": "show",
+      "native_module_uoa": "nntest",
+      "url_extra": "action=index&module_uoa=wfe&native_action=show&native_module_uoa=nntest"
+    },
+    {
+      "module_uoa": "experiment",
+      "module_uoas": [
+        "experiment",
+        "bc0409fb61f0aa82"
+      ],
+      "name": "Raw experiments",
+      "url_extra_browse": "ck_top_search_tag=nntest&ck_top_repo=local&aview=yes&no_limit=yes&skip_links=yes&skip_desc=yes"
+    },
+    {
+      "module_uoa": "program",
+      "module_uoas": [
+        "program",
+        "b0ac08fe1d3c2615"
+      ],
+      "name": "Tests",
+      "url_extra_browse": "ck_top_search_tag=nntest&ck_top_repo=ck-acl-private&aview=yes&limit=100"
+    },
+    {
+      "module_uoa": "dataset",
+      "module_uoas": [
+        "dataset",
+        "8a7141c59cd335f5"
+      ],
+      "name": "Datasets",
+      "url_extra_browse": "ck_top_search_tag=nntest&ck_top_repo=ck-acl-private&aview=yes&limit=100"
+    },
+    {
+      "name": "Get framework",
+      "url": "https://github.com/dividiti/ck-acl-private"
+    }
+  ]
+}

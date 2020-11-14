@@ -1,0 +1,61 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "extra_dir": "",
+    "install_env": {
+      "DATASET_TYPE": "kitti",
+      "DEFAULT_HEIGHT": "375",
+      "DEFAULT_WIDTH": "1242",
+      "FROZEN_GRAPH": "frozen_inference_graph.pb",
+      "LABELMAP_FILE": "kitti_label_map.pbtxt",
+      "MODEL_NAME": "Faster-RCNN-NAS lowproposals KITTI",
+      "PACKAGE_NAME": "kitti-model-nas-ft.tar.gz",
+      "PACKAGE_NAME1": "rcnn-nas-finetune",
+      "PACKAGE_UNTAR": "YES",
+      "PACKAGE_UNZIP": "YES",
+      "PACKAGE_URL": "https://www.dropbox.com/s/vdumwu5kjdszbbe/",
+      "PIPELINE_CONFIG": "pipeline.config",
+      "WEIGHTS_FILE": "model.ckpt"
+    },
+    "model_id": "faster_rcnn_nas_lowproposals_kitti",
+    "no_os_in_suggested_path": "yes",
+    "no_ver_in_suggested_path": "yes",
+    "version": "reference"
+  },
+  "deps": {
+    "labelmap": {
+      "local": "yes",
+      "name": "Labelmap for full KITTI dataset",
+      "tags": "labelmap,vkitti,vfull"
+    }
+  },
+  "end_full_path": {
+    "linux": "frozen_inference_graph.pb"
+  },
+  "only_for_host_os_tags": [
+    "linux"
+  ],
+  "only_for_target_os_tags": [
+    "linux"
+  ],
+  "package_extra_name": " (Object Detection Faster-RCNN-NAS lowproposals KITTI)",
+  "process_script": "install",
+  "soft_uoa": "3fc0c4b9ba63de2f",
+  "suggested_path": "model-tf-faster-rcnn-nas-lowproposals-kitti",
+  "tags": [
+    "object-detection",
+    "model",
+    "tf",
+    "tensorflow",
+    "rcnn",
+    "rcnn-nas",
+    "nas",
+    "lowproposals",
+    "non-quantized",
+    "vkitti"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "c412930408fb8271",
+    "module_uoa": "script"
+  }
+}

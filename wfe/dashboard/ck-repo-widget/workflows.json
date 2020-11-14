@@ -1,0 +1,720 @@
+{
+    "defaultWorkflowIndex": 1,
+    "workflows": [
+        {
+            "name": "ReQuEST @ ASPLOS'18 tournament (Pareto-efficient image classification)",
+            "moduleUoa": "request.asplos18",
+            "xDimension": "##characteristics#run#inference_throughput",
+            "yDimension": "##characteristics#run#accuracy_top1",
+            "colorDimension": "experiment",
+            "sizeDimension": "##features#model_size",
+            "xVariationVisible": true,
+            "yVariationVisible": false
+        },
+        {
+            "name": "MLPerf Inference v0.5 - Image Classification - SingleStream (milliseconds per sample)",
+            "moduleUoa": "mlperf.inference",
+            "xDimension": "P_IC1",
+            "yDimension": "A_IC1",
+            "xVariationVisible": false,
+            "yVariationVisible": false,
+            "colorDimension": "Accelerator #",
+            "colorRange": ["#0000FF", "#00FFFF", "#00FF00", "#FFCC00", "#FF0000"],
+            "sizeDimension": "Processor #",
+            "sizeRange": [4,6],
+            "markerDimension": "Submitter",
+            "markerDimensionSets": {
+                "Default": ["sector_1_4", "sector_1_3", "sector_1_2", "sector_3_4", "circle", "triangle", "triangle_down", "sector_1_4", "rect", "pentagon", "hexagon", "sector_1_4", "star", "diamond"]
+            },
+            "tooltipValues": ["Division", "Submitter", "System", "Processor", "Processor #", "Accelerator", "Accelerator #", "Benchmark", "P_IC1", "A_IC1"],
+            "props": {
+                "__delta": 0.0
+            },
+            "refLines": [
+		{
+                    "name": "ResNet",
+                    "dimension": "A_IC1",
+                    "get_value": "CkRepoWidgetUtils.mlperf.get_reference_accuracy_resnet"
+                },
+                {
+                    "name": "MobileNet",
+                    "dimension": "A_IC1",
+                    "get_value": "CkRepoWidgetUtils.mlperf.get_reference_accuracy_mobilenet"
+                }
+            ],
+            "call_attribs": {
+                "prefilter_mode": "image_classification_singlestream"
+            },
+            "filters": {
+                "Task": "Image Classification",
+                "Scenario": "SingleStream"
+            }
+        },
+        {
+            "name": "MLPerf Inference v0.5 - Image Classification - MultiStream (number of streams)",
+            "moduleUoa": "mlperf.inference",
+            "xDimension": "P_IC1",
+            "yDimension": "A_IC1",
+            "xVariationVisible": false,
+            "yVariationVisible": false,
+            "colorDimension": "Accelerator #",
+            "colorRange": ["#0000FF", "#00FFFF", "#00FF00", "#FFCC00", "#FF0000"],
+            "sizeDimension": "Processor #",
+            "sizeRange": [4,6],
+            "markerDimension": "Submitter",
+            "markerDimensionSets": {
+                "Default": ["sector_1_4", "sector_1_3", "sector_1_2", "sector_3_4", "circle", "triangle", "triangle_down", "sector_1_4", "rect", "pentagon", "hexagon", "sector_1_4", "star", "diamond"]
+            },
+            "tooltipValues": ["Division", "Submitter", "System", "Processor", "Processor #", "Accelerator", "Accelerator #", "Benchmark", "P_IC1", "A_IC1"],
+            "props": {
+                "__delta": 0.0
+            },
+            "refLines": [
+		{
+                    "name": "ResNet",
+                    "dimension": "A_IC1",
+                    "get_value": "CkRepoWidgetUtils.mlperf.get_reference_accuracy_resnet"
+                },
+                {
+                    "name": "MobileNet",
+                    "dimension": "A_IC1",
+                    "get_value": "CkRepoWidgetUtils.mlperf.get_reference_accuracy_mobilenet"
+                }
+            ],
+            "call_attribs": {
+                "prefilter_mode": "image_classification_multistream"
+            },
+            "filters": {
+                "Task": "Image Classification",
+                "Scenario": "MultiStream"
+            }
+        },
+        {
+            "name": "MLPerf Inference v0.5 - Image Classification - Server (queries per second)",
+            "moduleUoa": "mlperf.inference",
+            "xDimension": "P_IC1",
+            "yDimension": "A_IC1",
+            "xVariationVisible": false,
+            "yVariationVisible": false,
+            "colorDimension": "Accelerator #",
+            "colorRange": ["#0000FF", "#00FFFF", "#00FF00", "#FFCC00", "#FF0000"],
+            "sizeDimension": "Processor #",
+            "sizeRange": [4,6],
+            "markerDimension": "Submitter",
+            "markerDimensionSets": {
+                "Default": ["sector_1_4", "sector_1_3", "sector_1_2", "sector_3_4", "circle", "triangle", "triangle_down", "sector_1_4", "rect", "pentagon", "hexagon", "sector_1_4", "star", "diamond"]
+            },
+            "tooltipValues": ["Division", "Submitter", "System", "Processor", "Processor #", "Accelerator", "Accelerator #", "Benchmark", "P_IC1", "A_IC1"],
+            "props": {
+                "__delta": 0.0
+            },
+            "refLines": [
+		{
+                    "name": "ResNet",
+                    "dimension": "A_IC1",
+                    "get_value": "CkRepoWidgetUtils.mlperf.get_reference_accuracy_resnet"
+                },
+                {
+                    "name": "MobileNet",
+                    "dimension": "A_IC1",
+                    "get_value": "CkRepoWidgetUtils.mlperf.get_reference_accuracy_mobilenet"
+                }
+            ],
+            "call_attribs": {
+                "prefilter_mode": "image_classification_server"
+            },
+            "filters": {
+                "Task": "Image Classification",
+                "Scenario": "Server"
+            }
+        },
+        {
+            "name": "MLPerf Inference v0.5 - Image Classification - Offline (samples per second)",
+            "moduleUoa": "mlperf.inference",
+            "xDimension": "P_IC1",
+            "yDimension": "A_IC1",
+            "xVariationVisible": false,
+            "yVariationVisible": false,
+            "colorDimension": "Accelerator #",
+            "colorRange": ["#0000FF", "#00FFFF", "#00FF00", "#FFCC00", "#FF0000"],
+            "sizeDimension": "Processor #",
+            "sizeRange": [4,6],
+            "markerDimension": "Submitter",
+            "markerDimensionSets": {
+                "Default": ["sector_1_4", "sector_1_3", "sector_1_2", "sector_3_4", "circle", "triangle", "triangle_down", "sector_1_4", "rect", "pentagon", "hexagon", "sector_1_4", "star", "diamond"]
+            },
+            "tooltipValues": ["Division", "Submitter", "System", "Processor", "Processor #", "Accelerator", "Accelerator #", "Benchmark", "P_IC1", "A_IC1"],
+            "props": {
+                "__delta": 0.0
+            },
+            "refLines": [
+		{
+                    "name": "ResNet",
+                    "dimension": "A_IC1",
+                    "get_value": "CkRepoWidgetUtils.mlperf.get_reference_accuracy_resnet"
+                },
+                {
+                    "name": "MobileNet",
+                    "dimension": "A_IC1",
+                    "get_value": "CkRepoWidgetUtils.mlperf.get_reference_accuracy_mobilenet"
+                }
+            ],
+            "call_attribs": {
+                "prefilter_mode": "image_classification_offline"
+            },
+            "filters": {
+                "Task": "Image Classification",
+                "Scenario": "Offline"
+            }
+        },
+        {
+            "name": "MLPerf Inference v0.5 - Object Detection - SingleStream (milliseconds per sample)",
+            "moduleUoa": "mlperf.inference",
+            "xDimension": "P_OD1",
+            "yDimension": "A_OD1",
+            "xVariationVisible": false,
+            "yVariationVisible": false,
+            "colorDimension": "Accelerator #",
+            "colorRange": ["#0000FF", "#00FFFF", "#00FF00", "#FFCC00", "#FF0000"],
+            "sizeDimension": "Processor #",
+            "sizeRange": [4,6],
+            "markerDimension": "Submitter",
+            "markerDimensionSets": {
+                "Default": ["sector_1_4", "sector_1_3", "sector_1_2", "sector_3_4", "circle", "triangle", "triangle_down", "sector_1_4", "rect", "pentagon", "hexagon", "sector_1_4", "star", "diamond"]
+            },
+            "tooltipValues": ["Division", "Submitter", "System", "Processor", "Processor #", "Accelerator", "Accelerator #", "Benchmark", "P_OD1", "A_OD1"],
+            "props": {
+                "__delta": 0.0
+            },
+            "refLines": [
+		{
+                    "name": "SSD-Large",
+                    "dimension": "A_OD1",
+                    "get_value": "CkRepoWidgetUtils.mlperf.get_reference_accuracy_ssd_large"
+                },
+                {
+                    "name": "SSD-Small",
+                    "dimension": "A_OD1",
+                    "get_value": "CkRepoWidgetUtils.mlperf.get_reference_accuracy_ssd_small"
+                }
+            ],
+            "call_attribs": {
+                "prefilter_mode": "object_detection_singlestream"
+            },
+            "filters": {
+                "Task": "Object Detection",
+                "Scenario": "SingleStream"
+            }
+        },
+        {
+            "name": "MLPerf Inference v0.5 - Object Detection - MultiStream (number of streams)",
+            "moduleUoa": "mlperf.inference",
+            "xDimension": "P_OD1",
+            "yDimension": "A_OD1",
+            "xVariationVisible": false,
+            "yVariationVisible": false,
+            "colorDimension": "Accelerator #",
+            "colorRange": ["#0000FF", "#00FFFF", "#00FF00", "#FFCC00", "#FF0000"],
+            "sizeDimension": "Processor #",
+            "sizeRange": [4,6],
+            "markerDimension": "Submitter",
+            "markerDimensionSets": {
+                "Default": ["sector_1_4", "sector_1_3", "sector_1_2", "sector_3_4", "circle", "triangle", "triangle_down", "sector_1_4", "rect", "pentagon", "hexagon", "sector_1_4", "star", "diamond"]
+            },
+            "tooltipValues": ["Division", "Submitter", "System", "Processor", "Processor #", "Accelerator", "Accelerator #", "Benchmark", "P_OD1", "A_OD1"],
+            "props": {
+                "__delta": 0.0
+            },
+            "refLines": [
+		{
+                    "name": "SSD-Large",
+                    "dimension": "A_OD1",
+                    "get_value": "CkRepoWidgetUtils.mlperf.get_reference_accuracy_ssd_large"
+                },
+                {
+                    "name": "SSD-Small",
+                    "dimension": "A_OD1",
+                    "get_value": "CkRepoWidgetUtils.mlperf.get_reference_accuracy_ssd_small"
+                }
+            ],
+            "call_attribs": {
+                "prefilter_mode": "object_detection_multistream"
+            },
+            "filters": {
+                "Task": "Object Detection",
+                "Scenario": "MultiStream"
+            }
+        },
+        {
+            "name": "MLPerf Inference v0.5 - Object Detection - Server (queries per second)",
+            "moduleUoa": "mlperf.inference",
+            "xDimension": "P_OD1",
+            "yDimension": "A_OD1",
+            "xVariationVisible": false,
+            "yVariationVisible": false,
+            "colorDimension": "Accelerator #",
+            "colorRange": ["#0000FF", "#00FFFF", "#00FF00", "#FFCC00", "#FF0000"],
+            "sizeDimension": "Processor #",
+            "sizeRange": [4,6],
+            "markerDimension": "Submitter",
+            "markerDimensionSets": {
+                "Default": ["sector_1_4", "sector_1_3", "sector_1_2", "sector_3_4", "circle", "triangle", "triangle_down", "sector_1_4", "rect", "pentagon", "hexagon", "sector_1_4", "star", "diamond"]
+            },
+            "tooltipValues": ["Division", "Submitter", "System", "Processor", "Processor #", "Accelerator", "Accelerator #", "Benchmark", "P_OD1", "A_OD1"],
+            "props": {
+                "__delta": 0.0
+            },
+            "refLines": [
+		{
+                    "name": "SSD-Large",
+                    "dimension": "A_OD1",
+                    "get_value": "CkRepoWidgetUtils.mlperf.get_reference_accuracy_ssd_large"
+                },
+                {
+                    "name": "SSD-Small",
+                    "dimension": "A_OD1",
+                    "get_value": "CkRepoWidgetUtils.mlperf.get_reference_accuracy_ssd_small"
+                }
+            ],
+            "call_attribs": {
+                "prefilter_mode": "object_detection_server"
+            },
+            "filters": {
+                "Task": "Object Detection",
+                "Scenario": "Server"
+            }
+        },
+        {
+            "name": "MLPerf Inference v0.5 - Object Detection - Offline (samples per second)",
+            "moduleUoa": "mlperf.inference",
+            "xDimension": "P_OD1",
+            "yDimension": "A_OD1",
+            "xVariationVisible": false,
+            "yVariationVisible": false,
+            "colorDimension": "Accelerator #",
+            "colorRange": ["#0000FF", "#00FFFF", "#00FF00", "#FFCC00", "#FF0000"],
+            "sizeDimension": "Processor #",
+            "sizeRange": [4,6],
+            "markerDimension": "Submitter",
+            "markerDimensionSets": {
+                "Default": ["sector_1_4", "sector_1_3", "sector_1_2", "sector_3_4", "circle", "triangle", "triangle_down", "sector_1_4", "rect", "pentagon", "hexagon", "sector_1_4", "star", "diamond"]
+            },
+            "tooltipValues": ["Division", "Submitter", "System", "Processor", "Processor #", "Accelerator", "Accelerator #", "Benchmark", "P_OD1", "A_OD1"],
+            "props": {
+                "__delta": 0.0
+            },
+            "refLines": [
+		{
+                    "name": "SSD-Large",
+                    "dimension": "A_OD1",
+                    "get_value": "CkRepoWidgetUtils.mlperf.get_reference_accuracy_ssd_large"
+                },
+                {
+                    "name": "SSD-Small",
+                    "dimension": "A_OD1",
+                    "get_value": "CkRepoWidgetUtils.mlperf.get_reference_accuracy_ssd_small"
+                }
+            ],
+            "call_attribs": {
+                "prefilter_mode": "object_detection_offline"
+            },
+            "filters": {
+                "Task": "Object Detection",
+                "Scenario": "Offline"
+            }
+        },
+        {
+            "name": "MLPerf Inference v0.5 - Machine Translation - SingleStream (milliseconds per sample)",
+            "moduleUoa": "mlperf.inference",
+            "xDimension": "P_NMT",
+            "yDimension": "A_NMT",
+            "xVariationVisible": false,
+            "yVariationVisible": false,
+            "colorDimension": "Accelerator #",
+            "colorRange": ["#0000FF", "#00FFFF", "#00FF00", "#FFCC00", "#FF0000"],
+            "sizeDimension": "Processor #",
+            "sizeRange": [4,6],
+            "markerDimension": "Submitter",
+            "markerDimensionSets": {
+                "Default": ["sector_1_4", "sector_1_3", "sector_1_2", "sector_3_4", "circle", "triangle", "triangle_down", "sector_1_4", "rect", "pentagon", "hexagon", "sector_1_4", "star", "diamond"]
+            },
+            "tooltipValues": ["Division", "Submitter", "System", "Processor", "Processor #", "Accelerator", "Accelerator #", "Benchmark", "P_NMT", "A_NMT"],
+            "props": {
+                "__delta": 0.0
+            },
+            "refLines": [
+		{
+                    "name": "GNMT",
+                    "dimension": "A_NMT",
+                    "get_value": "CkRepoWidgetUtils.mlperf.get_reference_accuracy_gnmt"
+                }
+            ],
+            "call_attribs": {
+                "prefilter_mode": "machine_translation_singlestream"
+            },
+            "filters": {
+                "Task": "Machine Translation",
+                "Scenario": "SingleStream"
+            }
+        },
+        {
+            "name": "MLPerf Inference v0.5 - Machine Translation - MultiStream (number of streams)",
+            "moduleUoa": "mlperf.inference",
+            "xDimension": "P_NMT",
+            "yDimension": "A_NMT",
+            "xVariationVisible": false,
+            "yVariationVisible": false,
+            "colorDimension": "Accelerator #",
+            "colorRange": ["#0000FF", "#00FFFF", "#00FF00", "#FFCC00", "#FF0000"],
+            "sizeDimension": "Processor #",
+            "sizeRange": [4,6],
+            "markerDimension": "Submitter",
+            "markerDimensionSets": {
+                "Default": ["sector_1_4", "sector_1_3", "sector_1_2", "sector_3_4", "circle", "triangle", "triangle_down", "sector_1_4", "rect", "pentagon", "hexagon", "sector_1_4", "star", "diamond"]
+            },
+            "tooltipValues": ["Division", "Submitter", "System", "Processor", "Processor #", "Accelerator", "Accelerator #", "Benchmark", "P_NMT", "A_NMT"],
+            "props": {
+                "__delta": 0.0
+            },
+            "refLines": [
+		{
+                    "name": "GNMT",
+                    "dimension": "A_NMT",
+                    "get_value": "CkRepoWidgetUtils.mlperf.get_reference_accuracy_gnmt"
+                }
+            ],
+            "call_attribs": {
+                "prefilter_mode": "machine_translation_multistream"
+            },
+            "filters": {
+                "Task": "Machine Translation",
+                "Scenario": "MultiStream"
+            }
+        },
+        {
+            "name": "MLPerf Inference v0.5 - Machine Translation - Server (queries per second)",
+            "moduleUoa": "mlperf.inference",
+            "xDimension": "P_NMT",
+            "yDimension": "A_NMT",
+            "xVariationVisible": false,
+            "yVariationVisible": false,
+            "colorDimension": "Accelerator #",
+            "colorRange": ["#0000FF", "#00FFFF", "#00FF00", "#FFCC00", "#FF0000"],
+            "sizeDimension": "Processor #",
+            "sizeRange": [4,6],
+            "markerDimension": "Submitter",
+            "markerDimensionSets": {
+                "Default": ["sector_1_4", "sector_1_3", "sector_1_2", "sector_3_4", "circle", "triangle", "triangle_down", "sector_1_4", "rect", "pentagon", "hexagon", "sector_1_4", "star", "diamond"]
+            },
+            "tooltipValues": ["Division", "Submitter", "System", "Processor", "Processor #", "Accelerator", "Accelerator #", "Benchmark", "P_NMT", "A_NMT"],
+            "props": {
+                "__delta": 0.0
+            },
+            "refLines": [
+		{
+                    "name": "GNMT",
+                    "dimension": "A_NMT",
+                    "get_value": "CkRepoWidgetUtils.mlperf.get_reference_accuracy_gnmt"
+                }
+            ],
+            "call_attribs": {
+                "prefilter_mode": "machine_translation_server"
+            },
+            "filters": {
+                "Task": "Machine Translation",
+                "Scenario": "Server"
+            }
+        },
+        {
+            "name": "MLPerf Inference v0.5 - Machine Translation - Offline (samples per second)",
+            "moduleUoa": "mlperf.inference",
+            "xDimension": "P_NMT",
+            "yDimension": "A_NMT",
+            "xVariationVisible": false,
+            "yVariationVisible": false,
+            "colorDimension": "Accelerator #",
+            "colorRange": ["#0000FF", "#00FFFF", "#00FF00", "#FFCC00", "#FF0000"],
+            "sizeDimension": "Processor #",
+            "sizeRange": [4,6],
+            "markerDimension": "Submitter",
+            "markerDimensionSets": {
+                "Default": ["sector_1_4", "sector_1_3", "sector_1_2", "sector_3_4", "circle", "triangle", "triangle_down", "sector_1_4", "rect", "pentagon", "hexagon", "sector_1_4", "star", "diamond"]
+            },
+            "tooltipValues": ["Division", "Submitter", "System", "Processor", "Processor #", "Accelerator", "Accelerator #", "Benchmark", "P_NMT", "A_NMT"],
+            "props": {
+                "__delta": 0.0
+            },
+            "refLines": [
+		{
+                    "name": "GNMT",
+                    "dimension": "A_NMT",
+                    "get_value": "CkRepoWidgetUtils.mlperf.get_reference_accuracy_gnmt"
+                }
+            ],
+            "call_attribs": {
+                "prefilter_mode": "machine_translation_offline"
+            },
+            "filters": {
+                "Task": "Machine Translation",
+                "Scenario": "Offline"
+            }
+        },
+        {
+            "name": "MLPerf Inference - Image Classification - MobileNets demo 2018 (highlights)",
+            "moduleUoa": "mlperf.mobilenets",
+            "xDimension": "time_min_ms",
+            "yDimension": "accuracy_top1",
+            "colorDimension": "rate_max_s",
+            "sizeDimension": "resolution",
+            "markerDimension": "multiplier",
+            "markerOverlayDimension": "convolution_method",
+            "xVariationVisible": false,
+            "yVariationVisible": false,
+            "colorRange": ["#0000FF", "#00FFFF", "#00FF00", "#FFCC00", "#FF0000"],
+            "markerDimensionSets": {
+                "Polygons": ["triangle", "triangle_down", "rect", "pentagon", "hexagon", "diamond",  "star", "circle"],
+                "Sectors v1": ["sector_1_4", "sector_1_2", "sector_3_4", "circle"],
+                "Sectors v2": ["sector_1_3", "sector_1_2", "sector_3_4", "circle", "diamond", "star"],
+                "Sectors v1/v2": ["sector_1_4", "sector_1_3", "sector_1_2", "sector_3_4", "circle", "diamond", "star"],
+                "Circles": ["circle"]
+            },
+            "markerOverlayDimensionSets": {
+                "1 X N": ["none", "dot", "hline", "vline", "plus", "cross"]
+            },
+            "sizeRange": [4, 6],
+            "tooltipValues": ["model", "rate_max_s", "time_min_ms", "time_avg_ms", "accuracy_top1", "accuracy_top5"],
+            "call_attribs": {
+                "prefilter_mode": "highlights"
+            }
+        },
+        {
+            "name": "MLPerf Inference - Image Classification - MobileNets demo 2018 (all)",
+            "moduleUoa": "mlperf.mobilenets",
+            "xDimension": "time_min_ms",
+            "yDimension": "accuracy_top1",
+            "colorDimension": "rate_max_s",
+            "sizeDimension": "resolution",
+            "markerDimension": "multiplier",
+            "markerOverlayDimension": "convolution_method",
+            "xVariationVisible": false,
+            "yVariationVisible": false,
+            "colorRange": ["#0000FF", "#00FFFF", "#00FF00", "#FFCC00", "#FF0000"],
+            "markerDimensionSets": {
+                "Polygons": ["triangle", "triangle_down", "rect", "pentagon", "hexagon", "diamond",  "star", "circle"],
+                "Sectors v1": ["sector_1_4", "sector_1_2", "sector_3_4", "circle"],
+                "Sectors v2": ["sector_1_3", "sector_1_2", "sector_3_4", "circle", "diamond", "star"],
+                "Sectors v1/v2": ["sector_1_4", "sector_1_3", "sector_1_2", "sector_3_4", "circle", "diamond", "star"],
+                "Circles": ["circle"]
+            },
+            "markerOverlayDimensionSets": {
+                "1 X N": ["none", "dot", "hline", "vline", "plus", "cross"],
+                "2 X 2": ["none",  "dot",
+                          "hline", "vline"],
+                "2 X 3": ["none",  "hline", "vline",
+                          "dot",   "plus",  "cross"],
+                "3 X 2": ["none",  "dot",
+                          "hline", "vline",
+                          "plus",  "cross"]
+            },
+            "sizeRange": [4, 6],
+            "tooltipValues": ["model", "rate_max_s", "time_min_ms", "time_avg_ms", "accuracy_top1", "accuracy_top5"],
+            "call_attribs": {
+                "prefilter_mode": "all"
+            }
+        },
+        {
+            "name": "Student Cluster Competition @ SuperComputing'19",
+            "moduleUoa": "scc.sc19",
+            "xDimension": "team",
+            "yDimension": "##characteristics#run#execution_time",
+            "colorDimension": "team",
+            "sizeDimension": "##features#model_size",
+            "xVariationVisible": true,
+            "yVariationVisible": false
+        },
+        {
+            "name": "NNTest (collaboratively benchmarking and optimizing neural network operations)",
+            "moduleUoa": "nntest",
+            "xDimension": "experiment",
+            "yDimension": "##characteristics#run#execution_time",
+            "colorDimension": "experiment",
+            "xVariationVisible": false,
+            "yVariationVisible": false
+        },
+        {
+            "name": "Quantum Open Challenge (Variational Quantum Eigensolver) - Solution Convergence",
+            "moduleUoa": "challenge.vqe",
+            "xDimension": "__fevs",
+            "yDimension": "__energies",
+            "colorDimension": "_point",
+            "sizeDimension": "fun_exact",
+            "xVariationVisible": false,
+            "yVariationVisible": false,
+            "dataPrefix": "full_",
+            "configPrefix": "full_"
+        },
+        {
+            "name": "Quantum Open Challenge (Variational Quantum Eigensolver) - Time To Solution",
+            "moduleUoa": "challenge.vqe",
+            "xDimension": "T_ave",
+            "yDimension": "__energies",
+            "colorDimension": "_sample_number",
+            "sizeDimension": "t_ave",
+            "xVariationVisible": false,
+            "yVariationVisible": false,
+            "colorRange": ["#0000FF", "#00FFFF", "#00FF00", "#FFFF00", "#FF0000"],
+            "dataPrefix": "metrics_",
+            "configPrefix": "metrics_",
+            "tableProcessor": "CkRepoWidgetUtils.quantum.benchmarkTableProcessor",
+            "props": {
+                "__fun_key": "fun_exact",
+                "__time_key": "total_q_shots",
+                "__delta": 0.1,
+                "__prob": 0.8
+            },
+            "refLines": [
+                {
+                    "name": "H₂*",
+                    "dimension": "__energies",
+                    "get_value": "CkRepoWidgetUtils.quantum.get_exact_answer_qiskit_hydrogen"
+                },
+                {
+                    "name": "H₂",
+                    "dimension": "__energies",
+                    "get_value": "CkRepoWidgetUtils.quantum.get_exact_answer_hydrogen"
+                },
+                {
+                    "name": "He",
+                    "dimension": "__energies",
+                    "get_value": "CkRepoWidgetUtils.quantum.get_exact_answer_helium"
+                }
+            ]
+        },
+        {
+            "name": "Quantum Hackathon 2019-03-15 (Quantum Machine Learning : Oxford)",
+            "moduleUoa": "hackathon.20190315",
+            "xDimension": "problem_index",
+            "yDimension": "hours_since_start",
+            "sizeDimension": "training_accuracy",
+            "colorDimension": "test_accuracy",
+            "markerDimension": "team",
+            "colorRange": ["#0000ff", "#00ffff", "#00dd00", "#ffbb00", "#ff0000"],
+            "sizeRange": [4, 8],
+            "markerDimensionSets": {
+                "Polygons": ["triangle", "triangle_down", "rect", "pentagon", "hexagon", "diamond",  "star", "circle"]
+            },
+            "xVariationVisible": false,
+            "yVariationVisible": false,
+            "call_attribs": {
+            }
+        },
+        {
+            "name": "Quantum Hackathon 2019-01-27 (Quantum Machine Learning : Paris)",
+            "moduleUoa": "hackathon.20190127",
+            "xDimension": "problem_index",
+            "yDimension": "hours_since_start",
+            "sizeDimension": "training_accuracy",
+            "colorDimension": "test_accuracy",
+            "markerDimension": "team",
+            "colorRange": ["#0000ff", "#00ffff", "#00dd00", "#ffbb00", "#ff0000"],
+            "sizeRange": [4, 8],
+            "markerDimensionSets": {
+                "Polygons": ["triangle", "triangle_down", "rect", "pentagon", "hexagon", "diamond",  "star", "circle"]
+            },
+            "xVariationVisible": false,
+            "yVariationVisible": false,
+            "call_attribs": {
+            }
+        },
+        {
+            "name": "Quantum Hackathon 2018-10-06 (Variational Quantum Eigensolver on IBM) - Solution Convergence",
+            "moduleUoa": "hackathon.20181006",
+            "xDimension": "__fevs",
+            "yDimension": "__energies",
+            "colorDimension": "_point",
+            "sizeDimension": "fun_exact",
+            "xVariationVisible": false,
+            "yVariationVisible": false,
+            "dataPrefix": "full_",
+            "configPrefix": "full_",
+            "filters": {
+                "_platform": "local_qasm_simulator",
+                "_minimizer_method": "my_cobyla"
+            }
+        },
+        {
+            "name": "Quantum Hackathon 2018-10-06 (Variational Quantum Eigensolver on IBM) - Time To Solution",
+            "moduleUoa": "hackathon.20181006",
+            "xDimension": "T_ave",
+            "yDimension": "__energies",
+            "colorDimension": "_sample_number",
+            "sizeDimension": "t_ave",
+            "xVariationVisible": false,
+            "yVariationVisible": false,
+            "colorRange": ["#0000FF", "#00FFFF", "#00FF00", "#FFFF00", "#FF0000"],
+            "dataPrefix": "metrics_",
+            "configPrefix": "metrics_",
+            "tableProcessor": "CkRepoWidgetUtils.quantum.benchmarkTableProcessor",
+            "props": {
+                "__fun_key": "fun_exact",
+                "__time_key": "total_q_shots",
+                "__delta": 0.01,
+                "__prob": 0.8
+            },
+            "refLines": [
+                {
+                    "name": "H₂*",
+                    "dimension": "__energies",
+                    "get_value": "CkRepoWidgetUtils.quantum.get_exact_answer_qiskit_hydrogen"
+                },
+                {
+                    "name": "H₂",
+                    "dimension": "__energies",
+                    "get_value": "CkRepoWidgetUtils.quantum.get_exact_answer_hydrogen"
+                },
+                {
+                    "name": "He",
+                    "dimension": "__energies",
+                    "get_value": "CkRepoWidgetUtils.quantum.get_exact_answer_helium"
+                }
+            ],
+            "tooltipValues": ["T_ave", "t_ave"]
+        },
+        {
+            "name": "Quantum Hackathon 2018-06-15 (Variational Quantum Eigensolver on Rigetti) - Solution Convergence",
+            "moduleUoa": "hackathon.20180615",
+            "xDimension": "__fevs",
+            "yDimension": "__energies",
+            "colorDimension": "_point",
+            "sizeDimension": "fun_exact",
+            "xVariationVisible": false,
+            "yVariationVisible": false,
+            "dataPrefix": "full_",
+            "configPrefix": "full_",
+            "filters": {
+                "_platform": "8q-agave",
+                "_minimizer_method": "my_cobyla"
+            }
+        },
+        {
+            "name": "Quantum Hackathon 2018-06-15 (Variational Quantum Eigensolver on Rigetti) - Time To Solution",
+            "moduleUoa": "hackathon.20180615",
+            "xDimension": "T_ave",
+            "yDimension": "__energies",
+            "colorDimension": "_sample_number",
+            "sizeDimension": "t_ave",
+            "xVariationVisible": false,
+            "yVariationVisible": false,
+            "colorRange": ["#0000FF", "#00FFFF", "#00FF00", "#FFFF00", "#FF0000"],
+            "dataPrefix": "metrics_",
+            "configPrefix": "metrics_",
+            "tableProcessor": "CkRepoWidgetUtils.quantum.benchmarkTableProcessor",
+            "props": {
+                "__fun_key": "fun_exact",
+                "__time_key": "total_q_shots",
+                "__delta": 0.1,
+                "__prob": 0.5
+            }
+        }
+    ]
+}

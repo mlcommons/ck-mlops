@@ -1,0 +1,98 @@
+{
+  "backup_data_uid": "6ac244466493cbcd",
+  "build_compiler_vars": {},
+  "compile_deps": {
+    "library": {
+      "local": "yes",
+      "name": "NNTest library",
+      "sort": 2,
+      "tags": "lib,nntest"
+    }
+  },
+  "data_name": "gemm-pytorch",
+  "main_language": "python",
+  "no_compile": "yes",
+  "no_target_file": "yes",
+  "only_for_target_os_tags": [
+    "linux"
+  ],
+  "print_files_after_run": [
+    "tmp-stderr.tmp"
+  ],
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "default": {
+      "add_dataset_file_to_env": "yes",
+      "dataset_tags": [
+        "dataset",
+        "nntest",
+        "tensor-gemm"
+      ],
+      "ignore_return_code": "no",
+      "run_time": {
+        "fine_grain_timer_file": "tmp-ck-timer.json",
+        "output_invariant_of_repeat": "yes",
+        "post_process_cmds": [
+          "python $#ck_take_from_{script:7f480d3eaf7ce585}#$process.py"
+        ],
+        "post_process_via_ck": "yes",
+        "pre_process_via_ck": {
+          "data_uoa": "7f480d3eaf7ce585",
+          "module_uoa": "script",
+          "script_name": "process"
+        },
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../gemm.py",
+        "run_cmd_out1": "tmp-stdout.tmp",
+        "run_cmd_out2": "tmp-stderr.tmp",
+        "run_correctness_extra_keys_from_dataset_file_json": "yes",
+        "run_correctness_output_files": [
+          "tmp-ck-output.json"
+        ],
+        "run_correctness_vars": [
+          "CK_IN_SHAPE_N",
+          "CK_SEED"
+        ],
+        "run_input_files": [],
+        "run_output_files": [
+          "tmp-ck-timer.json",
+          "tmp-ck-output.bin",
+          "tmp-ck-output.json"
+        ]
+      }
+    }
+  },
+  "run_deps": {
+    "library": {
+      "local": "yes",
+      "name": "PyTorch",
+      "sort": 1,
+      "tags": "lib,pytorch"
+    },
+    "python": {
+      "local": "yes",
+      "name": "Python interpreter",
+      "sort": 0,
+      "tags": "compiler,python"
+    }
+  },
+  "run_vars": {
+    "CK_ABS_DIFF_THRESHOLD": 0.001,
+    "CK_IN_SHAPE_N": 1,
+    "CK_OUT_RAW_DATA": "tmp-ck-output.bin",
+    "CK_SEED": 42
+  },
+  "source_files": [
+    "gemm.py"
+  ],
+  "species": [
+    "0fb1facb344688fd"
+  ],
+  "tags": [
+    "nntest",
+    "gemm",
+    "pytorch",
+    "float32"
+  ],
+  "version": "1.0.0"
+}

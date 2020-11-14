@@ -1,0 +1,109 @@
+{
+  "dataset_files": [
+    "shape-3-299-299-3-32-2-0",
+    "shape-32-149-149-3-32-1-0",
+    "shape-32-147-147-3-64-1-1",
+    "shape-64-73-73-1-80-1-0",
+    "shape-768-17-17-1-128-1-0",
+    "shape-3-224-224-7-64-2-3",
+    "shape-64-56-56-1-64-1-0",
+    "shape-256-56-56-1-64-1-0",
+    "shape-1024-14-14-1-256-1-0",
+    "shape-2048-7-7-1-512-1-0",
+    "shape-3-227-227-11-96-4-0",
+    "shape-96-27-27-5-256-1-2",
+    "shape-256-13-13-3-384-1-1",
+    "shape-384-13-13-3-384-1-1",
+    "shape-384-13-13-3-256-1-1",
+    "shape-3-500-500-3-64-1-1",
+    "shape-64-250-250-3-128-1-1",
+    "shape-256-63-63-3-512-1-1",
+    "shape-3-227-227-7-64-2-3",
+    "shape-192-28-28-1-16-1-1",
+    "shape-16-28-28-5-32-1-2",
+    "shape-3-224-224-11-96-4-0",
+    "shape-384-6-6-3-1024-1-1",
+    "shape-128-112-112-3-128-1-1"
+  ],
+  "desc_dataset_files": {
+    "shape-1024-14-14-1-256-1-0": {
+      "name": "ResNet-50 res4c_branch2a input 14x14x1024 filter 1x1x256 stride 1 pad 0"
+    },
+    "shape-128-112-112-3-128-1-1": {
+      "name": "VGG-16 conv2_2 input 112x112x128 filter 3x3x128 stride 1 pad 1"
+    },
+    "shape-16-28-28-5-32-1-2": {
+      "name": "GoogLeNet inception_3a/5x5 input 28x28x16 filter 5x5x32 stride 1 pad 2"
+    },
+    "shape-192-28-28-1-16-1-1": {
+      "name": "GoogLeNet inception_3a/5x5_reduce input 28x28x192 filter 1x1x16 stride 1 pad 1"
+    },
+    "shape-2048-7-7-1-512-1-0": {
+      "name": "ResNet-50 res5c_branch2a input 7x7x2048 filter 1x1x512 stride 1 pad 0"
+    },
+    "shape-256-13-13-3-384-1-1": {
+      "name": "AlexNet conv3 input 13x13x256 filter 3x3x384 stride 1 pad 1"
+    },
+    "shape-256-56-56-1-64-1-0": {
+      "name": "ResNet-50 res2c_branch2a input 56x56x256 filter 1x1x64 stride 1 pad 0"
+    },
+    "shape-256-63-63-3-512-1-1": {
+      "name": "FCN-16s conv4_1 input 63x63x256 filter 3x3x512 stride 1 pad 1"
+    },
+    "shape-3-224-224-11-96-4-0": {
+      "name": "Network-in-Network conv1 input 224x224x3 filter 11x11x96 stride 4 pad 0"
+    },
+    "shape-3-224-224-7-64-2-3": {
+      "name": "ResNet-50 conv1 input 224x224x3 filter 7x7x64 stride 2 pad 3"
+    },
+    "shape-3-227-227-11-96-4-0": {
+      "name": "AlexNet conv1 input 227x227x3 filter 11x11x96 stride 4 pad 0"
+    },
+    "shape-3-227-227-7-64-2-3": {
+      "name": "GoogLeNet conv1/7x7_s2 input 227x227x3 filter 7x7x64 stride 2 pad 3"
+    },
+    "shape-3-299-299-3-32-2-0": {
+      "name": "Inception-v3 conv_conv2d input 299x299x3 filter 3x3x32 stride 2 pad 0"
+    },
+    "shape-3-500-500-3-64-1-1": {
+      "name": "FCN-16s conv1_1 input 500x500x3 filter 3x3x64 stride 1 pad 1"
+    },
+    "shape-32-147-147-3-64-1-1": {
+      "name": "Inception-v3 conv_2_2/conv2d input 147x147x32 filter 3x3x64 stride 1 pad 1"
+    },
+    "shape-32-149-149-3-32-1-0": {
+      "name": "Inception-v3 conv_1_1/conv2d input 149x149x32 filter 3x3x32 stride 1 pad 0"
+    },
+    "shape-384-13-13-3-256-1-1": {
+      "name": "AlexNet conv5 input 13x13x384 filter 3x3x256 stride 1 pad 1"
+    },
+    "shape-384-13-13-3-384-1-1": {
+      "name": "AlexNet conv4 input 13x13x384 filter 3x3x384 stride 1 pad 1"
+    },
+    "shape-384-6-6-3-1024-1-1": {
+      "name": "Network-in-Network conv4-1024 input 6x6x384 filter 3x3x1024 stride 1 pad 1"
+    },
+    "shape-64-250-250-3-128-1-1": {
+      "name": "FCN-16s conv2_1 input 250x250x64 filter 3x3x128 stride 1 pad 1"
+    },
+    "shape-64-56-56-1-64-1-0": {
+      "name": "ResNet-50 res2a_branch2a input 56x56x64 filter 1x1x64 stride 1 pad 0"
+    },
+    "shape-64-73-73-1-80-1-0": {
+      "name": "Inception-v3 conv_3_3/conv2d input 73x73x64 filter 1x1x80 stride 1 pad 0"
+    },
+    "shape-768-17-17-1-128-1-0": {
+      "name": "Inception-v3 mixed_4/tower_1_conv_conv2d input 17x17x768 filter 1x1x128 stride 1 pad 0"
+    },
+    "shape-96-27-27-5-256-1-2": {
+      "name": "AlexNet conv2 input 27x27x96 filter 5x5x256 stride 1 pad 2"
+    }
+  },
+  "tags": [
+    "dataset",
+    "nntest",
+    "tensor-conv",
+    "conv",
+    "convolution"
+  ]
+}

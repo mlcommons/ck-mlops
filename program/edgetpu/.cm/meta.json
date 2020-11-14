@@ -1,0 +1,29 @@
+{
+  "backup_data_uid": "56f42c795b754a09",
+  "data_name": "edgetpu",
+  "program": "yes",
+  "run_cmds": {
+    "experiments": {
+      "ignore_return_code": "no",
+      "run_time": {
+        "run_cmd_main": "../experiments.sh",
+        "run_cmd_out1": "stdout.log",
+        "run_cmd_out2": "stderr.log",
+        "run_output_files": [
+          "stdout.log",
+          "stderr.log"
+        ]
+      }
+    }
+  },
+  "run_deps": {
+    "libedgetpu": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "EdgeTPU library",
+      "sort": 110,
+      "tags": "libedgetpu,std"
+    }
+  },
+  "tags": []
+}

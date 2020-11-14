@@ -1,0 +1,45 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "extra_dir": "",
+    "force_ask_path": "yes",
+    "install_env": {
+      "ANNOTATION_URL": "https://cKnowledge.org/ai/data",
+      "IMAGE_URL": "https://cKnowledge.org/ai/data",
+      "LABELS_DIR": "annotations_trainval2017_small/annotations",
+      "TRAINVAL_OBJ_INSTANCES_ARCHIVE": "annotations_trainval2017_small.zip",
+      "VAL_DIR": "val2017_small",
+      "VAL_IMAGE_ARCHIVE": "val2017_small.zip"
+    },
+    "instances_train_file": "instances_train2017.json",
+    "instances_val_file": "instances_val2017.json",
+    "no_os_in_suggested_path": "yes",
+    "no_ver_in_suggested_path": "yes",
+    "version": "2017"
+  },
+  "deps": {},
+  "end_full_path": {
+    "linux": "val2017_small/000000013729.jpg",
+    "win": "val2017_small/000000013729.jpg"
+  },
+  "need_cpu_info": "no",
+  "package_extra_name": " - small (50 images )",
+  "process_script": "install",
+  "soft_uoa": "f80a27f548effb8c",
+  "suggested_path": "dataset-coco-2017-val-small",
+  "tags": [
+    "object-detection",
+    "dataset",
+    "coco",
+    "COCO",
+    "2017",
+    "coco.2017",
+    "COCO.2017",
+    "val",
+    "full",
+    "original",
+    "jpg",
+    "channel-stable",
+    "small"
+  ]
+}

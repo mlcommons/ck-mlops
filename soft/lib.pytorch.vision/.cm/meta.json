@@ -1,0 +1,18 @@
+{
+  "auto_detect": "yes",
+  "customize": {
+    "check_that_exists": "yes",
+    "ck_version": 10,
+    "env_prefix": "CK_ENV_LIB_PYTORCH_VISION",
+    "limit_recursion_dir_search": {
+      "linux": 5,
+      "win": 5
+    },
+    "soft_file_universal": "torchvision$#sep#$__init__.py"
+  },
+  "soft_name": "PyTorch Vision library",
+  "tags": [
+    "lib",
+    "pytorch-vision"
+  ]
+}

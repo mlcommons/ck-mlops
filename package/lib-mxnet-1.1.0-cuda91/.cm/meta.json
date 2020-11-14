@@ -1,0 +1,72 @@
+{
+  "customize": {
+    "extra_dir": "",
+    "install_env": {
+      "MXNET_EXTRA": "-cu91",
+      "MXNET_GPU": "YES",
+      "MXNET_PACKAGE_VER": "1.1.0"
+    },
+    "version": "1.1.0"
+  },
+  "deps": {
+    "compiler-cuda": {
+      "local": "yes",
+      "name": "CUDA compiler",
+      "sort": 30,
+      "tags": "compiler,lang-c-cuda",
+      "version_from": [
+        9,
+        1,
+        0
+      ],
+      "version_to": [
+        9,
+        1,
+        999
+      ]
+    },
+    "lib-cudnn": {
+      "local": "yes",
+      "name": "cuDNN library",
+      "sort": 40,
+      "tags": "lib,cudnn"
+    },
+    "python": {
+      "local": "yes",
+      "name": "Python",
+      "sort": 20,
+      "tags": "compiler,python"
+    }
+  },
+  "end_full_path_universal": "lib$#sep#$mxnet$#sep#$__init__.py",
+  "need_cpu_info": "yes",
+  "only_for_host_os_tags": [
+    "linux",
+    "windows"
+  ],
+  "only_for_target_os_tags": [
+    "linux",
+    "windows"
+  ],
+  "package_extra_name": " (prebuilt, cuda 9.1)",
+  "process_script": "install",
+  "soft_uoa": "73c2ba9aa134e3da",
+  "suggested_path": "mxnet-prebuilt-cuda91",
+  "tags": [
+    "lib",
+    "mxnet",
+    "mxnet-gpu",
+    "mxnet-cuda",
+    "v1.1.0",
+    "v1.1",
+    "v1",
+    "vprebuilt",
+    "vcuda",
+    "vcuda-91",
+    "channel-stable"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "720d42842c47ec84",
+    "module_uoa": "package"
+  }
+}

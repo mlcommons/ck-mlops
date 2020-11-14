@@ -1,0 +1,24 @@
+{
+  "auto_detect": "yes",
+  "customize": {
+    "add_to_path": "yes",
+    "check_that_exists": "yes",
+    "ck_version": 10,
+    "env_prefix": "CK_ENV_TOOL_WGET",
+    "limit_recursion_dir_search": {
+      "linux": 4,
+      "win": 4
+    },
+    "only_for_host_os_tags": [
+      "linux"
+    ],
+    "soft_file": {
+      "linux": "wget"
+    }
+  },
+  "soft_name": "wget",
+  "tags": [
+    "tool",
+    "wget"
+  ]
+}

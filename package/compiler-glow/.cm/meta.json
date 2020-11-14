@@ -1,0 +1,152 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "git_src_dir": "glow",
+    "install_env": {
+      "PACKAGE_BUILD_TYPE": "skip",
+      "PACKAGE_GIT": "YES",
+      "PACKAGE_GIT_SUBMODULES": "NO",
+      "PACKAGE_PATCH__DISABLE_WERROR": "",
+      "PACKAGE_SKIP_CLEAN_OBJ": "YES",
+      "PACKAGE_SKIP_CLEAN_SRC_DIR": "YES",
+      "PACKAGE_SKIP_LINUX_MAKE": "YES",
+      "PACKAGE_SUB_DIR": "glow",
+      "PACKAGE_SUB_DIR1": "glow",
+      "PACKAGE_URL": "https://github.com/pytorch/glow"
+    },
+    "no_ver_in_suggested_path": "yes",
+    "version": "master"
+  },
+  "deps": {
+    "cmake": {
+      "add_to_path": "no",
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "CMake tool",
+      "skip_from_bat": "yes",
+      "sort": 20,
+      "tags": "tool,cmake",
+      "version_from": [
+        3,
+        13,
+        3
+      ]
+    },
+    "compiler": {
+      "add_to_path": "no",
+      "local": "yes",
+      "name": "C++ compiler",
+      "sort": 10,
+      "tags": "compiler,lang-cpp"
+    },
+    "lib-boost": {
+      "local": "yes",
+      "name": "Boost library",
+      "sort": 70,
+      "tags": "lib,boost,without-python",
+      "version_from": [
+        1,
+        65,
+        1
+      ]
+    },
+    "lib-fmt": {
+      "add_to_path": "no",
+      "local": "yes",
+      "name": "fmt library",
+      "sort": 80,
+      "tags": "lib,fmt"
+    },
+    "lib-gflags": {
+      "local": "yes",
+      "name": "GFlags library",
+      "sort": 30,
+      "tags": "lib,gflags",
+      "version_from": [
+        2,
+        2,
+        0
+      ],
+      "version_to": [
+        2,
+        2,
+        99
+      ]
+    },
+    "lib-glog": {
+      "add_to_path": "no",
+      "local": "yes",
+      "name": "GLog library",
+      "sort": 40,
+      "tags": "lib,glog",
+      "version_from": [
+        0,
+        3,
+        5
+      ],
+      "version_to": [
+        0,
+        3,
+        5,
+        99
+      ]
+    },
+    "lib-llvm": {
+      "add_to_path": "no",
+      "local": "no",
+      "name": "LLVM libraries",
+      "sort": 90,
+      "tags": "llvm,source,v8"
+    },
+    "lib-protobuf": {
+      "local": "yes",
+      "name": "ProtoBuf host library 3.5.x (Linux)",
+      "sort": 60,
+      "tags": "lib,protobuf-host",
+      "update_tags_by_target_os_uoa": {
+        "linux-32": "v3.5",
+        "linux-64": "v3.5"
+      }
+    }
+  },
+  "end_full_path_universal": "install/bin/model-compiler",
+  "only_for_host_os_tags": [
+    "linux"
+  ],
+  "process_script": "install",
+  "soft_uoa": "4e4466d8f3331aa4",
+  "suggested_path": "compiler-glow",
+  "tags": [
+    "compiler",
+    "glow"
+  ],
+  "use_preprocess_scripts_from_another_entry": {
+    "data_uoa": "fd44428fbc77f77f",
+    "module_uoa": "84e27ad9dd12e734"
+  },
+  "use_scripts_from_another_entry": {
+    "data_uoa": "cd9ccc74060b3d18",
+    "module_uoa": "script"
+  },
+  "variations": {
+    "from.dividiti": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "dev",
+        "PACKAGE_URL": "git@github.com:dividiti/glow"
+      },
+      "extra_tags": [
+        "from.dividiti"
+      ],
+      "on_by_default": "no"
+    },
+    "from.pytorch": {
+      "extra_env": {
+        "PACKAGE_URL": "https://github.com/pytorch/glow"
+      },
+      "extra_tags": [
+        "from.pytorch"
+      ],
+      "on_by_default": "yes"
+    }
+  }
+}

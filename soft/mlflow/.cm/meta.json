@@ -1,0 +1,20 @@
+{
+  "auto_detect": "yes",
+  "customize": {
+    "check_that_exists": "yes",
+    "ck_version": 10,
+    "env_prefix": "CK_ENV_LIB_MLFLOW",
+    "limit_recursion_dir_search": {
+      "linux": 4
+    },
+    "soft_file": {
+      "linux": "mlflow/__init__.py",
+      "win": "mlflow/__init__.py"
+    }
+  },
+  "soft_name": "MLFlow",
+  "tags": [
+    "tool",
+    "mlflow"
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "check_exit_status": "yes",
+  "comment": "build TVM CUDA from master",
+  "customize": {
+    "extra_dir": "",
+    "git_src_dir": "src",
+    "install_env": {
+      "BUILD_RPC_RUNTIME": "OFF",
+      "PACKAGE_BUILD_TYPE": "make",
+      "PACKAGE_CONFIGURE_FLAGS": "",
+      "PACKAGE_CONFIGURE_FLAGS_LINUX": "",
+      "PACKAGE_COPY": "NO",
+      "PACKAGE_GIT": "YES",
+      "PACKAGE_GIT_CHECKOUT": "",
+      "PACKAGE_GIT_CLONE_FLAGS": "--recursive",
+      "PACKAGE_PATCH": "NO",
+      "PACKAGE_SKIP_BUILD_ERROR": "NO",
+      "PACKAGE_SKIP_CLEAN_INSTALL": "NO",
+      "PACKAGE_SKIP_CLEAN_OBJ": "NO",
+      "PACKAGE_SKIP_CLEAN_SRC_DIR": "NO",
+      "PACKAGE_SKIP_LINUX_MAKE": "YES",
+      "PACKAGE_SUB_DIR": "src",
+      "PACKAGE_URL": "https://github.com/dmlc/tvm.git",
+      "PYTHON_EXE": "python",
+      "SUBSTITUTE_ORIGINAL_PACKAGE_DIR": "$#path_to_cid=package:fdda38b07c848ec8#$",
+      "USE_CUDA": "ON"
+    },
+    "no_ver_in_suggested_path": "yes",
+    "use_git_revision": "yes",
+    "version": "master"
+  },
+  "deps": {
+    "compiler": {
+      "local": "yes",
+      "name": "C compiler",
+      "sort": 10,
+      "tags": "compiler,lang-c"
+    },
+    "compiler-cuda": {
+      "local": "yes",
+      "name": "CUDA compiler",
+      "sort": 30,
+      "tags": "compiler,lang-c-cuda"
+    },
+    "lib-cudnn": {
+      "local": "yes",
+      "name": "cuDNN library",
+      "sort": 40,
+      "tags": "lib,cudnn"
+    },
+    "python": {
+      "local": "yes",
+      "name": "Python",
+      "sort": 5,
+      "tags": "compiler,python"
+    }
+  },
+  "end_full_path_universal": "src$#sep#$build$#sep#$libtvm$#file_ext_dll#$",
+  "need_cpu_info": "yes",
+  "only_for_host_os_tags": [
+    "linux"
+  ],
+  "only_for_target_os_tags": [
+    "linux"
+  ],
+  "package_extra_name": " (cuda)",
+  "process_script": "install",
+  "soft_uoa": "158cbb3a6143dfa6",
+  "suggested_path": "lib-tvm-cuda",
+  "tags": [
+    "lib",
+    "tvm",
+    "vmaster",
+    "vsources",
+    "vcuda"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "cd9ccc74060b3d18",
+    "module_uoa": "script"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "auto_detect": "yes",
+  "customize": {
+    "check_that_exists": "yes",
+    "ck_version": 10,
+    "env_prefix": "CK_ENV_DATASET_IWSLT15_ENGLISH_VIETNAMESE_TF",
+    "limit_recursion_dir_search": {
+      "linux": 3,
+      "win": 3
+    },
+    "soft_file_universal": "train.vi"
+  },
+  "soft_name": "IWSLT15 English-Vietnamese dataset (all)",
+  "tags": [
+    "dataset",
+    "translation",
+    "raw",
+    "train",
+    "val",
+    "iwslt15",
+    "iwslt15-all",
+    "iwslt15-english-vietnamese",
+    "vietnamese"
+  ]
+}

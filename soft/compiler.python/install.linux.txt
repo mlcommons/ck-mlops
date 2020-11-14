@@ -1,0 +1,11 @@
+You can use package manager for your Linux distribution.
+
+== Ubuntu ==
+
+ $ sudo apt-get install python
+    or
+ $ sudo apt-get install python3
+
+
+You can also install Anaconda Python (scientific distribution) from the following website:
+* https://www.continuum.io/downloads

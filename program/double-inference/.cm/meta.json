@@ -1,0 +1,104 @@
+{
+  "backup_data_uid": "b4b10801ea9814ec",
+  "data_name": "double-inference",
+  "no_compile": "yes",
+  "no_target_file": "yes",
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "default": {
+      "ignore_return_code": "no",
+      "run_time": {
+        "fine_grain_timer_file": "tmp-ck-timer.json",
+        "post_process_via_ck": {
+          "data_uoa": "e604d4895f811451",
+          "module_uoa": "program",
+          "script_name": "postprocess"
+        },
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../detect.py",
+        "run_output_files": [
+          "tmp-ck-timer.json"
+        ]
+      }
+    }
+  },
+  "run_deps": {
+    "dataset": {
+      "local": "yes",
+      "name": "Object Detection dataset",
+      "no_tags": "preprocessed",
+      "sort": 20,
+      "tags": "dataset,object-detection"
+    },
+    "lib-python-matplotlib": {
+      "local": "yes",
+      "name": "Python Matplotlib library",
+      "sort": 45,
+      "tags": "lib,python-package,matplotlib"
+    },
+    "lib-python-numpy": {
+      "local": "yes",
+      "name": "Python NumPy library",
+      "sort": 60,
+      "tags": "lib,python-package,numpy"
+    },
+    "lib-python-opencv": {
+      "local": "yes",
+      "name": "Python opencv library",
+      "sort": 50,
+      "tags": "lib,python-package,cv2"
+    },
+    "lib-python-pillow": {
+      "local": "yes",
+      "name": "Python Pillow library",
+      "sort": 50,
+      "tags": "lib,python-package,pillow"
+    },
+    "lib-tensorflow": {
+      "local": "yes",
+      "name": "TensorFlow library",
+      "no_tags": "tensorflow_cc,vstatic,source",
+      "sort": 70,
+      "tags": "lib,tensorflow"
+    },
+    "python": {
+      "local": "yes",
+      "name": "Python interpreter",
+      "sort": 5,
+      "tags": "compiler,python"
+    },
+    "tool-coco": {
+      "local": "yes",
+      "name": "Python API for COCO",
+      "sort": 40,
+      "tags": "tool,coco"
+    },
+    "weights": {
+      "local": "yes",
+      "name": "TensorFlow Object Detection model",
+      "sort": 30,
+      "tags": "model,tf,object-detection"
+    },
+    "weights_2net": {
+      "local": "yes",
+      "name": "TensorFlow Object Detection model",
+      "sort": 30,
+      "tags": "model,tf,object-detection,alt-namespace"
+    }
+  },
+  "run_vars": {
+    "CK_BATCH_COUNT": 1,
+    "CK_METRIC_TYPE": "",
+    "CK_SAVE_IMAGES": "NO",
+    "CK_SILENT_MODE": "NO",
+    "CK_SKIP_IMAGES": 0,
+    "CK_TF_CPU_NUM_OF_PROCESSORS": 0,
+    "CK_TF_GPU_MEMORY_PERCENT": 50
+  },
+  "tags": [
+    "object-detection",
+    "tf",
+    "lang-python"
+  ],
+  "template_type": "Object Detection via TensorFlow (Python)"
+}

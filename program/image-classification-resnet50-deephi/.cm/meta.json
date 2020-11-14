@@ -1,0 +1,108 @@
+{
+  "backup_data_uid": "940f78403ec557f1",
+  "build_compiler_vars": {},
+  "compile_deps": {
+    "compiler": {
+      "local": "yes",
+      "name": "C++ compiler",
+      "sort": 10,
+      "tags": "compiler,lang-cpp"
+    },
+    "lib-opencv": {
+      "local": "yes",
+      "name": "OpenCV library",
+      "sort": 5,
+      "tags": "lib,opencv"
+    }
+  },
+  "compile_vars": {
+    "CK_DEEPHI_PROGRAM_ELF_DIR": "/root/samples/resnet50/model"
+  },
+  "compiler_add_include_as_env_from_deps": [
+    "CK_ENV_LIB_STDCPP_INCLUDE",
+    "CK_ENV_LIB_STDCPP_INCLUDE_EXTRA"
+  ],
+  "compiler_env": "CK_CXX",
+  "compiler_flags_as_env": "$<<CK_COMPILER_FLAG_CPP11>>$ -O2 -Wall -Wpointer-arith -ffast-math -mcpu=cortex-a53",
+  "data_name": "image-classification-resnet50-deephi",
+  "extra_ld_vars": "$<<CK_DEEPHI_PROGRAM_ELF_DIR>>$/dpu_resnet50_0.elf $<<CK_DEEPHI_PROGRAM_ELF_DIR>>$/dpu_resnet50_2.elf -lhineon -ln2cube -ldputils $<<CK_ENV_LIB_OPENCV_LFLAG_IMGCODECS>>$ $<<CK_ENV_LIB_OPENCV_LFLAG_HIGHGUI>>$",
+  "linker_add_lib_as_env": [
+    "CK_CXX_EXTRA",
+    "CK_ENV_LIB_STDCPP_STATIC"
+  ],
+  "main_language": "cpp",
+  "print_files_after_run": [
+    "stderr.log"
+  ],
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "default": {
+      "ignore_return_code": "no",
+      "run_time": {
+        "run_cmd_main": "$#BIN_FILE#$",
+        "run_cmd_out1": "stdout.log",
+        "run_cmd_out2": "stderr.log",
+        "run_output_files": [
+          "stdout.log",
+          "stderr.log"
+        ]
+      }
+    },
+    "imagenet": {
+      "ignore_return_code": "no",
+      "run_time": {
+        "fine_grain_timer_file": "performance-accuracy.json",
+        "params": {
+          "debug": "yes"
+        },
+        "post_process_cmds": [
+          "python $#ck_take_from_{script:249d7b5e6b5b89f9}#$postprocess.py"
+        ],
+        "post_process_via_ck": "yes",
+        "run_cmd_main": "$#BIN_FILE#$",
+        "run_cmd_out1": "stdout.log",
+        "run_cmd_out2": "stderr.log",
+        "run_output_files": [
+          "performance-accuracy.json",
+          "stdout.log",
+          "stderr.log"
+        ]
+      }
+    }
+  },
+  "run_deps": {
+    "dataset-imagenet-aux": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "ImageNet dataset (aux)",
+      "only_for_cmd": [
+        "imagenet"
+      ],
+      "sort": 20,
+      "tags": "dataset,imagenet,aux"
+    },
+    "dataset-imagenet-val": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "ImageNet dataset (val)",
+      "only_for_cmd": [
+        "imagenet"
+      ],
+      "sort": 30,
+      "tags": "dataset,imagenet,val"
+    }
+  },
+  "run_vars": {},
+  "skip_bin_ext": "yes",
+  "source_files": [
+    "main.cc"
+  ],
+  "tags": [
+    "deephi",
+    "image-classification",
+    "resnet50",
+    "lang-cpp"
+  ],
+  "target_file": "resnet50"
+}

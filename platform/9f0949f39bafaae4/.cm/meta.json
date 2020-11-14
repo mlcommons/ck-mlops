@@ -1,0 +1,16 @@
+{
+  "features": {
+    "cost": [
+      {
+        "currency": "EUR",
+        "date": "20170909",
+        "desc": "Samsung Samsung Galaxy S6 edge 32Gb",
+        "price": 385,
+        "url": "https://www.fnac.com/Samsung-Samsung-Galaxy-S6-edge-SM-G925F-32Go-4G-Or/a9280588/w-4"
+      }
+    ],
+    "model": "SM-G925F",
+    "name": "SAMSUNG SM-G925F",
+    "vendor": "SAMSUNG"
+  }
+}

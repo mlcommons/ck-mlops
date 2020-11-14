@@ -1,0 +1,376 @@
+{
+  "backup_data_uid": "a5d80d4f3a97d83a",
+  "build_compiler_vars": {},
+  "compile_cmds": {
+    "default": {
+      "cmd": "../ck-compile$#script_ext#$"
+    }
+  },
+  "compile_deps": {
+    "compiler": {
+      "local": "yes",
+      "name": "C++ compiler",
+      "sort": 5,
+      "tags": "compiler,lang-cpp"
+    },
+    "lib-opencl": {
+      "local": "yes",
+      "name": "OpenCL Library",
+      "skip-installed": {
+        "android": "yes"
+      },
+      "sort": 20,
+      "tags": "lib,opencl"
+    },
+    "library": {
+      "local": "yes",
+      "name": "ARM Compute Library (OpenCL)",
+      "sort": -5,
+      "tags": "lib,arm-compute-library,vopencl"
+    },
+    "scons": {
+      "local": "yes",
+      "name": "Scons",
+      "sort": 0,
+      "tags": "tool,scons"
+    }
+  },
+  "compile_vars": {
+    "ARCH": "arm64-v8a",
+    "BENCHMARK_TESTS": 1,
+    "BUILD": "native",
+    "CPPTHREADS": 1,
+    "DEBUG": 0,
+    "EMBED_KERNELS": 0,
+    "EXAMPLES": 1,
+    "EXTRA_CXX_FLAGS": "",
+    "J": 4,
+    "MALI": 0,
+    "NEON": 1,
+    "OPENCL": 1,
+    "OPENMP": 0,
+    "OS": "",
+    "PMU": 0,
+    "TIMERS": 0,
+    "VALIDATION_TESTS": 1,
+    "WERROR": 1
+  },
+  "compiler_env": "CK_CXX",
+  "data_name": "test-armcl-opencl",
+  "main_language": "cpp",
+  "only_for_target_os_tags": [
+    "android",
+    "linux"
+  ],
+  "print_files_after_run": [
+    "tmp-stdout.tmp"
+  ],
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "benchmark-opencl-alexnet": {
+      "run_time": {
+        "need_compute_device": "opencl",
+        "run_cmd_main": "../ck-benchmark-opencl$#script_ext#$",
+        "run_cmd_out1": "tmp-stdout.tmp",
+        "run_cmd_out2": "tmp-stderr.tmp",
+        "run_input_files": [],
+        "run_set_env2": {
+          "ARGS": "1",
+          "EXECUTABLE": "benchmark_graph_alexnet",
+          "INSTRUMENTS": "WALL_CLOCK_TIMER_MS,OPENCL_TIMER_MS",
+          "ITERATIONS": 10
+        }
+      }
+    },
+    "benchmark-opencl-googlenet": {
+      "run_time": {
+        "need_compute_device": "opencl",
+        "run_cmd_main": "../ck-benchmark-opencl$#script_ext#$",
+        "run_cmd_out1": "tmp-stdout.tmp",
+        "run_cmd_out2": "tmp-stderr.tmp",
+        "run_input_files": [],
+        "run_set_env2": {
+          "ARGS": "1",
+          "EXECUTABLE": "benchmark_graph_googlenet",
+          "INSTRUMENTS": "WALL_CLOCK_TIMER_MS,OPENCL_TIMER_MS",
+          "ITERATIONS": 10
+        }
+      }
+    },
+    "benchmark-opencl-mobilenet-0.75_160": {
+      "run_time": {
+        "need_compute_device": "opencl",
+        "run_cmd_main": "../ck-benchmark-opencl$#script_ext#$",
+        "run_cmd_out1": "tmp-stdout.tmp",
+        "run_cmd_out2": "tmp-stderr.tmp",
+        "run_input_files": [],
+        "run_set_env2": {
+          "ARGS": "1,1",
+          "EXECUTABLE": "benchmark_graph_mobilenet",
+          "INSTRUMENTS": "WALL_CLOCK_TIMER_MS",
+          "ITERATIONS": 10
+        }
+      }
+    },
+    "benchmark-opencl-mobilenet-1.0_224": {
+      "run_time": {
+        "need_compute_device": "opencl",
+        "run_cmd_main": "../ck-benchmark-opencl$#script_ext#$",
+        "run_cmd_out1": "tmp-stdout.tmp",
+        "run_cmd_out2": "tmp-stderr.tmp",
+        "run_input_files": [],
+        "run_set_env2": {
+          "ARGS": "1,0",
+          "EXECUTABLE": "benchmark_graph_mobilenet",
+          "INSTRUMENTS": "WALL_CLOCK_TIMER_MS",
+          "ITERATIONS": 10
+        }
+      }
+    },
+    "benchmark-opencl-squeezenet": {
+      "run_time": {
+        "need_compute_device": "opencl",
+        "run_cmd_main": "../ck-benchmark-opencl$#script_ext#$",
+        "run_cmd_out1": "tmp-stdout.tmp",
+        "run_cmd_out2": "tmp-stderr.tmp",
+        "run_input_files": [],
+        "run_set_env2": {
+          "ARGS": "1",
+          "EXECUTABLE": "benchmark_graph_squeezenet",
+          "INSTRUMENTS": "WALL_CLOCK_TIMER_MS,OPENCL_TIMER_MS",
+          "ITERATIONS": 10
+        }
+      }
+    },
+    "benchmark-opencl-vgg16": {
+      "run_time": {
+        "need_compute_device": "opencl",
+        "run_cmd_main": "../ck-benchmark-opencl$#script_ext#$",
+        "run_cmd_out1": "tmp-stdout.tmp",
+        "run_cmd_out2": "tmp-stderr.tmp",
+        "run_input_files": [],
+        "run_set_env2": {
+          "ARGS": "1",
+          "EXECUTABLE": "benchmark_graph_vgg16",
+          "INSTRUMENTS": "WALL_CLOCK_TIMER_MS,OPENCL_TIMER_MS",
+          "ITERATIONS": 10
+        }
+      }
+    },
+    "benchmark-opencl-vgg19": {
+      "run_time": {
+        "need_compute_device": "opencl",
+        "run_cmd_main": "../ck-benchmark-opencl$#script_ext#$",
+        "run_cmd_out1": "tmp-stdout.tmp",
+        "run_cmd_out2": "tmp-stderr.tmp",
+        "run_input_files": [],
+        "run_set_env2": {
+          "ARGS": "1",
+          "EXECUTABLE": "benchmark_graph_vgg19",
+          "INSTRUMENTS": "WALL_CLOCK_TIMER_MS,OPENCL_TIMER_MS",
+          "ITERATIONS": 10
+        }
+      }
+    },
+    "help-benchmark": {
+      "run_time": {
+        "run_cmd_main": "LD_LIBRARY_PATH=${CK_ENV_LIB_ARMCL_SRC}/build:${LD_LIBRARY_PATH} ${EXECUTABLE} --help",
+        "run_cmd_out1": "",
+        "run_cmd_out2": "",
+        "run_input_files": [],
+        "run_set_env2": {
+          "EXECUTABLE": "arm_compute_benchmark"
+        }
+      }
+    },
+    "help-validation": {
+      "run_time": {
+        "run_cmd_main": "LD_LIBRARY_PATH=${CK_ENV_LIB_ARMCL_SRC}/build:${LD_LIBRARY_PATH} ${EXECUTABLE} --help",
+        "run_cmd_out1": "",
+        "run_cmd_out2": "",
+        "run_input_files": [],
+        "run_set_env2": {
+          "EXECUTABLE": "arm_compute_validation"
+        }
+      }
+    },
+    "list-tests-benchmark": {
+      "run_time": {
+        "run_cmd_main": "../ck-run$#script_ext#$ --list-tests",
+        "run_cmd_out1": "",
+        "run_cmd_out2": "",
+        "run_input_files": [],
+        "run_set_env2": {
+          "EXECUTABLE": "arm_compute_benchmark"
+        }
+      }
+    },
+    "list-tests-validation": {
+      "run_time": {
+        "run_cmd_main": "../ck-run$#script_ext#$ --list-tests",
+        "run_cmd_out1": "",
+        "run_cmd_out2": "",
+        "run_input_files": [],
+        "run_set_env2": {
+          "EXECUTABLE": "arm_compute_validation"
+        }
+      }
+    },
+    "run-benchmark": {
+      "run_time": {
+        "fine_grain_timer_file": "tmp-ck-timer.json",
+        "need_compute_device": "opencl",
+        "post_process_cmds": [
+          "python $#ck_take_from_{d70d4973a7446684}#$process.py"
+        ],
+        "post_process_via_ck": "yes",
+        "run_cmd_main": "../ck-run$#script_ext#$",
+        "run_cmd_out1": "tmp-stdout.tmp",
+        "run_cmd_out2": "tmp-stderr.tmp",
+        "run_input_files": [],
+        "run_output_files": [
+          "tmp-ck-timer.json"
+        ],
+        "run_set_env2": {
+          "EXECUTABLE": "arm_compute_benchmark"
+        }
+      }
+    },
+    "run-opencl-alexnet": {
+      "run_time": {
+        "need_compute_device": "opencl",
+        "run_cmd_main": "../ck-run-opencl$#script_ext#$",
+        "run_cmd_out1": "tmp-stdout.tmp",
+        "run_cmd_out2": "tmp-stderr.tmp",
+        "run_input_files": [],
+        "run_set_env2": {
+          "ARM_COMPUTE_TARGET": 1,
+          "EXECUTABLE": "graph_alexnet"
+        }
+      }
+    },
+    "run-opencl-googlenet": {
+      "run_time": {
+        "need_compute_device": "opencl",
+        "run_cmd_main": "../ck-run-opencl$#script_ext#$",
+        "run_cmd_out1": "tmp-stdout.tmp",
+        "run_cmd_out2": "tmp-stderr.tmp",
+        "run_input_files": [],
+        "run_set_env2": {
+          "ARM_COMPUTE_TARGET": 1,
+          "EXECUTABLE": "graph_googlenet"
+        }
+      }
+    },
+    "run-opencl-mobilenet": {
+      "run_time": {
+        "need_compute_device": "opencl",
+        "run_cmd_main": "../ck-run-opencl$#script_ext#$",
+        "run_cmd_out1": "tmp-stdout.tmp",
+        "run_cmd_out2": "tmp-stderr.tmp",
+        "run_input_files": [],
+        "run_set_env2": {
+          "ARM_COMPUTE_TARGET": 1,
+          "EXECUTABLE": "graph_mobilenet"
+        }
+      }
+    },
+    "run-opencl-squeezenet": {
+      "run_time": {
+        "need_compute_device": "opencl",
+        "run_cmd_main": "../ck-run-opencl$#script_ext#$",
+        "run_cmd_out1": "tmp-stdout.tmp",
+        "run_cmd_out2": "tmp-stderr.tmp",
+        "run_input_files": [],
+        "run_set_env2": {
+          "ARM_COMPUTE_TARGET": 1,
+          "EXECUTABLE": "graph_squeezenet"
+        }
+      }
+    },
+    "run-opencl-vgg16": {
+      "run_time": {
+        "need_compute_device": "opencl",
+        "run_cmd_main": "../ck-run-opencl$#script_ext#$",
+        "run_cmd_out1": "tmp-stdout.tmp",
+        "run_cmd_out2": "tmp-stderr.tmp",
+        "run_input_files": [],
+        "run_set_env2": {
+          "ARM_COMPUTE_TARGET": 1,
+          "EXECUTABLE": "graph_vgg16"
+        }
+      }
+    },
+    "run-opencl-vgg19": {
+      "run_time": {
+        "need_compute_device": "opencl",
+        "run_cmd_main": "../ck-run-opencl$#script_ext#$",
+        "run_cmd_out1": "tmp-stdout.tmp",
+        "run_cmd_out2": "tmp-stderr.tmp",
+        "run_input_files": [],
+        "run_set_env2": {
+          "ARM_COMPUTE_TARGET": 1,
+          "EXECUTABLE": "graph_vgg19"
+        }
+      }
+    },
+    "run-validation": {
+      "run_time": {
+        "need_compute_device": "opencl",
+        "run_cmd_main": "../ck-run$#script_ext#$",
+        "run_cmd_out1": "tmp-stdout.tmp",
+        "run_cmd_out2": "tmp-stderr.tmp",
+        "run_input_files": [],
+        "run_set_env2": {
+          "EXECUTABLE": "arm_compute_validation"
+        }
+      }
+    },
+    "tune-opencl-mobilenet-0.75_160": {
+      "run_time": {
+        "need_compute_device": "opencl",
+        "run_cmd_main": "../ck-benchmark-opencl$#script_ext#$",
+        "run_cmd_out1": "tmp-stdout.tmp",
+        "run_cmd_out2": "tmp-stderr.tmp",
+        "run_input_files": [],
+        "run_set_env2": {
+          "ARGS": "2,1",
+          "EXECUTABLE": "benchmark_graph_mobilenet",
+          "INSTRUMENTS": "WALL_CLOCK_TIMER_MS",
+          "ITERATIONS": 10
+        }
+      }
+    },
+    "tune-opencl-mobilenet-1.0_224": {
+      "run_time": {
+        "need_compute_device": "opencl",
+        "run_cmd_main": "../ck-benchmark-opencl$#script_ext#$",
+        "run_cmd_out1": "tmp-stdout.tmp",
+        "run_cmd_out2": "tmp-stderr.tmp",
+        "run_input_files": [],
+        "run_set_env2": {
+          "ARGS": "2,0",
+          "EXECUTABLE": "benchmark_graph_mobilenet",
+          "INSTRUMENTS": "WALL_CLOCK_TIMER_MS",
+          "ITERATIONS": 10
+        }
+      }
+    }
+  },
+  "run_vars": {
+    "FILTER": "",
+    "SEED": 42
+  },
+  "skip_bin_ext": "yes",
+  "tags": [
+    "armcl",
+    "arm-compute-library",
+    "test",
+    "benchmark",
+    "validation",
+    "vopencl"
+  ],
+  "target_file": "arm_compute_validation",
+  "use_compile_script": "yes"
+}

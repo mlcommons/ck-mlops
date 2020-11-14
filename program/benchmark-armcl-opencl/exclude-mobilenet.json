@@ -1,0 +1,5 @@
+{
+  "compiler_vars":{
+    "EXCLUDE_MOBILENET":1
+  }
+}

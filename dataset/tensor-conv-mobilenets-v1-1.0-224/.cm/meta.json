@@ -1,0 +1,61 @@
+{
+  "dataset_files": [
+    "shape-3-224-224-3-32-2-0",
+    "shape-32-112-112-1-64-1-0",
+    "shape-64-56-56-1-128-1-0",
+    "shape-128-56-56-1-128-1-0",
+    "shape-128-28-28-1-256-1-0",
+    "shape-256-28-28-1-256-1-0",
+    "shape-256-14-14-1-512-1-0",
+    "shape-512-14-14-1-512-1-0",
+    "shape-512-7-7-1-1024-1-0",
+    "shape-1024-7-7-1-1024-1-0",
+    "shape-1024-1-1-1-1001-1-0"
+  ],
+  "desc_dataset_files": {
+    "shape-1024-1-1-1-1001-1-0": {
+      "name": "MobileNet_1.0_224 Logits_Conv2d_1c_1x1 input 1x1x1024 filter 1x1x1001 stride 1 pad 0"
+    },
+    "shape-1024-7-7-1-1024-1-0": {
+      "name": "MobileNet_1.0_224 Conv2d_13 input 7x7x1024 filter 1x1x1024 stride 1 pad 0"
+    },
+    "shape-128-28-28-1-256-1-0": {
+      "name": "MobileNet_1.0_224 Conv2d_4 input 28x28x128 filter 1x1x256 stride 1 pad 0"
+    },
+    "shape-128-56-56-1-128-1-0": {
+      "name": "MobileNet_1.0_224 Conv2d_3 input 56x56x128 filter 1x1x128 stride 1 pad 0"
+    },
+    "shape-256-14-14-1-512-1-0": {
+      "name": "MobileNet_1.0_224 Conv2d_6 input 14x14x256 filter 1x1x512 stride 1 pad 0"
+    },
+    "shape-256-28-28-1-256-1-0": {
+      "name": "MobileNet_1.0_224 Conv2d_5 input 28x28x256 filter 1x1x256 stride 1 pad 0"
+    },
+    "shape-3-224-224-3-32-2-0": {
+      "name": "MobileNet_1.0_224 Conv2d_0 input 224x224x3 filter 3x3x32 stride 2 pad 0"
+    },
+    "shape-32-112-112-1-64-1-0": {
+      "name": "MobileNet_1.0_224 Conv2d_1 input 112x112x32 filter 1x1x64 stride 1 pad 0"
+    },
+    "shape-512-14-14-1-512-1-0": {
+      "name": "MobileNet_1.0_224 Conv2d_7 input 14x14x512 filter 1x1x512 stride 1 pad 0"
+    },
+    "shape-512-7-7-1-1024-1-0": {
+      "name": "MobileNet_1.0_224 Conv2d_12 input 7x7x512 filter 1x1x1024 stride 1 pad 0"
+    },
+    "shape-64-56-56-1-128-1-0": {
+      "name": "MobileNet_1.0_224 Conv2d_2 input 56x56x64 filter 1x1x128 stride 1 pad 0"
+    }
+  },
+  "tags": [
+    "dataset",
+    "nntest",
+    "tensor-conv",
+    "tensor-conv-mobilenets",
+    "conv",
+    "convolution",
+    "mobilenets",
+    "mobilenets-v1",
+    "mobilenets-v1-1.0-224"
+  ]
+}

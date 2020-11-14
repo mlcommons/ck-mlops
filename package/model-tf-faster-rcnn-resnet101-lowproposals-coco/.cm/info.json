@@ -1,0 +1,16 @@
+{
+  "backup_data_uid": "38551054ceabf2e2",
+  "backup_module_uid": "1dc07ee0f4742028",
+  "backup_module_uoa": "package",
+  "control": {
+    "engine": "CK",
+    "iso_datetime": "2020-11-14T21:43:49.117163",
+    "version": [
+      "1",
+      "17",
+      "0",
+      "1"
+    ]
+  },
+  "data_name": "model-tf-faster-rcnn-resnet101-lowproposals-coco"
+}

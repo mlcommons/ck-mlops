@@ -1,0 +1,34 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "install_env": {
+      "PACKAGE_GIT": "YES",
+      "PACKAGE_SKIP_LINUX_MAKE": "YES",
+      "PACKAGE_URL": "https://github.com/ARM-software/ML-examples.git"
+    },
+    "no_os_in_suggested_path": "yes",
+    "no_ver_in_suggested_path": "no",
+    "version": "master"
+  },
+  "end_full_path": {
+    "linux": "ML-examples/armnn-mnist/model/simple_mnist_tf.prototxt"
+  },
+  "only_for_host_os_tags": [
+    "linux"
+  ],
+  "only_for_target_os_tags": [
+    "linux"
+  ],
+  "process_script": "install",
+  "soft_uoa": "41ea42ff728bfb59",
+  "suggested_path": "arm-software-ml-examples",
+  "tags": [
+    "armnn",
+    "dataset",
+    "model"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "cd9ccc74060b3d18",
+    "module_uoa": "script"
+  }
+}

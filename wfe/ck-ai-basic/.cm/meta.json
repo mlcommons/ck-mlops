@@ -1,0 +1,40 @@
+{
+  "extra_html_after_menu": "",
+  "top_menu": [
+    {
+      "name": "Home",
+      "new_window": "yes",
+      "url": "http://cKnowledge.org/repo"
+    },
+    {
+      "default": "yes",
+      "module_uoa": "",
+      "module_uoas": [
+        ""
+      ],
+      "name": "CK JSON API for unified AI",
+      "native_action": "show",
+      "native_module_uoa": "advice",
+      "url_extra": "action=index&module_uoa=wfe&native_action=show&native_module_uoa=advice"
+    },
+    {
+      "module_uoa": "model.image.classification",
+      "module_uoas": [
+        "model.image.classification",
+        "42b9a1221eb50259"
+      ],
+      "name": "Collective training set",
+      "url_extra": "data_uoa=collective_training_set"
+    },
+    {
+      "name": "Get CK workflow framework",
+      "new_window": "yes",
+      "url": "https://github.com/ctuning/ck"
+    },
+    {
+      "name": "About",
+      "new_window": "yes",
+      "url": "http://cKnowledge.org/ai"
+    }
+  ]
+}

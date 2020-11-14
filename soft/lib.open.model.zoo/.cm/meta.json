@@ -1,0 +1,25 @@
+{
+  "auto_detect": "yes",
+  "customize": {
+    "check_that_exists": "yes",
+    "env_prefix": "CK_ENV_LIB_OPEN_MODEL_ZOO",
+    "limit_recursion_dir_search": {
+      "linux": 1
+    },
+    "soft_file": {
+      "linux": "detection_analyzer.py"
+    },
+    "soft_path_example": {
+      "linux": "lib/accuracy_checker/data_analyzer/detection_analyzer.py"
+    }
+  },
+  "soft_name": "Open Model Zoo repository",
+  "tags": [
+    "lib",
+    "open-model-zoo",
+    "model-zoo",
+    "model",
+    "zoo",
+    "intel"
+  ]
+}

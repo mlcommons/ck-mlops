@@ -1,0 +1,48 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "file_calibration_256": "imagenet_256/calibration.txt",
+    "file_calibration_320": "imagenet_320/calibration.txt",
+    "force_ask_path": "no",
+    "install_env": {
+      "IMAGE_ARCHIVE": "ResNet50.tar.gz",
+      "IMAGE_FILE": "ResNet50.tar.gz",
+      "IMAGE_HASH_CALCULATOR": "sha1sum",
+      "IMAGE_HASH_REF": "9b099d20302c8bd8abfaca7311eb08d01596e7f7",
+      "IMAGE_URL": "http://www.deephi.com/assets/ResNet50.tar.gz"
+    },
+    "no_os_in_suggested_path": "yes",
+    "no_ver_in_suggested_path": "no",
+    "skip_file_check": "yes"
+  },
+  "end_full_path": {
+    "linux": "data/imagenet_256/calibration.txt",
+    "win": "data/imagenet_256/calibration.txt"
+  },
+  "only_for_host_os_tags": [
+    "windows",
+    "linux"
+  ],
+  "only_for_target_os_tags": [
+    "windows",
+    "linux"
+  ],
+  "package_extra_name": "",
+  "params": {
+    "dataset_name": "imagenet"
+  },
+  "process_script": "download",
+  "soft_uoa": "f45b695201df6d04",
+  "suggested_path": "deephi-calibration-images",
+  "tags": [
+    "deephi",
+    "calibration",
+    "images",
+    "channel-stable"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "download-deephi-images",
+    "module_uoa": "script",
+    "repo_uoa": "ck-deephi"
+  }
+}

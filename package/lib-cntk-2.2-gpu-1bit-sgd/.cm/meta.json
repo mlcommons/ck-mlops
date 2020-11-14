@@ -1,0 +1,60 @@
+{
+  "customize": {
+    "extra_dir": "",
+    "install_env": {
+      "CNTK_PACKAGE_TYPE": "GPU-1bit-SGD",
+      "CNTK_PACKAGE_VER": "2.2"
+    },
+    "version": "2.2"
+  },
+  "deps": {
+    "compiler-cuda": {
+      "local": "yes",
+      "name": "CUDA compiler",
+      "sort": 30,
+      "tags": "compiler,lang-c-cuda",
+      "version_from": [
+        8,
+        0,
+        0
+      ]
+    },
+    "python": {
+      "local": "yes",
+      "name": "Python",
+      "sort": 20,
+      "tags": "compiler,python"
+    }
+  },
+  "end_full_path_universal": "lib$#sep#$cntk$#sep#$__init__.py",
+  "need_cpu_info": "yes",
+  "only_for_host_os_tags": [
+    "linux",
+    "windows"
+  ],
+  "only_for_target_os_tags": [
+    "linux",
+    "windows"
+  ],
+  "package_extra_name": " (prebuilt, gpu 1bit sgd)",
+  "process_script": "install",
+  "soft_uoa": "71c4a94768b7bbe1",
+  "suggested_path": "cntk-prebuilt-gpu-1bit-sgd",
+  "tags": [
+    "lib",
+    "cntk",
+    "cntk-gpu",
+    "v2.2",
+    "v2",
+    "vprebuilt",
+    "vgpu",
+    "vgpu-1bit",
+    "vgpu-1bit-sgd",
+    "vcuda",
+    "channel-stable"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "cc81d4c8da7a472e",
+    "module_uoa": "package"
+  }
+}

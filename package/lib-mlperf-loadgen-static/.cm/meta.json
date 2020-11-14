@@ -1,0 +1,80 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "no_ver_in_suggested_path": "yes",
+    "version": "master"
+  },
+  "deps": {
+    "cmake": {
+      "add_to_path": "no",
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "CMake tool",
+      "skip_from_bat": "yes",
+      "sort": 20,
+      "tags": "tool,cmake"
+    },
+    "compiler": {
+      "add_to_path": "no",
+      "local": "yes",
+      "name": "C++ compiler",
+      "sort": 40,
+      "tags": "compiler,lang-cpp"
+    },
+    "lib-python-absl": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Python Abseil library",
+      "sort": 36,
+      "tags": "lib,python-package,absl"
+    },
+    "lib-python-numpy": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Python NumPy library",
+      "sort": 33,
+      "tags": "lib,python-package,numpy"
+    },
+    "mlperf-inference": {
+      "add_to_path": "no",
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "MLPerf Inference source",
+      "sort": 10,
+      "tags": "mlperf,inference,source"
+    },
+    "python": {
+      "add_to_path": "yes",
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Python interpreter",
+      "sort": 30,
+      "tags": "compiler,python"
+    }
+  },
+  "end_full_path_universal": "lib/libmlperf_loadgen.a",
+  "only_for_host_os_tags": [
+    "linux"
+  ],
+  "only_for_target_os_tags": [
+    "linux",
+    "android"
+  ],
+  "process_script": "install",
+  "soft_uoa": "6c44b702d4441af1",
+  "suggested_path": "lib-mlperf-loadgen-static",
+  "tags": [
+    "lib",
+    "mlperf",
+    "loadgen",
+    "mlperf_loadgen",
+    "mlperf-loadgen",
+    "static",
+    "lang-cpp",
+    "vmaster"
+  ],
+  "use_preprocess_scripts_from_another_entry": {
+    "data_uoa": "process-compiler-for-cmake",
+    "module_uoa": "script"
+  }
+}

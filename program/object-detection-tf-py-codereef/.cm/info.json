@@ -1,0 +1,16 @@
+{
+  "backup_data_uid": "bd32794dd0b843ed",
+  "backup_module_uid": "b0ac08fe1d3c2615",
+  "backup_module_uoa": "program",
+  "control": {
+    "engine": "CK",
+    "iso_datetime": "2020-11-14T21:43:49.192305",
+    "version": [
+      "1",
+      "17",
+      "0",
+      "1"
+    ]
+  },
+  "data_name": "object-detection-tf-py-codereef"
+}

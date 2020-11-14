@@ -1,0 +1,3 @@
+n01440764	tench, Tinca tinca
+n01443537	goldfish, Carassius auratus
+n01484850	great white shark, white shark, man-eater, man-eating shark, Carcharodon carcharias

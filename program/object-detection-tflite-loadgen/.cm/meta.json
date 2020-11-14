@@ -1,0 +1,231 @@
+{
+  "backup_data_uid": "dc87471848844a71",
+  "compile_deps": {
+    "compiler": {
+      "local": "yes",
+      "name": "C++ compiler",
+      "sort": 0,
+      "tags": "compiler,lang-cpp"
+    },
+    "edgetpu-lib": {
+      "enable_if_env": [
+        {
+          "USE_EDGETPU": [
+            "YES",
+            "yes",
+            "Y",
+            "y",
+            "1",
+            "True",
+            "true"
+          ]
+        }
+      ],
+      "local": "yes",
+      "name": "Coral edgetpu API",
+      "sort": 20,
+      "tags": "lib,edgetpu"
+    },
+    "lib-mlperf_loadgen": {
+      "local": "yes",
+      "name": "MLPerf Inference LoadGen library",
+      "sort": 60,
+      "tags": "lib,mlperf,loadgen,static"
+    },
+    "lib-xopenme": {
+      "local": "yes",
+      "name": "xOpenME library",
+      "sort": 100,
+      "tags": "lib,xopenme"
+    },
+    "library": {
+      "local": "yes",
+      "name": "TensorFlow Lite library",
+      "sort": 20,
+      "tags": "lib,tflite"
+    }
+  },
+  "compiler_add_include_as_env_from_deps": [
+    "CK_ENV_LIB_STDCPP_INCLUDE",
+    "CK_ENV_LIB_STDCPP_INCLUDE_EXTRA",
+    "CK_ENV_LIB_TF_INCLUDE0",
+    "CK_ENV_LIB_TF_INCLUDE1",
+    "CK_ENV_LIB_TF_INCLUDE2",
+    "CK_ENV_LIB_MLPERF_LOADGEN_INCLUDE"
+  ],
+  "compiler_env": "CK_CXX",
+  "compiler_flags_as_env": "$<<CK_COMPILER_FLAG_CPP11>>$ $<<CK_ENV_LIB_TF_DEF>>$ $<<CK_ENV_LIB_EDGETPU_COMPILE_OPTIONS>>$ -Wall -Wno-sign-compare",
+  "data_name": "object-detection-tflite-loadgen",
+  "extra_ld_vars": "$<<CK_ENV_LIB_TF_LINK_OPTIONS>>$ $<<CK_ENV_LIB_TF_LIBS_DIRS>>$ $<<CK_ENV_LIB_TF_LIBS>>$ $<<CK_ENV_LIB_EDGETPU_LINK_OPTIONS>>$ -L$<<CK_ENV_LIB_MLPERF_LOADGEN_LIB>>$ -lmlperf_loadgen",
+  "linker_add_lib_as_env": [
+    "CK_CXX_EXTRA",
+    "CK_ENV_LIB_STDCPP_DYNAMIC"
+  ],
+  "main_language": "cpp",
+  "need_cpu_info": "yes",
+  "only_for_target_os_tags": [
+    "linux",
+    "android"
+  ],
+  "pass_env_to_resolve": "yes",
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "default": {
+      "ignore_return_code": "no",
+      "run_time": {
+        "copy_env_to_remote": [
+          "CK_ENV_TENSORFLOW_MODEL_CLASSES",
+          "CK_ENV_TENSORFLOW_MODEL_DATASET_TYPE",
+          "CK_ENV_TENSORFLOW_MODEL_IMAGE_HEIGHT",
+          "CK_ENV_TENSORFLOW_MODEL_IMAGE_WIDTH",
+          "CK_ENV_TENSORFLOW_MODEL_IMAGE_CHANNELS",
+          "CK_ENV_TENSORFLOW_MODEL_MAX_DETECTIONS",
+          "CK_ENV_TENSORFLOW_MODEL_NEED_BACKGROUND_CORRECTION",
+          "CK_ENV_TENSORFLOW_MODEL_NORMALIZE_DATA",
+          "CK_ENV_TENSORFLOW_MODEL_NUM_CLASSES",
+          "CK_ENV_TENSORFLOW_MODEL_SUBTRACT_MEAN",
+          "CK_ENV_TENSORFLOW_MODEL_TFLITE_GRAPH_REGULAR_NMS",
+          "CK_ENV_TENSORFLOW_MODEL_TFLITE_GRAPH_FAST_NMS",
+          "CK_ENV_TENSORFLOW_MODEL_TFLITE_GRAPH_NO_NMS",
+          "CK_ENV_TENSORFLOW_MODEL_NMS_SCORE_THRESHOLD",
+          "CK_ENV_TENSORFLOW_MODEL_NMS_IOU_THRESHOLD",
+          "CK_ENV_TENSORFLOW_MODEL_SCALE_H",
+          "CK_ENV_TENSORFLOW_MODEL_SCALE_W",
+          "CK_ENV_TENSORFLOW_MODEL_SCALE_X",
+          "CK_ENV_TENSORFLOW_MODEL_SCALE_Y",
+          "CK_ENV_DATASET_OBJ_DETECTION_PREPROCESSED_SUBSET_FOF"
+        ],
+        "fine_grain_timer_file": "tmp-ck-timer.json",
+        "post_process_via_ck": {
+          "data_uoa": "object-detection",
+          "module_uoa": "script",
+          "script_name": "loadgen_postprocess"
+        },
+        "pre_process_via_ck": {
+          "data_uoa": "object-detection",
+          "module_uoa": "script",
+          "script_name": "loadgen_preprocess"
+        },
+        "run_cmd_main": "$#BIN_FILE#$",
+        "run_input_files": [
+          "$<<CK_ENV_LIB_STDCPP_DYNAMIC>>$",
+          "$<<CK_ENV_TENSORFLOW_MODEL_ROOT>>$/detect_fast_nms.tflite",
+          "$<<CK_ENV_TENSORFLOW_MODEL_ROOT>>$/detect_no_nms.tflite",
+          "$<<CK_ENV_TENSORFLOW_MODEL_ROOT>>$/detect_regular_nms.tflite",
+          "$<<CK_ENV_TENSORFLOW_MODEL_ROOT>>$/flatlabels.txt"
+        ],
+        "run_output_files": [
+          "mlperf_log_accuracy.json",
+          "mlperf_log_detail.txt",
+          "mlperf_log_summary.txt",
+          "mlperf_log_trace.json"
+        ]
+      }
+    }
+  },
+  "run_deps": {
+    "dataset": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Preprocessed images",
+      "sort": 20,
+      "tags": "dataset,object-detection,preprocessed"
+    },
+    "lib-python-matplotlib": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Python Matplotlib library",
+      "sort": 60,
+      "tags": "lib,python-package,matplotlib"
+    },
+    "lib-python-numpy": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Python NumPy library",
+      "sort": 40,
+      "tags": "lib,python-package,numpy"
+    },
+    "lib-python-pillow": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Python Pillow library",
+      "sort": 50,
+      "tags": "lib,python-package,pillow"
+    },
+    "mlperf-inference-src": {
+      "add_to_path": "no",
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "MLPerf Inference source",
+      "sort": 45,
+      "tags": "mlperf,inference,source"
+    },
+    "python": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Python interpreter",
+      "sort": 30,
+      "tags": "compiler,lang-python"
+    },
+    "tensorflow-model-api": {
+      "comment": "may be needed by iniless_postprocess",
+      "local": "yes",
+      "name": "Tensorflow models api",
+      "sort": 80,
+      "tags": "tensorflow,model,api"
+    },
+    "tool-coco": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Python API for COCO",
+      "sort": 90,
+      "tags": "tool,coco"
+    },
+    "weights": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Object Detection model",
+      "sort": 20,
+      "tags": "model,tflite,object-detection"
+    }
+  },
+  "run_vars": {
+    "CK_ANNOTATIONS_OUT_DIR": "annotations",
+    "CK_BATCH_COUNT": 1,
+    "CK_BATCH_SIZE": 1,
+    "CK_DETECTIONS_OUT_DIR": "detections",
+    "CK_LOADGEN_BUFFER_SIZE": 256,
+    "CK_LOADGEN_DATASET_SIZE": 0,
+    "CK_LOADGEN_MODE": "",
+    "CK_LOADGEN_SCENARIO": "SingleStream",
+    "CK_LOADGEN_SUPPORT": "YES",
+    "CK_LOADGEN_TRIGGER_COLD_RUN": "yes",
+    "CK_LOADGEN_USER_CONF": "user.conf",
+    "CK_MLPERF_PRE_SCHINDLER": "YES",
+    "CK_MLPERF_PRE_USER_CONF_AND_AUDIT_CONFIG": "YES",
+    "CK_PREPROCESSED_OUT_DIR": "preprocessed",
+    "CK_RESULTS_OUT_DIR": "results",
+    "CK_SILENT_MODE": 0,
+    "CK_SKIP_IMAGES": 0,
+    "CK_TIMER_FILE": "tmp-ck-timer.json",
+    "CK_VERBOSE": 1,
+    "USE_EDGETPU": "NO",
+    "USE_NEON": "NO",
+    "USE_OPENCL": "NO"
+  },
+  "skip_bin_ext": "yes",
+  "source_files": [
+    "detect.cpp"
+  ],
+  "tags": [
+    "tensorflow-lite",
+    "object-detection",
+    "tflite",
+    "loadgen",
+    "lang-cpp"
+  ],
+  "target_file": "detect",
+  "template": "yes",
+  "template_type": "Object Detection via TFLite (C++)"
+}

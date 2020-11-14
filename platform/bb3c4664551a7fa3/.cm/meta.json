@@ -1,0 +1,16 @@
+{
+  "features": {
+    "cost": [
+      {
+        "currency": "EUR",
+        "date": "20170909",
+        "desc": "Firefly RK3288 Quad Core Cortex-A17 Processors Development Board 2G/16G",
+        "price": 118,
+        "url": "https://www.geekbuying.com/item/Firefly-RK3288-Quad-Core-Cortex-A17-Processors-Development-Board-2G-16G-Android-Ubuntu-Dual-System-2-4G-5G-WIFI-HDMI-2-0-Bluetooth-1000M-Ethernet-336460.html"
+      }
+    ],
+    "model": "FIREFLY-RK3288",
+    "name": "ROCKCHIP FIREFLY-RK3288",
+    "vendor": "ROCKCHIP"
+  }
+}

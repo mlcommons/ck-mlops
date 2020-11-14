@@ -1,0 +1,137 @@
+{
+  "backup_data_uid": "4da6886863ad4184",
+  "build_compiler_vars": {},
+  "data_name": "object-detection-tensorrt-loadgen-py",
+  "main_language": "python",
+  "no_compile": "yes",
+  "no_target_file": "yes",
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "default": {
+      "ignore_return_code": "no",
+      "run_time": {
+        "fine_grain_timer_file": "tmp-ck-timer.json",
+        "post_process_via_ck": {
+          "data_uoa": "object-detection",
+          "module_uoa": "script",
+          "script_name": "loadgen_postprocess"
+        },
+        "pre_process_via_ck": {
+          "data_uoa": "object-detection",
+          "module_uoa": "script",
+          "script_name": "loadgen_preprocess"
+        },
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../tensorrt_detect_loadgen.py"
+      }
+    }
+  },
+  "run_deps": {
+    "coco-helper": {
+      "local": "yes",
+      "name": "Python COCO helper functions and metadata",
+      "sort": 35,
+      "tags": "lib,python-package,coco-helper"
+    },
+    "dataset": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Preprocessed subset of COCO dataset",
+      "sort": 37,
+      "tags": "dataset,preprocessed,object-detection,coco"
+    },
+    "lib-python-loadgen": {
+      "local": "yes",
+      "name": "Python LoadGen library",
+      "sort": 5,
+      "tags": "lib,python-package,loadgen"
+    },
+    "lib-python-matplotlib": {
+      "local": "yes",
+      "name": "Python Matplotlib library",
+      "sort": 45,
+      "tags": "lib,python-package,matplotlib"
+    },
+    "lib-python-numpy": {
+      "local": "yes",
+      "name": "Python NumPy library",
+      "sort": 40,
+      "tags": "lib,python-package,numpy"
+    },
+    "lib-python-pycuda": {
+      "local": "yes",
+      "name": "Python PyCUDA library",
+      "sort": 50,
+      "tags": "lib,python-package,pycuda"
+    },
+    "lib-python-tensorrt": {
+      "local": "yes",
+      "name": "Python TensorRT library",
+      "sort": 60,
+      "tags": "lib,python-package,tensorrt"
+    },
+    "mlperf-inference-src": {
+      "add_to_path": "no",
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "MLPerf Inference source",
+      "sort": 110,
+      "tags": "mlperf,inference,source"
+    },
+    "plugin-nms": {
+      "local": "yes",
+      "name": "TensorRT NMS plugin",
+      "sort": 35,
+      "tags": "tensorrt,plugin,nms"
+    },
+    "python": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Python interpreter",
+      "sort": 100,
+      "tags": "compiler,lang-python"
+    },
+    "tensorrt-helper": {
+      "local": "yes",
+      "name": "Python TensorRT helper functions and metadata",
+      "sort": 70,
+      "tags": "lib,python-package,tensorrt-helper"
+    },
+    "tool-coco": {
+      "local": "yes",
+      "name": "Python API for COCO",
+      "sort": 10,
+      "tags": "tool,coco"
+    },
+    "weights": {
+      "local": "yes",
+      "name": "TensorRT object detection model",
+      "pass_matching_tags_to": {
+        "side.": [
+          "dataset"
+        ]
+      },
+      "sort": 30,
+      "tags": "tensorrt,model"
+    }
+  },
+  "run_vars": {
+    "CK_BATCH_SIZE": 1,
+    "CK_LOADGEN_BUFFER_SIZE": 256,
+    "CK_LOADGEN_DATASET_SIZE": 50,
+    "CK_LOADGEN_MODE": "AccuracyOnly",
+    "CK_LOADGEN_MULTISTREAMNESS": "",
+    "CK_LOADGEN_SCENARIO": "SingleStream",
+    "CK_LOADGEN_USER_CONF": "user.conf",
+    "CK_MLPERF_PRE_USER_CONF_AND_AUDIT_CONFIG": "YES",
+    "CK_VERBOSE": 1
+  },
+  "tags": [
+    "loadgen",
+    "image-classification",
+    "tensorrt",
+    "trt",
+    "standalone",
+    "lang-python"
+  ]
+}

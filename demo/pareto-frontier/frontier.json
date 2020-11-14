@@ -1,0 +1,20 @@
+{
+"points": {
+  "1737e16da44696ad": {
+    "##characteristics#compile#binary_size#min": 10, 
+    "##characteristics#run#execution_time#min": 4
+  }, 
+  "475435a893244532": {
+    "##characteristics#compile#binary_size#min": 20, 
+    "##characteristics#run#execution_time#min": 3.5
+  }, 
+  "1b4886ae4b04cbc3": {
+    "##characteristics#compile#binary_size#min": 30, 
+    "##characteristics#run#execution_time#min": 4
+  }, 
+  "d78424dbab0ab4c2": {
+    "##characteristics#compile#binary_size#min": 40, 
+    "##characteristics#run#execution_time#min": 1
+  }
+ }
+}

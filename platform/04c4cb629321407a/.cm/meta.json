@@ -1,0 +1,16 @@
+{
+  "features": {
+    "cost": [
+      {
+        "currency": "EUR",
+        "date": "20160909",
+        "desc": "",
+        "price": 69,
+        "url": "https://www.ldlc.com/fiche/PB00166594.html"
+      }
+    ],
+    "model": "Y330-U01",
+    "name": "HUAWEI Y330-U01",
+    "vendor": "HUAWEI"
+  }
+}

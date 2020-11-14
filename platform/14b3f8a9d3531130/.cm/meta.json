@@ -1,0 +1,16 @@
+{
+  "features": {
+    "cost": [
+      {
+        "currency": "EUR",
+        "date": "20170909",
+        "desc": "Hisense C20 Noir",
+        "price": 229,
+        "url": "https://www.ldlc.com/fiche/PB00202559.html"
+      }
+    ],
+    "model": "C20",
+    "name": "HISENSE C20",
+    "vendor": "HISENSE"
+  }
+}

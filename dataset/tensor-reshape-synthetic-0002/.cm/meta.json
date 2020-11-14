@@ -1,0 +1,37 @@
+{
+  "dataset_files": [
+    "test-shape-1-1-16-2-2-4",
+    "test-shape-12-3-17-612-1-1",
+    "test-shape-16-3-3-1-1-144",
+    "test-shape-28-23-31-713-14-2",
+    "test-shape-32-26-26-128-13-13",
+    "test-shape-8-2-2-8-4-1"
+  ],
+  "desc_dataset_files": {
+    "test-shape-1-1-16-2-2-4": {
+      "name": "Test shape 1x1x16 -> 2x2x4"
+    },
+    "test-shape-12-3-17-612-1-1": {
+      "name": "Test shape 12x3x17 -> 612x1x1"
+    },
+    "test-shape-16-3-3-1-1-144": {
+      "name": "Test shape 16x3x3 -> 1x1x144"
+    },
+    "test-shape-28-23-31-713-14-2": {
+      "name": "Test shape 28x23x31 -> 713x14x12"
+    },
+    "test-shape-32-26-26-128-13-13": {
+      "name": "Test shape 32x26x26 -> 128x13x13"
+    },
+    "test-shape-8-2-2-8-4-1": {
+      "name": "Test shape 8x2x2 -> 8x4x1"
+    }
+  },
+  "tags": [
+    "dataset",
+    "nntest",
+    "tensor-reshape",
+    "reshape",
+    "synthetic"
+  ]
+}

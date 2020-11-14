@@ -1,0 +1,16 @@
+{
+  "backup_data_uid": "1f6137fa79934028",
+  "backup_module_uid": "84e27ad9dd12e734",
+  "backup_module_uoa": "script",
+  "control": {
+    "engine": "CK",
+    "iso_datetime": "2020-11-14T21:43:58.262545",
+    "version": [
+      "1",
+      "17",
+      "0",
+      "1"
+    ]
+  },
+  "data_name": "aux-image-classification"
+}

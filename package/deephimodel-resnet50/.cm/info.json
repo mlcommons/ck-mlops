@@ -1,0 +1,16 @@
+{
+  "backup_data_uid": "23da52e1ee455394",
+  "backup_module_uid": "1dc07ee0f4742028",
+  "backup_module_uoa": "package",
+  "control": {
+    "engine": "CK",
+    "iso_datetime": "2020-11-14T21:43:48.125116",
+    "version": [
+      "1",
+      "17",
+      "0",
+      "1"
+    ]
+  },
+  "data_name": "deephimodel-resnet50"
+}

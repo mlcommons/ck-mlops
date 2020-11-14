@@ -1,0 +1,16 @@
+{
+  "backup_data_uid": "0e41962eda3b49d8",
+  "backup_module_uid": "1dc07ee0f4742028",
+  "backup_module_uoa": "package",
+  "control": {
+    "engine": "CK",
+    "iso_datetime": "2020-11-14T21:43:45.512207",
+    "version": [
+      "1",
+      "17",
+      "0",
+      "1"
+    ]
+  },
+  "data_name": "model-tf-mlperf-ssd-resnet34"
+}

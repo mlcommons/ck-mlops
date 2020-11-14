@@ -1,0 +1,68 @@
+{
+  "customize": {
+    "extra_dir": "",
+    "install_env": {
+      "PACKAGE_URL": "https://packages.cloud.google.com/apt/pool/",
+      "PACKAGE_WGET": "YES",
+      "PACKAGE_WGET_EXTRA": "--no-cookies"
+    },
+    "no_ver_in_suggested_path": "yes",
+    "version": "with-variations"
+  },
+  "end_full_path": {
+    "linux": "usr/lib/aarch64-linux-gnu/libedgetpu.so.1"
+  },
+  "need_cpu_info": "yes",
+  "only_for_host_os_tags": [
+    "linux"
+  ],
+  "only_for_target_os_tags": [
+    "linux"
+  ],
+  "process_script": "install",
+  "soft_uoa": "2783dce06e383615",
+  "suggested_path": "lib-edgetpu",
+  "tags": [
+    "lib",
+    "libedgetpu",
+    "edgetpu"
+  ],
+  "variations": {
+    "max": {
+      "extra_customize": {
+        "version": "14.1"
+      },
+      "extra_env": {
+        "PACKAGE_NAME": "libedgetpu1-max_14.1_arm64_795e7f49c81b1f9586f43b1978dd938b192df3e5e4939e1e8deb965d64ca41e6.deb"
+      },
+      "on_by_default": "no"
+    },
+    "max_14.1_arm64": {
+      "extra_customize": {
+        "version": "14.1"
+      },
+      "extra_env": {
+        "PACKAGE_NAME": "libedgetpu1-max_14.1_arm64_795e7f49c81b1f9586f43b1978dd938b192df3e5e4939e1e8deb965d64ca41e6.deb"
+      },
+      "on_by_default": "no"
+    },
+    "std": {
+      "extra_customize": {
+        "version": "14.1"
+      },
+      "extra_env": {
+        "PACKAGE_NAME": "libedgetpu1-std_14.1_arm64_4669a44bd6d6f3b7d33c356182ceaeb29e1c981843629adeb77ac1283dbd498e.deb"
+      },
+      "on_by_default": "yes"
+    },
+    "std_14.1_arm64": {
+      "extra_customize": {
+        "version": "14.1"
+      },
+      "extra_env": {
+        "PACKAGE_NAME": "libedgetpu1-std_14.1_arm64_4669a44bd6d6f3b7d33c356182ceaeb29e1c981843629adeb77ac1283dbd498e.deb"
+      },
+      "on_by_default": "no"
+    }
+  }
+}

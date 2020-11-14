@@ -1,0 +1,79 @@
+{
+  "dataset_files": [
+    "shape-1024-8-8-8-1",
+    "shape-1000-15-15-15-1",
+    "shape-1000-14-14-14-1",
+    "shape-384-35-35-3-1",
+    "shape-1024-17-17-3-1",
+    "shape-1536-8-8-3-1",
+    "shape-1536-8-8-8-1",
+    "shape-2048-8-8-8-1",
+    "shape-192-35-35-3-1",
+    "shape-256-35-35-3-1",
+    "shape-258-35-35-3-1",
+    "shape-288-35-35-3-1",
+    "shape-768-17-17-3-1",
+    "shape-1280-8-8-3-1",
+    "shape-2048-7-7-7-1",
+    "shape-1024-7-7-7-1",
+    "shape-1000-6-6-6-1"
+  ],
+  "desc_dataset_files": {
+    "shape-1000-14-14-14-1": {
+      "name": "SqueezeNet-v1.1 pool10 input 14x14x1000 kernel 14 stride 1"
+    },
+    "shape-1000-15-15-15-1": {
+      "name": "SqueezeNet pool10 input 15x15x1000 kernel 15 stride 1"
+    },
+    "shape-1000-6-6-6-1": {
+      "name": "Network-in-Network pool4 input 6x6x1000 kernel 6 stride 1"
+    },
+    "shape-1024-17-17-3-1": {
+      "name": "Inception-v4 inception_b1_pool_ave input 17x17x1024 kernel 3 stride 1"
+    },
+    "shape-1024-7-7-7-1": {
+      "name": "GoogLeNet pool5/7x7_s1 input 7x7x1024 kernel 7 stride 1"
+    },
+    "shape-1024-8-8-8-1": {
+      "name": "ZynqNet-CNN pool10 input 8x8x1024 kernel 8 stride 1"
+    },
+    "shape-1280-8-8-3-1": {
+      "name": "Inception-v3 mixed_9/tower_2_AVG_pool input 8x8x1280 kernel 3 stride 1"
+    },
+    "shape-1536-8-8-3-1": {
+      "name": "Inception-v4 inception_c1_pool_ave input 8x8x1536 kernel 3 stride 1"
+    },
+    "shape-1536-8-8-8-1": {
+      "name": "Inception-v4 pool_8x8_s1 input 8x8x1536 kernel 8 stride 1"
+    },
+    "shape-192-35-35-3-1": {
+      "name": "Inception-v3 mixed_tower/AVG_pool input 35x35x192 kernel 3 stride 1"
+    },
+    "shape-2048-7-7-7-1": {
+      "name": "ResNet-50 pool5 input 7x7x2048 kernel 7 stride 1"
+    },
+    "shape-2048-8-8-8-1": {
+      "name": "Inception-ResNet-v2 pool_8x8_s1 input 8x8x2048 kernel 8 stride 1"
+    },
+    "shape-256-35-35-3-1": {
+      "name": "Inception-v3 mixed_1/tower_2_AVG_pool input 35x35x256 kernel 3 stride 1"
+    },
+    "shape-258-35-35-3-1": {
+      "name": "Inception-v3 mixed_2/tower_2_AVG_pool[TYPO] input 35x35x258 kernel 3 stride 1"
+    },
+    "shape-288-35-35-3-1": {
+      "name": "Inception-v3 mixed_2/tower_2_AVG_pool input 35x35x288 kernel 3 stride 1"
+    },
+    "shape-384-35-35-3-1": {
+      "name": "Inception-v4 inception_a1_pool_ave input 35x35x384 kernel 3 stride 1"
+    },
+    "shape-768-17-17-3-1": {
+      "name": "Inception-v3 mixed_4/tower_2_AVG_pool input 17x17x768 kernel 3 stride 1"
+    }
+  },
+  "tags": [
+    "dataset",
+    "nntest",
+    "tensor-avgpool"
+  ]
+}

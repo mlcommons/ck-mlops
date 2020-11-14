@@ -1,0 +1,30 @@
+{
+  "choices_order":[
+    [
+     "##compiler_vars#N"
+    ]
+  ],
+
+  "choices_selection": [
+    {"type":"loop", "start":4000, "stop":5000, "step":200, "default":4000}
+  ],
+
+ "pipeline_update":{
+   "cpu_freq":"max",
+   "gpu_freq":"max"
+  },
+
+  "seed":12345,
+  "iterations":1000,
+  "repetitions":3,
+
+  "record":"yes",
+  "record_uoa":"explore-ludcmp-dataset-loop-llvm",
+
+  "features_keys_to_process":["##choices#*"],
+
+  "record_params": {
+    "search_point_by_features":"yes"
+  }
+
+}

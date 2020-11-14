@@ -1,0 +1,16 @@
+{
+  "backup_data_uid": "fa7927f7fb4ef491",
+  "backup_module_uid": "707ccdfe444cafac",
+  "backup_module_uoa": "platform",
+  "control": {
+    "engine": "CK",
+    "iso_datetime": "2020-11-14T21:43:53.024764",
+    "version": [
+      "1",
+      "17",
+      "0",
+      "1"
+    ]
+  },
+  "data_name": "TECNO J8"
+}

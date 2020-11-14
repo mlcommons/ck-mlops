@@ -1,0 +1,21 @@
+{
+  "dataset_files": [
+    "shape-48-35-35-5-64-1-2"
+  ],
+  "desc_dataset_files": {
+    "shape-48-35-35-5-64-1-2": {
+      "name": "InceptionV3 Branch_1_Conv2d_0b input 35x35x48 filter 5x5x64 stride 1 pad 2"
+    }
+  },
+  "tags": [
+    "dataset",
+    "nntest",
+    "tensor-conv",
+    "tensor-conv-inception-v3",
+    "conv",
+    "convolution",
+    "inceptionv3",
+    "inception-v3",
+    "inception_v3"
+  ]
+}

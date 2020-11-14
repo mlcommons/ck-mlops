@@ -1,0 +1,29 @@
+{
+  "choices_order": [
+    [
+      "##env#CK_SOFTMAX_VECTOR_SIZE"
+    ], 
+    [
+      "##env#CK_IN_SHAPE_N"
+    ]
+  ], 
+  "choices_selection": [
+    {
+      "choice": [
+        2, 
+        4, 
+        8, 
+        16
+      ], 
+      "default": 16, 
+      "type": "loop"
+    }, 
+    {
+      "default": 1, 
+      "start": 1, 
+      "step": 1, 
+      "stop": 4, 
+      "type": "loop"
+    }
+  ]
+}

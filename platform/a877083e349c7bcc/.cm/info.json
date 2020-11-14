@@ -1,0 +1,16 @@
+{
+  "backup_data_uid": "a877083e349c7bcc",
+  "backup_module_uid": "707ccdfe444cafac",
+  "backup_module_uoa": "platform",
+  "control": {
+    "engine": "CK",
+    "iso_datetime": "2020-11-14T21:43:51.029505",
+    "version": [
+      "1",
+      "17",
+      "0",
+      "1"
+    ]
+  },
+  "data_name": "HUAWEI H60-L04"
+}

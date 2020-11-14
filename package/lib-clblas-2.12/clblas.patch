@@ -1,0 +1,28 @@
+diff --git a/src/library/blas/gens/blas_kgen.c b/src/library/blas/gens/blas_kgen.c
+index 595fe10..a886884 100644
+--- a/src/library/blas/gens/blas_kgen.c
++++ b/src/library/blas/gens/blas_kgen.c
+@@ -1173,8 +1173,10 @@ updateResultGen(
+         if ( vecLen > 1 ) {
+ 
+             sprintf(tmp,
+-                "uC.%s = %s + (%s * %s + %s)/%d;\n",
++                "uC.%s = (%s %s*)(%s + (%s * %s + %s)/%d);\n",
+                 vfield,
++                (LG == 'L' ? "__local" : "__global"),
++                typeName,
+                 uvars.result,
+                 uvars.startCol,
+                 uvars.ld,
+@@ -1197,8 +1199,10 @@ updateResultGen(
+         if ( vecLen > 1 ) {
+ 
+             sprintf(tmp,
+-                "uC.%s = %s + (%s * %s + %s)/%d;\n",
++                "uC.%s = (%s %s*)(%s + (%s * %s + %s)/%d);\n",
+                 vfield,
++                (LG == 'L' ? "__local" : "__global"),
++                typeName,
+                 uvars.result,
+                 uvars.startRow,
+                 uvars.ld,

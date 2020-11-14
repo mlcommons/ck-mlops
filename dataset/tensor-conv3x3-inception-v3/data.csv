@@ -1,0 +1,18 @@
+,W,H,C_IN,KERNEL,C_OUT,STRIDE,PAD,,Layer name
+InceptionV3,299,299,3,3,32,2,0,,Conv2d_1a
+InceptionV3,149,149,32,3,32,1,0,,Conv2d_2a
+InceptionV3,147,147,32,3,64,1,1,,Conv2d_2b
+InceptionV3,73,73,80,3,192,1,0,,Conv2d_4a
+InceptionV3,35,35,64,3,96,1,1,,Branch_2_Conv2d_0b
+InceptionV3,35,35,96,3,96,1,1,,Branch_2_Conv2d_0c
+InceptionV3,35,35,64,3,96,1,1,,Branch_2_Conv2d_0b
+InceptionV3,35,35,96,3,96,1,1,,Branch_2_Conv2d_0c
+InceptionV3,35,35,64,3,96,1,1,,Branch_2_Conv2d_0b
+InceptionV3,35,35,96,3,96,1,1,,Branch_2_Conv2d_0c
+InceptionV3,35,35,288,3,384,2,0,,Branch_0_Conv2d_1a
+InceptionV3,35,35,64,3,96,1,1,,Branch_1_Conv2d_0b
+InceptionV3,35,35,96,3,96,2,0,,Branch_1_Conv2d_1a
+InceptionV3,17,17,192,3,320,2,0,,Branch_0_Conv2d_1a
+InceptionV3,17,17,192,3,192,2,0,,Branch_1_Conv2d_1a
+InceptionV3,8,8,448,3,384,1,1,,Branch_2_Conv2d_0b
+InceptionV3,8,8,448,3,384,1,1,,Branch_2_Conv2d_0b

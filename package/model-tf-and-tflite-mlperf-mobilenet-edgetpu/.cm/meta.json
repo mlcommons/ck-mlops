@@ -1,0 +1,134 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "*version": "$<<MODEL_MOBILENET_MULTIPLIER>>$.$<<MODEL_MOBILENET_RESOLUTION>>$.$<<ML_MODEL_DATA_TYPE>>$.$<<MODEL_MOBILENET_VERSION>>$",
+    "install_env": {
+      "*ML_MODEL_MODEL_NAME": "mobilenet_$<<MODEL_MOBILENET_VERSION>>$_$<<MODEL_MOBILENET_MULTIPLIER>>$_$<<MODEL_MOBILENET_RESOLUTION>>$_$<<ML_MODEL_DATA_TYPE>>$",
+      "*MODEL_IMAGE_HEIGHT": "$<<MODEL_MOBILENET_RESOLUTION>>$",
+      "*MODEL_IMAGE_WIDTH": "$<<MODEL_MOBILENET_RESOLUTION>>$",
+      "*PACKAGE_NAME": "mobilenet_$<<MODEL_MOBILENET_VERSION>>$_$<<MODEL_MOBILENET_RESOLUTION>>$_$<<MODEL_MOBILENET_MULTIPLIER>>$.tgz",
+      "*PACKAGE_NAME_EDGETPU": "mobilenet_$<<MODEL_MOBILENET_VERSION>>$_$<<MODEL_MOBILENET_RESOLUTION>>$_$<<MODEL_MOBILENET_MULTIPLIER>>$",
+      "ML_MODEL_DATA_LAYOUT": "NHWC",
+      "ML_MODEL_FILE_FORMAT": "tflite",
+      "MODEL_INPUT_LAYER_NAME": "images",
+      "MODEL_MOBILENET_VERSION": "edgetpu",
+      "MODEL_NORMALIZE_DATA": "YES",
+      "MODEL_OUTPUT_LAYER_NAME": "Softmax",
+      "MODEL_SUBTRACT_MEAN": "0",
+      "MODEL_WEIGHTS_ARE_CHECKPOINTS": "YES",
+      "MODULE_FILE": "mobilenet-model.py",
+      "WEIGHTS_FILE": "model"
+    },
+    "no_os_in_suggested_path": "yes",
+    "no_ver_in_suggested_path": "yes",
+    "package_name": "TFLite MobileNet EdgeTPU Model",
+    "skip_file_check": "yes"
+  },
+  "end_full_path_universal": "mobilenet-model.py",
+  "only_for_host_os_tags": [],
+  "only_for_target_os_tags": [],
+  "process_script": "install",
+  "soft_uoa": "439b9f1757f27091",
+  "suggested_path": "model-tf-and-tflite-mlperf-mobilenet-edgetpu-downloaded",
+  "tags": [
+    "model",
+    "image-classification",
+    "tensorflowmodel",
+    "tf",
+    "tflite",
+    "nhwc",
+    "mobilenet",
+    "edgetpu",
+    "mlperf",
+    "weights",
+    "python",
+    "frozen",
+    "downloaded"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "6b1b2b254718b69a",
+    "module_uoa": "script"
+  },
+  "variations": {
+    "edgetpu_224_0.75_float": {
+      "extra_env": {
+        "ML_MODEL_DATA_TYPE": "float",
+        "ML_MODEL_INPUT_DATA_TYPE": "float32",
+        "ML_MODEL_OUTPUT_DATA_TYPE": "float32",
+        "MODEL_MOBILENET_MULTIPLIER": "0.75",
+        "MODEL_MOBILENET_RESOLUTION": "224"
+      },
+      "extra_tags": [
+        "multiplier.0.75",
+        "side.224",
+        "non-quantized"
+      ]
+    },
+    "edgetpu_224_0.75_int8": {
+      "extra_env": {
+        "ML_MODEL_DATA_TYPE": "int8",
+        "ML_MODEL_INPUT_DATA_TYPE": "int8",
+        "ML_MODEL_OUTPUT_DATA_TYPE": "int8",
+        "MODEL_MOBILENET_MULTIPLIER": "0.75",
+        "MODEL_MOBILENET_RESOLUTION": "224"
+      },
+      "extra_tags": [
+        "multiplier.0.75",
+        "side.224",
+        "quantized",
+        "symmetric"
+      ]
+    },
+    "edgetpu_224_1.0_float": {
+      "extra_env": {
+        "ML_MODEL_DATA_TYPE": "float",
+        "ML_MODEL_INPUT_DATA_TYPE": "float32",
+        "ML_MODEL_OUTPUT_DATA_TYPE": "float32",
+        "MODEL_MOBILENET_MULTIPLIER": "1.0",
+        "MODEL_MOBILENET_RESOLUTION": "224"
+      },
+      "extra_tags": [
+        "multiplier.1.0",
+        "side.224",
+        "non-quantized"
+      ],
+      "on_by_default": "yes"
+    },
+    "edgetpu_224_1.0_int8": {
+      "extra_env": {
+        "ML_MODEL_DATA_TYPE": "int8",
+        "ML_MODEL_INPUT_DATA_TYPE": "int8",
+        "ML_MODEL_OUTPUT_DATA_TYPE": "int8",
+        "MODEL_MOBILENET_MULTIPLIER": "1.0",
+        "MODEL_MOBILENET_RESOLUTION": "224"
+      },
+      "extra_tags": [
+        "multiplier.1.0",
+        "side.224",
+        "quantized",
+        "symmetric"
+      ]
+    },
+    "edgetpu_224_1.0_uint8": {
+      "extra_env": {
+        "ML_MODEL_DATA_TYPE": "uint8",
+        "ML_MODEL_INPUT_DATA_TYPE": "uint8",
+        "ML_MODEL_OUTPUT_DATA_TYPE": "uint8",
+        "MODEL_MOBILENET_MULTIPLIER": "1.0",
+        "MODEL_MOBILENET_RESOLUTION": "224"
+      },
+      "extra_tags": [
+        "multiplier.1.0",
+        "side.224",
+        "quantized",
+        "asymmetric"
+      ]
+    },
+    "from.googleapis": {
+      "extra_env": {
+        "PACKAGE_URL": "https://storage.googleapis.com/mobilenet_edgetpu/checkpoints"
+      },
+      "on_by_default": "yes"
+    }
+  }
+}

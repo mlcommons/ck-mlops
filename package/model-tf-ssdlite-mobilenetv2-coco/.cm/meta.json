@@ -1,0 +1,60 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "extra_dir": "",
+    "install_env": {
+      "DATASET_TYPE": "coco",
+      "DEFAULT_HEIGHT": "300",
+      "DEFAULT_WIDTH": "300",
+      "FROZEN_GRAPH": "frozen_inference_graph.pb",
+      "LABELMAP_FILE": "mscoco_label_map.pbtxt",
+      "MODEL_NAME": "SSDLite-MobileNet-v2 COCO",
+      "PACKAGE_NAME": "ssdlite_mobilenet_v2_coco_2018_05_09.tar.gz",
+      "PACKAGE_NAME1": "ssdlite_mobilenet_v2_coco_2018_05_09",
+      "PACKAGE_UNTAR": "YES",
+      "PACKAGE_UNZIP": "YES",
+      "PACKAGE_URL": "http://download.tensorflow.org/models/object_detection",
+      "PIPELINE_CONFIG": "pipeline.config",
+      "WEIGHTS_FILE": "model.ckpt"
+    },
+    "model_id": "ssdlite_mobilenet_v2_coco",
+    "no_os_in_suggested_path": "yes",
+    "no_ver_in_suggested_path": "yes",
+    "version": "reference"
+  },
+  "deps": {
+    "labelmap": {
+      "local": "yes",
+      "name": "Labelmap for COCO dataset",
+      "tags": "labelmap,vcoco"
+    }
+  },
+  "end_full_path": {
+    "linux": "frozen_inference_graph.pb"
+  },
+  "only_for_host_os_tags": [
+    "linux"
+  ],
+  "only_for_target_os_tags": [
+    "linux"
+  ],
+  "package_extra_name": " (Object Detection SSDLite-MobileNet-v2 COCO)",
+  "process_script": "install",
+  "soft_uoa": "3fc0c4b9ba63de2f",
+  "suggested_path": "model-tf-ssdlite-mobilenet-v2-coco",
+  "tags": [
+    "object-detection",
+    "model",
+    "tf",
+    "tensorflow",
+    "ssdlite",
+    "mobilenet-v2",
+    "ssdlite-mobilenet-v2",
+    "non-quantized",
+    "vcoco"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "c412930408fb8271",
+    "module_uoa": "script"
+  }
+}

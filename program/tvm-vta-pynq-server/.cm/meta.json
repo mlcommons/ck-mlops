@@ -1,0 +1,37 @@
+{
+  "backup_data_uid": "c2e8ed8f342a88db",
+  "data_name": "tvm-vta-pynq-server",
+  "no_compile": "yes",
+  "no_target_file": "yes",
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "classify": {
+      "ignore_return_code": "no",
+      "run_deps": {
+        "lib-tvm-runtime": {
+          "local": "yes",
+          "name": "TVM server (runtime)",
+          "sort": 15,
+          "tags": "lib,tvm,vserver"
+        },
+        "python": {
+          "local": "yes",
+          "name": "Python",
+          "sort": 5,
+          "tags": "compiler,python"
+        }
+      },
+      "run_time": {
+        "run_cmd_main": "../start_rpc_server$#script_ext#$"
+      }
+    }
+  },
+  "run_vars": {},
+  "tags": [
+    "request",
+    "request-tournament",
+    "request-asplos18",
+    "vta-pynq-server"
+  ]
+}

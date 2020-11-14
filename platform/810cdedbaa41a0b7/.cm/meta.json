@@ -1,0 +1,19 @@
+{
+  "features": {
+    "cost": [
+      {
+        "currency": "EUR",
+        "date": "20160101",
+        "desc": "Samsung Galaxy S7 Black 32GO",
+        "price": 700
+      }
+    ],
+    "model": "SM-G930F",
+    "name": "SAMSUNG SM-G930F",
+    "power_consumption": {
+      "max": 7.2,
+      "min": 0.7
+    },
+    "vendor": "SAMSUNG"
+  }
+}

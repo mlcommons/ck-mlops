@@ -1,0 +1,91 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "extra_dir": "",
+    "file_with_model": "float.prototxt",
+    "file_with_weights": "float.caffemodel",
+    "force_ask_path": "yes",
+    "install_env": {
+      "MODEL_ARCHIVE": "Inception_v1.tar.gz",
+      "MODEL_ARCHIVE_REMOVE": 0,
+      "MODEL_FILE": "Inception_v1.tar.gz",
+      "MODEL_HASH_CALCULATOR": "sha1sum",
+      "MODEL_HASH_REF": "cac73b0c1d06e9d2383b41c7bc777d78dbd97176",
+      "MODEL_URL": "http://www.deephi.com/assets/Inception_v1.tar.gz"
+    },
+    "model_name": "inception_v1",
+    "no_os_in_suggested_path": "yes",
+    "no_ver_in_suggested_path": "no",
+    "params": {
+      "deploy": {
+        "resolution": [
+          256,
+          320
+        ],
+        "substitute": {
+          "batch_size": 1
+        },
+        "template": "float.prototxt"
+      },
+      "train": {
+        "substitute": {
+          "train_batch_size": 50,
+          "val_batch_size": 50
+        },
+        "template": "train_val.prototxt"
+      },
+      "val": {
+        "accuracy_layers": [
+          "accuracy/top-1",
+          "accuracy/top-5"
+        ],
+        "substitute": {
+          "train_batch_size": 50,
+          "val_batch_size": 50
+        },
+        "template": "train_val.prototxt"
+      }
+    },
+    "skip_file_check": "yes",
+    "version": "fp32"
+  },
+  "end_full_path": {
+    "linux": "float.caffemodel",
+    "win": "float.caffemodel"
+  },
+  "features": {
+    "accuracy": 0.0,
+    "accuracy_top5": 0.0,
+    "model_size_mb": 98
+  },
+  "only_for_host_os_tags": [
+    "windows",
+    "linux"
+  ],
+  "only_for_target_os_tags": [
+    "windows",
+    "linux"
+  ],
+  "package_extra_name": " (deephi, inception_v1)",
+  "process_script": "download",
+  "soft_uoa": "478ab1937ec9c4e2",
+  "suggested_path": "deephimodel-inception_v1",
+  "tags": [
+    "caffe",
+    "weights",
+    "caffemodel",
+    "deephimodel",
+    "inception",
+    "inception_v1",
+    "googlenet",
+    "vfloat32",
+    "vfp32",
+    "deephi",
+    "channel-stable"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "download-deephimodel",
+    "module_uoa": "script",
+    "repo_uoa": "ck-deephi"
+  }
+}

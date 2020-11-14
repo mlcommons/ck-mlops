@@ -1,0 +1,23 @@
+{
+  "auto_detect": "yes",
+  "customize": {
+    "check_that_exists": "yes",
+    "ck_params_file": "ck-params.json",
+    "ck_version": 10,
+    "env_prefix": "CK_ENV_DEEPHI_CALIBRATION",
+    "limit_recursion_dir_search": {
+      "linux": 7,
+      "win": 3
+    },
+    "soft_file": {
+      "linux": "calibration.txt",
+      "win": "calibration.txt"
+    }
+  },
+  "soft_name": "DeePhi calibration images (256;320)",
+  "tags": [
+    "deephi",
+    "calibration",
+    "images"
+  ]
+}

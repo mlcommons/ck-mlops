@@ -1,0 +1,12 @@
+diff --git a/inference-engine/cmake/os_flags.cmake b/inference-engine/cmake/os_flags.cmake
+index ad15859..d471246 100644
+--- a/inference-engine/cmake/os_flags.cmake
++++ b/inference-engine/cmake/os_flags.cmake
+@@ -47,7 +47,6 @@ if (WIN32)
+         set(CMAKE_MODULE_LINKER_FLAGS "${CMAKE_MODULE_LINKER_FLAGS} ${DEBUG_SYMBOLS_LINKER_FLAGS}")
+     endif()
+ else()
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -Werror=return-type ")
+     if (APPLE)
+         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-error=unused-command-line-argument")
+         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-unused-function")

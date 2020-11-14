@@ -1,0 +1,13 @@
+diff --git a/src/armnn/test/FloatingPointConverterTest.cpp b/src/armnn/test/FloatingPointConverterTest.cpp
+index 9299b90..02aaeab 100644
+--- a/src/armnn/test/FloatingPointConverterTest.cpp
++++ b/src/armnn/test/FloatingPointConverterTest.cpp
+@@ -6,7 +6,7 @@
+ #include "FloatingPointConverter.hpp"
+ #include <Half.hpp>
+ 
+-#include <malloc.h>
++#include <stdlib.h>
+ #include <iostream>
+ #include <algorithm>
+ 

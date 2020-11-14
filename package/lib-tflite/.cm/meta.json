@@ -1,0 +1,162 @@
+{
+  "customize": {
+    "extra_dir": "",
+    "git_src_dir": "src",
+    "install_env": {
+      "PACKAGE_GIT": "YES",
+      "PACKAGE_PATCH": "YES",
+      "PACKAGE_PATCH_LIST": "\\$<<ORIGINAL_PACKAGE_DIR>>$/patch.\\$<<CK_TARGET_OS_ID>>$/* \\$<<ORIGINAL_PACKAGE_DIR>>$/patch.linux.variations/\\$<<PACKAGE_PATCH__V1_13_1__MAKEFILE>>$ \\$<<ORIGINAL_PACKAGE_DIR>>$/patch.linux.variations/\\$<<PACKAGE_PATCH__V1_14_0__DOWNLOAD_DEPENDENCIES>>$ \\$<<ORIGINAL_PACKAGE_DIR>>$/patch.linux.variations/\\$<<PACKAGE_PATCH__V1_14_0__MAKEFILE>>$ \\$<<ORIGINAL_PACKAGE_DIR>>$/patch.linux.variations/\\$<<PACKAGE_PATCH__V1_14_0__OFFSETOF>>$ \\$<<ORIGINAL_PACKAGE_DIR>>$/patch.linux.variations/\\$<<PACKAGE_PATCH__V1_15_0__MAKEFILE>>$ \\$<<ORIGINAL_PACKAGE_DIR>>$/patch.linux.variations/\\$<<PACKAGE_PATCH__V1_15_0__OFFSETOF>>$ \\$<<ORIGINAL_PACKAGE_DIR>>$/patch.linux.variations/\\$<<PACKAGE_PATCH__V2_1_0__DOWNLOAD_DEPENDENCIES>>$ \\$<<ORIGINAL_PACKAGE_DIR>>$/patch.linux.variations/\\$<<PACKAGE_PATCH__V2_1_0__MAKEFILE>>$ \\$<<ORIGINAL_PACKAGE_DIR>>$/patch.linux.variations/\\$<<PACKAGE_PATCH__V2_2_0__MAKEFILE>>$ \\$<<ORIGINAL_PACKAGE_DIR>>$/patch.linux.variations/\\$<<PACKAGE_PATCH__V2_2_0__OFFSETOF>>$ \\$<<ORIGINAL_PACKAGE_DIR>>$/patch.linux.variations/\\$<<PACKAGE_PATCH__V_FOR_CORAL__MAKEFILE>>$",
+      "PACKAGE_PATCH__V1_13_1__MAKEFILE": "",
+      "PACKAGE_PATCH__V1_14_0__DOWNLOAD_DEPENDENCIES": "",
+      "PACKAGE_PATCH__V1_14_0__MAKEFILE": "",
+      "PACKAGE_PATCH__V1_14_0__OFFSETOF": "",
+      "PACKAGE_PATCH__V1_15_0__MAKEFILE": "",
+      "PACKAGE_PATCH__V1_15_0__OFFSETOF": "",
+      "PACKAGE_PATCH__V2_1_0__DOWNLOAD_DEPENDENCIES": "",
+      "PACKAGE_PATCH__V2_1_0__MAKEFILE": "",
+      "PACKAGE_PATCH__V2_2_0__MAKEFILE": "",
+      "PACKAGE_PATCH__V2_2_0__OFFSETOF": "",
+      "PACKAGE_PATCH__V_FOR_CORAL__MAKEFILE": "",
+      "PACKAGE_SUB_DIR": "src",
+      "PACKAGE_URL": "https://github.com/tensorflow/tensorflow",
+      "PACKAGE_VERSION": "default"
+    }
+  },
+  "deps": {
+    "compiler": {
+      "local": "yes",
+      "name": "C++ compiler",
+      "sort": 0,
+      "tags": "compiler,lang-cpp"
+    }
+  },
+  "end_full_path": {
+    "linux": "lib/libtensorflow-lite.a"
+  },
+  "need_cpu_info": "yes",
+  "only_for_host_os_tags": [
+    "linux"
+  ],
+  "only_for_target_os_tags": [
+    "linux"
+  ],
+  "package_extra_name": " (from sources, static)",
+  "process_script": "install",
+  "soft_uoa": "lib.tflite.static",
+  "suggested_path": "lib-tflite-src-static",
+  "tags": [
+    "lib",
+    "tensorflow",
+    "lite",
+    "tflite",
+    "tensorflow-lite",
+    "tensorflow-static",
+    "vsrc",
+    "vstatic",
+    "channel-stable"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "08154997bac8ed55",
+    "module_uoa": "script"
+  },
+  "variations": {
+    "for.coral": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "d855adfc5a0195788bf5f92c3c7352e638aa1109",
+        "PACKAGE_PATCH__V1_15_0__OFFSETOF": "v1.15.0_offsetof.patch",
+        "PACKAGE_PATCH__V_FOR_CORAL__MAKEFILE": "v_for_coral_Makefile.patch",
+        "PACKAGE_VERSION": "1.15.4"
+      }
+    },
+    "rpi4": {
+      "extra_env": {
+        "EXTRA_CXXFLAGS": "-march=armv7-a+neon+vfpv4 -mfpu=neon-vfpv4 "
+      }
+    },
+    "threads.1": {
+      "extra_env": {
+        "CK_NUMBER_OF_MAKE_THREADS": 1
+      }
+    },
+    "threads.2": {
+      "extra_env": {
+        "CK_NUMBER_OF_MAKE_THREADS": 2
+      }
+    },
+    "threads.3": {
+      "extra_env": {
+        "CK_NUMBER_OF_MAKE_THREADS": 3
+      }
+    },
+    "threads.4": {
+      "extra_env": {
+        "CK_NUMBER_OF_MAKE_THREADS": 4
+      }
+    },
+    "v1.13.1": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "v1.13.1",
+        "PACKAGE_PATCH__V1_13_1__MAKEFILE": "v1.13.1_Makefile.patch",
+        "PACKAGE_VERSION": "1.13.1"
+      }
+    },
+    "v1.14.0": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "v1.14.0",
+        "PACKAGE_PATCH__V1_14_0__DOWNLOAD_DEPENDENCIES": "v1.14.0_download_dependencies.patch",
+        "PACKAGE_PATCH__V1_14_0__MAKEFILE": "v1.14.0_Makefile.patch",
+        "PACKAGE_PATCH__V1_14_0__OFFSETOF": "v1.14.0_offsetof.patch",
+        "PACKAGE_VERSION": "1.14.0"
+      }
+    },
+    "v1.15.0": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "v1.15.0",
+        "PACKAGE_PATCH__V1_15_0__MAKEFILE": "v1.15.0_Makefile.patch",
+        "PACKAGE_PATCH__V1_15_0__OFFSETOF": "v1.15.0_offsetof.patch",
+        "PACKAGE_VERSION": "1.15.0"
+      }
+    },
+    "v1.15.3": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "v1.15.3",
+        "PACKAGE_PATCH__V1_15_0__MAKEFILE": "v1.15.0_Makefile.patch",
+        "PACKAGE_PATCH__V1_15_0__OFFSETOF": "v1.15.0_offsetof.patch",
+        "PACKAGE_VERSION": "1.15.3"
+      }
+    },
+    "v2.0.2": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "v2.0.2",
+        "PACKAGE_PATCH__V1_15_0__MAKEFILE": "v1.15.0_Makefile.patch",
+        "PACKAGE_PATCH__V1_15_0__OFFSETOF": "v1.15.0_offsetof.patch",
+        "PACKAGE_VERSION": "2.0.2"
+      }
+    },
+    "v2.1.0": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "v2.1.0",
+        "PACKAGE_PATCH__V1_15_0__OFFSETOF": "v1.15.0_offsetof.patch",
+        "PACKAGE_PATCH__V2_1_0__DOWNLOAD_DEPENDENCIES": "v2.1.0_download_dependencies.patch",
+        "PACKAGE_PATCH__V2_1_0__MAKEFILE": "v2.1.0_Makefile.patch",
+        "PACKAGE_VERSION": "2.1.0"
+      }
+    },
+    "v2.1.1": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "v2.1.1",
+        "PACKAGE_PATCH__V1_15_0__OFFSETOF": "v1.15.0_offsetof.patch",
+        "PACKAGE_PATCH__V2_1_0__MAKEFILE": "v2.1.0_Makefile.patch",
+        "PACKAGE_VERSION": "2.1.1"
+      }
+    },
+    "v2.2.0": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "v2.2.0",
+        "PACKAGE_PATCH__V2_2_0__MAKEFILE": "v2.2.0_Makefile.patch",
+        "PACKAGE_PATCH__V2_2_0__OFFSETOF": "v2.2.0_offsetof.patch",
+        "PACKAGE_VERSION": "2.2.0"
+      }
+    }
+  }
+}

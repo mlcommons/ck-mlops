@@ -1,0 +1,78 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "extra_dir": "",
+    "install_env": {
+      "DATASET_TYPE": "coco",
+      "DEFAULT_HEIGHT": "300",
+      "DEFAULT_WIDTH": "300",
+      "FROZEN_GRAPH": "frozen_inference_graph.pb",
+      "LABELMAP_FILE": "mscoco_label_map.pbtxt",
+      "MODEL_IMAGE_HEIGHT": "300",
+      "MODEL_IMAGE_WIDTH": "300",
+      "MODEL_NAME": "MLPerf SSD-MobileNet",
+      "PACKAGE_NAME": "ssd_mobilenet_v1_coco_2018_01_28.tar.gz",
+      "PACKAGE_NAME1": "ssd_mobilenet_v1_coco_2018_01_28",
+      "PACKAGE_UNTAR": "YES",
+      "PACKAGE_UNZIP": "YES",
+      "PACKAGE_URL": "https://zenodo.org/record/3361502/files",
+      "PIPELINE_CONFIG": "pipeline.config",
+      "WEIGHTS_FILE": "model.ckpt"
+    },
+    "model_id": "ssd_mobilenet_v1",
+    "no_os_in_suggested_path": "yes",
+    "no_ver_in_suggested_path": "yes",
+    "version": "reference"
+  },
+  "deps": {
+    "labelmap": {
+      "local": "yes",
+      "name": "Labelmap for COCO dataset",
+      "tags": "labelmap,vcoco"
+    }
+  },
+  "end_full_path": {
+    "linux": "frozen_inference_graph.pb"
+  },
+  "only_for_host_os_tags": [
+    "linux"
+  ],
+  "only_for_target_os_tags": [
+    "linux"
+  ],
+  "package_extra_name": " (MLPerf SSD-MobileNet non-quantized)",
+  "process_script": "install",
+  "soft_uoa": "3fc0c4b9ba63de2f",
+  "suggested_path": "model-tf-mlperf-ssd-mobilenet",
+  "tags": [
+    "model",
+    "tensorflow",
+    "tf",
+    "object-detection",
+    "mlperf",
+    "ssd-mobilenet-v1",
+    "ssd-mobilenet",
+    "ssd",
+    "mobilenet",
+    "mobilenet-v1",
+    "non-quantized",
+    "vcoco",
+    "channel-stable"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "c412930408fb8271",
+    "module_uoa": "script"
+  },
+  "variations": {
+    "from-google": {
+      "extra_env": {
+        "PACKAGE_URL": "http://download.tensorflow.org/models/object_detection"
+      }
+    },
+    "from-zenodo": {
+      "extra_env": {
+        "PACKAGE_URL": "https://zenodo.org/record/3361502/files"
+      }
+    }
+  }
+}

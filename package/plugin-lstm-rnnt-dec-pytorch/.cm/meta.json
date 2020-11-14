@@ -1,0 +1,81 @@
+{
+  "customize": {
+    "env_prefix": "CK_NNTEST_PLUGIN_DEC",
+    "extra_dir": "",
+    "impl_name": "pytorch",
+    "install_env": {
+      "PLUGIN_LSTM_HIDDEN_SIZE": 320,
+      "PLUGIN_LSTM_INPUT_SIZE": 320,
+      "PLUGIN_LSTM_NUM_LAYERS": 2,
+      "PLUGIN_NAME": "lstm_rnnt_dec.py",
+      "PLUGIN_SIGNATURE": "LSTM_PYTORCH"
+    },
+    "model_name": "lstm-dec",
+    "version": "0.1"
+  },
+  "deps": {
+    "model": {
+      "local": "yes",
+      "name": "PyTorch RNN-T model",
+      "sort": 80,
+      "tags": "model,pytorch,rnnt"
+    },
+    "python": {
+      "add_to_path": "no",
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Python interpreter",
+      "sort": 80,
+      "tags": "compiler,python"
+    },
+    "pytorch": {
+      "local": "yes",
+      "name": "PyTorch framework",
+      "sort": 90,
+      "tags": "lib,pytorch"
+    }
+  },
+  "end_full_path_universal": "plugin/lstm_rnnt_dec.py",
+  "process_script": "install",
+  "soft_uoa": "fee21442c93c5180",
+  "suggested_path": "nntest-plugins-lstm-rnnt-dec-pytorch",
+  "tags": [
+    "nntest",
+    "plugin",
+    "lstm",
+    "rnnt-dec",
+    "pytorch"
+  ],
+  "variations": {
+    "naive": {
+      "extra_customize": {
+        "package_name": "RNNT LSTM Dec naive plugin",
+        "version": "naive"
+      },
+      "extra_env": {
+        "PLUGIN_SUBDIR": "naive"
+      },
+      "on_by_default": "no"
+    },
+    "orig": {
+      "extra_customize": {
+        "package_name": "RNNT LSTM Dec original plugin",
+        "version": "orig"
+      },
+      "extra_env": {
+        "PLUGIN_SUBDIR": "original"
+      },
+      "on_by_default": "yes"
+    },
+    "orig-quant": {
+      "extra_customize": {
+        "package_name": "RNNT LSTM Dec original plugin - quantized",
+        "version": "orig"
+      },
+      "extra_env": {
+        "PLUGIN_SUBDIR": "orig-quantized"
+      },
+      "on_by_default": "no"
+    }
+  }
+}

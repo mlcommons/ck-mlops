@@ -1,0 +1,594 @@
+{
+  "dataset_files": [
+    "shape-32-112-112-1-1",
+    "shape-64-112-112-2-0",
+    "shape-512-14-14-1-1",
+    "shape-512-14-14-2-0",
+    "shape-256-28-28-1-1",
+    "shape-256-28-28-2-0",
+    "shape-128-56-56-1-1",
+    "shape-128-56-56-2-0",
+    "shape-1024-7-7-1-1",
+    "shape-512-12-12-1-1",
+    "shape-512-12-12-2-0",
+    "shape-256-24-24-1-1",
+    "shape-256-24-24-2-0",
+    "shape-128-48-48-1-1",
+    "shape-128-48-48-2-0",
+    "shape-1024-6-6-1-1",
+    "shape-32-96-96-1-1",
+    "shape-64-96-96-2-0",
+    "shape-512-10-10-1-1",
+    "shape-512-10-10-2-0",
+    "shape-256-20-20-1-1",
+    "shape-256-20-20-2-0",
+    "shape-128-40-40-1-1",
+    "shape-128-40-40-2-0",
+    "shape-1024-5-5-1-1",
+    "shape-32-80-80-1-1",
+    "shape-64-80-80-2-0",
+    "shape-256-16-16-1-1",
+    "shape-256-16-16-2-0",
+    "shape-128-32-32-1-1",
+    "shape-128-32-32-2-0",
+    "shape-1024-4-4-1-1",
+    "shape-32-64-64-1-1",
+    "shape-64-64-64-2-0",
+    "shape-512-8-8-1-1",
+    "shape-512-8-8-2-0",
+    "shape-24-112-112-1-1",
+    "shape-48-112-112-2-0",
+    "shape-384-14-14-1-1",
+    "shape-384-14-14-2-0",
+    "shape-192-28-28-1-1",
+    "shape-192-28-28-2-0",
+    "shape-96-56-56-1-1",
+    "shape-96-56-56-2-0",
+    "shape-768-7-7-1-1",
+    "shape-384-12-12-1-1",
+    "shape-384-12-12-2-0",
+    "shape-192-24-24-1-1",
+    "shape-192-24-24-2-0",
+    "shape-96-48-48-1-1",
+    "shape-96-48-48-2-0",
+    "shape-768-6-6-1-1",
+    "shape-24-96-96-1-1",
+    "shape-48-96-96-2-0",
+    "shape-384-10-10-1-1",
+    "shape-384-10-10-2-0",
+    "shape-192-20-20-1-1",
+    "shape-192-20-20-2-0",
+    "shape-96-40-40-1-1",
+    "shape-96-40-40-2-0",
+    "shape-768-5-5-1-1",
+    "shape-24-80-80-1-1",
+    "shape-48-80-80-2-0",
+    "shape-192-16-16-1-1",
+    "shape-192-16-16-2-0",
+    "shape-96-32-32-1-1",
+    "shape-96-32-32-2-0",
+    "shape-768-4-4-1-1",
+    "shape-24-64-64-1-1",
+    "shape-48-64-64-2-0",
+    "shape-384-8-8-1-1",
+    "shape-384-8-8-2-0",
+    "shape-16-112-112-1-1",
+    "shape-32-112-112-2-0",
+    "shape-256-14-14-1-1",
+    "shape-256-14-14-2-0",
+    "shape-128-28-28-1-1",
+    "shape-128-28-28-2-0",
+    "shape-64-56-56-1-1",
+    "shape-64-56-56-2-0",
+    "shape-512-7-7-1-1",
+    "shape-256-12-12-1-1",
+    "shape-256-12-12-2-0",
+    "shape-128-24-24-1-1",
+    "shape-128-24-24-2-0",
+    "shape-64-48-48-1-1",
+    "shape-64-48-48-2-0",
+    "shape-512-6-6-1-1",
+    "shape-16-96-96-1-1",
+    "shape-32-96-96-2-0",
+    "shape-256-10-10-1-1",
+    "shape-256-10-10-2-0",
+    "shape-128-20-20-1-1",
+    "shape-128-20-20-2-0",
+    "shape-64-40-40-1-1",
+    "shape-64-40-40-2-0",
+    "shape-512-5-5-1-1",
+    "shape-16-80-80-1-1",
+    "shape-32-80-80-2-0",
+    "shape-128-16-16-1-1",
+    "shape-128-16-16-2-0",
+    "shape-64-32-32-1-1",
+    "shape-64-32-32-2-0",
+    "shape-512-4-4-1-1",
+    "shape-16-64-64-1-1",
+    "shape-32-64-64-2-0",
+    "shape-256-8-8-1-1",
+    "shape-256-8-8-2-0",
+    "shape-16-112-112-2-0",
+    "shape-8-112-112-1-1",
+    "shape-128-14-14-1-1",
+    "shape-128-14-14-2-0",
+    "shape-64-28-28-1-1",
+    "shape-64-28-28-2-0",
+    "shape-32-56-56-1-1",
+    "shape-32-56-56-2-0",
+    "shape-256-7-7-1-1",
+    "shape-128-12-12-1-1",
+    "shape-128-12-12-2-0",
+    "shape-64-24-24-1-1",
+    "shape-64-24-24-2-0",
+    "shape-32-48-48-1-1",
+    "shape-32-48-48-2-0",
+    "shape-256-6-6-1-1",
+    "shape-16-96-96-2-0",
+    "shape-8-96-96-1-1",
+    "shape-128-10-10-1-1",
+    "shape-128-10-10-2-0",
+    "shape-64-20-20-1-1",
+    "shape-64-20-20-2-0",
+    "shape-32-40-40-1-1",
+    "shape-32-40-40-2-0",
+    "shape-256-5-5-1-1",
+    "shape-16-80-80-2-0",
+    "shape-8-80-80-1-1",
+    "shape-64-16-16-1-1",
+    "shape-64-16-16-2-0",
+    "shape-32-32-32-1-1",
+    "shape-32-32-32-2-0",
+    "shape-256-4-4-1-1",
+    "shape-16-64-64-2-0",
+    "shape-8-64-64-1-1",
+    "shape-128-8-8-1-1",
+    "shape-128-8-8-2-0"
+  ],
+  "desc_dataset_files": {
+    "shape-1024-4-4-1-1": {
+      "name": "MobileNet_1.0_128 Conv2d_13 input 4x4x1024 stride 1 pad 1"
+    },
+    "shape-1024-5-5-1-1": {
+      "name": "MobileNet_1.0_160 Conv2d_13 input 5x5x1024 stride 1 pad 1"
+    },
+    "shape-1024-6-6-1-1": {
+      "name": "MobileNet_1.0_192 Conv2d_13 input 6x6x1024 stride 1 pad 1"
+    },
+    "shape-1024-7-7-1-1": {
+      "name": "MobileNet_1.0_224 Conv2d_13 input 7x7x1024 stride 1 pad 1"
+    },
+    "shape-128-10-10-1-1": {
+      "name": "MobileNet_0.25_160 Conv2d_10 input 10x10x128 stride 1 pad 1"
+    },
+    "shape-128-10-10-2-0": {
+      "name": "MobileNet_0.25_160 Conv2d_12 input 10x10x128 stride 2 pad 0"
+    },
+    "shape-128-12-12-1-1": {
+      "name": "MobileNet_0.25_192 Conv2d_10 input 12x12x128 stride 1 pad 1"
+    },
+    "shape-128-12-12-2-0": {
+      "name": "MobileNet_0.25_192 Conv2d_12 input 12x12x128 stride 2 pad 0"
+    },
+    "shape-128-14-14-1-1": {
+      "name": "MobileNet_0.25_224 Conv2d_10 input 14x14x128 stride 1 pad 1"
+    },
+    "shape-128-14-14-2-0": {
+      "name": "MobileNet_0.25_224 Conv2d_12 input 14x14x128 stride 2 pad 0"
+    },
+    "shape-128-16-16-1-1": {
+      "name": "MobileNet_0.50_128 Conv2d_5 input 16x16x128 stride 1 pad 1"
+    },
+    "shape-128-16-16-2-0": {
+      "name": "MobileNet_0.50_128 Conv2d_6 input 16x16x128 stride 2 pad 0"
+    },
+    "shape-128-20-20-1-1": {
+      "name": "MobileNet_0.50_160 Conv2d_5 input 20x20x128 stride 1 pad 1"
+    },
+    "shape-128-20-20-2-0": {
+      "name": "MobileNet_0.50_160 Conv2d_6 input 20x20x128 stride 2 pad 0"
+    },
+    "shape-128-24-24-1-1": {
+      "name": "MobileNet_0.50_192 Conv2d_5 input 24x24x128 stride 1 pad 1"
+    },
+    "shape-128-24-24-2-0": {
+      "name": "MobileNet_0.50_192 Conv2d_6 input 24x24x128 stride 2 pad 0"
+    },
+    "shape-128-28-28-1-1": {
+      "name": "MobileNet_0.50_224 Conv2d_5 input 28x28x128 stride 1 pad 1"
+    },
+    "shape-128-28-28-2-0": {
+      "name": "MobileNet_0.50_224 Conv2d_6 input 28x28x128 stride 2 pad 0"
+    },
+    "shape-128-32-32-1-1": {
+      "name": "MobileNet_1.0_128 Conv2d_3 input 32x32x128 stride 1 pad 1"
+    },
+    "shape-128-32-32-2-0": {
+      "name": "MobileNet_1.0_128 Conv2d_4 input 32x32x128 stride 2 pad 0"
+    },
+    "shape-128-40-40-1-1": {
+      "name": "MobileNet_1.0_160 Conv2d_3 input 40x40x128 stride 1 pad 1"
+    },
+    "shape-128-40-40-2-0": {
+      "name": "MobileNet_1.0_160 Conv2d_4 input 40x40x128 stride 2 pad 0"
+    },
+    "shape-128-48-48-1-1": {
+      "name": "MobileNet_1.0_192 Conv2d_3 input 48x48x128 stride 1 pad 1"
+    },
+    "shape-128-48-48-2-0": {
+      "name": "MobileNet_1.0_192 Conv2d_4 input 48x48x128 stride 2 pad 0"
+    },
+    "shape-128-56-56-1-1": {
+      "name": "MobileNet_1.0_224 Conv2d_3 input 56x56x128 stride 1 pad 1"
+    },
+    "shape-128-56-56-2-0": {
+      "name": "MobileNet_1.0_224 Conv2d_4 input 56x56x128 stride 2 pad 0"
+    },
+    "shape-128-8-8-1-1": {
+      "name": "MobileNet_0.25_128 Conv2d_10 input 8x8x128 stride 1 pad 1"
+    },
+    "shape-128-8-8-2-0": {
+      "name": "MobileNet_0.25_128 Conv2d_12 input 8x8x128 stride 2 pad 0"
+    },
+    "shape-16-112-112-1-1": {
+      "name": "MobileNet_0.50_224 Conv2d_1 input 112x112x16 stride 1 pad 1"
+    },
+    "shape-16-112-112-2-0": {
+      "name": "MobileNet_0.25_224 Conv2d_2 input 112x112x16 stride 2 pad 0"
+    },
+    "shape-16-64-64-1-1": {
+      "name": "MobileNet_0.50_128 Conv2d_1 input 64x64x16 stride 1 pad 1"
+    },
+    "shape-16-64-64-2-0": {
+      "name": "MobileNet_0.25_128 Conv2d_2 input 64x64x16 stride 2 pad 0"
+    },
+    "shape-16-80-80-1-1": {
+      "name": "MobileNet_0.50_160 Conv2d_1 input 80x80x16 stride 1 pad 1"
+    },
+    "shape-16-80-80-2-0": {
+      "name": "MobileNet_0.25_160 Conv2d_2 input 80x80x16 stride 2 pad 0"
+    },
+    "shape-16-96-96-1-1": {
+      "name": "MobileNet_0.50_192 Conv2d_1 input 96x96x16 stride 1 pad 1"
+    },
+    "shape-16-96-96-2-0": {
+      "name": "MobileNet_0.25_192 Conv2d_2 input 96x96x16 stride 2 pad 0"
+    },
+    "shape-192-16-16-1-1": {
+      "name": "MobileNet_0.75_128 Conv2d_5 input 16x16x192 stride 1 pad 1"
+    },
+    "shape-192-16-16-2-0": {
+      "name": "MobileNet_0.75_128 Conv2d_6 input 16x16x192 stride 2 pad 0"
+    },
+    "shape-192-20-20-1-1": {
+      "name": "MobileNet_0.75_160 Conv2d_5 input 20x20x192 stride 1 pad 1"
+    },
+    "shape-192-20-20-2-0": {
+      "name": "MobileNet_0.75_160 Conv2d_6 input 20x20x192 stride 2 pad 0"
+    },
+    "shape-192-24-24-1-1": {
+      "name": "MobileNet_0.75_192 Conv2d_5 input 24x24x192 stride 1 pad 1"
+    },
+    "shape-192-24-24-2-0": {
+      "name": "MobileNet_0.75_192 Conv2d_6 input 24x24x192 stride 2 pad 0"
+    },
+    "shape-192-28-28-1-1": {
+      "name": "MobileNet_0.75_224 Conv2d_5 input 28x28x192 stride 1 pad 1"
+    },
+    "shape-192-28-28-2-0": {
+      "name": "MobileNet_0.75_224 Conv2d_6 input 28x28x192 stride 2 pad 0"
+    },
+    "shape-24-112-112-1-1": {
+      "name": "MobileNet_0.75_224 Conv2d_1 input 112x112x24 stride 1 pad 1"
+    },
+    "shape-24-64-64-1-1": {
+      "name": "MobileNet_0.75_128 Conv2d_1 input 64x64x24 stride 1 pad 1"
+    },
+    "shape-24-80-80-1-1": {
+      "name": "MobileNet_0.75_160 Conv2d_1 input 80x80x24 stride 1 pad 1"
+    },
+    "shape-24-96-96-1-1": {
+      "name": "MobileNet_0.75_192 Conv2d_1 input 96x96x24 stride 1 pad 1"
+    },
+    "shape-256-10-10-1-1": {
+      "name": "MobileNet_0.50_160 Conv2d_10 input 10x10x256 stride 1 pad 1"
+    },
+    "shape-256-10-10-2-0": {
+      "name": "MobileNet_0.50_160 Conv2d_12 input 10x10x256 stride 2 pad 0"
+    },
+    "shape-256-12-12-1-1": {
+      "name": "MobileNet_0.50_192 Conv2d_10 input 12x12x256 stride 1 pad 1"
+    },
+    "shape-256-12-12-2-0": {
+      "name": "MobileNet_0.50_192 Conv2d_12 input 12x12x256 stride 2 pad 0"
+    },
+    "shape-256-14-14-1-1": {
+      "name": "MobileNet_0.50_224 Conv2d_10 input 14x14x256 stride 1 pad 1"
+    },
+    "shape-256-14-14-2-0": {
+      "name": "MobileNet_0.50_224 Conv2d_12 input 14x14x256 stride 2 pad 0"
+    },
+    "shape-256-16-16-1-1": {
+      "name": "MobileNet_1.0_128 Conv2d_5 input 16x16x256 stride 1 pad 1"
+    },
+    "shape-256-16-16-2-0": {
+      "name": "MobileNet_1.0_128 Conv2d_6 input 16x16x256 stride 2 pad 0"
+    },
+    "shape-256-20-20-1-1": {
+      "name": "MobileNet_1.0_160 Conv2d_5 input 20x20x256 stride 1 pad 1"
+    },
+    "shape-256-20-20-2-0": {
+      "name": "MobileNet_1.0_160 Conv2d_6 input 20x20x256 stride 2 pad 0"
+    },
+    "shape-256-24-24-1-1": {
+      "name": "MobileNet_1.0_192 Conv2d_5 input 24x24x256 stride 1 pad 1"
+    },
+    "shape-256-24-24-2-0": {
+      "name": "MobileNet_1.0_192 Conv2d_6 input 24x24x256 stride 2 pad 0"
+    },
+    "shape-256-28-28-1-1": {
+      "name": "MobileNet_1.0_224 Conv2d_5 input 28x28x256 stride 1 pad 1"
+    },
+    "shape-256-28-28-2-0": {
+      "name": "MobileNet_1.0_224 Conv2d_6 input 28x28x256 stride 2 pad 0"
+    },
+    "shape-256-4-4-1-1": {
+      "name": "MobileNet_0.25_128 Conv2d_13 input 4x4x256 stride 1 pad 1"
+    },
+    "shape-256-5-5-1-1": {
+      "name": "MobileNet_0.25_160 Conv2d_13 input 5x5x256 stride 1 pad 1"
+    },
+    "shape-256-6-6-1-1": {
+      "name": "MobileNet_0.25_192 Conv2d_13 input 6x6x256 stride 1 pad 1"
+    },
+    "shape-256-7-7-1-1": {
+      "name": "MobileNet_0.25_224 Conv2d_13 input 7x7x256 stride 1 pad 1"
+    },
+    "shape-256-8-8-1-1": {
+      "name": "MobileNet_0.50_128 Conv2d_10 input 8x8x256 stride 1 pad 1"
+    },
+    "shape-256-8-8-2-0": {
+      "name": "MobileNet_0.50_128 Conv2d_12 input 8x8x256 stride 2 pad 0"
+    },
+    "shape-32-112-112-1-1": {
+      "name": "MobileNet_1.0_224 Conv2d_1 input 112x112x32 stride 1 pad 1"
+    },
+    "shape-32-112-112-2-0": {
+      "name": "MobileNet_0.50_224 Conv2d_2 input 112x112x32 stride 2 pad 0"
+    },
+    "shape-32-32-32-1-1": {
+      "name": "MobileNet_0.25_128 Conv2d_3 input 32x32x32 stride 1 pad 1"
+    },
+    "shape-32-32-32-2-0": {
+      "name": "MobileNet_0.25_128 Conv2d_4 input 32x32x32 stride 2 pad 0"
+    },
+    "shape-32-40-40-1-1": {
+      "name": "MobileNet_0.25_160 Conv2d_3 input 40x40x32 stride 1 pad 1"
+    },
+    "shape-32-40-40-2-0": {
+      "name": "MobileNet_0.25_160 Conv2d_4 input 40x40x32 stride 2 pad 0"
+    },
+    "shape-32-48-48-1-1": {
+      "name": "MobileNet_0.25_192 Conv2d_3 input 48x48x32 stride 1 pad 1"
+    },
+    "shape-32-48-48-2-0": {
+      "name": "MobileNet_0.25_192 Conv2d_4 input 48x48x32 stride 2 pad 0"
+    },
+    "shape-32-56-56-1-1": {
+      "name": "MobileNet_0.25_224 Conv2d_3 input 56x56x32 stride 1 pad 1"
+    },
+    "shape-32-56-56-2-0": {
+      "name": "MobileNet_0.25_224 Conv2d_4 input 56x56x32 stride 2 pad 0"
+    },
+    "shape-32-64-64-1-1": {
+      "name": "MobileNet_1.0_128 Conv2d_1 input 64x64x32 stride 1 pad 1"
+    },
+    "shape-32-64-64-2-0": {
+      "name": "MobileNet_0.50_128 Conv2d_2 input 64x64x32 stride 2 pad 0"
+    },
+    "shape-32-80-80-1-1": {
+      "name": "MobileNet_1.0_160 Conv2d_1 input 80x80x32 stride 1 pad 1"
+    },
+    "shape-32-80-80-2-0": {
+      "name": "MobileNet_0.50_160 Conv2d_2 input 80x80x32 stride 2 pad 0"
+    },
+    "shape-32-96-96-1-1": {
+      "name": "MobileNet_1.0_192 Conv2d_1 input 96x96x32 stride 1 pad 1"
+    },
+    "shape-32-96-96-2-0": {
+      "name": "MobileNet_0.50_192 Conv2d_2 input 96x96x32 stride 2 pad 0"
+    },
+    "shape-384-10-10-1-1": {
+      "name": "MobileNet_0.75_160 Conv2d_10 input 10x10x384 stride 1 pad 1"
+    },
+    "shape-384-10-10-2-0": {
+      "name": "MobileNet_0.75_160 Conv2d_12 input 10x10x384 stride 2 pad 0"
+    },
+    "shape-384-12-12-1-1": {
+      "name": "MobileNet_0.75_192 Conv2d_10 input 12x12x384 stride 1 pad 1"
+    },
+    "shape-384-12-12-2-0": {
+      "name": "MobileNet_0.75_192 Conv2d_12 input 12x12x384 stride 2 pad 0"
+    },
+    "shape-384-14-14-1-1": {
+      "name": "MobileNet_0.75_224 Conv2d_10 input 14x14x384 stride 1 pad 1"
+    },
+    "shape-384-14-14-2-0": {
+      "name": "MobileNet_0.75_224 Conv2d_12 input 14x14x384 stride 2 pad 0"
+    },
+    "shape-384-8-8-1-1": {
+      "name": "MobileNet_0.75_128 Conv2d_10 input 8x8x384 stride 1 pad 1"
+    },
+    "shape-384-8-8-2-0": {
+      "name": "MobileNet_0.75_128 Conv2d_12 input 8x8x384 stride 2 pad 0"
+    },
+    "shape-48-112-112-2-0": {
+      "name": "MobileNet_0.75_224 Conv2d_2 input 112x112x48 stride 2 pad 0"
+    },
+    "shape-48-64-64-2-0": {
+      "name": "MobileNet_0.75_128 Conv2d_2 input 64x64x48 stride 2 pad 0"
+    },
+    "shape-48-80-80-2-0": {
+      "name": "MobileNet_0.75_160 Conv2d_2 input 80x80x48 stride 2 pad 0"
+    },
+    "shape-48-96-96-2-0": {
+      "name": "MobileNet_0.75_192 Conv2d_2 input 96x96x48 stride 2 pad 0"
+    },
+    "shape-512-10-10-1-1": {
+      "name": "MobileNet_1.0_160 Conv2d_10 input 10x10x512 stride 1 pad 1"
+    },
+    "shape-512-10-10-2-0": {
+      "name": "MobileNet_1.0_160 Conv2d_12 input 10x10x512 stride 2 pad 0"
+    },
+    "shape-512-12-12-1-1": {
+      "name": "MobileNet_1.0_192 Conv2d_10 input 12x12x512 stride 1 pad 1"
+    },
+    "shape-512-12-12-2-0": {
+      "name": "MobileNet_1.0_192 Conv2d_12 input 12x12x512 stride 2 pad 0"
+    },
+    "shape-512-14-14-1-1": {
+      "name": "MobileNet_1.0_224 Conv2d_10 input 14x14x512 stride 1 pad 1"
+    },
+    "shape-512-14-14-2-0": {
+      "name": "MobileNet_1.0_224 Conv2d_12 input 14x14x512 stride 2 pad 0"
+    },
+    "shape-512-4-4-1-1": {
+      "name": "MobileNet_0.50_128 Conv2d_13 input 4x4x512 stride 1 pad 1"
+    },
+    "shape-512-5-5-1-1": {
+      "name": "MobileNet_0.50_160 Conv2d_13 input 5x5x512 stride 1 pad 1"
+    },
+    "shape-512-6-6-1-1": {
+      "name": "MobileNet_0.50_192 Conv2d_13 input 6x6x512 stride 1 pad 1"
+    },
+    "shape-512-7-7-1-1": {
+      "name": "MobileNet_0.50_224 Conv2d_13 input 7x7x512 stride 1 pad 1"
+    },
+    "shape-512-8-8-1-1": {
+      "name": "MobileNet_1.0_128 Conv2d_10 input 8x8x512 stride 1 pad 1"
+    },
+    "shape-512-8-8-2-0": {
+      "name": "MobileNet_1.0_128 Conv2d_12 input 8x8x512 stride 2 pad 0"
+    },
+    "shape-64-112-112-2-0": {
+      "name": "MobileNet_1.0_224 Conv2d_2 input 112x112x64 stride 2 pad 0"
+    },
+    "shape-64-16-16-1-1": {
+      "name": "MobileNet_0.25_128 Conv2d_5 input 16x16x64 stride 1 pad 1"
+    },
+    "shape-64-16-16-2-0": {
+      "name": "MobileNet_0.25_128 Conv2d_6 input 16x16x64 stride 2 pad 0"
+    },
+    "shape-64-20-20-1-1": {
+      "name": "MobileNet_0.25_160 Conv2d_5 input 20x20x64 stride 1 pad 1"
+    },
+    "shape-64-20-20-2-0": {
+      "name": "MobileNet_0.25_160 Conv2d_6 input 20x20x64 stride 2 pad 0"
+    },
+    "shape-64-24-24-1-1": {
+      "name": "MobileNet_0.25_192 Conv2d_5 input 24x24x64 stride 1 pad 1"
+    },
+    "shape-64-24-24-2-0": {
+      "name": "MobileNet_0.25_192 Conv2d_6 input 24x24x64 stride 2 pad 0"
+    },
+    "shape-64-28-28-1-1": {
+      "name": "MobileNet_0.25_224 Conv2d_5 input 28x28x64 stride 1 pad 1"
+    },
+    "shape-64-28-28-2-0": {
+      "name": "MobileNet_0.25_224 Conv2d_6 input 28x28x64 stride 2 pad 0"
+    },
+    "shape-64-32-32-1-1": {
+      "name": "MobileNet_0.50_128 Conv2d_3 input 32x32x64 stride 1 pad 1"
+    },
+    "shape-64-32-32-2-0": {
+      "name": "MobileNet_0.50_128 Conv2d_4 input 32x32x64 stride 2 pad 0"
+    },
+    "shape-64-40-40-1-1": {
+      "name": "MobileNet_0.50_160 Conv2d_3 input 40x40x64 stride 1 pad 1"
+    },
+    "shape-64-40-40-2-0": {
+      "name": "MobileNet_0.50_160 Conv2d_4 input 40x40x64 stride 2 pad 0"
+    },
+    "shape-64-48-48-1-1": {
+      "name": "MobileNet_0.50_192 Conv2d_3 input 48x48x64 stride 1 pad 1"
+    },
+    "shape-64-48-48-2-0": {
+      "name": "MobileNet_0.50_192 Conv2d_4 input 48x48x64 stride 2 pad 0"
+    },
+    "shape-64-56-56-1-1": {
+      "name": "MobileNet_0.50_224 Conv2d_3 input 56x56x64 stride 1 pad 1"
+    },
+    "shape-64-56-56-2-0": {
+      "name": "MobileNet_0.50_224 Conv2d_4 input 56x56x64 stride 2 pad 0"
+    },
+    "shape-64-64-64-2-0": {
+      "name": "MobileNet_1.0_128 Conv2d_2 input 64x64x64 stride 2 pad 0"
+    },
+    "shape-64-80-80-2-0": {
+      "name": "MobileNet_1.0_160 Conv2d_2 input 80x80x64 stride 2 pad 0"
+    },
+    "shape-64-96-96-2-0": {
+      "name": "MobileNet_1.0_192 Conv2d_2 input 96x96x64 stride 2 pad 0"
+    },
+    "shape-768-4-4-1-1": {
+      "name": "MobileNet_0.75_128 Conv2d_13 input 4x4x768 stride 1 pad 1"
+    },
+    "shape-768-5-5-1-1": {
+      "name": "MobileNet_0.75_160 Conv2d_13 input 5x5x768 stride 1 pad 1"
+    },
+    "shape-768-6-6-1-1": {
+      "name": "MobileNet_0.75_192 Conv2d_13 input 6x6x768 stride 1 pad 1"
+    },
+    "shape-768-7-7-1-1": {
+      "name": "MobileNet_0.75_224 Conv2d_13 input 7x7x768 stride 1 pad 1"
+    },
+    "shape-8-112-112-1-1": {
+      "name": "MobileNet_0.25_224 Conv2d_1 input 112x112x8 stride 1 pad 1"
+    },
+    "shape-8-64-64-1-1": {
+      "name": "MobileNet_0.25_128 Conv2d_1 input 64x64x8 stride 1 pad 1"
+    },
+    "shape-8-80-80-1-1": {
+      "name": "MobileNet_0.25_160 Conv2d_1 input 80x80x8 stride 1 pad 1"
+    },
+    "shape-8-96-96-1-1": {
+      "name": "MobileNet_0.25_192 Conv2d_1 input 96x96x8 stride 1 pad 1"
+    },
+    "shape-96-32-32-1-1": {
+      "name": "MobileNet_0.75_128 Conv2d_3 input 32x32x96 stride 1 pad 1"
+    },
+    "shape-96-32-32-2-0": {
+      "name": "MobileNet_0.75_128 Conv2d_4 input 32x32x96 stride 2 pad 0"
+    },
+    "shape-96-40-40-1-1": {
+      "name": "MobileNet_0.75_160 Conv2d_3 input 40x40x96 stride 1 pad 1"
+    },
+    "shape-96-40-40-2-0": {
+      "name": "MobileNet_0.75_160 Conv2d_4 input 40x40x96 stride 2 pad 0"
+    },
+    "shape-96-48-48-1-1": {
+      "name": "MobileNet_0.75_192 Conv2d_3 input 48x48x96 stride 1 pad 1"
+    },
+    "shape-96-48-48-2-0": {
+      "name": "MobileNet_0.75_192 Conv2d_4 input 48x48x96 stride 2 pad 0"
+    },
+    "shape-96-56-56-1-1": {
+      "name": "MobileNet_0.75_224 Conv2d_3 input 56x56x96 stride 1 pad 1"
+    },
+    "shape-96-56-56-2-0": {
+      "name": "MobileNet_0.75_224 Conv2d_4 input 56x56x96 stride 2 pad 0"
+    }
+  },
+  "tags": [
+    "dataset",
+    "nntest",
+    "tensor-depthwiseconv",
+    "tensor-depthwiseconv-mobilenets",
+    "mobilenets",
+    "depthwiseconv",
+    "depthwise_conv",
+    "depthwise-conv",
+    "depthwise_convolution",
+    "depthwise-convolution"
+  ]
+}

@@ -1,0 +1,57 @@
+#!/bin/bash
+
+# Create output dir.
+mkdir -p ${CK_DECENT_OUTPUT_DIR}
+
+# Create calibration data dir.
+DATA_DIR=./data
+rm -rf ${DATA_DIR}
+mkdir -p ${DATA_DIR}
+
+# Create imagenet dir.
+IMAGENET_DIR=${DATA_DIR}/imagenet_${CK_IMAGENET_RESOLUTION}
+mkdir -p ${IMAGENET_DIR}
+
+# Copy calibration data.
+if [ "${CK_IMAGENET_RESOLUTION}" = "256" ]; then
+    echo "Copying '${CK_ENV_DEEPHI_CALIBRATION_IMAGES_256}/' to '${IMAGENET_DIR}'..."
+    cp -r ${CK_ENV_DEEPHI_CALIBRATION_IMAGES_256}/ ${IMAGENET_DIR}
+    cp ${CK_ENV_DEEPHI_CALIBRATION_TXT_256} ${IMAGENET_DIR}
+    CK_ENV_MODEL_CAFFE_DEEPHI_PROTOTXT=${CK_ENV_MODEL_CAFFE_DEEPHI_PROTOTXT}
+elif [ "$CK_IMAGENET_RESOLUTION" = "320" ]; then
+    echo "Copying '${CK_ENV_DEEPHI_CALIBRATION_IMAGES_320}/' to '${IMAGENET_DIR}'..."
+    cp -r ${CK_ENV_DEEPHI_CALIBRATION_IMAGES_320}/ ${IMAGENET_DIR}
+    cp ${CK_ENV_DEEPHI_CALIBRATION_TXT_320} ${IMAGENET_DIR}
+    CK_ENV_MODEL_CAFFE_DEEPHI_PROTOTXT=${CK_ENV_MODEL_CAFFE_DEEPHI_PROTOTXT_320}
+else
+    echo "Unsupported resolution: ${CK_IMAGENET_RESOLUTION}!"
+    exit 1
+fi
+
+# Log date and env settings.
+echo "Logging into '${CK_DECENT_OUTPUT_DIR}/${CK_DECENT_LOG_FILE}'..."
+date > ${CK_DECENT_OUTPUT_DIR}/${CK_DECENT_LOG_FILE}
+env | grep  "CK_ENV" >> ${CK_DECENT_OUTPUT_DIR}/${CK_DECENT_LOG_FILE}
+
+# FIXME: The DECENT action is called 'fix' in v1.x; 'quantize' in v2.x.
+export CK_ENV_LIB_DNNDK_DECENT_ACTION=quantize
+
+# Run the DECENT converter.
+echo >> ${CK_DECENT_OUTPUT_DIR}/${CK_DECENT_LOG_FILE}
+echo "${CK_ENV_LIB_DNNDK_DECENT} \
+${CK_ENV_LIB_DNNDK_DECENT_ACTION} \
+-model ${CK_ENV_MODEL_CAFFE_DEEPHI_PROTOTXT} \
+-weights ${CK_ENV_MODEL_CAFFE_DEEPHI_WEIGHTS} \
+-method ${CK_DECENT_METHOD} \
+-output_dir ${CK_DECENT_OUTPUT_DIR} \
+${CK_EXTRA_OPT}" \
+>> ${CK_DECENT_OUTPUT_DIR}/${CK_DECENT_LOG_FILE}
+${CK_ENV_LIB_DNNDK_DECENT} \
+  ${CK_ENV_LIB_DNNDK_DECENT_ACTION} \
+  -model ${CK_ENV_MODEL_CAFFE_DEEPHI_PROTOTXT} \
+  -weights ${CK_ENV_MODEL_CAFFE_DEEPHI_WEIGHTS} \
+  -method ${CK_DECENT_METHOD} \
+  -output_dir ${CK_DECENT_OUTPUT_DIR} \
+  ${CK_EXTRA_OPT} \
+  >> ${CK_DECENT_OUTPUT_DIR}/${CK_DECENT_LOG_FILE} \
+  2>&1

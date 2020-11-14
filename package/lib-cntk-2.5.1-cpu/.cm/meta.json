@@ -1,0 +1,49 @@
+{
+  "customize": {
+    "extra_dir": "",
+    "install_env": {
+      "CNTK_PACKAGE_TYPE": "CPU-Only",
+      "CNTK_PACKAGE_VER": "2.5.1"
+    },
+    "version": "2.5.1"
+  },
+  "deps": {
+    "python": {
+      "local": "yes",
+      "name": "Python",
+      "sort": 20,
+      "tags": "compiler,python"
+    }
+  },
+  "end_full_path_universal": "lib$#sep#$cntk$#sep#$__init__.py",
+  "need_cpu_info": "yes",
+  "only_for_host_os_tags": [
+    "linux",
+    "windows"
+  ],
+  "only_for_target_os_tags": [
+    "linux",
+    "windows"
+  ],
+  "package_extra_name": " (prebuilt, cpu)",
+  "process_script": "install",
+  "soft_uoa": "71c4a94768b7bbe1",
+  "suggested_path": "cntk-prebuilt-cpu",
+  "tags": [
+    "lib",
+    "cntk",
+    "cntk-cpu",
+    "v2.5.1",
+    "v2.5",
+    "v2",
+    "vprebuilt",
+    "vcpu",
+    "channel-stable"
+  ],
+  "template": "yes",
+  "template_type": "AI CNTK package",
+  "use_scripts_from_another_entry": {
+    "data_uoa": "cc81d4c8da7a472e",
+    "module_uoa": "package"
+  }
+}

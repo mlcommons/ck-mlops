@@ -1,0 +1,74 @@
+{
+  "customize": {
+    "env_prefix": "CK_NNTEST_PLUGIN_POST_ONNX",
+    "extra_dir": "",
+    "impl_name": "onnx",
+    "install_env": {
+      "PLUGIN_NAME": "lstm_rnnt_post.py",
+      "PLUGIN_SIGNATURE": "LSTM_ONNX",
+      "PLUGIN_SUBDIR": "plugin"
+    },
+    "model_name": "lstm",
+    "version": "0.1"
+  },
+  "deps": {
+    "lib-python-onnxruntime": {
+      "local": "yes",
+      "name": "Python onnxruntime library",
+      "sort": 20,
+      "tags": "lib,python-package,onnxruntime"
+    },
+    "plugin-lstm-rnnt-post-pytorch": {
+      "add_to_path": "no",
+      "local": "yes",
+      "name": "Pytorch LSTM RNNT Post plugin",
+      "sort": 70,
+      "tags": "nntest,plugin,rnnt-post,pytorch",
+      "update_tags_if_env": {
+        "naive": [
+          {
+            "PLUGIN_VARIANT": "naive"
+          }
+        ],
+        "orig": [
+          {
+            "PLUGIN_VARIANT": "orig"
+          }
+        ]
+      }
+    }
+  },
+  "end_full_path_universal": "plugin/lstm_rnnt_post.py",
+  "process_script": "install",
+  "soft_uoa": "fee21442c93c5180",
+  "suggested_path": "nntest-plugins-lstm-rnnt-post-onnx",
+  "tags": [
+    "nntest",
+    "plugin",
+    "lstm",
+    "rnnt-post",
+    "onnx"
+  ],
+  "variations": {
+    "naive": {
+      "extra_customize": {
+        "package_name": "ONNX RNNT LSTM Post naive plugin",
+        "version": "naive"
+      },
+      "extra_env": {
+        "PLUGIN_VARIANT": "naive"
+      },
+      "on_by_default": "no"
+    },
+    "orig": {
+      "extra_customize": {
+        "package_name": "ONNX RNNT LSTM Post original plugin",
+        "version": "orig"
+      },
+      "extra_env": {
+        "PLUGIN_VARIANT": "orig"
+      },
+      "on_by_default": "yes"
+    }
+  }
+}

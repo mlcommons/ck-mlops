@@ -1,0 +1,17 @@
+diff --git a/cmake/os_flags.cmake b/cmake/os_flags.cmake
+index 6bcd3324..3f8955ae 100644
+--- a/cmake/os_flags.cmake
++++ b/cmake/os_flags.cmake
+@@ -252,9 +252,9 @@ if(WIN32)
+ else()
+     # TODO: enable for C sources as well
+     # ie_add_compiler_flags(-Werror)
+-    if(TREAT_WARNING_AS_ERROR)
+-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
+-    endif()
++    # if(TREAT_WARNING_AS_ERROR)
++    #    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
++    # endif()
+ 
+     ie_add_compiler_flags(-ffunction-sections -fdata-sections)
+     ie_add_compiler_flags(-fdiagnostics-show-option)

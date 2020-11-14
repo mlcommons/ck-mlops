@@ -1,0 +1,71 @@
+diff --git a/src/armnnTfLiteParser/TfLiteParser.cpp b/src/armnnTfLiteParser/TfLiteParser.cpp
+index 1ae2de0a..47b0315a 100644
+--- a/src/armnnTfLiteParser/TfLiteParser.cpp
++++ b/src/armnnTfLiteParser/TfLiteParser.cpp
+@@ -502,6 +502,7 @@ TfLiteParser::TfLiteParser(const Optional<ITfLiteParser::TfLiteParserOptions>& o
+     m_ParserFunctions[tflite::BuiltinOperator_DEQUANTIZE]              = &TfLiteParser::ParseDequantize;
+     m_ParserFunctions[tflite::BuiltinOperator_EXP]                     = &TfLiteParser::ParseExp;
+     m_ParserFunctions[tflite::BuiltinOperator_FULLY_CONNECTED]         = &TfLiteParser::ParseFullyConnected;
++    m_ParserFunctions[tflite::BuiltinOperator_HARD_SWISH]              = &TfLiteParser::ParseHardSwish;
+     m_ParserFunctions[tflite::BuiltinOperator_LOGISTIC]                = &TfLiteParser::ParseLogistic;
+     m_ParserFunctions[tflite::BuiltinOperator_L2_NORMALIZATION]        = &TfLiteParser::ParseL2Normalization;
+     m_ParserFunctions[tflite::BuiltinOperator_MAX_POOL_2D]             = &TfLiteParser::ParseMaxPool2D;
+@@ -1860,6 +1861,12 @@ void TfLiteParser::ParseTanH(size_t subgraphIndex, size_t operatorIndex)
+     ParseActivation(subgraphIndex,operatorIndex,ActivationFunction::TanH);
+ }
+ 
++void TfLiteParser::ParseHardSwish(size_t subgraphIndex, size_t operatorIndex)
++{
++    ParseActivation(subgraphIndex, operatorIndex, ActivationFunction::HardSwish);
++}
++
++
+ 
+ void TfLiteParser::ParseActivation(size_t subgraphIndex, size_t operatorIndex, ActivationFunction activationType)
+ {
+@@ -1903,6 +1910,12 @@ void TfLiteParser::ParseActivation(size_t subgraphIndex, size_t operatorIndex, A
+             activationDesc.m_B = 1.0f;
+             break;
+         }
++	case ActivationFunction::HardSwish:
++	{
++            layerName += str(boost::format("HARDSWISH:%1%:%2%") % subgraphIndex % operatorIndex);
++            break;
++        }
++
+         default:
+         {
+             throw ParseException(
+diff --git a/src/armnnTfLiteParser/TfLiteParser.hpp b/src/armnnTfLiteParser/TfLiteParser.hpp
+index c72f7ad7..ab7722ab 100644
+--- a/src/armnnTfLiteParser/TfLiteParser.hpp
++++ b/src/armnnTfLiteParser/TfLiteParser.hpp
+@@ -104,6 +104,7 @@ private:
+     void ParseDetectionPostProcess(size_t subgraphIndex, size_t operatorIndex);
+     void ParseExp(size_t subgraphIndex, size_t operatorIndex);
+     void ParseFullyConnected(size_t subgraphIndex, size_t operatorIndex);
++    void ParseHardSwish(size_t subgraphIndex, size_t operatorIndex);
+     void ParseLogistic(size_t subgraphIndex, size_t operatorIndex);
+     void ParseL2Normalization(size_t subgraphIndex, size_t operatorIndex);
+     void ParseMaxPool2D(size_t subgraphIndex, size_t operatorIndex);
+diff --git a/src/armnnTfLiteParser/test/Activations.cpp b/src/armnnTfLiteParser/test/Activations.cpp
+index e8153a28..e57477e6 100644
+--- a/src/armnnTfLiteParser/test/Activations.cpp
++++ b/src/armnnTfLiteParser/test/Activations.cpp
+@@ -105,4 +105,16 @@ BOOST_FIXTURE_TEST_CASE(ParseTanH, TanHFixture)
+         { -0.1f,       -0.2f,         -0.3f,       -0.4f,    0.1f,         0.2f,              0.3f },
+         { -0.09966799f, -0.19737528f, -0.29131261f, -0.379949f, 0.09966799f, 0.19737528f, 0.29131261f });
+ }
++
++struct HardSwishFixture : ActivationFixture
++{
++    HardSwishFixture() : ActivationFixture("HARD_SWISH", "FLOAT32") {}
++};
++
++BOOST_FIXTURE_TEST_CASE(ParseHardSwish, HardSwishFixture)
++{
++    RunTest<2, armnn::DataType::Float32>(0,
++                                         { -4.0f, -3.0f,        -2.9f,  1.2f,        2.2f, 3.0f, 4.0f },
++                                         { -0.0f, -0.0f, -0.04833334f, 0.84f, 1.90666667f, 3.0f, 4.0f });
++}
+ BOOST_AUTO_TEST_SUITE_END()

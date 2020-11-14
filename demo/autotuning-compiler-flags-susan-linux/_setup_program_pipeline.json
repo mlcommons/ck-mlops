@@ -1,0 +1,11 @@
+{
+ "prepare":"yes",
+ "save_to_file":"_setup_program_pipeline_tmp.json",
+ "data_uoa":"cbench-automotive-susan",
+ "cmd_key":"edges",
+ "repeat":200,
+ "cpu_freq":"max",
+ "gpu_freq":"max",
+ "no_state_check":"yes"
+}
+

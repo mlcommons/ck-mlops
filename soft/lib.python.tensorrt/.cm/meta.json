@@ -1,0 +1,46 @@
+{
+  "auto_detect": "yes",
+  "customize": {
+    "check_that_exists": "yes",
+    "detect_version_externally": "yes",
+    "env_prefix": "CK_ENV_PYTHON_PACKAGE_TENSORRT",
+    "limit_recursion_dir_search": {
+      "linux": 5,
+      "win": 5
+    },
+    "soft_file_universal": "tensorrt$#sep#$__init__.py",
+    "version_recursive_import": "yes",
+    "version_variable_name": "__version__"
+  },
+  "deps": {
+    "python": {
+      "add_to_path": "yes",
+      "local": "yes",
+      "name": "Python interpreter",
+      "sort": 20,
+      "tags": "compiler,python",
+      "version_from": [
+        3,
+        5,
+        0
+      ]
+    },
+    "tensorrt-library": {
+      "local": "yes",
+      "name": "TensorRT library",
+      "sort": 10,
+      "tags": "lib,tensorrt,inference"
+    }
+  },
+  "soft_name": "Python TensorRT library",
+  "tags": [
+    "lib",
+    "python-package",
+    "tensorrt",
+    "trt"
+  ],
+  "use_customize_script_from_another_entry": {
+    "data_uoa": "4460bdb0ade2a3df",
+    "module_uoa": "soft"
+  }
+}

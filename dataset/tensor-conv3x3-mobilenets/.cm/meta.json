@@ -1,0 +1,79 @@
+{
+  "dataset_files": [
+    "shape-3-224-224-3-32-2-0",
+    "shape-3-192-192-3-32-2-0",
+    "shape-3-160-160-3-32-2-0",
+    "shape-3-128-128-3-32-2-0",
+    "shape-3-224-224-3-24-2-0",
+    "shape-3-192-192-3-24-2-0",
+    "shape-3-160-160-3-24-2-0",
+    "shape-3-128-128-3-24-2-0",
+    "shape-3-224-224-3-16-2-0",
+    "shape-3-192-192-3-16-2-0",
+    "shape-3-160-160-3-16-2-0",
+    "shape-3-128-128-3-16-2-0",
+    "shape-3-224-224-3-8-2-0",
+    "shape-3-192-192-3-8-2-0",
+    "shape-3-160-160-3-8-2-0",
+    "shape-3-128-128-3-8-2-0"
+  ],
+  "desc_dataset_files": {
+    "shape-3-128-128-3-16-2-0": {
+      "name": "MobileNet_0.50_128 Conv2d_0 input 128x128x3 filter 3x3x16 stride 2 pad 0"
+    },
+    "shape-3-128-128-3-24-2-0": {
+      "name": "MobileNet_0.75_128 Conv2d_0 input 128x128x3 filter 3x3x24 stride 2 pad 0"
+    },
+    "shape-3-128-128-3-32-2-0": {
+      "name": "MobileNet_1.0_128 Conv2d_0 input 128x128x3 filter 3x3x32 stride 2 pad 0"
+    },
+    "shape-3-128-128-3-8-2-0": {
+      "name": "MobileNet_0.25_128 Conv2d_0 input 128x128x3 filter 3x3x8 stride 2 pad 0"
+    },
+    "shape-3-160-160-3-16-2-0": {
+      "name": "MobileNet_0.50_160 Conv2d_0 input 160x160x3 filter 3x3x16 stride 2 pad 0"
+    },
+    "shape-3-160-160-3-24-2-0": {
+      "name": "MobileNet_0.75_160 Conv2d_0 input 160x160x3 filter 3x3x24 stride 2 pad 0"
+    },
+    "shape-3-160-160-3-32-2-0": {
+      "name": "MobileNet_1.0_160 Conv2d_0 input 160x160x3 filter 3x3x32 stride 2 pad 0"
+    },
+    "shape-3-160-160-3-8-2-0": {
+      "name": "MobileNet_0.25_160 Conv2d_0 input 160x160x3 filter 3x3x8 stride 2 pad 0"
+    },
+    "shape-3-192-192-3-16-2-0": {
+      "name": "MobileNet_0.50_192 Conv2d_0 input 192x192x3 filter 3x3x16 stride 2 pad 0"
+    },
+    "shape-3-192-192-3-24-2-0": {
+      "name": "MobileNet_0.75_192 Conv2d_0 input 192x192x3 filter 3x3x24 stride 2 pad 0"
+    },
+    "shape-3-192-192-3-32-2-0": {
+      "name": "MobileNet_1.0_192 Conv2d_0 input 192x192x3 filter 3x3x32 stride 2 pad 0"
+    },
+    "shape-3-192-192-3-8-2-0": {
+      "name": "MobileNet_0.25_192 Conv2d_0 input 192x192x3 filter 3x3x8 stride 2 pad 0"
+    },
+    "shape-3-224-224-3-16-2-0": {
+      "name": "MobileNet_0.50_224 Conv2d_0 input 224x224x3 filter 3x3x16 stride 2 pad 0"
+    },
+    "shape-3-224-224-3-24-2-0": {
+      "name": "MobileNet_0.75_224 Conv2d_0 input 224x224x3 filter 3x3x24 stride 2 pad 0"
+    },
+    "shape-3-224-224-3-32-2-0": {
+      "name": "MobileNet_1.0_224 Conv2d_0 input 224x224x3 filter 3x3x32 stride 2 pad 0"
+    },
+    "shape-3-224-224-3-8-2-0": {
+      "name": "MobileNet_0.25_224 Conv2d_0 input 224x224x3 filter 3x3x8 stride 2 pad 0"
+    }
+  },
+  "tags": [
+    "dataset",
+    "nntest",
+    "tensor-conv",
+    "tensor-conv-mobilenets",
+    "conv",
+    "convolution",
+    "mobilenets"
+  ]
+}

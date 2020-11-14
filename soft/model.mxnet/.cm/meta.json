@@ -1,0 +1,14 @@
+{
+  "auto_detect": "no",
+  "customize": {
+    "check_that_exists": "yes",
+    "ck_version": 10,
+    "env_prefix": "CK_ENV_MODEL_MXNET"
+  },
+  "soft_name": "MXNet model (net and weights)",
+  "tags": [
+    "mxnetmodel"
+  ],
+  "template": "yes",
+  "template_type": "MXNet model"
+}

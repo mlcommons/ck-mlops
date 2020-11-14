@@ -1,0 +1,21 @@
+{
+  "backup_data_uid": "38d94cf6b97bc381",
+  "backup_module_uid": "41e31cc4496b8a8e",
+  "backup_module_uoa": "platform.os",
+  "control": {
+    "author": "cTuning foundation",
+    "author_email": "admin@cTuning.org",
+    "author_webpage": "http://cTuning.org",
+    "copyright": "See CK COPYRIGHT.txt for copyright details",
+    "engine": "CK",
+    "iso_datetime": "2020-11-14T21:43:49.934362",
+    "license": "See CK LICENSE.txt for licensing details",
+    "version": [
+      "1",
+      "17",
+      "0",
+      "1"
+    ]
+  },
+  "data_name": "Ubuntu 16.04.1 LTS"
+}

@@ -1,0 +1,16 @@
+{
+  "backup_data_uid": "6bd431f979ccac7b",
+  "backup_module_uid": "1702c3e426ca54c5",
+  "backup_module_uoa": "program.species",
+  "control": {
+    "engine": "CK",
+    "iso_datetime": "2020-11-14T21:43:48.979609",
+    "version": [
+      "1",
+      "17",
+      "0",
+      "1"
+    ]
+  },
+  "data_name": "lstm"
+}

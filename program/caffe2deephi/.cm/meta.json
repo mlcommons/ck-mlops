@@ -1,0 +1,115 @@
+{
+  "backup_data_uid": "e224f20d41189604",
+  "data_name": "caffe2deephi",
+  "no_compile": "yes",
+  "no_target_file": "yes",
+  "print_files_after_run": [
+    "stderr.log",
+    "stdout.log"
+  ],
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "a-b-c:convert-compile-copy": {
+      "ignore_return_code": "no",
+      "run_deps": {
+        "caffemodel": {
+          "force_target_as_host": "yes",
+          "local": "yes",
+          "name": "Caffe/DeePhi model",
+          "sort": 15,
+          "tags": "caffemodel,deephimodel"
+        }
+      },
+      "run_time": {
+        "run_cmd_main": "chmod u+x ../run_*.sh && ../run_decent.sh && ../run_dnnc.sh && ../run_copy.sh",
+        "run_cmd_out1": "stdout.log",
+        "run_cmd_out2": "stderr.log",
+        "run_output_files": [
+          "stdout.log",
+          "stderr.log"
+        ]
+      }
+    },
+    "a:convert": {
+      "ignore_return_code": "no",
+      "run_deps": {
+        "caffemodel": {
+          "force_target_as_host": "yes",
+          "local": "yes",
+          "name": "Caffe/DeePhi model",
+          "sort": 15,
+          "tags": "caffemodel,deephimodel"
+        }
+      },
+      "run_time": {
+        "post_process_via_ck": "yes",
+        "run_cmd_main": "chmod u+x ../run_*.sh && ../run_decent.sh",
+        "run_cmd_out1": "stdout.log",
+        "run_cmd_out2": "stderr.log",
+        "run_output_files": [
+          "stdout.log",
+          "stderr.log"
+        ]
+      }
+    },
+    "b:compile": {
+      "ignore_return_code": "no",
+      "run_time": {
+        "post_process_via_ck": "yes",
+        "run_cmd_main": "../run_dnnc.sh",
+        "run_cmd_out1": "stdout.log",
+        "run_cmd_out2": "stderr.log",
+        "run_output_files": [
+          "stdout.log",
+          "stderr.log"
+        ]
+      }
+    },
+    "c:copy": {
+      "ignore_return_code": "no",
+      "run_time": {
+        "post_process_via_ck": "no",
+        "run_cmd_main": "../run_copy.sh",
+        "run_cmd_out1": "stdout.log",
+        "run_cmd_out2": "stderr.log",
+        "run_output_files": [
+          "stdout.log",
+          "stderr.log"
+        ]
+      }
+    }
+  },
+  "run_deps": {
+    "deephi-images": {
+      "local": "yes",
+      "name": "DeePhi calibration images",
+      "sort": 16,
+      "tags": "deephi,calibration,images"
+    },
+    "lib-dnndk": {
+      "local": "yes",
+      "name": "DeePhi DNNDK",
+      "sort": 10,
+      "tags": "lib,deephi,dnndk"
+    }
+  },
+  "run_vars": {
+    "CK_BOARD_ADDRESS": "192.168.0.102",
+    "CK_BOARD_PORT": 22,
+    "CK_BOARD_USER": "root",
+    "CK_CPU_ARCH": "arm64",
+    "CK_DECENT_LOG_FILE": "decent.log",
+    "CK_DECENT_METHOD": 1,
+    "CK_DECENT_OUTPUT_DIR": "decent_out",
+    "CK_DNNC_LOG_FILE": "dnnc.log",
+    "CK_DNNC_OUTPUT_DIR": "dnnc_out",
+    "CK_DPU_TYPE": "4096FA",
+    "CK_IMAGENET_RESOLUTION": 256
+  },
+  "tags": [
+    "convert",
+    "caffe2deephi",
+    "deephimodel"
+  ]
+}

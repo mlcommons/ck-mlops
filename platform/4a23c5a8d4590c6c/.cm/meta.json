@@ -1,0 +1,16 @@
+{
+  "features": {
+    "cost": [
+      {
+        "currency": "EUR",
+        "date": "20170901",
+        "desc": "Lenovo ZUK Edge Z2151 64Go",
+        "price": 270,
+        "url": "https://www.eglobalcentral.fr/lenovo-zuk-edge-z2151-64go-dual-sim-desimlocke-noir-fr.html"
+      }
+    ],
+    "model": "ZUK Z2151",
+    "name": "Lenovo ZUK Z2151",
+    "vendor": "Lenovo"
+  }
+}

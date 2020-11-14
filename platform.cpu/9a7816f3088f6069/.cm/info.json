@@ -1,0 +1,16 @@
+{
+  "backup_data_uid": "9a7816f3088f6069",
+  "backup_module_uid": "aa6b542a420b8db9",
+  "backup_module_uoa": "platform.cpu",
+  "control": {
+    "engine": "CK",
+    "iso_datetime": "2020-11-14T21:43:57.547048",
+    "version": [
+      "1",
+      "17",
+      "0",
+      "1"
+    ]
+  },
+  "data_name": "AMD E1-2500 APU with Radeon(TM) HD Graphics"
+}

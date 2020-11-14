@@ -1,0 +1,21 @@
+{
+  "backup_data_uid": "104db46ef141a4aa",
+  "backup_module_uid": "0e1dbf34af69c41f",
+  "backup_module_uoa": "demo",
+  "control": {
+    "author": "Grigori Fursin",
+    "author_email": "Grigori.Fursin@cTuning.org",
+    "author_webpage": "http://fursin.net",
+    "copyright": "See CK COPYRIGHT.txt for copyright details",
+    "engine": "CK",
+    "iso_datetime": "2020-11-14T21:47:00.185552",
+    "license": "See CK LICENSE.txt for licensing details",
+    "version": [
+      "1",
+      "17",
+      "0",
+      "1"
+    ]
+  },
+  "data_name": "pareto-frontier"
+}

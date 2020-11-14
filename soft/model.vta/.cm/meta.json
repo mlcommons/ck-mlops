@@ -1,0 +1,12 @@
+{
+  "auto_detect": "no",
+  "customize": {
+    "check_that_exists": "yes",
+    "ck_version": 10,
+    "env_prefix": "CK_ENV_MODEL_VTA"
+  },
+  "soft_name": "VTA model (net and weights)",
+  "tags": [
+    "vtamodel"
+  ]
+}

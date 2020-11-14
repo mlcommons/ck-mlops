@@ -1,0 +1,16 @@
+{
+  "backup_data_uid": "1df946974b91b723",
+  "backup_module_uid": "b0ac08fe1d3c2615",
+  "backup_module_uoa": "program",
+  "control": {
+    "engine": "CK",
+    "iso_datetime": "2020-11-14T21:43:45.903652",
+    "version": [
+      "1",
+      "17",
+      "0",
+      "1"
+    ]
+  },
+  "data_name": "tensorflow_cc-demo-label-image"
+}

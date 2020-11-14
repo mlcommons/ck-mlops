@@ -1,0 +1,50 @@
+{
+  "backup_data_uid": "34e1f9bf7dba8dd0",
+  "data_name": "pytorch",
+  "no_compile": "yes",
+  "no_target_file": "yes",
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "classify-squeezenet-1.1": {
+      "dataset_tags": [
+        "image",
+        "jpeg",
+        "dataset"
+      ],
+      "ignore_return_code": "no",
+      "run_deps": {
+        "lib-pytorch-vision": {
+          "local": "yes",
+          "name": "PyTorch Vision library",
+          "sort": 30,
+          "tags": "lib,pytorch-vision"
+        }
+      },
+      "run_time": {
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../classify.py $#dataset_path#$$#dataset_filename#$ squeezenet-1.1"
+      }
+    },
+    "ipython": {
+      "ignore_return_code": "yes",
+      "run_deps": {
+        "lib-pytorch-vision": {
+          "local": "yes",
+          "name": "PyTorch Vision library",
+          "sort": 30,
+          "tags": "lib,pytorch-vision"
+        }
+      },
+      "run_time": {
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$"
+      }
+    }
+  },
+  "run_vars": {},
+  "tags": [
+    "pytorch-demo",
+    "demo"
+  ],
+  "template": "yes",
+  "template_type": "image classification via PyTorch"
+}

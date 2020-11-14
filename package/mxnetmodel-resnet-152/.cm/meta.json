@@ -1,0 +1,50 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "extra_dir": "",
+    "install_env": {
+      "MXNET_MODEL": "resnet-152",
+      "MXNET_MODEL_ID": "resnet152_v1",
+      "MXNET_MODEL_LABELS": "synset.txt",
+      "MXNET_URL_MODEL_LABELS": "http://data.mxnet.io/models/imagenet-11k"
+    },
+    "no_os_in_suggested_path": "yes",
+    "skip_file_check": "no",
+    "version": "resnet-152"
+  },
+  "deps": {
+    "lib-mxnet": {
+      "local": "yes",
+      "name": "MXNet library",
+      "skip_from_bat": "yes",
+      "sort": 10,
+      "tags": "lib,mxnet"
+    },
+    "python": {
+      "local": "yes",
+      "name": "Python",
+      "sort": 20,
+      "tags": "compiler,python"
+    },
+    "python-requests": {
+      "local": "yes",
+      "name": "requests Python package",
+      "skip_default": "yes",
+      "sort": 30,
+      "tags": "python-package,requests"
+    }
+  },
+  "end_full_path_universal": "synset.txt",
+  "package_extra_name": " (mxnet, resnet-152)",
+  "process_script": "install",
+  "soft_uoa": "539416b3524c4795",
+  "suggested_path": "mxnetmodel",
+  "tags": [
+    "mxnetmodel",
+    "resnet",
+    "resnet-152",
+    "channel-stable"
+  ],
+  "template": "yes",
+  "template_type": "MXNet model - ResNet152"
+}

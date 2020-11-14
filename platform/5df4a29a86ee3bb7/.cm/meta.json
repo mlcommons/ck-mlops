@@ -1,0 +1,16 @@
+{
+  "features": {
+    "cost": [
+      {
+        "currency": "EUR",
+        "date": "20170909",
+        "desc": "Samsung Galaxy S7 Edge 32 Go",
+        "price": 649,
+        "url": "https://www.fnac.com/Smartphone-Samsung-Galaxy-S7-Edge-32-Go-Or/a9440853/w-4"
+      }
+    ],
+    "model": "SM-G935A",
+    "name": "SAMSUNG SM-G935A",
+    "vendor": "SAMSUNG"
+  }
+}

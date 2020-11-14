@@ -1,0 +1,60 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "extra_dir": "",
+    "install_env": {
+      "DATASET_TYPE": "coco",
+      "DEFAULT_HEIGHT": "600",
+      "DEFAULT_WIDTH": "1024",
+      "FROZEN_GRAPH": "frozen_inference_graph.pb",
+      "LABELMAP_FILE": "mscoco_label_map.pbtxt",
+      "MODEL_NAME": "Faster-RCNN Inception-v2",
+      "PACKAGE_NAME": "faster_rcnn_inception_v2_coco_2018_01_28.tar.gz",
+      "PACKAGE_NAME1": "faster_rcnn_inception_v2_coco_2018_01_28",
+      "PACKAGE_UNTAR": "YES",
+      "PACKAGE_UNZIP": "YES",
+      "PACKAGE_URL": "http://download.tensorflow.org/models/object_detection",
+      "PIPELINE_CONFIG": "pipeline.config",
+      "WEIGHTS_FILE": "model.ckpt"
+    },
+    "model_id": "faster_rcnn_inception_v2_coco",
+    "no_os_in_suggested_path": "yes",
+    "no_ver_in_suggested_path": "yes",
+    "version": "reference"
+  },
+  "deps": {
+    "labelmap": {
+      "local": "yes",
+      "name": "Labelmap for COCO dataset",
+      "tags": "labelmap,vcoco"
+    }
+  },
+  "end_full_path": {
+    "linux": "frozen_inference_graph.pb"
+  },
+  "only_for_host_os_tags": [
+    "linux"
+  ],
+  "only_for_target_os_tags": [
+    "linux"
+  ],
+  "package_extra_name": " (Object Detection Faster-RCNN-Inception-v2 COCO)",
+  "process_script": "install",
+  "soft_uoa": "3fc0c4b9ba63de2f",
+  "suggested_path": "model-tf-faster-rcnn-inception-v2-coco",
+  "tags": [
+    "object-detection",
+    "model",
+    "tf",
+    "tensorflow",
+    "rcnn",
+    "inception-v2",
+    "rcnn-inception-v2",
+    "non-quantized",
+    "vcoco"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "c412930408fb8271",
+    "module_uoa": "script"
+  }
+}

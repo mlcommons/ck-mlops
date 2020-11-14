@@ -1,0 +1,24 @@
+{
+  "auto_detect": "yes",
+  "customize": {
+    "check_that_exists": "yes",
+    "env_prefix": "CK_ENV_LIB_OPENVINO",
+    "limit_recursion_dir_search": {
+      "linux": 2
+    },
+    "soft_file": {
+      "linux": "libinference_engine.so"
+    },
+    "soft_path_example": {
+      "linux": ""
+    }
+  },
+  "soft_name": "OpenVINO toolkit (Deep Learning Deployment Toolkit)",
+  "tags": [
+    "lib",
+    "openvino",
+    "dldt",
+    "inference-engine",
+    "intel"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "features": {
+    "cost": [
+      {
+        "currency": "EUR",
+        "date": "20170909",
+        "desc": "Smartphone Samsung Galaxy S8 64 Gb",
+        "price": 809,
+        "url": "https://www.fnac.com/Smartphone-Samsung-Galaxy-S8-64-Go-Noir-Carbone/a10497817/w-4"
+      }
+    ],
+    "model": "SM-G950U",
+    "name": "SAMSUNG SM-G950U",
+    "vendor": "SAMSUNG"
+  }
+}

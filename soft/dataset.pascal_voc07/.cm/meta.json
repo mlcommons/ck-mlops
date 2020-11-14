@@ -1,0 +1,24 @@
+{
+  "auto_detect": "yes",
+  "customize": {
+    "check_that_exists": "yes",
+    "ck_version": 10,
+    "env_prefix": "CK_ENV_DATASET_PASCAL_VOC07_TF",
+    "limit_recursion_dir_search": {
+      "linux": 3,
+      "win": 3
+    },
+    "soft_file_universal": "pascal_train_2007.record"
+  },
+  "soft_name": "The PASCAL VOC07 (Object Detection) dataset (train, val, TF)",
+  "tags": [
+    "dataset",
+    "object-detection",
+    "detection",
+    "raw",
+    "train",
+    "val",
+    "voc07",
+    "pascal-voc07"
+  ]
+}

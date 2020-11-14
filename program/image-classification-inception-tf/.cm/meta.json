@@ -1,0 +1,84 @@
+{
+  "backup_data_uid": "784ffab4a4d3ff7b",
+  "ck_to_env": {
+    "CK_AUX_TBD_SCRIPT": "script:1f6137fa79934028"
+  },
+  "data_name": "image-classification-inception-tf",
+  "no_compile": "yes",
+  "no_target_file": "yes",
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "train": {
+      "ignore_return_code": "no",
+      "run_deps": {
+        "lib-tensorflow": {
+          "local": "yes",
+          "name": "TensorFlow library",
+          "sort": 10,
+          "tags": "lib,tensorflow"
+        }
+      },
+      "run_time": {
+        "run_cmd_main": "$<<CK_AUX_TBD_SCRIPT>>$/scripts/imagenet-tf$#script_ext#$ inception_v3"
+      }
+    },
+    "train-and-profile": {
+      "ignore_return_code": "no",
+      "run_deps": {
+        "lib-tensorflow": {
+          "local": "yes",
+          "name": "TensorFlow library (CUDA)",
+          "sort": 10,
+          "tags": "lib,tensorflow,vcuda"
+        }
+      },
+      "run_time": {
+        "run_cmd_main": "$<<CK_AUX_TBD_SCRIPT>>$/scripts/imagenet-tf$#script_ext#$ inception_v3 --profile"
+      }
+    },
+    "train-and-profile-fp32": {
+      "ignore_return_code": "no",
+      "run_deps": {
+        "lib-tensorflow": {
+          "local": "yes",
+          "name": "TensorFlow library (CUDA)",
+          "sort": 10,
+          "tags": "lib,tensorflow,vcuda"
+        }
+      },
+      "run_time": {
+        "run_cmd_main": "$<<CK_AUX_TBD_SCRIPT>>$/scripts/imagenet-tf$#script_ext#$ inception_v3 --profile-fp32"
+      }
+    }
+  },
+  "run_deps": {
+    "imagenet-train": {
+      "local": "yes",
+      "name": "ImageNet dataset (train, TensorFlow)",
+      "sort": 10,
+      "tags": "dataset,imagenet,raw,train-tf"
+    },
+    "python": {
+      "local": "yes",
+      "name": "Python interpreter (v3+)",
+      "sort": 5,
+      "tags": "compiler,python",
+      "version_from": [
+        3
+      ]
+    }
+  },
+  "run_vars": {
+    "BATCH_SIZE": 32,
+    "LEARNING_OPTIMIZER": "sgd",
+    "LEARNING_RATE": 0.1,
+    "LEARNING_RATE_DECAY_FACTOR": 0.1,
+    "NUM_EPOCHS_PER_DECAY": 30,
+    "WEIGHT_DECAY": 0.0001
+  },
+  "tags": [
+    "image-classification",
+    "tensorflow-image-classification"
+  ]
+}

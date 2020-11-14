@@ -1,0 +1,28 @@
+diff --git a/src/armnnSerializer/CMakeLists.txt b/src/armnnSerializer/CMakeLists.txt
+index bca36f9..a7f85ec 100755
+--- a/src/armnnSerializer/CMakeLists.txt
++++ b/src/armnnSerializer/CMakeLists.txt
+@@ -34,4 +34,7 @@ if(BUILD_ARMNN_SERIALIZER)
+     target_include_directories(armnnSerializer SYSTEM PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+ 
+     target_link_libraries(armnnSerializer armnn ${FLATBUFFERS_LIBRARY})
+-endif()
+\ No newline at end of file
++
++    install(TARGETS armnnSerializer
++            LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
++endif()
+diff --git a/src/armnnTfLiteParser/CMakeLists.txt b/src/armnnTfLiteParser/CMakeLists.txt
+index 2a6a0a1..8ff0837 100755
+--- a/src/armnnTfLiteParser/CMakeLists.txt
++++ b/src/armnnTfLiteParser/CMakeLists.txt
+@@ -20,4 +20,7 @@ if(BUILD_TF_LITE_PARSER)
+ 
+     target_link_libraries(armnnTfLiteParser ${Boost_FILESYSTEM_LIBRARY} ${Boost_THREAD_LIBRARY})
+     target_link_libraries(armnnTfLiteParser armnn ${FLATBUFFERS_LIBRARY})
+-endif()
+\ No newline at end of file
++
++    install(TARGETS armnnTfLiteParser
++            LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
++endif()

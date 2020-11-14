@@ -1,0 +1,17 @@
+{
+  "auto_detect": "yes",
+  "customize": {
+    "check_that_exists": "yes",
+    "ck_version": 10,
+    "env_prefix": "CK_ENV_OPENVINO_MODEL",
+    "soft_file_universal": "*.xml"
+  },
+  "soft_name": "OpenVINO model",
+  "tags": [
+    "model",
+    "openvino",
+    "dldt"
+  ],
+  "template": "yes",
+  "template_type": "OpenVINO model"
+}

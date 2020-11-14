@@ -1,0 +1,48 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "extra_dir": "",
+    "install_env": {
+      "PACKAGE_NAME": "iwslt15_en-vi.tar.gz",
+      "PACKAGE_NAME1": "iwslt15_en-vi.tar",
+      "PACKAGE_NAME2": "iwslt15_en-vi",
+      "PACKAGE_SKIP_LINUX_MAKE": "YES",
+      "PACKAGE_UNGZIP": "YES",
+      "PACKAGE_UNTAR": "YES",
+      "PACKAGE_URL": "https://www.cs.toronto.edu/~bojian/Downloads",
+      "PACKAGE_WGET": "YES"
+    },
+    "no_os_in_suggested_path": "yes",
+    "no_ver_in_suggested_path": "yes",
+    "version": "2015"
+  },
+  "deps": {
+    "iwslt1_en-vi": {
+      "local": "yes",
+      "name": "IWSLT15 English-Vietnamese dataset (all)",
+      "sort": 20,
+      "tags": "dataset,translation,raw,train"
+    }
+  },
+  "end_full_path_universal": "iwslt15_en-vi/train.vi",
+  "need_cpu_info": "no",
+  "process_script": "install",
+  "soft_uoa": "b2f3da085d3c47e7",
+  "suggested_path": "dataset-iwslt15-english-vietnamese-all",
+  "tags": [
+    "dataset",
+    "translation",
+    "raw",
+    "train",
+    "val",
+    "iwslt15",
+    "iwslt15-all",
+    "iwslt15-english-vietnamese",
+    "vietnamese",
+    "channel-stable"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "cd9ccc74060b3d18",
+    "module_uoa": "script"
+  }
+}

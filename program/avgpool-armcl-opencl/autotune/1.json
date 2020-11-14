@@ -1,0 +1,26 @@
+{
+  "choices_order": [
+    [
+      "##env#CK_IN_SHAPE_N"
+    ],
+    [
+      "##env#CK_AVGPOOL_FORCE_GENERAL"
+    ]
+  ],
+  "choices_selection": [
+    {
+      "default": 1,
+      "start": 1,
+      "step": 1,
+      "stop": 4,
+      "type": "loop"
+    },
+    {
+      "choice": [
+        1
+      ],
+      "default": 1,
+      "type": "loop"
+    }
+  ]
+}

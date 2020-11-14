@@ -1,0 +1,127 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "*package_name": "TFLite EfficientNet Model ($<<MODEL_EFFICIENTNET_LITE_KIND>>$-$<<ML_MODEL_DATA_TYPE>>$)",
+    "install_env": {
+      "*ML_MODEL_MODEL_NAME": "efficientnet_$<<MODEL_EFFICIENTNET_LITE_KIND>>$_$<<MODEL_RESOLUTION>>$_$<<ML_MODEL_DATA_TYPE>>$",
+      "*MODEL_IMAGE_HEIGHT": "$<<MODEL_RESOLUTION>>$",
+      "*MODEL_IMAGE_WIDTH": "$<<MODEL_RESOLUTION>>$",
+      "*PACKAGE_NAME": "efficientnet-$<<MODEL_EFFICIENTNET_LITE_KIND>>$.tar.gz",
+      "*PACKAGE_NAME_EFFICIENTNET_LITE": "efficientnet-$<<MODEL_EFFICIENTNET_LITE_KIND>>$",
+      "*PACKAGE_NAME_EFFICIENTNET_LITE_WITH_PRECISION": "efficientnet-$<<MODEL_EFFICIENTNET_LITE_KIND>>$-$<<ML_MODEL_DATA_TYPE>>$",
+      "ML_MODEL_DATA_LAYOUT": "NHWC",
+      "ML_MODEL_FILE_FORMAT": "tflite",
+      "MODEL_INPUT_LAYER_NAME": "images",
+      "MODEL_NORMALIZE_DATA": "YES",
+      "MODEL_OUTPUT_LAYER_NAME": "Softmax",
+      "MODEL_SUBTRACT_MEAN": "0",
+      "MODEL_WEIGHTS_ARE_CHECKPOINTS": "YES",
+      "PACKAGE_URL": "https://storage.googleapis.com/cloud-tpu-checkpoints/efficientnet/lite",
+      "WEIGHTS_FILE": "model.ckpt"
+    },
+    "no_os_in_suggested_path": "yes",
+    "no_ver_in_suggested_path": "yes",
+    "skip_file_check": "yes",
+    "version": "v1"
+  },
+  "end_full_path_universal": "model.ckpt.meta",
+  "only_for_host_os_tags": [],
+  "only_for_target_os_tags": [],
+  "process_script": "install",
+  "soft_uoa": "439b9f1757f27091",
+  "suggested_path": "model-tflite-mlperf-efficientnet-lite-downloaded",
+  "tags": [
+    "model",
+    "image-classification",
+    "tflite",
+    "nhwc",
+    "efficientnet",
+    "effnet",
+    "mlperf",
+    "weights",
+    "python",
+    "frozen",
+    "downloaded"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "4f99bd653a4cf94b",
+    "module_uoa": "script"
+  },
+  "variations": {
+    "from.googleapis": {
+      "extra_env": {
+        "PACKAGE_URL": "https://storage.googleapis.com/cloud-tpu-checkpoints/efficientnet/lite"
+      },
+      "on_by_default": "yes"
+    },
+    "lite0": {
+      "extra_env": {
+        "MODEL_EFFICIENTNET_LITE_KIND": "lite0",
+        "MODEL_RESOLUTION": "224"
+      },
+      "extra_tags": [
+        "side.224"
+      ],
+      "on_by_default": "yes"
+    },
+    "lite1": {
+      "extra_env": {
+        "MODEL_EFFICIENTNET_LITE_KIND": "lite1",
+        "MODEL_RESOLUTION": "240"
+      },
+      "extra_tags": [
+        "side.240"
+      ]
+    },
+    "lite2": {
+      "extra_env": {
+        "MODEL_EFFICIENTNET_LITE_KIND": "lite2",
+        "MODEL_RESOLUTION": "260"
+      },
+      "extra_tags": [
+        "side.260"
+      ]
+    },
+    "lite3": {
+      "extra_env": {
+        "MODEL_EFFICIENTNET_LITE_KIND": "lite3",
+        "MODEL_RESOLUTION": "280"
+      },
+      "extra_tags": [
+        "side.280"
+      ]
+    },
+    "lite4": {
+      "extra_env": {
+        "MODEL_EFFICIENTNET_LITE_KIND": "lite4",
+        "MODEL_RESOLUTION": "300"
+      },
+      "extra_tags": [
+        "side.300"
+      ]
+    },
+    "non-quantized": {
+      "extra_env": {
+        "ML_MODEL_DATA_TYPE": "fp32",
+        "ML_MODEL_INPUT_DATA_TYPE": "float32",
+        "ML_MODEL_OUTPUT_DATA_TYPE": "float32"
+      },
+      "extra_tags": [
+        "fp32",
+        "float",
+        "float32"
+      ]
+    },
+    "quantized": {
+      "extra_env": {
+        "ML_MODEL_DATA_TYPE": "int8",
+        "ML_MODEL_INPUT_DATA_TYPE": "uint8",
+        "ML_MODEL_OUTPUT_DATA_TYPE": "uint8"
+      },
+      "extra_tags": [
+        "int8"
+      ],
+      "on_by_default": "yes"
+    }
+  }
+}

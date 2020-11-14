@@ -1,0 +1,97 @@
+{
+  "dataset_files": [
+    "shape-64-73-73-1-80-1-0",
+    "shape-192-35-35-1-64-1-0",
+    "shape-192-35-35-1-48-1-0",
+    "shape-192-35-35-1-32-1-0",
+    "shape-256-35-35-1-64-1-0",
+    "shape-256-35-35-1-48-1-0",
+    "shape-288-35-35-1-64-1-0",
+    "shape-288-35-35-1-48-1-0",
+    "shape-768-17-17-1-192-1-0",
+    "shape-768-17-17-1-128-1-0",
+    "shape-768-17-17-1-160-1-0",
+    "shape-1280-8-8-1-320-1-0",
+    "shape-1280-8-8-1-384-1-0",
+    "shape-1280-8-8-1-448-1-0",
+    "shape-1280-8-8-1-192-1-0",
+    "shape-2048-8-8-1-320-1-0",
+    "shape-2048-8-8-1-384-1-0",
+    "shape-2048-8-8-1-448-1-0",
+    "shape-2048-8-8-1-192-1-0",
+    "shape-2048-1-1-1-1001-1-0"
+  ],
+  "desc_dataset_files": {
+    "shape-1280-8-8-1-192-1-0": {
+      "name": "InceptionV3 Branch_3_Conv2d_0b input 8x8x1280 filter 1x1x192 stride 1 pad 0"
+    },
+    "shape-1280-8-8-1-320-1-0": {
+      "name": "InceptionV3 Branch_0_Conv2d_0a input 8x8x1280 filter 1x1x320 stride 1 pad 0"
+    },
+    "shape-1280-8-8-1-384-1-0": {
+      "name": "InceptionV3 Branch_1_Conv2d_0a input 8x8x1280 filter 1x1x384 stride 1 pad 0"
+    },
+    "shape-1280-8-8-1-448-1-0": {
+      "name": "InceptionV3 Branch_2_Conv2d_0a input 8x8x1280 filter 1x1x448 stride 1 pad 0"
+    },
+    "shape-192-35-35-1-32-1-0": {
+      "name": "InceptionV3 Branch_3_Conv2d_0b input 35x35x192 filter 1x1x32 stride 1 pad 0"
+    },
+    "shape-192-35-35-1-48-1-0": {
+      "name": "InceptionV3 Branch_1_Conv2d_0a input 35x35x192 filter 1x1x48 stride 1 pad 0"
+    },
+    "shape-192-35-35-1-64-1-0": {
+      "name": "InceptionV3 Branch_0_Conv2d_0a input 35x35x192 filter 1x1x64 stride 1 pad 0"
+    },
+    "shape-2048-1-1-1-1001-1-0": {
+      "name": "InceptionV3 Logits_Conv2d_1c input 1x1x2048 filter 1x1x1001 stride 1 pad 0"
+    },
+    "shape-2048-8-8-1-192-1-0": {
+      "name": "InceptionV3 Branch_3_Conv2d_0b input 8x8x2048 filter 1x1x192 stride 1 pad 0"
+    },
+    "shape-2048-8-8-1-320-1-0": {
+      "name": "InceptionV3 Branch_0_Conv2d_0a input 8x8x2048 filter 1x1x320 stride 1 pad 0"
+    },
+    "shape-2048-8-8-1-384-1-0": {
+      "name": "InceptionV3 Branch_1_Conv2d_0a input 8x8x2048 filter 1x1x384 stride 1 pad 0"
+    },
+    "shape-2048-8-8-1-448-1-0": {
+      "name": "InceptionV3 Branch_2_Conv2d_0a input 8x8x2048 filter 1x1x448 stride 1 pad 0"
+    },
+    "shape-256-35-35-1-48-1-0": {
+      "name": "InceptionV3 Branch_1_Conv2d_0b input 35x35x256 filter 1x1x48 stride 1 pad 0"
+    },
+    "shape-256-35-35-1-64-1-0": {
+      "name": "InceptionV3 Branch_0_Conv2d_0a input 35x35x256 filter 1x1x64 stride 1 pad 0"
+    },
+    "shape-288-35-35-1-48-1-0": {
+      "name": "InceptionV3 Branch_1_Conv2d_0a input 35x35x288 filter 1x1x48 stride 1 pad 0"
+    },
+    "shape-288-35-35-1-64-1-0": {
+      "name": "InceptionV3 Branch_0_Conv2d_0a input 35x35x288 filter 1x1x64 stride 1 pad 0"
+    },
+    "shape-64-73-73-1-80-1-0": {
+      "name": "InceptionV3 Conv2d_3b input 73x73x64 filter 1x1x80 stride 1 pad 0"
+    },
+    "shape-768-17-17-1-128-1-0": {
+      "name": "InceptionV3 Branch_1_Conv2d_0a input 17x17x768 filter 1x1x128 stride 1 pad 0"
+    },
+    "shape-768-17-17-1-160-1-0": {
+      "name": "InceptionV3 Branch_1_Conv2d_0a input 17x17x768 filter 1x1x160 stride 1 pad 0"
+    },
+    "shape-768-17-17-1-192-1-0": {
+      "name": "InceptionV3 Branch_0_Conv2d_0a input 17x17x768 filter 1x1x192 stride 1 pad 0"
+    }
+  },
+  "tags": [
+    "dataset",
+    "nntest",
+    "tensor-conv",
+    "tensor-conv-inception-v3",
+    "conv",
+    "convolution",
+    "inceptionv3",
+    "inception-v3",
+    "inception_v3"
+  ]
+}

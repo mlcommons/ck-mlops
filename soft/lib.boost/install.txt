@@ -1,0 +1,5 @@
+You can download and install latest (or required) boost library here:
+* http://www.boost.org
+
+On Ubuntu you can install it as following:
+$ sudo apt-get install libboost-all-dev

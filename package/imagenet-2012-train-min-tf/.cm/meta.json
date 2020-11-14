@@ -1,0 +1,56 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "extra_dir": "",
+    "no_os_in_suggested_path": "yes",
+    "no_ver_in_suggested_path": "yes",
+    "version": "2012-min"
+  },
+  "deps": {
+    "imagenet-train": {
+      "local": "yes",
+      "name": "ImageNet dataset (train,min)",
+      "skip_from_bat": "yes",
+      "sort": 20,
+      "tags": "dataset,imagenet,raw,train,min"
+    },
+    "imagenet-val": {
+      "local": "yes",
+      "name": "ImageNet dataset (val)",
+      "skip_from_bat": "yes",
+      "sort": 30,
+      "tags": "dataset,imagenet,raw,val"
+    },
+    "python": {
+      "local": "yes",
+      "name": "Python interpreter (v3+)",
+      "skip_from_bat": "yes",
+      "sort": 5,
+      "tags": "compiler,python",
+      "version_from": [
+        3
+      ]
+    },
+    "tensorflow": {
+      "local": "yes",
+      "name": "TensorFlow Library",
+      "skip_from_bat": "yes",
+      "sort": 10,
+      "tags": "lib,tensorflow"
+    }
+  },
+  "end_full_path_universal": "TFRecords/train-00000-of-01024",
+  "need_cpu_info": "no",
+  "process_script": "install",
+  "soft_uoa": "5e30307314b4cd58",
+  "suggested_path": "dataset-imagenet-ilsvrc2012-train-min-tf",
+  "tags": [
+    "dataset",
+    "imagenet",
+    "raw",
+    "train-tf",
+    "min",
+    "ilsvrc2012",
+    "channel-stable"
+  ]
+}

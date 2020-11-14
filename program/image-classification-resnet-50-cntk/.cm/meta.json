@@ -1,0 +1,73 @@
+{
+  "backup_data_uid": "0f7bf209cd44b505",
+  "ck_to_env": {
+    "CK_AUX_TBD_SCRIPT": "script:1f6137fa79934028"
+  },
+  "data_name": "image-classification-resnet-50-cntk",
+  "no_compile": "yes",
+  "no_target_file": "yes",
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "train": {
+      "ignore_return_code": "no",
+      "run_deps": {
+        "lib-cntk": {
+          "local": "yes",
+          "name": "CNTK",
+          "skip_default": "yes",
+          "sort": 10,
+          "tags": "lib,cntk"
+        },
+        "lib-mpi": {
+          "local": "yes",
+          "name": "Open MPI library",
+          "only_for_target_os_tags": [
+            "linux"
+          ],
+          "sort": 30,
+          "tags": "lib,openmpi"
+        }
+      },
+      "run_time": {
+        "pre_process_via_ck": {
+          "data_uoa": "5c8859cddd2936cd",
+          "script_name": "preprocess"
+        },
+        "run_cmd_main": "$<<CK_ENV_LIB_CNTK_FULL>>$ configFile=$<<CNTK_SCRIPT_TMP>>$"
+      }
+    }
+  },
+  "run_deps": {
+    "imagenet-train": {
+      "local": "yes",
+      "name": "ImageNet dataset (train)",
+      "sort": 10,
+      "tags": "dataset,imagenet,raw,train"
+    },
+    "imagenet-train-cntk": {
+      "local": "yes",
+      "name": "ImageNet dataset (train, CNTK)",
+      "sort": 10,
+      "tags": "dataset,imagenet,raw,train-cntk"
+    },
+    "python": {
+      "local": "yes",
+      "name": "Python interpreter (v3+)",
+      "sort": 5,
+      "tags": "compiler,python",
+      "version_from": [
+        3
+      ]
+    }
+  },
+  "run_vars": {
+    "BATCH_SIZE": 256,
+    "CNTK_SCRIPT": "ResNet50_ImageNet1K.cntk",
+    "CNTK_SCRIPT_TMP": "tmp-brain-script.cntk"
+  },
+  "tags": [
+    "image-classification",
+    "cntk-image-classification"
+  ]
+}

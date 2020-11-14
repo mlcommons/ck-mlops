@@ -1,0 +1,33 @@
+{
+  "backup_data_uid": "877f3755643b1bba",
+  "data_name": "tool-autoformat-code",
+  "no_compile": "yes",
+  "no_target_file": "yes",
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "default": {
+      "ignore_return_code": "no",
+      "run_time": {
+        "pre_process_via_ck": {
+          "script_name": "preprocess"
+        },
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ ../format.py"
+      }
+    }
+  },
+  "run_deps": {
+    "python": {
+      "local": "yes",
+      "name": "Python",
+      "sort": 10,
+      "tags": "compiler,python"
+    }
+  },
+  "run_vars": {
+    "CK_DIR": "",
+    "CK_FILE": "",
+    "CK_FILTER": "cpp,c,h,py",
+    "CK_PROGRAM": ""
+  }
+}

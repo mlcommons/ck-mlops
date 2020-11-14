@@ -1,0 +1,24 @@
+{
+  "auto_detect": "yes",
+  "customize": {
+    "check_that_exists": "yes",
+    "ck_version": 10,
+    "env_prefix": "CK_ENV_DATASET_PASCAL_VOC12_TF",
+    "limit_recursion_dir_search": {
+      "linux": 3,
+      "win": 3
+    },
+    "soft_file_universal": "pascal_train_2012.record"
+  },
+  "soft_name": "The PASCAL VOC12 (Object Detection) dataset (train, val, TF)",
+  "tags": [
+    "dataset",
+    "object-detection",
+    "detection",
+    "raw",
+    "train",
+    "val",
+    "voc12",
+    "pascal-voc12"
+  ]
+}

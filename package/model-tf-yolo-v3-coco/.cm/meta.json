@@ -1,0 +1,58 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "extra_dir": "",
+    "install_env": {
+      "DATASET_TYPE": "coco",
+      "DEFAULT_HEIGHT": "416",
+      "DEFAULT_WIDTH": "416",
+      "FROZEN_GRAPH": "frozen_inference_graph.pb",
+      "LABELMAP_FILE": "mscoco_label_map.pbtxt",
+      "MODEL_NAME": "YOLO-v3 COCO",
+      "PACKAGE_NAME": "yolo_v3_coco.tar.gz",
+      "PACKAGE_NAME1": "aaa",
+      "PACKAGE_UNTAR": "YES",
+      "PACKAGE_UNZIP": "YES",
+      "PACKAGE_URL": "https://zenodo.org/record/3386327/files/",
+      "WEIGHTS_FILE": "model.ckpt"
+    },
+    "model_id": "yolo_v3_coco",
+    "no_os_in_suggested_path": "yes",
+    "no_ver_in_suggested_path": "yes",
+    "version": "reference"
+  },
+  "deps": {
+    "labelmap": {
+      "local": "yes",
+      "name": "Labelmap for COCO dataset",
+      "tags": "labelmap,vcoco"
+    }
+  },
+  "end_full_path": {
+    "linux": "frozen_inference_graph.pb"
+  },
+  "only_for_host_os_tags": [
+    "linux"
+  ],
+  "only_for_target_os_tags": [
+    "linux"
+  ],
+  "package_extra_name": " (Object Detection YOLO-v3 COCO)",
+  "process_script": "install",
+  "soft_uoa": "3fc0c4b9ba63de2f",
+  "suggested_path": "model-tf-yolo-v3-coco",
+  "tags": [
+    "object-detection",
+    "model",
+    "tf",
+    "tensorflow",
+    "yolo",
+    "yolo-v3",
+    "non-quantized",
+    "vcoco"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "c412930408fb8271",
+    "module_uoa": "script"
+  }
+}

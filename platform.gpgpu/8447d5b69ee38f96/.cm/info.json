@@ -1,0 +1,16 @@
+{
+  "backup_data_uid": "8447d5b69ee38f96",
+  "backup_module_uid": "192ed4e0bbdbe743",
+  "backup_module_uoa": "platform.gpgpu",
+  "control": {
+    "engine": "CK",
+    "iso_datetime": "2020-11-14T21:43:49.374983",
+    "version": [
+      "1",
+      "17",
+      "0",
+      "1"
+    ]
+  },
+  "data_name": "Intel(R) HD Graphics"
+}

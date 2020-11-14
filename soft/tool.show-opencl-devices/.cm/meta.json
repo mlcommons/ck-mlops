@@ -1,0 +1,35 @@
+{
+  "auto_detect": "yes",
+  "customize": {
+    "build_dir_name": "show-opencl-devices",
+    "check_that_exists": "yes",
+    "ck_version": 10,
+    "env_prefix": "CK_ENV_TOOL_SHOW_OPENCL_DEVICES",
+    "limit_recursion_dir_search": {
+      "linux": 3,
+      "win": 3
+    },
+    "only_for_host_os_tags": [
+      "windows",
+      "linux"
+    ],
+    "skip_version": "yes",
+    "soft_file": {
+      "linux": "show-opencl-devices",
+      "win": "show-opencl-devices.exe"
+    }
+  },
+  "deps": {
+    "lib-opencl": {
+      "local": "yes",
+      "name": "OpenCL library",
+      "sort": 20,
+      "tags": "lib,opencl"
+    }
+  },
+  "soft_name": "show-opencl-devices",
+  "tags": [
+    "tool",
+    "show-opencl-devices"
+  ]
+}

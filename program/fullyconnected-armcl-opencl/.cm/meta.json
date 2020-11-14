@@ -1,0 +1,156 @@
+{
+  "backup_data_uid": "6fcbd4138ba68cb3",
+  "build_compiler_vars": {},
+  "compile_deps": {
+    "compiler": {
+      "local": "yes",
+      "name": "C++ compiler",
+      "sort": 0,
+      "tags": "compiler,lang-cpp"
+    },
+    "library": {
+      "extra_ld_vars": "$<<CK_ENV_LIB_ARMCL_LFLAG_CORE>>$",
+      "local": "yes",
+      "name": "ARM Compute Library (OpenCL)",
+      "or_tags": "armcl;vdefault;vfc",
+      "sort": -5,
+      "tags": "lib,arm-compute-library,vopencl"
+    },
+    "nntest": {
+      "local": "yes",
+      "name": "NNTest library",
+      "sort": 2,
+      "tags": "lib,nntest"
+    },
+    "opencl": {
+      "local": "yes",
+      "name": "OpenCL Library",
+      "skip-installed": {
+        "android": "yes"
+      },
+      "sort": 20,
+      "tags": "lib,opencl"
+    },
+    "xopenme": {
+      "local": "yes",
+      "name": "xOpenME library",
+      "sort": 100,
+      "tags": "lib,xopenme"
+    }
+  },
+  "compiler_add_include_as_env_from_deps": [
+    "CK_ENV_LIB_NNTEST_INCLUDE",
+    "CK_ENV_LIB_STDCPP_INCLUDE",
+    "CK_ENV_LIB_STDCPP_INCLUDE_EXTRA"
+  ],
+  "compiler_env": "CK_CXX",
+  "compiler_flags_as_env": "$<<CK_COMPILER_FLAG_CPP11>>$ $<<CK_FLAG_PREFIX_INCLUDE>>$$<<CK_ENV_LIB_ARMCL_INCLUDE>>$ -Wno-ignored-attributes",
+  "data_name": "fullyconnected-armcl-opencl",
+  "extra_ld_vars": "$<<CK_ENV_LIB_STDCPP_DYNAMIC>>$",
+  "main_language": "cpp",
+  "only_for_target_os_tags": [
+    "android",
+    "linux"
+  ],
+  "print_files_after_run": [
+    "tmp-stderr.tmp"
+  ],
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "default": {
+      "add_dataset_file_to_env": "yes",
+      "autotuning": {
+        "choices_order": [
+          [
+            "##env#CK_IN_SHAPE_N"
+          ]
+        ],
+        "choices_selection": [
+          {
+            "default": 1,
+            "start": 1,
+            "step": 1,
+            "stop": 16,
+            "type": "loop"
+          }
+        ]
+      },
+      "dataset_tags": [
+        "dataset",
+        "nntest",
+        "tensor-fullyconnected"
+      ],
+      "ignore_return_code": "no",
+      "run_time": {
+        "fine_grain_timer_file": "tmp-ck-timer.json",
+        "need_compute_device": "opencl",
+        "output_invariant_of_repeat": "yes",
+        "post_process_cmds": [
+          "python $#ck_take_from_{script:f32cc49a8a747cfe}#$process.py"
+        ],
+        "post_process_via_ck": "yes",
+        "pre_process_via_ck": {
+          "data_uoa": "f32cc49a8a747cfe",
+          "module_uoa": "script",
+          "script_name": "process"
+        },
+        "program_output_uoa": "704b2340679ffc8b",
+        "run_cmd_main": "$#BIN_FILE#$",
+        "run_cmd_out1": "tmp-stdout.tmp",
+        "run_cmd_out2": "tmp-stderr.tmp",
+        "run_correctness_extra_keys_from_dataset_file_json": "yes",
+        "run_correctness_output_files": [
+          "tmp-ck-output.json"
+        ],
+        "run_correctness_vars": [
+          "CK_IN_SHAPE_N",
+          "CK_SEED"
+        ],
+        "run_input_files": [],
+        "run_output_files": [
+          "tmp-ck-timer.json",
+          "tmp-ck-output.bin",
+          "tmp-ck-output.json"
+        ]
+      },
+      "send_only_selected_file": "yes"
+    },
+    "dev_run": {
+      "run_time": {
+        "run_cmd_main": "$#BIN_FILE#$"
+      }
+    }
+  },
+  "run_vars": {
+    "CK_ABS_DIFF_THRESHOLD": 0.001,
+    "CK_IN_SHAPE_N": 1,
+    "CK_OUT_RAW_DATA": "tmp-ck-output.bin",
+    "CK_SEED": 42
+  },
+  "skip_bin_ext": "yes",
+  "source_files": [
+    "fullyconnected.cpp",
+    "autotune/tuner_fully_connected.cpp"
+  ],
+  "species": [
+    "20efa8bcb042939c"
+  ],
+  "tags": [
+    "nntest",
+    "armcl",
+    "fully_connected",
+    "fully-connected",
+    "fullyconnected",
+    "float32",
+    "vopencl"
+  ],
+  "target_file": "fullyconnected",
+  "use_preprocess_compilation_scripts": {
+    "data_uoa": "3144372763a44cd2",
+    "module_uoa": "84e27ad9dd12e734",
+    "script_func": "ck_preprocess",
+    "script_name": "compile-preprocess"
+  },
+  "version": "1.0.0"
+}

@@ -1,0 +1,17 @@
+{
+  "dataset_files": [
+    "shape-1001-1-1-1-1-1001"
+  ],
+  "desc_dataset_files": {
+    "test-shape-1001-1-1-1-1-1001": {
+      "name": "Shape 1x1x1001 -> 1001"
+    }
+  },
+  "tags": [
+    "dataset",
+    "nntest",
+    "tensor-reshape",
+    "reshape",
+    "mobilenets"
+  ]
+}

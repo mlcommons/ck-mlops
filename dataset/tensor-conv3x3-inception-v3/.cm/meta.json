@@ -1,0 +1,61 @@
+{
+  "dataset_files": [
+    "shape-3-299-299-3-32-2-0",
+    "shape-32-149-149-3-32-1-0",
+    "shape-32-147-147-3-64-1-1",
+    "shape-80-73-73-3-192-1-0",
+    "shape-64-35-35-3-96-1-1",
+    "shape-96-35-35-3-96-1-1",
+    "shape-288-35-35-3-384-2-0",
+    "shape-96-35-35-3-96-2-0",
+    "shape-192-17-17-3-320-2-0",
+    "shape-192-17-17-3-192-2-0",
+    "shape-448-8-8-3-384-1-1"
+  ],
+  "desc_dataset_files": {
+    "shape-192-17-17-3-192-2-0": {
+      "name": "InceptionV3 Branch_1_Conv2d_1a input 17x17x192 filter 3x3x192 stride 2 pad 0"
+    },
+    "shape-192-17-17-3-320-2-0": {
+      "name": "InceptionV3 Branch_0_Conv2d_1a input 17x17x192 filter 3x3x320 stride 2 pad 0"
+    },
+    "shape-288-35-35-3-384-2-0": {
+      "name": "InceptionV3 Branch_0_Conv2d_1a input 35x35x288 filter 3x3x384 stride 2 pad 0"
+    },
+    "shape-3-299-299-3-32-2-0": {
+      "name": "InceptionV3 Conv2d_1a input 299x299x3 filter 3x3x32 stride 2 pad 0"
+    },
+    "shape-32-147-147-3-64-1-1": {
+      "name": "InceptionV3 Conv2d_2b input 147x147x32 filter 3x3x64 stride 1 pad 1"
+    },
+    "shape-32-149-149-3-32-1-0": {
+      "name": "InceptionV3 Conv2d_2a input 149x149x32 filter 3x3x32 stride 1 pad 0"
+    },
+    "shape-448-8-8-3-384-1-1": {
+      "name": "InceptionV3 Branch_2_Conv2d_0b input 8x8x448 filter 3x3x384 stride 1 pad 1"
+    },
+    "shape-64-35-35-3-96-1-1": {
+      "name": "InceptionV3 Branch_2_Conv2d_0b input 35x35x64 filter 3x3x96 stride 1 pad 1"
+    },
+    "shape-80-73-73-3-192-1-0": {
+      "name": "InceptionV3 Conv2d_4a input 73x73x80 filter 3x3x192 stride 1 pad 0"
+    },
+    "shape-96-35-35-3-96-1-1": {
+      "name": "InceptionV3 Branch_2_Conv2d_0c input 35x35x96 filter 3x3x96 stride 1 pad 1"
+    },
+    "shape-96-35-35-3-96-2-0": {
+      "name": "InceptionV3 Branch_1_Conv2d_1a input 35x35x96 filter 3x3x96 stride 2 pad 0"
+    }
+  },
+  "tags": [
+    "dataset",
+    "nntest",
+    "tensor-conv",
+    "tensor-conv-inception-v3",
+    "conv",
+    "convolution",
+    "inceptionv3",
+    "inception-v3",
+    "inception_v3"
+  ]
+}

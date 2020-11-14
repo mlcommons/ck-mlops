@@ -1,0 +1,16 @@
+{
+  "backup_data_uid": "bc2b86d0b1084ccd",
+  "backup_module_uid": "5e1100048ab875d7",
+  "backup_module_uoa": "soft",
+  "control": {
+    "engine": "CK",
+    "iso_datetime": "2020-11-14T21:43:58.244146",
+    "version": [
+      "1",
+      "17",
+      "0",
+      "1"
+    ]
+  },
+  "data_name": "dataset.pascal_voc12"
+}

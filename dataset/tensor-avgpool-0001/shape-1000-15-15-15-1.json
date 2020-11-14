@@ -1,0 +1,9 @@
+{
+  "CK_IN_SHAPE_C": 1000, 
+  "CK_IN_SHAPE_H": 15, 
+  "CK_IN_SHAPE_W": 15, 
+  "CK_POOL_KERNEL": 15, 
+  "CK_POOL_STRIDE": 1, 
+  "CK_POOL_PAD": 0, 
+  "CK_POOL_PAD_SCHEME": 2
+}

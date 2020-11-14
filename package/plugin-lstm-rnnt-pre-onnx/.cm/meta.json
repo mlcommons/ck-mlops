@@ -1,0 +1,74 @@
+{
+  "customize": {
+    "env_prefix": "CK_NNTEST_PLUGIN_PRE_ONNX",
+    "extra_dir": "",
+    "impl_name": "onnx",
+    "install_env": {
+      "PLUGIN_NAME": "lstm_rnnt_pre.py",
+      "PLUGIN_SIGNATURE": "LSTM_ONNX",
+      "PLUGIN_SUBDIR": "plugin"
+    },
+    "model_name": "lstm",
+    "version": "0.1"
+  },
+  "deps": {
+    "lib-python-onnxruntime": {
+      "local": "yes",
+      "name": "Python onnxruntime library",
+      "sort": 20,
+      "tags": "lib,python-package,onnxruntime"
+    },
+    "plugin-lstm-rnnt-pre-pytorch": {
+      "add_to_path": "no",
+      "local": "yes",
+      "name": "Pytorch LSTM RNNT Pre plugin",
+      "sort": 70,
+      "tags": "nntest,plugin,rnnt-pre,pytorch",
+      "update_tags_if_env": {
+        "naive": [
+          {
+            "PLUGIN_VARIANT": "naive"
+          }
+        ],
+        "orig": [
+          {
+            "PLUGIN_VARIANT": "orig"
+          }
+        ]
+      }
+    }
+  },
+  "end_full_path_universal": "plugin/lstm_rnnt_pre.py",
+  "process_script": "install",
+  "soft_uoa": "fee21442c93c5180",
+  "suggested_path": "nntest-plugins-lstm-rnnt-pre-onnx",
+  "tags": [
+    "nntest",
+    "plugin",
+    "lstm",
+    "rnnt-pre",
+    "onnx"
+  ],
+  "variations": {
+    "naive": {
+      "extra_customize": {
+        "package_name": "ONNX RNNT LSTM Pre naive plugin",
+        "version": "naive"
+      },
+      "extra_env": {
+        "PLUGIN_VARIANT": "naive"
+      },
+      "on_by_default": "no"
+    },
+    "orig": {
+      "extra_customize": {
+        "package_name": "ONNX RNNT LSTM Pre original plugin",
+        "version": "orig"
+      },
+      "extra_env": {
+        "PLUGIN_VARIANT": "orig"
+      },
+      "on_by_default": "yes"
+    }
+  }
+}

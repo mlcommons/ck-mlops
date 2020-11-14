@@ -1,0 +1,16 @@
+{
+  "features": {
+    "cost": [
+      {
+        "currency": "EUR",
+        "date": "20170909",
+        "desc": "Meizu M3s 16 Gb",
+        "price": 169,
+        "url": "https://www.ldlc.com/fiche/PB00215181.html"
+      }
+    ],
+    "model": "M3S",
+    "name": "MEIZU M3S",
+    "vendor": "MEIZU"
+  }
+}

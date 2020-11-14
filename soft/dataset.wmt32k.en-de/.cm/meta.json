@@ -1,0 +1,25 @@
+{
+  "auto_detect": "yes",
+  "customize": {
+    "check_that_exists": "yes",
+    "ck_version": 10,
+    "env_prefix": "CK_ENV_DATASET_WMT32K_ENGLISH_GERMAN_TF",
+    "limit_recursion_dir_search": {
+      "linux": 3,
+      "win": 3
+    },
+    "soft_file_universal": "translate_ende_wmt32k-train-00000-of-00100"
+  },
+  "soft_name": "WMT32K English-German dataset (all)",
+  "tags": [
+    "dataset",
+    "translation",
+    "raw",
+    "train",
+    "val",
+    "wmt",
+    "wmt32k",
+    "english-german",
+    "german"
+  ]
+}

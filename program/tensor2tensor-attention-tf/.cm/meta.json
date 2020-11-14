@@ -1,0 +1,100 @@
+{
+  "backup_data_uid": "19488194da5f3fd5",
+  "ck_to_env": {
+    "CK_AUX_TBD_SCRIPT": "script:1f6137fa79934028"
+  },
+  "data_name": "tensor2tensor-attention-tf",
+  "no_compile": "yes",
+  "no_target_file": "yes",
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "train": {
+      "ignore_return_code": "no",
+      "run_deps": {
+        "lib-tensorflow": {
+          "local": "yes",
+          "name": "TensorFlow library",
+          "sort": 10,
+          "tags": "lib,tensorflow",
+          "version_to": [
+            1,
+            5,
+            99
+          ]
+        }
+      },
+      "run_time": {
+        "run_cmd_main": "../scripts/benchmark-wmt-ende-32k$#script_ext#$ transformer"
+      }
+    },
+    "train-and-profile": {
+      "ignore_return_code": "no",
+      "run_deps": {
+        "lib-tensorflow": {
+          "local": "yes",
+          "name": "TensorFlow library (CUDA)",
+          "sort": 10,
+          "tags": "lib,tensorflow,vcuda",
+          "version_to": [
+            1,
+            5,
+            99
+          ]
+        }
+      },
+      "run_time": {
+        "run_cmd_main": "../scripts/benchmark-wmt-ende-32k$#script_ext#$ transformer --profile"
+      }
+    },
+    "train-and-profile-fp32": {
+      "ignore_return_code": "no",
+      "run_deps": {
+        "lib-tensorflow": {
+          "local": "yes",
+          "name": "TensorFlow library (CUDA)",
+          "sort": 10,
+          "tags": "lib,tensorflow,vcuda",
+          "version_to": [
+            1,
+            5,
+            99
+          ]
+        }
+      },
+      "run_time": {
+        "run_cmd_main": "../scripts/benchmark-wmt-ende-32k$#script_ext#$ transformer --profile-fp32"
+      }
+    }
+  },
+  "run_deps": {
+    "python": {
+      "local": "yes",
+      "name": "Python",
+      "sort": 5,
+      "tags": "compiler,python"
+    },
+    "wmt32k-en-de-train": {
+      "local": "yes",
+      "name": "WMT32k English-German dataset (all)",
+      "sort": 20,
+      "tags": "dataset,wmt32k,raw,train"
+    },
+    "wmt32k-en-de-val": {
+      "local": "yes",
+      "name": "WMT32k English-German dataset (val)",
+      "sort": 30,
+      "tags": "dataset,wmt32k,raw,val"
+    }
+  },
+  "run_vars": {
+    "BATCH_SIZE": 2048
+  },
+  "tags": [
+    "machine-translation",
+    "tensor2tensor",
+    "transformer"
+  ],
+  "template": "yes",
+  "template_type": "tensor2tensor via TensorFlow"
+}

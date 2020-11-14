@@ -1,0 +1,16 @@
+{
+  "backup_data_uid": "8833fd64838902c8",
+  "backup_module_uid": "8a7141c59cd335f5",
+  "backup_module_uoa": "dataset",
+  "control": {
+    "engine": "CK",
+    "iso_datetime": "2020-11-14T21:43:48.825570",
+    "version": [
+      "1",
+      "17",
+      "0",
+      "1"
+    ]
+  },
+  "data_name": "tensor-conv5x5-inception-v3"
+}

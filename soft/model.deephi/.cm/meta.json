@@ -1,0 +1,28 @@
+{
+  "auto_detect": "yes",
+  "customize": {
+    "check_that_exists": "yes",
+    "ck_params_file": "ck-params.json",
+    "ck_version": 10,
+    "env_prefix": "CK_ENV_MODEL_CAFFE_DEEPHI",
+    "limit_recursion_dir_search": {
+      "linux": 3,
+      "win": 3
+    },
+    "soft_file": {
+      "linux": "float.prototxt",
+      "win": "float.prototxt"
+    }
+  },
+  "soft_name": "Caffe/DeePhi model (net and weights)",
+  "tags": [
+    "caffe",
+    "net",
+    "weights",
+    "caffemodel",
+    "deephimodel",
+    "bvlc"
+  ],
+  "template": "yes",
+  "template_type": "Dataset (model)"
+}

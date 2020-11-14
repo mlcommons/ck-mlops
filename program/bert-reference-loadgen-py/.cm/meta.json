@@ -1,0 +1,112 @@
+{
+  "backup_data_uid": "26415d8c090332ca",
+  "build_compiler_vars": {},
+  "data_name": "bert-reference-loadgen-py",
+  "main_language": "python",
+  "no_compile": "yes",
+  "no_target_file": "yes",
+  "pass_env_to_resolve": "yes",
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "default": {
+      "ignore_return_code": "no",
+      "run_time": {
+        "run_cmd_main": "../setup_and_run_bert.sh"
+      }
+    }
+  },
+  "run_deps": {
+    "lib-python-loadgen": {
+      "local": "yes",
+      "name": "Python LoadGen library",
+      "sort": 20,
+      "tags": "lib,python-package,loadgen"
+    },
+    "lib-python-onnxruntime": {
+      "enable_if_env": [
+        {
+          "CK_BERT_BACKEND": "onnxruntime"
+        }
+      ],
+      "local": "yes",
+      "name": "Python ONNX runtime library",
+      "sort": 60,
+      "tags": "lib,python-package,onnxruntime"
+    },
+    "lib-python-pytorch": {
+      "local": "yes",
+      "name": "Python Torch library",
+      "sort": 50,
+      "tags": "lib,python-package,pytorch"
+    },
+    "lib-python-tensorflow": {
+      "local": "yes",
+      "name": "Python TensorFlow library",
+      "sort": 30,
+      "tags": "lib,python-package,tensorflow"
+    },
+    "lib-python-transformers": {
+      "local": "yes",
+      "name": "Python Transformers library",
+      "sort": 40,
+      "tags": "lib,python-package,transformers",
+      "update_tags_if_env": {
+        "original": [
+          {
+            "CK_BERT_TRANSFORMERS_VARIATION": [
+              "default",
+              "original"
+            ]
+          }
+        ],
+        "patched,with.custom1": [
+          {
+            "CK_BERT_TRANSFORMERS_VARIATION": [
+              "with.custom1"
+            ]
+          }
+        ],
+        "patched,with.split_heads": [
+          {
+            "CK_BERT_TRANSFORMERS_VARIATION": [
+              "with.split_heads"
+            ]
+          }
+        ]
+      },
+      "version_from": [
+        2,
+        4,
+        0
+      ],
+      "version_to": [
+        2,
+        4,
+        0
+      ]
+    },
+    "mlperf-inference-src": {
+      "add_to_path": "no",
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "MLPerf Inference source",
+      "sort": 10,
+      "tags": "mlperf,inference,source,dividiti.bert"
+    }
+  },
+  "run_vars": {
+    "CK_BERT_BACKEND": "pytorch",
+    "CK_BERT_DATA": "/data/lg4/bert_large_data",
+    "CK_BERT_TRANSFORMERS_VARIATION": "original",
+    "CK_LOADGEN_MAX_EXAMPLES": "",
+    "CK_LOADGEN_MODE": "PerformanceOnly",
+    "CK_LOADGEN_SCENARIO": "SingleStream"
+  },
+  "tags": [
+    "loadgen",
+    "bert",
+    "reference",
+    "lang-python"
+  ]
+}
