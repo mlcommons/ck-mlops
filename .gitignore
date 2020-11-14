@@ -1,0 +1,8 @@
+*~
+*tmp/
+*tmp-ck-*/
+*.pyc
+*_tmp.json
+.ipynb_checkpoints/
+__pycache__
+preprocessed/
