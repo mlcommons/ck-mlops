@@ -23,6 +23,7 @@ init:
 
 install:
     - "%PYTHON%\\Scripts\\pip.exe install pyyaml"
+    - "%PYTHON%\\Scripts\\pip.exe install ck"
 
 build: false
 
