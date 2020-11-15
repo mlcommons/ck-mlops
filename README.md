@@ -49,7 +49,10 @@ Pull this repository:
 ck pull repo:ai
 ```
 
-Try [portable AI/ML workflows](https://cKnowledge.io/solutions) or [adaptive CK containers](https://cKnowledge.io/c/docker).
+Try [portable AI/ML workflows](https://cKnowledge.io/solutions)
+or [adaptive CK containers](https://cKnowledge.io/c/docker).
+*Note that you do not need to pull other repositories anymore
+ since all the components are aggregated here.*
 
 Check [public dashboards](https://cKnowledge.io/reproduced-results) with reproduced results from [research papers](https://cKnowledge.io/reproduced-papers).
 
