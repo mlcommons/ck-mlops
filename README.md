@@ -4,6 +4,7 @@
 [![automation](https://github.com/ctuning/ck-guide-images/blob/master/ck-artifact-automated-and-reusable.svg)](https://cKnowledge.io)
 
 Linux/MacOS: [![Travis Build Status](https://travis-ci.org/ctuning/ai.svg?branch=master)](https://travis-ci.org/ctuning/ai)
+Windows: [![Windows Build status](https://ci.appveyor.com/api/projects/status/4ry307jh6tks9dg9?svg=true)](https://ci.appveyor.com/project/gfursin/ai)
 
 
 A collection of portable AI workflows, automation actions and reusable artifacts in the [CK format](https://github.com/ctuning/ck)
