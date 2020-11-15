@@ -3,6 +3,9 @@
 [![compatibility](https://github.com/ctuning/ck-guide-images/blob/master/ck-compatible.svg)](https://github.com/ctuning/ck)
 [![automation](https://github.com/ctuning/ck-guide-images/blob/master/ck-artifact-automated-and-reusable.svg)](https://cKnowledge.io)
 
+Linux/MacOS: [![Travis Build Status](https://travis-ci.org/ctuning/ai.svg?branch=master)](https://travis-ci.org/ctuning/ai)
+
+
 A collection of portable AI workflows, automation actions and reusable artifacts in the [CK format](https://github.com/ctuning/ck)
 aggregated from the following CK repositories:
 
