@@ -53,7 +53,9 @@ Try [portable AI/ML workflows](https://cKnowledge.io/solutions) or [adaptive CK 
 
 Check [public dashboards](https://cKnowledge.io/reproduced-results) with reproduced results from [research papers](https://cKnowledge.io/reproduced-papers).
 
-Discuss using this [public CK forum](https://groups.google.com/forum/#!forum/collective-knowledge).
+Read about [CK concept](https://arxiv.org/abs/2011.01149).
+
+Discuss CK using this [public forum](https://groups.google.com/forum/#!forum/collective-knowledge).
 
 Contribute as described [here](https://ck.readthedocs.io/en/latest/src/how-to-contribute.html)
 and submit your PR [here](https://github.com/ctuning/ai/pulls).
