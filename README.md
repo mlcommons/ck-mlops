@@ -42,7 +42,19 @@ aggregated from the following CK repositories:
 * [ctuning-datasets-min](https://github.com/ctuning/ctuning-datasets-min)
 * [ctuning-programs](https://github.com/ctuning/ctuning-programs)
 
-All these components are available at the [CK portal](https://cKnowledge.io).
+# Important components
+
+* CK modules with automation actions: [[dev](https://github.com/ctuning/ai/tree/main/module)] [[stable](https://github.com/ctuning/ck/tree/master/ck/repo/module)]
+* CK program workflows: [[dev](https://github.com/ctuning/ai/tree/main/program)] [[CK platform]( https://cKnowledge.io/programs )]
+* CK meta packages: [[dev](https://github.com/ctuning/ai/tree/main/package)] [[CK platform]( https://cKnowledge.io/packages )]
+* CK software detection: [[dev](https://github.com/ctuning/ai/tree/main/soft)] [[CK platform]( https://cKnowledge.io/soft )]
+* CK datasets: [[dev](https://github.com/ctuning/ai/tree/main/dataset)] [[CK platform]( https://cKnowledge.io/c/dataset )]
+* CK adaptive containers: [[dev](https://github.com/ctuning/ai/tree/main/docker)] [[CK platform]( https://cKnowledge.io/c/docker )]
+* CK OS: [[dev](https://github.com/ctuning/ai/tree/main/os)] [[CK platform]( https://cKnowledge.io/c/os )]
+* CK MLPerf system descriptions: [[dev](https://github.com/ctuning/ai/tree/main/sut)] [[CK platform]( https://cKnowledge.io/c/sut )]
+* CK MLPerf benchmark CMD generators: [[dev](https://github.com/ctuning/ai/tree/main/cmdgen)] [[CK platform]( https://cKnowledge.io/c/cmdgen )]
+
+All CK components are available at the [CK portal](https://cKnowledge.io) similar to Pypi.
 
 # Usage
 
