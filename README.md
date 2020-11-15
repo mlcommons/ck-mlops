@@ -46,7 +46,7 @@ Read about the [CK concept and format](https://arxiv.org/abs/2011.01149).
 ## With Docker
 
 We prepared a CK container with all CK components from this repository: 
-[[Docker](https://hub.docker.com/r/ctuning/ck-ai)], [[CK component](https://github.com/ctuning/ai/tree/main/docker/ck-ai)]
+[[Docker](https://hub.docker.com/r/ctuning/ck-ai)], [[CK meta](https://github.com/ctuning/ai/tree/main/docker/ck-ai)]
 
 You can start it as follows:
 
