@@ -1,5 +1,4 @@
 FROM ubuntu:18.04
-MAINTAINER Anton Lokhmotov <anton@dividiti.com>
 MAINTAINER Grigori Fursin <Grigori.Fursin@cTuning.org>
 
 # Install standard packages.

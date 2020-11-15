@@ -1,0 +1,83 @@
+FROM ubuntu:20.04
+
+LABEL maintainer="Grigori Fursin <gfursin@cknowledge.io>"
+
+# Based on docker:mlperf-inference-v0.7.openvino
+
+# Use the Bash shell.
+SHELL ["/bin/bash", "-c"]
+
+# Allow stepping into the Bash shell interactively.
+ENTRYPOINT ["/bin/bash", "-c"]
+
+# Install known system dependencies and immediately clean up to make the image smaller.
+# CK needs: git, wget, zip.
+# OpenVINO needs: CMake.
+# cv2 needs: libgthread-2.0.
+# Python 3.7 needs: libssl, libbz2, libffi.
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt update -y\
+ && apt install -y apt-utils\
+ && apt upgrade -y\
+ && apt install -y\
+ git wget zip libz-dev\
+ cmake\
+ libgtk2.0-dev\
+ libssl-dev libbz2-dev libffi-dev\
+ vim tree\
+ && apt clean
+
+# Install Python 3.7 (needed to install TensorFlow 1.15.2 via pip).
+RUN cd /tmp \
+ && wget https://www.python.org/ftp/python/3.7.8/Python-3.7.8.tgz \
+ && tar xvf Python-3.7.8.tgz \
+ && cd Python-3.7.8 \
+ && ./configure --enable-optimizations --enable-shared --with-ensurepip=install \
+ && make -j20 \
+ && make altinstall \
+ && rm -rf /tmp/*
+
+# Create a non-root user with a fixed group id 1500 and a fixed user id 2000
+# (hopefully distinct from any host user id for security reasons).
+# See the README for the gory details.
+RUN groupadd -g 1500 ckg
+RUN useradd -u 2000 -g ckg --create-home --shell /bin/bash ck
+USER ck:ckg
+WORKDIR /home/ck
+
+# Install Collective Knowledge (CK). Make it group-executable.
+ENV CK_ROOT=/home/ck/CK \
+    CK_REPOS=/home/ck/CK_REPOS \
+    CK_TOOLS=/home/ck/CK_TOOLS \
+    PATH=${CK_ROOT}/bin:/home/ck/.local/bin:${PATH} \
+    CPATH=/usr/local/include/python3.7m \
+    LD_LIBRARY_PATH=/usr/local/lib \
+    CK_CC=gcc \
+    CK_PYTHON=python3.7 \
+    GIT_USER="ctuning" \
+    GIT_EMAIL="admin@ctuning.org" \
+    LANG=C.UTF-8
+RUN mkdir -p ${CK_ROOT} ${CK_REPOS} ${CK_TOOLS}
+RUN git config --global user.name ${GIT_USER} && git config --global user.email ${GIT_EMAIL}
+RUN git clone https://github.com/ctuning/ck.git ${CK_ROOT}
+RUN cd ${CK_ROOT}\
+ && ${CK_PYTHON} setup.py install --user\
+ && ${CK_PYTHON} -c "import ck.kernel as ck; print ('Collective Knowledge v%s' % ck.__version__)"\
+ && chmod -R g+rx /home/ck/.local
+
+# Pull CK AI repository
+RUN ck pull repo:ai
+
+# Use generic Linux settings with dummy frequency setting scripts.
+RUN ck detect platform.os --platform_init_uoa=generic-linux-dummy
+
+# Detect C/C++ compiler (gcc).
+RUN ck detect soft:compiler.gcc --full_path=`which ${CK_CC}`
+
+# Detect CMake build tool.
+RUN ck detect soft --tags=cmake --full_path=`which cmake`
+
+# Detect Python.
+RUN ck detect soft --tags=compiler,python --full_path=`which ${CK_PYTHON}`
+# Install the latest Python package installer (pip) and some dependencies.
+RUN ${CK_PYTHON} -m pip install --ignore-installed pip setuptools --user
