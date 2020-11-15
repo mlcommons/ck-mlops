@@ -1,7 +1,7 @@
 # CK repository for AI and ML systems
 
 [![compatibility](https://github.com/ctuning/ck-guide-images/blob/master/ck-compatible.svg)](https://github.com/ctuning/ck)
-[![automation](https://github.com/ctuning/ck-guide-images/blob/master/ck-artifact-automated-and-reusable.svg)](https://cKnowledge.io)
+[![automation](https://github.com/ctuning/ck-guide-images/blob/master/ck-artifact-automated-and-reusable.svg)](https://cTuning.org/ae)
 
 Linux/MacOS: [![Travis Build Status](https://travis-ci.org/ctuning/ai.svg)](https://travis-ci.org/ctuning/ai)
 Windows: [![Windows Build status](https://ci.appveyor.com/api/projects/status/4ry307jh6tks9dg9?svg=true)](https://ci.appveyor.com/project/gfursin/ai)
