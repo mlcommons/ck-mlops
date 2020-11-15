@@ -23,6 +23,8 @@ All CK components are available at the [CK portal](https://cKnowledge.io) simila
 
 # Usage
 
+## Without Docker
+
 Install the CK framework as described [here](https://ck.readthedocs.io/en/latest/src/installation.html).
 
 Pull this repository:
@@ -30,16 +32,31 @@ Pull this repository:
 ck pull repo:ai
 ```
 
-Try [portable AI/ML workflows](https://cKnowledge.io/solutions)
-or [adaptive CK containers](https://cKnowledge.io/c/docker).
+Try [portable AI/ML workflows](https://cKnowledge.io/solutions), [program pipelines](https://cKnowledge.io/programs)
+and [adaptive CK containers](https://cKnowledge.io/c/docker).
 *Note that you do not need to pull other repositories anymore
  since all the components are aggregated here.*
 
 Check [public dashboards](https://cKnowledge.io/reproduced-results) with reproduced results from [research papers](https://cKnowledge.io/reproduced-papers).
 
-See real use cases from the community: [MLPerf, Arm, General Motors, IBM, Raspberry Pi foundation, ACM and others](https://cknowledge.org/partners.html).
+See real use cases from the community: [MLPerf, Arm, General Motors, IBM, Raspberry Pi foundation, ACM, dividiti and others](https://cknowledge.org/partners.html).
 
 Read about the [CK concept and format](https://arxiv.org/abs/2011.01149).
+
+## With Docker
+
+We prepared a CK container with all CK components from this repository: 
+[[Docker](https://hub.docker.com/r/ctuning/ck-ai)], [[CK component](https://github.com/ctuning/ai/tree/main/docker/ck-ai)]
+
+You can start it as follows:
+
+```bash
+docker run --rm -it ctuning/ck-ai:ubuntu-20.04
+```
+
+You can then prepare and run these [portable AI/ML workflows](https://cKnowledge.io/solutions) 
+and [program pipelines](https://cKnowledge.io/programs).
+
 
 # License
 
@@ -49,6 +66,12 @@ BSD 3-clause. We are discussing the possibility to relicense the CK framework to
 
 Please contribute as described [here](https://ck.readthedocs.io/en/latest/src/how-to-contribute.html)
 and submit your PRs [here](https://github.com/ctuning/ai/pulls).
+
+# Acknowledgments
+
+We would like to thank all [collaborators](https://cKnowledge.org/partners.html) for their support, fruitful discussions, 
+and useful feedback! See more acknowledgments in the [CK journal article](https://arxiv.org/abs/2011.01149).
+
 
 # Contacts
 
