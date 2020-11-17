@@ -21,6 +21,13 @@ A collection of portable workflows, automation actions and reusable artifacts fo
 
 All CK components are available at the [CK portal](https://cKnowledge.io) similar to PyPI.
 
+# Docs
+
+* CK automation framework: 
+  [[GitHub]( https://github.com/ctuning/ck )] 
+  [[Online docs](https://ck.readthedocs.io)] 
+  [[Overview](https://arxiv.org/pdf/2011.01149.pdf)]
+
 # Usage
 
 ## Without Docker
