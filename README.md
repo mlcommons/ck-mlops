@@ -20,6 +20,7 @@ A collection of portable workflows, automation actions and reusable artifacts fo
 * CK MLPerf benchmark CMD generators: [[dev](https://github.com/ctuning/ai/tree/main/cmdgen)] [[CK platform]( https://cKnowledge.io/c/cmdgen )]
 
 All CK components are available at the [CK portal](https://cKnowledge.io) similar to PyPI.
+Feel free to discuss them with the [CK community](https://cKnowledge.io/engage).
 
 # Docs
 
@@ -37,6 +38,20 @@ Install the CK framework as described [here](https://ck.readthedocs.io/en/latest
 Pull this repository:
 ```bash
 ck pull repo:ai
+```
+Test the installation using the simple image corner detection program:
+
+```bash
+ck ls program:*susan*
+
+ck search dataset --tags=jpeg
+
+ck compile program:cbench-automotive-susan2 --speed
+
+ck run program:cbench-automotive-susan2 --cmd_key=corners --repeat=1 --env.MY_ENV=123 --env.TEST=xyz
+
+# view output
+ls `ck find program:cbench-automotive-susan2`/tmp/output.pgm
 ```
 
 Try [portable AI/ML workflows](https://cKnowledge.io/solutions), [program pipelines](https://cKnowledge.io/programs)
