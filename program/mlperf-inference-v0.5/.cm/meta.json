@@ -1,15 +1,46 @@
 {
-  "backup_data_uid": "71c3343e7b623d05",
-  "build_compiler_vars": {},
+  "backup_data_uid": "71c3343e7b623d05", 
+  "build_compiler_vars": {}, 
   "compile_cmds": {
     "default": {
       "cmd": "bash ../ck_compile$#script_ext#$"
     }
-  },
+  }, 
   "compile_deps": {
+    "compiler": {
+      "local": "yes", 
+      "name": "C compiler",
+      "sort": 10,
+      "tags": "compiler,lang-c"
+    },
+    "cmake": {
+      "local": "yes", 
+      "name": "CMake tool", 
+      "sort": 20,
+      "tags": "tool,cmake"
+    },
+    "loadgen": {
+      "local": "yes", 
+      "name": "MLPerf Inference LoadGen library", 
+      "sort": 30,
+      "tags": "lib,loadgen,static"
+    },
+    "openvino": {
+      "local": "yes", 
+      "name": "OpenVINO toolkit", 
+      "sort": 40,
+      "tags": "lib,openvino",
+      "or_tags": "pre-release;2019_R3.1;2019_R3;2020;2020.1;2020.2"
+    },
+    "opencv": {
+      "local": "yes", 
+      "name": "OpenCV library", 
+      "sort": 50,
+      "tags": "lib,opencv"
+    },
     "boost": {
-      "local": "yes",
-      "name": "Boost library",
+      "local": "yes", 
+      "name": "Boost library", 
       "sort": 60,
       "tags": "lib,boost,channel-stable",
       "version_from": [
@@ -17,62 +48,30 @@
         41,
         0
       ]
-    },
-    "cmake": {
-      "local": "yes",
-      "name": "CMake tool",
-      "sort": 20,
-      "tags": "tool,cmake"
-    },
-    "compiler": {
-      "local": "yes",
-      "name": "C compiler",
-      "sort": 10,
-      "tags": "compiler,lang-c"
-    },
-    "loadgen": {
-      "local": "yes",
-      "name": "MLPerf Inference LoadGen library",
-      "sort": 30,
-      "tags": "lib,loadgen,static"
-    },
-    "opencv": {
-      "local": "yes",
-      "name": "OpenCV library",
-      "no_tags": "python-package",
-      "sort": 50,
-      "tags": "lib,opencv"
-    },
-    "openvino": {
-      "local": "yes",
-      "name": "OpenVINO toolkit",
-      "or_tags": "pre-release;2019_R3.1;2019_R3;2020;2020.1;2020.2",
-      "sort": 40,
-      "tags": "lib,openvino"
     }
-  },
-  "data_name": "mlperf-inference-v0.5",
-  "extra_ld_vars": "",
-  "main_language": "cpp",
-  "pass_env_to_resolve": "yes",
+  }, 
+  "data_name": "mlperf-inference-v0.5", 
+  "extra_ld_vars": "", 
+  "main_language": "cpp", 
   "print_files_after_run": [
-    "stderr.log",
+    "stderr.log", 
     "stdout.log"
-  ],
-  "process_in_tmp": "yes",
-  "program": "yes",
+  ], 
+  "pass_env_to_resolve": "yes", 
+  "process_in_tmp": "yes", 
+  "program": "yes", 
   "run_cmds": {
     "image-classification": {
       "ignore_return_code": "no",
       "run_time": {
         "fine_grain_timer_file": "tmp-ck-timer.json",
+        "pre_process_via_ck": {
+          "script_name": "ck_preprocess"
+        },
         "post_process_via_ck": {
           "data_uoa": "image-classification",
           "module_uoa": "script",
           "script_name": "loadgen_postprocess"
-        },
-        "pre_process_via_ck": {
-          "script_name": "ck_preprocess"
         },
         "run_cmd_main": "$#BIN_FILE#$ --scenario ${CK_LOADGEN_SCENARIO} --mode ${CK_LOADGEN_MODE} --mlperf_conf_filename ${CK_LOADGEN_MLPERF_CONF} --user_conf_filename ${CK_LOADGEN_USER_CONF} --total_sample_count ${CK_LOADGEN_DATASET_SIZE} --data_path ${CK_ENV_DATASET_IMAGENET_VAL} --dataset imagenet --device ${CK_OPENVINO_DEVICE} --model_path ${CK_ENV_OPENVINO_MODEL_XML} --model_name ${CK_OPENVINO_MODEL_NAME} --nireq ${CK_OPENVINO_NIREQ} --nstreams ${CK_OPENVINO_NSTREAMS} --nthreads ${CK_OPENVINO_NTHREADS} --nwarmup_iters ${CK_OPENVINO_NWARMUP_ITERS} --batch_size ${CK_BATCH_SIZE}",
         "run_cmd_out1": "stdout.log",
@@ -83,28 +82,28 @@
         ]
       },
       "run_vars": {
-        "CK_BATCH_SIZE": 1,
-        "CK_LOADGEN_DATASET_SIZE": 500,
-        "CK_LOADGEN_MODE": "Performance",
-        "CK_LOADGEN_SCENARIO": "Offline",
-        "CK_LOADGEN_TASK": "image-classification",
-        "CK_OPENVINO_NIREQ": 1,
-        "CK_OPENVINO_NSTREAMS": 1,
-        "CK_OPENVINO_NTHREADS": 1,
-        "CK_OPENVINO_NWARMUP_ITERS": 1000
+        "CK_LOADGEN_DATASET_SIZE"   : 500,
+        "CK_LOADGEN_TASK"           : "image-classification",
+        "CK_LOADGEN_SCENARIO"       : "Offline",
+        "CK_LOADGEN_MODE"           : "Performance",
+        "CK_OPENVINO_NIREQ"         : 1,
+        "CK_OPENVINO_NSTREAMS"      : 1,
+        "CK_OPENVINO_NTHREADS"      : 1,
+        "CK_OPENVINO_NWARMUP_ITERS" : 1000,
+        "CK_BATCH_SIZE"             : 1
       }
     },
     "object-detection": {
-      "ignore_return_code": "no",
+      "ignore_return_code": "no", 
       "run_time": {
         "fine_grain_timer_file": "tmp-ck-timer.json",
+        "pre_process_via_ck": {
+          "script_name": "ck_preprocess"
+        },
         "post_process_via_ck": {
           "data_uoa": "object-detection",
           "module_uoa": "script",
           "script_name": "loadgen_postprocess"
-        },
-        "pre_process_via_ck": {
-          "script_name": "ck_preprocess"
         },
         "run_cmd_main": "$#BIN_FILE#$ --scenario ${CK_LOADGEN_SCENARIO} --mode ${CK_LOADGEN_MODE} --mlperf_conf_filename ${CK_LOADGEN_MLPERF_CONF} --user_conf_filename ${CK_LOADGEN_USER_CONF} --total_sample_count ${CK_LOADGEN_DATASET_SIZE} --data_path ${CK_ENV_DATASET_COCO} --dataset ${CK_ENV_DATASET_TYPE} --device ${CK_OPENVINO_DEVICE} --model_path ${CK_ENV_OPENVINO_MODEL_XML} --model_name ${CK_OPENVINO_MODEL_NAME} --nireq ${CK_OPENVINO_NIREQ} --nstreams ${CK_OPENVINO_NSTREAMS} --nthreads ${CK_OPENVINO_NTHREADS} --nwarmup_iters ${CK_OPENVINO_NWARMUP_ITERS} --batch_size ${CK_BATCH_SIZE}",
         "run_cmd_out1": "stdout.log",
@@ -115,197 +114,236 @@
         ]
       },
       "run_vars": {
-        "CK_BATCH_SIZE": 1,
-        "CK_LOADGEN_DATASET_SIZE": 5000,
-        "CK_LOADGEN_MODE": "Performance",
-        "CK_LOADGEN_SCENARIO": "Offline",
-        "CK_LOADGEN_TASK": "object-detection",
-        "CK_OPENVINO_MODEL_NAME": "ssd-mobilenet",
-        "CK_OPENVINO_NIREQ": 1,
-        "CK_OPENVINO_NSTREAMS": 1,
-        "CK_OPENVINO_NTHREADS": 1,
-        "CK_OPENVINO_NWARMUP_ITERS": 1
+        "CK_LOADGEN_DATASET_SIZE"   : 5000,
+        "CK_LOADGEN_TASK"           : "object-detection",
+        "CK_LOADGEN_SCENARIO"       : "Offline",
+        "CK_LOADGEN_MODE"           : "Performance",
+        "CK_OPENVINO_MODEL_NAME"    : "ssd-mobilenet",
+        "CK_OPENVINO_NIREQ"         : 1,
+        "CK_OPENVINO_NSTREAMS"      : 1,
+        "CK_OPENVINO_NTHREADS"      : 1,
+        "CK_OPENVINO_NWARMUP_ITERS" : 1,
+        "CK_BATCH_SIZE"             : 1
       }
     },
     "offline_ssdm": {
-      "ignore_return_code": "no",
+      "ignore_return_code": "no", 
       "run_time": {
+        "pre_process_via_ck": {
+          "script_name": "ck_preprocess"
+        },
         "post_process_via_ck": {
           "data_uoa": "object-detection",
           "module_uoa": "script",
           "script_name": "loadgen_postprocess"
         },
-        "pre_process_via_ck": {
-          "script_name": "ck_preprocess"
-        },
         "run_cmd_main": "$#BIN_FILE#$ --scenario ${CK_LOADGEN_SCENARIO} --mode ${CK_LOADGEN_MODE} --mlperf_conf_filename ${CK_LOADGEN_MLPERF_CONF} --user_conf_filename ${CK_LOADGEN_USER_CONF} --total_sample_count ${CK_LOADGEN_DATASET_SIZE} --data_path ${CK_ENV_DATASET_COCO} --dataset ${CK_ENV_DATASET_TYPE} --device ${CK_OPENVINO_DEVICE} --model_path ${CK_ENV_OPENVINO_MODEL_XML} --model_name ${CK_OPENVINO_MODEL_NAME} --nireq ${CK_OPENVINO_NVIRTCPUS} --nstreams ${CK_OPENVINO_NVIRTCPUS} --nthreads ${CK_OPENVINO_NVIRTCPUS} --nwarmup_iters ${CK_OPENVINO_NWARMUP_ITERS} --batch_size ${CK_BATCH_SIZE}",
-        "run_cmd_out1": "stdout.log",
-        "run_cmd_out2": "stderr.log",
+        "run_cmd_out1": "stdout.log", 
+        "run_cmd_out2": "stderr.log", 
         "run_output_files": [
-          "stdout.log",
+          "stdout.log", 
           "stderr.log"
         ]
       },
       "run_vars": {
-        "CK_LOADGEN_MODE": "Performance",
-        "CK_LOADGEN_SCENARIO": "Offline",
-        "CK_LOADGEN_TASK": "object-detection",
-        "CK_OPENVINO_NVIRTCPUS": 112,
-        "CK_OPENVINO_NWARMUP_ITERS": 1000
+        "CK_LOADGEN_TASK"           : "object-detection",
+        "CK_LOADGEN_SCENARIO"       : "Offline",
+        "CK_LOADGEN_MODE"           : "Performance",
+        "CK_OPENVINO_NVIRTCPUS"     : 112,
+        "CK_OPENVINO_NWARMUP_ITERS" : 1000
       }
     },
     "offline_ssdm_accuracy": {
-      "ignore_return_code": "no",
+      "ignore_return_code": "no", 
       "run_time": {
+        "pre_process_via_ck": {
+          "script_name": "ck_preprocess"
+        },
         "post_process_via_ck": {
           "data_uoa": "object-detection",
           "module_uoa": "script",
           "script_name": "loadgen_postprocess"
         },
-        "pre_process_via_ck": {
-          "script_name": "ck_preprocess"
-        },
         "run_cmd_main": "$#BIN_FILE#$ --scenario ${CK_LOADGEN_SCENARIO} --mode ${CK_LOADGEN_MODE} --mlperf_conf_filename ${CK_LOADGEN_MLPERF_CONF} --user_conf_filename ${CK_LOADGEN_USER_CONF} --total_sample_count ${CK_LOADGEN_DATASET_SIZE} --data_path ${CK_ENV_DATASET_COCO} --dataset ${CK_ENV_DATASET_TYPE} --device ${CK_OPENVINO_DEVICE} --model_path ${CK_ENV_OPENVINO_MODEL_XML} --model_name ${CK_OPENVINO_MODEL_NAME} --nireq ${CK_OPENVINO_NVIRTCPUS} --nstreams ${CK_OPENVINO_NVIRTCPUS} --nthreads ${CK_OPENVINO_NVIRTCPUS} --nwarmup_iters ${CK_OPENVINO_NWARMUP_ITERS} --batch_size ${CK_BATCH_SIZE}",
-        "run_cmd_out1": "stdout.log",
-        "run_cmd_out2": "stderr.log",
+        "run_cmd_out1": "stdout.log", 
+        "run_cmd_out2": "stderr.log", 
         "run_output_files": [
-          "stdout.log",
+          "stdout.log", 
           "stderr.log"
         ]
       },
       "run_vars": {
-        "CK_LOADGEN_MODE": "Accuracy",
-        "CK_LOADGEN_SCENARIO": "Offline",
-        "CK_LOADGEN_TASK": "object-detection",
-        "CK_OPENVINO_NVIRTCPUS": 112,
-        "CK_OPENVINO_NWARMUP_ITERS": 1
+        "CK_LOADGEN_TASK"           : "object-detection",
+        "CK_LOADGEN_SCENARIO"       : "Offline",
+        "CK_LOADGEN_MODE"           : "Accuracy",
+        "CK_OPENVINO_NVIRTCPUS"     : 112,
+        "CK_OPENVINO_NWARMUP_ITERS" : 1
       }
     },
     "server_ssdm": {
-      "ignore_return_code": "no",
+      "ignore_return_code": "no", 
       "run_time": {
+        "pre_process_via_ck": {
+          "script_name": "ck_preprocess"
+        },
         "post_process_via_ck": {
           "data_uoa": "object-detection",
           "module_uoa": "script",
           "script_name": "loadgen_postprocess"
         },
-        "pre_process_via_ck": {
-          "script_name": "ck_preprocess"
-        },
         "run_cmd_main": "rm -rf /dev/shem/*; echo 100 | sudo tee /sys/devices/system/cpu/intel_pstate/min_perf_pct; sync; echo 1 | sudo tee /proc/sys/vm/compact_memory; echo 3 | sudo tee /proc/sys/vm/drop_caches; $#BIN_FILE#$ --scenario ${CK_LOADGEN_SCENARIO} --mode ${CK_LOADGEN_MODE} --mlperf_conf_filename ${CK_LOADGEN_MLPERF_CONF} --user_conf_filename ${CK_LOADGEN_USER_CONF} --total_sample_count ${CK_LOADGEN_DATASET_SIZE} --data_path ${CK_ENV_DATASET_COCO} --dataset ${CK_ENV_DATASET_TYPE} --device ${CK_OPENVINO_DEVICE} --model_path ${CK_ENV_OPENVINO_MODEL_XML} --model_name ${CK_OPENVINO_MODEL_NAME} --nireq ${CK_OPENVINO_NVIRTCPUS} --nstreams ${CK_OPENVINO_NSTREAMS} --nthreads ${CK_OPENVINO_NVIRTCPUS} --nwarmup_iters ${CK_OPENVINO_NWARMUP_ITERS} --batch_size ${CK_BATCH_SIZE}",
-        "run_cmd_out1": "stdout.log",
-        "run_cmd_out2": "stderr.log",
+        "run_cmd_out1": "stdout.log", 
+        "run_cmd_out2": "stderr.log", 
         "run_output_files": [
-          "stdout.log",
+          "stdout.log", 
           "stderr.log"
         ]
       },
       "run_vars": {
-        "CK_LOADGEN_MODE": "Performance",
-        "CK_LOADGEN_SCENARIO": "Server",
-        "CK_LOADGEN_TASK": "object-detection",
-        "CK_OPENVINO_NSTREAMS": 14,
-        "CK_OPENVINO_NVIRTCPUS": 112,
-        "CK_OPENVINO_NWARMUP_ITERS": 0
+        "CK_LOADGEN_TASK"           : "object-detection",
+        "CK_LOADGEN_SCENARIO"       : "Server",
+        "CK_LOADGEN_MODE"           : "Performance",
+        "CK_OPENVINO_NVIRTCPUS"     : 112,
+        "CK_OPENVINO_NSTREAMS"      : 14,
+        "CK_OPENVINO_NWARMUP_ITERS" : 0 
       }
     },
     "server_ssdm_accuracy": {
-      "ignore_return_code": "no",
+      "ignore_return_code": "no", 
       "run_time": {
+        "pre_process_via_ck": {
+          "script_name": "ck_preprocess"
+        },
         "post_process_via_ck": {
           "data_uoa": "object-detection",
           "module_uoa": "script",
           "script_name": "loadgen_postprocess"
         },
-        "pre_process_via_ck": {
-          "script_name": "ck_preprocess"
-        },
         "run_cmd_main": "rm -rf /dev/shem/*; echo 100 | sudo tee /sys/devices/system/cpu/intel_pstate/min_perf_pct; sync; echo 1 | sudo tee /proc/sys/vm/compact_memory; echo 3 | sudo tee /proc/sys/vm/drop_caches; $#BIN_FILE#$ --scenario ${CK_LOADGEN_SCENARIO} --mode ${CK_LOADGEN_MODE} --mlperf_conf_filename ${CK_LOADGEN_MLPERF_CONF} --user_conf_filename ${CK_LOADGEN_USER_CONF} --total_sample_count ${CK_LOADGEN_DATASET_SIZE} --data_path ${CK_ENV_DATASET_COCO} --dataset ${CK_ENV_DATASET_TYPE} --device ${CK_OPENVINO_DEVICE} --model_path ${CK_ENV_OPENVINO_MODEL_XML} --model_name ${CK_OPENVINO_MODEL_NAME} --nireq ${CK_OPENVINO_NVIRTCPUS} --nstreams ${CK_OPENVINO_NSTREAMS} --nthreads ${CK_OPENVINO_NVIRTCPUS} --nwarmup_iters ${CK_OPENVINO_NWARMUP_ITERS} --batch_size ${CK_BATCH_SIZE}",
-        "run_cmd_out1": "stdout.log",
-        "run_cmd_out2": "stderr.log",
+        "run_cmd_out1": "stdout.log", 
+        "run_cmd_out2": "stderr.log", 
         "run_output_files": [
-          "stdout.log",
+          "stdout.log", 
           "stderr.log"
         ]
       },
       "run_vars": {
-        "CK_LOADGEN_MODE": "Accuracy",
-        "CK_LOADGEN_SCENARIO": "Server",
-        "CK_LOADGEN_TASK": "object-detection",
-        "CK_OPENVINO_NSTREAMS": 14,
-        "CK_OPENVINO_NVIRTCPUS": 112,
-        "CK_OPENVINO_NWARMUP_ITERS": 0
+        "CK_LOADGEN_TASK"           : "object-detection",
+        "CK_LOADGEN_SCENARIO"       : "Server",
+        "CK_LOADGEN_MODE"           : "Accuracy",
+        "CK_OPENVINO_NVIRTCPUS"     : 112,
+        "CK_OPENVINO_NSTREAMS"      : 14,
+        "CK_OPENVINO_NWARMUP_ITERS" : 0 
       }
     },
     "singlestream_ssdm": {
-      "ignore_return_code": "no",
+      "ignore_return_code": "no", 
       "run_time": {
+        "pre_process_via_ck": {
+          "script_name": "ck_preprocess"
+        },
         "post_process_via_ck": {
           "data_uoa": "object-detection",
           "module_uoa": "script",
           "script_name": "loadgen_postprocess"
         },
-        "pre_process_via_ck": {
-          "script_name": "ck_preprocess"
-        },
         "run_cmd_main": "rm -rf /dev/shem/*; echo 100 | sudo tee /sys/devices/system/cpu/intel_pstate/min_perf_pct; sync; echo 1 | sudo tee /proc/sys/vm/compact_memory; echo 3 | sudo tee /proc/sys/vm/drop_caches; numactl --physcpubind=${CK_OPENVINO_PHYSCPUBIND} --membind=0 $#BIN_FILE#$ --scenario ${CK_LOADGEN_SCENARIO} --mode ${CK_LOADGEN_MODE} --mlperf_conf_filename ${CK_LOADGEN_MLPERF_CONF} --user_conf_filename ${CK_LOADGEN_USER_CONF} --total_sample_count ${CK_LOADGEN_DATASET_SIZE} --data_path ${CK_ENV_DATASET_COCO} --dataset ${CK_ENV_DATASET_TYPE} --device ${CK_OPENVINO_DEVICE} --model_path ${CK_ENV_OPENVINO_MODEL_XML} --model_name ${CK_OPENVINO_MODEL_NAME} --nireq ${CK_OPENVINO_NIREQ} --nstreams ${CK_OPENVINO_NSTREAMS} --nthreads ${CK_OPENVINO_NPHYSCPUS} --nwarmup_iters ${CK_OPENVINO_NWARMUP_ITERS} --batch_size ${CK_BATCH_SIZE}",
-        "run_cmd_out1": "stdout.log",
-        "run_cmd_out2": "stderr.log",
+        "run_cmd_out1": "stdout.log", 
+        "run_cmd_out2": "stderr.log", 
         "run_output_files": [
-          "stdout.log",
+          "stdout.log", 
           "stderr.log"
         ]
       },
       "run_vars": {
-        "CK_LOADGEN_MODE": "Performance",
-        "CK_LOADGEN_SCENARIO": "SingleStream",
-        "CK_LOADGEN_TASK": "object-detection",
-        "CK_OPENVINO_NIREQ": 1,
-        "CK_OPENVINO_NPHYSCPUS": 28,
-        "CK_OPENVINO_NSTREAMS": 1,
-        "CK_OPENVINO_NWARMUP_ITERS": 1000,
-        "CK_OPENVINO_PHYSCPUBIND": "0-27"
+        "CK_LOADGEN_TASK"           : "object-detection",
+        "CK_LOADGEN_SCENARIO"       : "SingleStream",
+        "CK_LOADGEN_MODE"           : "Performance",
+        "CK_OPENVINO_NIREQ"         : 1,
+        "CK_OPENVINO_NSTREAMS"      : 1,
+        "CK_OPENVINO_NPHYSCPUS"     : 28,
+        "CK_OPENVINO_PHYSCPUBIND"   : "0-27",
+        "CK_OPENVINO_NWARMUP_ITERS" : 1000 
       }
     },
     "singlestream_ssdm_accuracy": {
-      "ignore_return_code": "no",
+      "ignore_return_code": "no", 
       "run_time": {
+        "pre_process_via_ck": {
+          "script_name": "ck_preprocess"
+        },
         "post_process_via_ck": {
           "data_uoa": "object-detection",
           "module_uoa": "script",
           "script_name": "loadgen_postprocess"
         },
-        "pre_process_via_ck": {
-          "script_name": "ck_preprocess"
-        },
         "run_cmd_main": "rm -rf /dev/shem/*; echo 100 | sudo tee /sys/devices/system/cpu/intel_pstate/min_perf_pct; sync; echo 1 | sudo tee /proc/sys/vm/compact_memory; echo 3 | sudo tee /proc/sys/vm/drop_caches; numactl --physcpubind=${CK_OPENVINO_PHYSCPUBIND} --membind=0 $#BIN_FILE#$ --scenario ${CK_LOADGEN_SCENARIO} --mode ${CK_LOADGEN_MODE} --mlperf_conf_filename ${CK_LOADGEN_MLPERF_CONF} --user_conf_filename ${CK_LOADGEN_USER_CONF} --total_sample_count ${CK_LOADGEN_DATASET_SIZE} --data_path ${CK_ENV_DATASET_COCO} --dataset ${CK_ENV_DATASET_TYPE} --device ${CK_OPENVINO_DEVICE} --model_path ${CK_ENV_OPENVINO_MODEL_XML} --model_name ${CK_OPENVINO_MODEL_NAME} --nireq ${CK_OPENVINO_NIREQ} --nstreams ${CK_OPENVINO_NSTREAMS} --nthreads ${CK_OPENVINO_NPHYSCPUS} --nwarmup_iters ${CK_OPENVINO_NWARMUP_ITERS} --batch_size ${CK_BATCH_SIZE}",
-        "run_cmd_out1": "stdout.log",
-        "run_cmd_out2": "stderr.log",
+        "run_cmd_out1": "stdout.log", 
+        "run_cmd_out2": "stderr.log", 
         "run_output_files": [
-          "stdout.log",
+          "stdout.log", 
           "stderr.log"
         ]
       },
       "run_vars": {
-        "CK_LOADGEN_MODE": "Accuracy",
-        "CK_LOADGEN_SCENARIO": "SingleStream",
-        "CK_LOADGEN_TASK": "object-detection",
-        "CK_OPENVINO_NIREQ": 1,
-        "CK_OPENVINO_NPHYSCPUS": 28,
-        "CK_OPENVINO_NSTREAMS": 1,
-        "CK_OPENVINO_NWARMUP_ITERS": 1,
-        "CK_OPENVINO_PHYSCPUBIND": "0-27"
+        "CK_LOADGEN_TASK"           : "object-detection",
+        "CK_LOADGEN_SCENARIO"       : "SingleStream",
+        "CK_LOADGEN_MODE"           : "Accuracy",
+        "CK_OPENVINO_NIREQ"         : 1,
+        "CK_OPENVINO_NSTREAMS"      : 1,
+        "CK_OPENVINO_NPHYSCPUS"     : 28,
+        "CK_OPENVINO_PHYSCPUBIND"   : "0-27",
+        "CK_OPENVINO_NWARMUP_ITERS" : 1
       }
     }
-  },
+  }, 
   "run_deps": {
+    "weights": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "OpenVINO model",
+      "sort": 110,
+      "tags": "model,openvino",
+      "update_tags_if_env": {
+        "mobilenet":     [ { "CK_LOADGEN_TASK": "image-classification",
+                             "CK_OPENVINO_MODEL_NAME": "mobilenet"     } ],
+        "resnet50":      [ { "CK_LOADGEN_TASK": "image-classification",
+                             "CK_OPENVINO_MODEL_NAME": "resnet50"      } ],
+        "ssd-mobilenet": [ { "CK_LOADGEN_TASK": "object-detection",
+                             "CK_OPENVINO_MODEL_NAME": "ssd-mobilenet" } ]
+      }
+    },
+    "mlperf-inference-src": {
+      "enable_if_env": [
+        { "CK_LOADGEN_MODE": ["Accuracy", "accuracy", "Performance_"] }
+      ],
+      "local": "yes",
+      "name": "MLPerf Inference source",
+      "sort": 120,
+      "tags": "mlperf,inference,source"
+    },
+    "python": {
+      "enable_if_env": [
+        { "CK_LOADGEN_MODE": ["Accuracy", "accuracy", "Performance_"] }
+      ],
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Python interpreter",
+      "sort": 130,
+      "tags": "compiler,lang-python"
+    },
+    "lib-python-numpy": {
+      "enable_if_env": [
+        { "CK_LOADGEN_MODE": ["Accuracy", "accuracy", "Performance_"] }
+      ],
+      "local": "yes",
+      "name": "Python NumPy library",
+      "sort": 140,
+      "tags": "lib,python-package,numpy"
+    },
     "dataset": {
       "enable_if_env": [
-        {
-          "CK_LOADGEN_TASK": [
-            "object-detection"
-          ]
-        }
+        { "CK_LOADGEN_TASK": ["object-detection"] }
       ],
       "force_target_as_host": "yes",
       "local": "yes",
@@ -315,11 +353,7 @@
     },
     "dataset-imagenet": {
       "enable_if_env": [
-        {
-          "CK_LOADGEN_TASK": [
-            "image-classification"
-          ]
-        }
+        { "CK_LOADGEN_TASK": ["image-classification"] }
       ],
       "force_target_as_host": "yes",
       "local": "yes",
@@ -327,149 +361,53 @@
       "sort": 200,
       "tags": "dataset,imagenet,2012,val,original"
     },
-    "imagenet-aux": {
-      "enable_if_env": [
-        {
-          "CK_LOADGEN_MODE": [
-            "Accuracy",
-            "accuracy",
-            "Performance_"
-          ],
-          "CK_LOADGEN_TASK": [
-            "image-classification"
-          ]
-        }
-      ],
-      "local": "yes",
-      "name": "ImageNet labels",
-      "sort": 300,
-      "tags": "dataset,imagenet,aux"
-    },
     "lib-python-matplotlib": {
       "enable_if_env": [
-        {
-          "CK_LOADGEN_MODE": [
-            "Accuracy",
-            "accuracy",
-            "Performance_"
-          ],
-          "CK_LOADGEN_TASK": [
-            "object-detection"
-          ]
-        }
+        { "CK_LOADGEN_TASK": ["object-detection"],
+          "CK_LOADGEN_MODE": ["Accuracy", "accuracy", "Performance_"] }
       ],
       "local": "yes",
       "name": "Python Matplotlib library",
       "sort": 210,
       "tags": "lib,python-package,matplotlib"
     },
-    "lib-python-numpy": {
-      "enable_if_env": [
-        {
-          "CK_LOADGEN_MODE": [
-            "Accuracy",
-            "accuracy",
-            "Performance_"
-          ]
-        }
-      ],
-      "local": "yes",
-      "name": "Python NumPy library",
-      "sort": 140,
-      "tags": "lib,python-package,numpy"
-    },
-    "mlperf-inference-src": {
-      "enable_if_env": [
-        {
-          "CK_LOADGEN_MODE": [
-            "Accuracy",
-            "accuracy",
-            "Performance_"
-          ]
-        }
-      ],
-      "local": "yes",
-      "name": "MLPerf Inference source",
-      "sort": 120,
-      "tags": "mlperf,inference,source"
-    },
-    "python": {
-      "enable_if_env": [
-        {
-          "CK_LOADGEN_MODE": [
-            "Accuracy",
-            "accuracy",
-            "Performance_"
-          ]
-        }
-      ],
-      "force_target_as_host": "yes",
-      "local": "yes",
-      "name": "Python interpreter",
-      "sort": 130,
-      "tags": "compiler,lang-python"
-    },
     "tool-coco": {
       "enable_if_env": [
-        {
-          "CK_LOADGEN_MODE": [
-            "Accuracy",
-            "accuracy",
-            "Performance_"
-          ],
-          "CK_LOADGEN_TASK": [
-            "object-detection"
-          ]
-        }
+        { "CK_LOADGEN_TASK": ["object-detection"],
+          "CK_LOADGEN_MODE": ["Accuracy", "accuracy", "Performance_"] }
       ],
       "local": "yes",
       "name": "Python API for COCO",
       "sort": 220,
       "tags": "tool,coco"
     },
-    "weights": {
-      "force_target_as_host": "yes",
+    "imagenet-aux": {
+      "enable_if_env": [
+        { "CK_LOADGEN_TASK": ["image-classification"],
+          "CK_LOADGEN_MODE": ["Accuracy", "accuracy", "Performance_"] }
+      ],
       "local": "yes",
-      "name": "OpenVINO model",
-      "sort": 110,
-      "tags": "model,openvino",
-      "update_tags_if_env": {
-        "mobilenet": [
-          {
-            "CK_LOADGEN_TASK": "image-classification",
-            "CK_OPENVINO_MODEL_NAME": "mobilenet"
-          }
-        ],
-        "resnet50": [
-          {
-            "CK_LOADGEN_TASK": "image-classification",
-            "CK_OPENVINO_MODEL_NAME": "resnet50"
-          }
-        ],
-        "ssd-mobilenet": [
-          {
-            "CK_LOADGEN_TASK": "object-detection",
-            "CK_OPENVINO_MODEL_NAME": "ssd-mobilenet"
-          }
-        ]
-      }
+      "name": "ImageNet labels",
+      "sort": 300,
+      "tags": "dataset,imagenet,aux"
     }
   },
   "run_vars": {
-    "CK_BATCH_SIZE": 1,
-    "CK_LOADGEN_DATASET_SIZE": 5000,
-    "CK_LOADGEN_MLPERF_CONF": "../mlperf.conf",
-    "CK_LOADGEN_MODE": "Performance",
-    "CK_LOADGEN_SCENARIO": "Offline",
-    "CK_LOADGEN_TASK": "object-detection",
-    "CK_LOADGEN_USER_CONF": "../user.conf.custom",
-    "CK_OPENVINO_DEVICE": "cpu",
-    "CK_OPENVINO_MODEL_NAME": "ssd-mobilenet",
-    "CK_OPENVINO_NIREQ": 112,
-    "CK_OPENVINO_NSTREAMS": 112,
-    "CK_OPENVINO_NTHREADS": 112,
-    "CK_OPENVINO_NWARMUP_ITERS": 1000
+    "CK_LOADGEN_TASK"           : "object-detection",
+    "CK_LOADGEN_SCENARIO"       : "Offline",
+    "CK_LOADGEN_MODE"           : "Performance",
+    "CK_LOADGEN_MLPERF_CONF"    : "../mlperf.conf",
+    "CK_LOADGEN_USER_CONF"      : "../user.conf.custom",
+    "CK_LOADGEN_DATASET_SIZE"   : 5000,
+    "CK_OPENVINO_DEVICE"        : "cpu",
+    "CK_OPENVINO_MODEL_NAME"    : "ssd-mobilenet",
+    "CK_OPENVINO_NIREQ"         : 112,
+    "CK_OPENVINO_NSTREAMS"      : 112,
+    "CK_OPENVINO_NTHREADS"      : 112,
+    "CK_OPENVINO_NWARMUP_ITERS" : 1000,
+    "CK_BATCH_SIZE"             : 1
   },
+  "target_file": "Release/ov_mlperf",
   "skip_bin_ext": "yes",
   "tags": [
     "mlperf",
@@ -478,9 +416,8 @@
     "inference",
     "v0.5",
     "openvino",
-    "program",
+    "program", 
     "lang-c"
-  ],
-  "target_file": "Release/ov_mlperf",
+  ], 
   "use_compile_script": "yes"
 }

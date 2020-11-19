@@ -1,16 +1,15 @@
 {
-  "backup_data_uid": "48c5af76e8e653f7",
-  "backup_module_uid": "1dc07ee0f4742028",
-  "backup_module_uoa": "package",
+  "backup_data_uid": "48c5af76e8e653f7", 
+  "backup_module_uid": "1dc07ee0f4742028", 
+  "backup_module_uoa": "package", 
   "control": {
-    "engine": "CK",
-    "iso_datetime": "2020-11-14T21:47:03.514275",
+    "engine": "CK", 
+    "iso_datetime": "2020-04-09T15:12:04.722080", 
     "version": [
-      "1",
-      "17",
-      "0",
-      "1"
+      "1", 
+      "12", 
+      "2"
     ]
-  },
+  }, 
   "data_name": "model-openvino-convert-from-tf"
 }

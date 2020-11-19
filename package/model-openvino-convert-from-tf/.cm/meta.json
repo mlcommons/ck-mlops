@@ -1,71 +1,50 @@
 {
-  "check_exit_status": "yes",
+  "check_exit_status": "yes", 
   "customize": {
     "install_env": {
       "MODEL_NAME": "converted_model",
       "PACKAGE_VERSION": "1"
-    },
-    "no_os_in_suggested_path": "yes",
-    "no_ver_in_suggested_path": "yes",
-    "package_name": "OpenVINO-from-TF model",
+    }, 
+    "no_os_in_suggested_path": "yes", 
+    "no_ver_in_suggested_path": "yes", 
+    "package_name": "OpenVINO-from-TF model", 
     "skip_file_check": "yes"
-  },
+  }, 
   "deps": {
     "imagenet-aux": {
       "enable_if_env": [
-        {
-          "CK_CALIBRATE_IMAGENET": [
-            "on",
-            "ON",
-            "yes",
-            "YES",
-            "true",
-            "TRUE",
-            "1"
-          ]
-        }
+        { "CK_CALIBRATE_IMAGENET": ["on", "ON", "yes", "YES", "true", "TRUE", "1"] }
       ],
-      "local": "yes",
-      "name": "ImageNet labels",
-      "sort": 100,
+      "local": "yes", 
+      "name": "ImageNet labels", 
+      "sort": 100, 
       "tags": "dataset,imagenet,aux"
-    },
+    }, 
     "imagenet-cal": {
-      "add_to_path": "yes",
       "enable_if_env": [
-        {
-          "CK_CALIBRATE_IMAGENET": [
-            "on",
-            "ON",
-            "yes",
-            "YES",
-            "true",
-            "TRUE",
-            "1"
-          ]
-        }
+        { "CK_CALIBRATE_IMAGENET": ["on", "ON", "yes", "YES", "true", "TRUE", "1"] }
       ],
+      "add_to_path": "yes",
       "local": "yes",
       "name": "ImageNet calibration dataset",
-      "or_tags": "cal;calibration",
       "sort": 110,
-      "tags": "dataset,imagenet"
+      "tags": "dataset,imagenet",
+      "or_tags": "cal;calibration"
+    }, 
+    "lib-python-cv2": {
+      "enable_if_env": [
+        { "CK_CALIBRATE_IMAGENET": ["on", "ON", "yes", "YES", "true", "TRUE", "1"] }
+      ],
+      "local": "yes",
+      "name": "Python OpenCV library",
+      "sort": 120,
+      "tags": "lib,python-package,cv2"
     },
     "lib-open-model-zoo": {
-      "add_to_path": "no",
       "enable_if_env": [
-        {
-          "CK_CALIBRATE_IMAGENET": [
-            "on",
-            "ON",
-            "yes",
-            "YES",
-            "true",
-            "TRUE",
-            "1"
-          ]
-        }
+        { "CK_CALIBRATE_IMAGENET": ["on", "ON", "yes", "YES", "true", "TRUE", "1"] }
       ],
+      "add_to_path": "no",
       "local": "yes",
       "name": "Open Model Zoo",
       "sort": 130,
@@ -73,69 +52,59 @@
     },
     "lib-openvino": {
       "add_to_path": "yes",
-      "local": "yes",
-      "name": "OpenVINO toolkit",
-      "no_tags": "model-zoo",
-      "sort": 10,
-      "tags": "lib,openvino"
-    },
-    "lib-python-cv2": {
-      "enable_if_env": [
-        {
-          "CK_CALIBRATE_IMAGENET": [
-            "on",
-            "ON",
-            "yes",
-            "YES",
-            "true",
-            "TRUE",
-            "1"
-          ]
-        }
-      ],
-      "local": "yes",
-      "name": "Python OpenCV library",
-      "sort": 120,
-      "tags": "lib,python-package,cv2"
-    },
-    "lib-python-defusedxml": {
-      "local": "yes",
-      "name": "Python defusedxml library",
-      "sort": 21,
-      "tags": "lib,python-package,defusedxml",
-      "version_from": [
-        0,
-        5,
-        0
-      ]
-    },
-    "lib-python-networkx": {
-      "local": "yes",
-      "name": "Python NetworkX library",
-      "sort": 22,
-      "tags": "lib,python-package,networkx",
-      "version_from": [
-        1,
-        11,
-        0
-      ]
-    },
+      "local": "yes", 
+      "name": "OpenVINO toolkit", 
+      "sort": 10, 
+      "tags": "lib,openvino",
+      "no_tags": "model-zoo"
+    }, 
     "lib-python-numpy": {
-      "local": "yes",
-      "name": "Python NumPy library",
-      "sort": 20,
-      "tags": "lib,python-package,numpy",
+      "local": "yes", 
+      "name": "Python NumPy library", 
       "version_from": [
         1,
         12,
         0
-      ]
-    },
+      ],
+      "sort": 20, 
+      "tags": "lib,python-package,numpy"
+    }, 
+    "lib-python-defusedxml": {
+      "local": "yes", 
+      "name": "Python defusedxml library", 
+      "version_from": [
+        0,
+        5,
+        0
+      ],
+      "sort": 21, 
+      "tags": "lib,python-package,defusedxml"
+    }, 
+    "lib-python-networkx": {
+      "local": "yes", 
+      "name": "Python NetworkX library", 
+      "version_from": [
+        1,
+        11,
+        0
+      ],
+      "sort": 22,
+      "tags": "lib,python-package,networkx"
+    }, 
+    "lib-python-test-generator": {
+      "local": "yes", 
+      "name": "Python test-generator library", 
+      "version_from": [
+        0,
+        1,
+        1
+      ],
+      "sort": 23,
+      "tags": "lib,python-package,test-generator"
+    }, 
     "lib-python-tensorflow": {
-      "local": "yes",
-      "name": "Python TensorFlow library",
-      "sort": 30,
-      "tags": "lib,python-package,tensorflow",
+      "local": "yes", 
+      "name": "Python TensorFlow library", 
       "version_from": [
         1,
         2,
@@ -145,66 +114,57 @@
         1,
         15,
         99
-      ]
-    },
-    "lib-python-test-generator": {
-      "local": "yes",
-      "name": "Python test-generator library",
-      "sort": 23,
-      "tags": "lib,python-package,test-generator",
-      "version_from": [
-        0,
-        1,
-        1
-      ]
-    },
+      ],
+      "sort": 30, 
+      "tags": "lib,python-package,tensorflow"
+    }, 
     "model-source": {
-      "local": "yes",
-      "name": "Original TensorFlow model",
-      "sort": 5,
+      "local": "yes", 
+      "name": "Original TensorFlow model", 
+      "sort": 5, 
       "tags": "model,tf",
-      "update_tags_if_env": {
-        "mlperf,mobilenet,non-quantized": [
-          {
-            "_MODEL_TO_CONVERT": "tf2ov_mobilenet"
-          }
-        ],
-        "mlperf,resnet50": [
-          {
-            "_MODEL_TO_CONVERT": "tf2ov_resnet50"
-          }
-        ],
-        "ssd-mobilenet,for.openvino": [
-          {
-            "_MODEL_TO_CONVERT": "tf2ov_ssd_mobilenet"
-          }
-        ]
+      "update_tags_if_env" : {
+        "mlperf,mobilenet,non-quantized": [ { "_MODEL_TO_CONVERT": "tf2ov_mobilenet" } ],
+        "mlperf,resnet50": [ { "_MODEL_TO_CONVERT": "tf2ov_resnet50" } ],
+        "ssd-mobilenet,for.openvino": [ { "_MODEL_TO_CONVERT": "tf2ov_ssd_mobilenet" } ]
       }
     },
     "python": {
-      "local": "yes",
-      "name": "Python interpreter",
-      "sort": 15,
-      "tags": "compiler,python",
+      "local": "yes", 
+      "name": "Python interpreter", 
       "version_from": [
         3,
         4,
         0
-      ]
+      ],
+      "sort": 15, 
+      "tags": "compiler,python"
     }
-  },
-  "end_full_path_universal": "converted_model.xml",
-  "process_script": "install",
-  "soft_uoa": "model.openvino",
-  "suggested_path": "model-openvino-converted-from-tf",
+  }, 
+  "end_full_path_universal": "converted_model.xml", 
+  "process_script": "install", 
+  "soft_uoa": "model.openvino", 
+  "suggested_path": "model-openvino-converted-from-tf", 
   "tags": [
-    "model",
-    "openvino",
-    "dldt",
-    "converted",
+    "model", 
+    "openvino", 
+    "dldt", 
+    "converted", 
     "converted-from-tf"
-  ],
+  ], 
   "variations": {
+    "ssd-mobilenet": {
+      "extra_customize": {
+        "package_name": "OpenVINO-from-TF model (SSD-MobileNet)"
+      }, 
+      "extra_env": {
+        "_MODEL_TO_CONVERT": "tf2ov_ssd_mobilenet"
+      },
+      "extra_tags": [
+        "object-detection"
+      ],
+      "on_by_default": "yes"
+    },
     "mobilenet": {
       "extra_customize": {
         "package_name": "OpenVINO-from-TF model (MobileNet)"
@@ -230,7 +190,7 @@
     "resnet50": {
       "extra_customize": {
         "package_name": "OpenVINO-from-TF model (ResNet50)"
-      },
+      }, 
       "extra_env": {
         "CK_CALIBRATE_IMAGENET": "yes",
         "CK_MLPERF_ACCURACY_IMAGENET_TYPE": "int32",
@@ -247,18 +207,6 @@
         "calibrated-by-openvino"
       ],
       "on_by_default": "no"
-    },
-    "ssd-mobilenet": {
-      "extra_customize": {
-        "package_name": "OpenVINO-from-TF model (SSD-MobileNet)"
-      },
-      "extra_env": {
-        "_MODEL_TO_CONVERT": "tf2ov_ssd_mobilenet"
-      },
-      "extra_tags": [
-        "object-detection"
-      ],
-      "on_by_default": "yes"
     }
   }
 }
