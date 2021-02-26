@@ -1,0 +1,3 @@
+20210226: 
+  * improvements from Arm to 2 CK modules: platform.cpu and platform.gpu:
+    https://github.com/ctuning/ck-env/pull/113
