@@ -1,3 +1,6 @@
+20210324:
+  * [sztaylor] fix cpu & gpu set_freq commands
+
 20210226: 
   * improvements from Arm to 2 CK modules: platform.cpu and platform.gpu:
     https://github.com/ctuning/ck-env/pull/113
