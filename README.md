@@ -7,6 +7,12 @@ Linux/MacOS: [![Travis Build Status](https://travis-ci.org/ctuning/ai.svg)](http
 Windows: [![Windows Build status](https://ci.appveyor.com/api/projects/status/4ry307jh6tks9dg9?svg=true)](https://ci.appveyor.com/project/gfursin/ai)
 
 
+*There are numerous CK components spread across numerous GitHub repositories. 
+Based on the feedback from the community, we have created this repository 
+to collect all main CK components related to AI and ML Systems in one place. 
+These components are also uploaded to the cKnowledge.io platform 
+to ensure the stability of public CK workflows!*
+
 A collection of portable workflows, automation actions and reusable artifacts for AI and ML systems in the [CK format](https://arxiv.org/pdf/2011.01149.pdf):
 
 * CK modules with automation actions: [[dev](https://github.com/ctuning/ai/tree/main/module)] [[stable](https://github.com/ctuning/ck/tree/master/ck/repo/module)]
@@ -82,7 +88,7 @@ and [program pipelines](https://cKnowledge.io/programs).
 
 # License
 
-BSD 3-clause. We are discussing the possibility to relicense the CK framework to Apache 2.0.
+BSD 3-clause. We are discussing the possibility to relicense the CK framework and components to Apache 2.0.
 
 # Contributions
 
