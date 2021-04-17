@@ -13,7 +13,8 @@ to collect all main CK components related to AI and ML Systems in one place.
 These components are also uploaded to the cKnowledge.io platform 
 to ensure the stability of public CK workflows!*
 
-A collection of portable workflows, automation actions and reusable artifacts for AI and ML systems in the [CK format](https://arxiv.org/pdf/2011.01149.pdf):
+This repository contains a collection of **stable** CK components for ML systems 
+in the [CK format](https://arxiv.org/pdf/2011.01149.pdf):
 
 * CK modules with automation actions: [[dev](https://github.com/ctuning/ai/tree/main/module)] [[stable](https://github.com/ctuning/ck/tree/master/ck/repo/module)]
 * CK program workflows: [[dev](https://github.com/ctuning/ai/tree/main/program)] [[CK platform]( https://cKnowledge.io/programs )]
@@ -25,8 +26,9 @@ A collection of portable workflows, automation actions and reusable artifacts fo
 * CK MLPerf system descriptions: [[dev](https://github.com/ctuning/ai/tree/main/sut)] [[CK platform]( https://cKnowledge.io/c/sut )]
 * CK MLPerf benchmark CMD generators: [[dev](https://github.com/ctuning/ai/tree/main/cmdgen)] [[CK platform]( https://cKnowledge.io/c/cmdgen )]
 
-All CK components are available at the [CK portal](https://cKnowledge.io) similar to PyPI.
-Feel free to discuss them with the [CK community](https://cKnowledge.io/engage).
+All versioned CK components are available at the [cKnowledge.io portal](https://cKnowledge.io) similar to PyPI.
+
+You can find **dev** CK components from the community aggregated in [this repository](https://github.com/ctuning/ck-ml).
 
 # Docs
 
