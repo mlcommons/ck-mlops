@@ -82,7 +82,7 @@ install:
     - echo "0" | ck install package --tags=model,onnx,mobilenet,nhwc,converted                 # MobileNet ONNX model, converted from TF, in NHWC
     - echo "0" | ck install package --tags=model,onnx,resnet,nchw,converted                    # ResNet50 ONNX model, converted from TF, in NCHW
     - echo "0" | ck install package --tags=model,onnx,resnet,nhwc,converted                    # ResNet50 ONNX model, converted from TF, in NHWC
-
+    - echo "0" | ck install package --tags=lib,python-package,onnxruntime
 script:
     - ck show env                                                                   # show everything that has been detected or installed
     - echo "0" | ck run program:image-classification-onnx-py --dep_add_tags.weights=mobilenet,converted --cmd_key=barebones --env.CK_BATCH_SIZE=3      # internal preprocessing
