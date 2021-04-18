@@ -1,3 +1,7 @@
+20210418:
+  * added --default flag to ck install package to select 0 
+    when multiple packages and variations available.
+
 20210416:
   * [gfursin] extended module:package to ask a user to select a variation 
     for a given package when there are multiple versions available.
