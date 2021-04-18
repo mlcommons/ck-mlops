@@ -69,6 +69,7 @@ install:
     - rm -f `which pip`                                                             # the file is removable, but not writeable
     - ${SUDOH} ${PYTHON_EXE} -m pip install --ignore-installed --verbose pip setuptools # make sure pip is also up to date no matter what
     - ${PYTHON_EXE} -m pip install -r requirements.txt                              # ck kernel itself and some essential components
+    - ck version
     - ck pull repo:${THIS_REPO_NAME}                                                # ...also trigger pulling dependent repositories
     - echo "$CK_PLATFORM_NAME" | ck detect platform.os --update_platform_init       # set the platform to generic-linux (1) or generic-macos (2)
     - ck detect soft:compiler.python --full_path=`which ${PYTHON_EXE}`              # pick the one Travis has set for us in the PATH
@@ -78,14 +79,14 @@ install:
     - ck install package:lib-tensorflow-1.13.1-cpu                                  # avoid manual selection
     - ck install package:imagenet-2012-val-min                                      # avoid manual selection
     - ck install package --tags=dataset,imagenet,preprocessed,using-pillow,first.20 # we only need a short preprocessed subset
-    - ck install package --default --tags=model,image-classification,onnx,mobilenet,non-quantized,nchw,downloaded  # MobileNet ONNX model, downloaded
-    - ck install package --default --tags=model,onnx,mobilenet,nhwc,converted                 # MobileNet ONNX model, converted from TF, in NHWC
-    - ck install package --default --tags=model,onnx,resnet,nchw,converted                    # ResNet50 ONNX model, converted from TF, in NCHW
-    - ck install package --default --tags=model,onnx,resnet,nhwc,converted                    # ResNet50 ONNX model, converted from TF, in NHWC
-    - ck install package --default --tags=lib,python-package,onnxruntime
+    - ck install package --quiet --tags=model,image-classification,onnx,mobilenet,non-quantized,nchw,downloaded  # MobileNet ONNX model, downloaded
+    - ck install package --quiet --tags=model,onnx,mobilenet,nhwc,converted                 # MobileNet ONNX model, converted from TF, in NHWC
+    - ck install package --quiet --tags=model,onnx,resnet,nchw,converted                    # ResNet50 ONNX model, converted from TF, in NCHW
+    - ck install package --quiet --tags=model,onnx,resnet,nhwc,converted                    # ResNet50 ONNX model, converted from TF, in NHWC
+    - ck install package --quiet --tags=lib,python-package,onnxruntime
 script:
     - ck show env                                                                   # show everything that has been detected or installed
-    - ck run program:image-classification-onnx-py --dep_add_tags.weights=mobilenet,converted --cmd_key=barebones --env.CK_BATCH_SIZE=3      # internal preprocessing
+    - ck run program:image-classification-onnx-py --quiet --dep_add_tags.weights=mobilenet,converted --cmd_key=barebones --env.CK_BATCH_SIZE=3      # internal preprocessing
     - ck run program:image-classification-onnx-py --dep_add_tags.weights=mobilenet,downloaded --cmd_key=preprocessed --env.CK_BATCH_COUNT=2 # external preprocessing
     - ck run program:image-classification-onnx-py --dep_add_tags.weights=resnet,nchw,converted --cmd_key=preprocessed                       # channels-first layout
     - ck run program:image-classification-onnx-py --dep_add_tags.weights=resnet,nhwc,converted --cmd_key=preprocessed                       # channels-last layout

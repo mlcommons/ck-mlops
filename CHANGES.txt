@@ -1,6 +1,6 @@
 20210418:
-  * added --default flag to ck install package to select 0 
-    when multiple packages and variations available.
+  * removed modules (they are now in the CK default repo: 
+    https://github.com/ctuning/ck/tree/master/ck/repo/module
 
 20210416:
   * [gfursin] extended module:package to ask a user to select a variation 
