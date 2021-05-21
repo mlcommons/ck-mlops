@@ -1,1 +1,2 @@
-ck>=1.55.8
+virtualenv
+ck>=2.3.0
