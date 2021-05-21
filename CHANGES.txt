@@ -1,3 +1,6 @@
+20210521:
+  * regular update of stable components
+
 20210418:
   * removed modules (they are now in the CK default repo: 
     https://github.com/ctuning/ck/tree/master/ck/repo/module

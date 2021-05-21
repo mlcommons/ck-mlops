@@ -1,0 +1,16 @@
+{
+  "cmd": {
+    "default": {
+      "build": "-f $#CK_PATH#$/Dockerfile.ubuntu-20.04 -t $#CK_DOCKER_ORGANIZATION#$/$#CK_DOCKER_NAME#$:ubuntu-20.04 $#CK_PATH#$",
+      "push": "$#CK_DOCKER_ORGANIZATION#$/$#CK_DOCKER_NAME#$",
+      "run": "--rm -it $#CK_DOCKER_ORGANIZATION#$/$#CK_DOCKER_NAME#$:ubuntu-20.04",
+      "run_extra_cmd": "--env CK_HOST=0.0.0.0 --env WFE_HOST=localhost --env CK_PORT=$#CK_PORT#$ --env WFE_PORT=$#CK_PORT#$ -p $#CK_PORT#$:$#CK_PORT#$"
+    }
+  },
+  "convert_input_to_vars": {
+    "port": {
+      "default": "3344",
+      "key": "CK_PORT"
+    }
+  }
+}

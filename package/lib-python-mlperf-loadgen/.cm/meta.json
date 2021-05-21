@@ -9,19 +9,6 @@
     "version": "master"
   },
   "deps": {
-    "compiler": {
-      "add_to_path": "no",
-      "local": "yes",
-      "name": "C++ compiler",
-      "sort": 15,
-      "tags": "compiler,lang-cpp"
-    },
-    "lib-python-absl": {
-      "local": "yes",
-      "name": "Python Abseil library",
-      "sort": 30,
-      "tags": "lib,python-package,absl"
-    },
     "mlperf-inference": {
       "add_to_path": "no",
       "local": "yes",
@@ -29,12 +16,31 @@
       "sort": 10,
       "tags": "mlperf,inference,source"
     },
+    "compiler": {
+      "add_to_path": "no",
+      "local": "yes",
+      "name": "C++ compiler",
+      "sort": 15,
+      "tags": "compiler,lang-cpp"
+    },
     "python": {
       "add_to_path": "yes",
       "local": "yes",
       "name": "Python interpreter",
       "sort": 20,
       "tags": "compiler,python"
+    },
+    "lib-python-absl": {
+      "local": "yes",
+      "name": "Python Abseil library",
+      "sort": 30,
+      "tags": "lib,python-package,absl"
+    },
+    "lib-python-numpy": {
+      "local": "yes",
+      "name": "Python NumPy library",
+      "sort": 40,
+      "tags": "lib,python-package,numpy"
     }
   },
   "end_full_path_universal": "build$#sep#$__init__.py",
