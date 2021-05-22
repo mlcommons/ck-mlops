@@ -4,8 +4,8 @@
 # Copyright (c) 2020 cTuning foundation.
 # See CK COPYRIGHT.txt for copyright details.
 #
-# SPDX-License-Identifier: BSD-3-Clause.
-# See CK LICENSE.txt for licensing details.
+# See CK LICENSE for licensing details.
+# See CK COPYRIGHT for copyright details.
 #
 # Installation script for CK packages.
 #

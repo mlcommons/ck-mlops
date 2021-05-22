@@ -1,1 +1,2 @@
-Dual licensed (BSD and LGPL)
+See CK LICENSE for licensing details.
+See CK COPYRIGHT for copyright details.

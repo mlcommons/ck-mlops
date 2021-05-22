@@ -4,8 +4,8 @@ rem
 rem Copyright (c) 2015-2017 cTuning foundation.
 rem See CK COPYRIGHT.txt for copyright details.
 rem
-rem SPDX-License-Identifier: BSD-3-Clause.
-rem See CK LICENSE.txt for licensing details.
+rem See CK LICENSE for licensing details.
+rem See CK COPYRIGHT for copyright details.
 rem
 rem Installation script for CK packages.
 rem
