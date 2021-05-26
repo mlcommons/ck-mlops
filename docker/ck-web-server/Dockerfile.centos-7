@@ -1,0 +1,80 @@
+# Adaptive container with the CK interface
+# Concept: https://arxiv.org/abs/2011.01149
+
+FROM centos:7
+
+# Contact 
+LABEL maintainer="Grigori Fursin <grigori@octoml.ai>"
+
+# Shell info
+SHELL ["/bin/bash", "-c"]
+#ENTRYPOINT ["/bin/bash", "-c"]
+
+# Set noninteractive mode for apt (do not use ENV)
+ARG DEBIAN_FRONTEND=noninteractive
+
+# Notes: https://runnable.com/blog/9-common-dockerfile-mistakes
+# Install system dependencies with gcc-9 (gcc-8 doesn't compile loadgen)
+RUN yum update -y && \
+    yum install -y centos-release-scl && \
+    yum install -y devtoolset-9 \
+    yum install -y git wget zip bzip2 libz-dev libbz2-dev cmake curl unzip \
+           openssh-client vim mc tree \
+           gcc gcc-c++ autoconf autogen libtool make \
+           libffi-devel \
+           python3 python3-pip python3-devel \
+           sudo dnf
+
+# Unavailable?:
+# libc6-dev libssl-dev libbz2-dev  \
+
+# Prepare a user with a user group with a random id
+RUN groupadd -g 1111 ckuser
+RUN useradd -u 2222 -g ckuser --create-home --shell /bin/bash ckuser
+RUN echo "ckuser:ckuser" | chpasswd
+RUN echo "ckuser   ALL=(ALL)  NOPASSWD:ALL" >> /etc/sudoers
+
+# Set user
+USER ckuser:ckuser
+WORKDIR /home/ckuser
+ENV PATH="/home/ckuser/.local/bin:${PATH}"
+RUN mkdir .ssh
+
+RUN python3 --version
+
+# Set the CK web service defaults.
+ENV CK_PORT=3344 \
+    WFE_PORT=3344 
+
+EXPOSE ${CK_PORT}
+
+# Switch to gcc-9 for a user
+#RUN source /opt/rh/devtoolset-9/enable
+ENV PATH=/opt/rh/devtoolset-9/root/bin:$PATH
+RUN gcc --version
+RUN g++ --version
+
+# Install CK
+RUN export DUMMY_CK=A
+RUN ${DUMMY_CK} python3 -m pip install ck --user
+RUN ${DUMMY_CK} python3 -m pip install wheel --user
+
+# Clone ck-ml repo
+RUN ck pull repo:ck-ml
+
+# Install packages to CK env entries
+RUN ck setup kernel --var.install_to_env=yes
+
+RUN ck detect platform.os --platform_init_uoa=generic-linux-dummy
+RUN ck detect soft:compiler.python --full_path=/usr/bin/python3
+RUN ck detect soft:compiler.gcc --full_path=`which gcc`
+
+# Install CK packages (CK automation 271a9004c9799191)
+
+# Start the CK web service (CK automation 252f44cca47d4df8)
+# Note, that container will have it's own IP,
+# that's why we need `hostname -i` below
+CMD echo -e "You can now point your browser to http://localhost:3344" && \
+    ck start web \
+    --host=0.0.0.0 --port=${CK_PORT} \
+    --wfe_host=localhost --wfe_port=${WFE_PORT}

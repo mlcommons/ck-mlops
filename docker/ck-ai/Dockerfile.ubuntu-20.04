@@ -59,13 +59,17 @@ ENV CK_ROOT=/home/ck/CK \
     GIT_USER="ctuning" \
     GIT_EMAIL="admin@ctuning.org" \
     LANG=C.UTF-8
+
 RUN mkdir -p ${CK_ROOT} ${CK_REPOS} ${CK_TOOLS}
-RUN git config --global user.name ${GIT_USER} && git config --global user.email ${GIT_EMAIL}
-RUN git clone https://github.com/ctuning/ck.git ${CK_ROOT}
-RUN cd ${CK_ROOT}\
- && ${CK_PYTHON} setup.py install --user\
- && ${CK_PYTHON} -c "import ck.kernel as ck; print ('Collective Knowledge v%s' % ck.__version__)"\
- && chmod -R g+rx /home/ck/.local
+
+# Install CK (CK automation f49f20744aba90e2)
+# We need to install new pip and setuptools otherwise there is a conflict 
+# with the local CK installation of Python packages ...
+RUN export DUMMY_CK=A
+RUN ${CK_PYTHON} --version
+RUN ${DUMMY_CK} ${CK_PYTHON} -m pip install --ignore-installed pip setuptools wheel --user
+RUN ${DUMMY_CK} ${CK_PYTHON} -m pip install pyyaml virtualenv --user
+RUN ${DUMMY_CK} ${CK_PYTHON} -m pip install ck --user
 
 # Pull CK AI repository
 RUN ck pull repo:ai
@@ -81,8 +85,6 @@ RUN ck detect soft --tags=cmake --full_path=`which cmake`
 
 # Detect Python.
 RUN ck detect soft --tags=compiler,python --full_path=`which ${CK_PYTHON}`
-# Install the latest Python package installer (pip) and some dependencies.
-RUN ${CK_PYTHON} -m pip install --ignore-installed pip setuptools --user
 
 # Set the CK web service defaults.
 ENV CK_PORT=3344 \

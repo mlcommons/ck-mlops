@@ -7,7 +7,7 @@ FROM ubuntu:20.04
 LABEL maintainer="Grigori Fursin <grigori@octoml.ai>"
 
 SHELL ["/bin/bash", "-c"]
-ENTRYPOINT ["/bin/bash", "-c"]
+#ENTRYPOINT ["/bin/bash", "-c"]
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -22,6 +22,7 @@ RUN apt update && \
            gcc g++ autoconf autogen libtool make libc6-dev \
            libssl-dev libbz2-dev libffi-dev \
            python3 python3-pip python3-dev \
+           xz-utils \
            sudo
 
 # Prepare a user with a user group with a random id (CK automation 7b3ec2b6534f3394)
@@ -60,6 +61,6 @@ RUN ck detect soft:compiler.python --full_path=/usr/bin/python3
 RUN ck detect soft:compiler.gcc --full_path=`which gcc`
 
 # Install CK packages (CK automation 271a9004c9799191)
+RUN ck install package --tags=compiler,llvm,v12.0.0,prebuilt
 
-# Start bash
-CMD bash
+CMD ck crowdsource program.optimization --llvm --user=docker --quiet --skip_gpu_info --platform_init_uoa=generic-linux

@@ -2,7 +2,7 @@
 # Concept: https://arxiv.org/abs/2011.01149
 
 # (CK automation 6ab9df569d0d1e6b)
-FROM ubuntu:20.04
+FROM ubuntu:18.04
 
 LABEL maintainer="Grigori Fursin <grigori@octoml.ai>"
 
@@ -44,10 +44,12 @@ ENV CK_PORT=3344 \
 EXPOSE ${CK_PORT}
 
 # Install CK (CK automation f49f20744aba90e2)
+# We need to install new pip and setuptools otherwise there is a conflict 
+# with the local CK installation of Python packages ...
 RUN export DUMMY_CK=B
-RUN ${DUMMY_CK} python3 -m pip install setuptools
-RUN ${DUMMY_CK} python3 -m pip install virtualenv
-RUN ${DUMMY_CK} python3 -m pip install ck
+RUN ${DUMMY_CK} python3 -m pip install --ignore-installed pip setuptools wheel --user
+RUN ${DUMMY_CK} python3 -m pip install virtualenv --user
+RUN ${DUMMY_CK} python3 -m pip install ck --user
 
 # Clone CK repo(s) or pull them from Zenodo (CK automation f49f20744aba90e2)
 RUN ck pull repo:ck-ml

@@ -7,7 +7,7 @@ FROM ubuntu:20.04
 LABEL maintainer="Grigori Fursin <grigori@octoml.ai>"
 
 SHELL ["/bin/bash", "-c"]
-ENTRYPOINT ["/bin/bash", "-c"]
+#ENTRYPOINT ["/bin/bash", "-c"]
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -50,7 +50,10 @@ RUN ${DUMMY_CK} python3 -m pip install virtualenv
 RUN ${DUMMY_CK} python3 -m pip install ck
 
 # Clone CK repo(s) or pull them from Zenodo (CK automation f49f20744aba90e2)
-RUN ck pull repo:ck-ml
+RUN ck pull repo:ck-web
+RUN ck pull repo:reproduce-ck-paper
+RUN ck pull repo:reproduce-ck-paper-large-experiments
+RUN ck pull repo:reproduce-pamela-project
 
 # Configure CK (CK automation ddea4415c4133ef9)
 RUN ck setup kernel --var.install_to_env=yes
@@ -61,5 +64,11 @@ RUN ck detect soft:compiler.gcc --full_path=`which gcc`
 
 # Install CK packages (CK automation 271a9004c9799191)
 
-# Start bash
-CMD bash
+## Start the CK web service (CK automation 252f44cca47d4df8)
+# Note, that container will have it's own IP,
+# that's why we need `hostname -i` below
+CMD echo -e "You can now point your browser to http://localhost:3344/web?wcid=1e348bd6ab43ce8a:b0779e2a64c22907" && \
+    ck start web \
+    --host=0.0.0.0 --port=${CK_PORT} \
+    --wfe_host=localhost --wfe_port=${WFE_PORT}
+

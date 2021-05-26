@@ -7,7 +7,7 @@ FROM ubuntu:20.04
 LABEL maintainer="Grigori Fursin <grigori@octoml.ai>"
 
 SHELL ["/bin/bash", "-c"]
-ENTRYPOINT ["/bin/bash", "-c"]
+#ENTRYPOINT ["/bin/bash", "-c"]
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -61,5 +61,4 @@ RUN ck detect soft:compiler.gcc --full_path=`which gcc`
 
 # Install CK packages (CK automation 271a9004c9799191)
 
-# Start bash
-CMD bash
+CMD ck crowdsource program.optimization --gcc --user=docker --quiet --skip_gpu_info --platform_init_uoa=generic-linux
