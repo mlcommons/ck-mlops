@@ -1,10 +1,10 @@
 {
-  "data_uoa": "ai",
+  "data_uoa": "ck-ml-arc",
   "data_uid": "46644adb4c6670dd",
-  "data_alias": "ai",
-  "data_name": "ai",
+  "data_alias": "ck-ml-arc",
+  "data_name": "ck-ml-arc",
   "dict": {
     "shared": "git",
-    "url": "https://github.com/ctuning/ai"
+    "url": "https://github.com/ctuning/ck-ml-arc"
   }
 }
