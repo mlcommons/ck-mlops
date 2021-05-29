@@ -1,25 +1,18 @@
 {
-  "aging": "yes",
   "cmd": {
     "default": {
       "build": "-f $#CK_PATH#$/Dockerfile$#CK_TAG_DOT#$ -t $#CK_DOCKER_ORGANIZATION#$/$#CK_DOCKER_NAME#$$#CK_TAG_COLON#$ $#CK_PATH#$",
       "push": "$#CK_DOCKER_ORGANIZATION#$/$#CK_DOCKER_NAME#$$#CK_TAG_COLON#$",
-      "run": "--rm -it $#CK_DOCKER_ORGANIZATION#$/$#CK_DOCKER_NAME#$$#CK_TAG_COLON#$"
+      "run": "--rm --publish 3355:3344 -it $#CK_DOCKER_ORGANIZATION#$/$#CK_DOCKER_NAME#$$#CK_TAG_COLON#$"
     }
   },
   "docker_tags": [
-    "ubuntu-20.04"
+    "ubuntu-18.04",
+    "ubuntu-18.04-dashboard",
+    "debian-9"
   ],
   "tags": [
     "adaptive-container",
-    "ck",
     "mlperf"
-  ],
-  "tested": [
-    {
-      "email": "Grigori.Fursin@cTuning.org",
-      "iso_datetime": "2021-05-26T15:53:32.321782",
-      "name": "Grigori Fursin"
-    }
   ]
 }

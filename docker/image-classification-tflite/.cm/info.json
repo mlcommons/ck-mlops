@@ -1,15 +1,15 @@
 {
-  "backup_data_uid": "64d239923b163f2a",
+  "backup_data_uid": "38ed935a40ac839b",
   "backup_module_uid": "88eef0cd8c43b68a",
   "backup_module_uoa": "docker",
   "control": {
     "engine": "CK",
-    "iso_datetime": "2021-05-29T18:46:31.542664",
+    "iso_datetime": "2021-05-29T18:46:17.202656",
     "version": [
       "2",
       "5",
       "1"
     ]
   },
-  "data_name": "mlperf-inference-v0.5.openvino"
+  "data_name": "image-classification-tflite"
 }
