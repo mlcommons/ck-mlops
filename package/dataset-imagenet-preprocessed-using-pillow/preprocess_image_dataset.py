@@ -111,14 +111,14 @@ if __name__ == '__main__':
     inter_size              = int( os.getenv('_INTERMEDIATE_SIZE', 0) )
     convert_to_bgr          = os.getenv('_CONVERT_TO_BGR', '').lower() == 'yes'
     offset                  = int( os.getenv('_SUBSET_OFFSET', 0) )
-    volume_str              = os.getenv('_SUBSET_VOLUME', '' )
+    volume                  = int( os.environ['_SUBSET_VOLUME'] )
     fof_name                = os.getenv('_SUBSET_FOF', 'fof.txt')
     data_type               = os.getenv('_DATA_TYPE', 'uint8')
     new_file_extension      = os.getenv('_NEW_EXTENSION', '')
     image_file              = os.getenv('CK_IMAGE_FILE', '')
 
-    print("From: {} , To: {} , Size: {} , Crop: {} , InterSize: {} , 2BGR: {}, OFF: {}, VOL: '{}', FOF: {}, DTYPE: {}, EXT: {}, IMG: {}".format(
-        source_dir, destination_dir, square_side, crop_percentage, inter_size, convert_to_bgr, offset, volume_str, fof_name, data_type, new_file_extension, image_file) )
+    print("From: {} , To: {} , Size: {} , Crop: {} , InterSize: {} , 2BGR: {}, OFF: {}, VOL: {}, FOF: {}, DTYPE: {}, EXT: {}, IMG: {}".format(
+        source_dir, destination_dir, square_side, crop_percentage, inter_size, convert_to_bgr, offset, volume, fof_name, data_type, new_file_extension, image_file) )
 
     if image_file:
         source_dir          = os.path.dirname(image_file)
@@ -132,10 +132,9 @@ if __name__ == '__main__':
         if offset<0:        # support offsets "from the right"
             offset += total_volume
 
-        volume = int(volume_str) if len(volume_str)>0 else total_volume-offset
-
         selected_filenames = sorted_filenames[offset:offset+volume]
 
+    assert len(selected_filenames) == volume
 
     output_filenames = preprocess_files(selected_filenames, source_dir, destination_dir, crop_percentage, square_side, inter_size, convert_to_bgr, data_type, new_file_extension)
 

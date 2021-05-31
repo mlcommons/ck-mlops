@@ -3,7 +3,7 @@
 supported_extensions = ['jpeg', 'jpg', 'gif', 'png']
 
 import os
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 from preprocessing import vgg_preprocessing as prep
 
 tf.enable_eager_execution()     # execute commands immediately, instead of creating a graph and waiting for sess.run()
@@ -57,14 +57,14 @@ if __name__ == '__main__':
 
     square_side             = int( os.environ['_INPUT_SQUARE_SIDE'] )
     offset                  = int( os.getenv('_SUBSET_OFFSET', 0) )
-    volume_str              = os.getenv('_SUBSET_VOLUME', '' )
+    volume                  = int( os.environ['_SUBSET_VOLUME'] )
     fof_name                = os.getenv('_SUBSET_FOF', 'fof.txt')
     data_type               = os.getenv('_DATA_TYPE', 'uint8')
     new_file_extension      = os.getenv('_NEW_EXTENSION', '')
     image_file              = os.getenv('CK_IMAGE_FILE', '')
 
     print("From: {} , To: {} , Size: {} , OFF: {}, VOL: '{}', FOF: {}, DTYPE: {}, EXT: {}, IMG: {}".format(
-        source_dir, destination_dir, square_side, offset, volume_str, fof_name, data_type, new_file_extension, image_file) )
+        source_dir, destination_dir, square_side, offset, volume, fof_name, data_type, new_file_extension, image_file) )
 
     if image_file:
         source_dir          = os.path.dirname(image_file)
@@ -78,10 +78,9 @@ if __name__ == '__main__':
         if offset<0:        # support offsets "from the right"
             offset += total_volume
 
-        volume = int(volume_str) if len(volume_str)>0 else total_volume-offset
-
         selected_filenames = sorted_filenames[offset:offset+volume]
 
+    assert len(selected_filenames) == volume
 
     output_filenames = preprocess_files(selected_filenames, source_dir, destination_dir, square_side, data_type, new_file_extension)
 

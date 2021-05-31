@@ -6,12 +6,19 @@
       "PACKAGE_VERSION": "2012",
       "_SUBSET_FOF": "image_list.txt",
       "_SUBSET_OFFSET": "0",
-      "_SUBSET_VOLUME": ""
+      "_SUBSET_VOLUME": "500",
+      "_NORMALIZE_DATA": "0",
+      "_SUBTRACT_MEAN": "0",
+      "_GIVEN_CHANNEL_MEANS": "",
+      "_QUANTIZE": "0",
+      "_QUANT_SCALE": "1",
+      "_QUANT_OFFSET": "0",
+      "_CONVERT_TO_UNSIGNED": "0"
     },
+    "soft_uoa": "dataset.imagenet.preprocessed",
     "no_os_in_suggested_path": "yes",
     "no_ver_in_suggested_path": "yes",
-    "skip_file_check": "yes",
-    "soft_uoa": "dataset.imagenet.preprocessed"
+    "skip_file_check": "yes"
   },
   "deps": {
     "dataset-source": {
@@ -23,21 +30,35 @@
         }
       ],
       "local": "yes",
-      "name": "ImageNet dataset (original)",
+      "name": "ImageNet dataset (original or calibration)",
       "sort": 10,
-      "tags": "dataset,imagenet,original"
-    },
-    "lib-python-cv2": {
-      "local": "yes",
-      "name": "Python OpenCV library",
-      "sort": 120,
-      "tags": "lib,python-package,cv2"
+      "tags": "dataset,imagenet",
+      "or_tags": "original;calibration",
+      "no_tags": "preprocessed",
+      "update_tags_if_env": {
+        "full": [
+          {
+            "_SUBSET_VOLUME": "50000"
+          }
+	],
+        "calibration": [
+          {
+            "_CALIBRATE": "yes"
+          }
+        ]
+      }
     },
     "lib-python-numpy": {
       "local": "yes",
       "name": "Python NumPy library",
       "sort": 110,
       "tags": "lib,python-package,numpy"
+    },
+    "lib-python-cv2": {
+      "local": "yes",
+      "name": "Python OpenCV library",
+      "sort": 120,
+      "tags": "lib,python-package,cv2"
     },
     "python": {
       "local": "yes",
@@ -61,9 +82,54 @@
     "using-opencv"
   ],
   "variations": {
-    "audit.test03": {
+    "universal": {
+      "on_by_default": "yes",
       "extra_env": {
-        "_AUDIT_TEST03": "YES"
+        "_DATA_TYPE": "uint8",
+        "_NEW_EXTENSION": "rgb8"
+      },
+      "extra_customize": {
+        "soft_uoa": "dataset.imagenet.preprocessed"
+      }
+    },
+    "for.mobilenet": {
+      "extra_env": {
+        "_DATA_TYPE": "float32",
+        "_NEW_EXTENSION": "rgbf32",
+        "_NORMALIZE_DATA": "YES",
+        "_SUBTRACT_MEAN": "0",
+        "_GIVEN_CHANNEL_MEANS": "",
+        "_INTERPOLATION_METHOD": "INTER_LINEAR"
+      },
+      "extra_customize": {
+        "soft_uoa": "dataset.imagenet.preprocessed.rgbf32"
+      }
+    },
+    "for.resnet-quant": {
+      "extra_env": {
+        "_DATA_TYPE": "float32",
+        "_NEW_EXTENSION": "rgb8",
+        "_NORMALIZE_DATA": "0",
+        "_SUBTRACT_MEAN": "YES",
+        "_GIVEN_CHANNEL_MEANS": "123.68 116.78 103.94",
+        "_INTERPOLATION_METHOD": "INTER_AREA",
+        "_QUANT_SCALE": "1.18944883",
+        "_QUANT_OFFSET": "0",
+        "_QUANTIZE": "1",
+        "_CONVERT_TO_UNSIGNED": "1"
+      }
+    },
+    "for.resnet": {
+      "extra_env": {
+        "_DATA_TYPE": "float32",
+        "_NEW_EXTENSION": "rgbf32",
+        "_NORMALIZE_DATA": "0",
+        "_SUBTRACT_MEAN": "YES",
+        "_GIVEN_CHANNEL_MEANS": "123.68 116.78 103.94",
+        "_INTERPOLATION_METHOD": "INTER_AREA"
+      },
+      "extra_customize": {
+        "soft_uoa": "dataset.imagenet.preprocessed.rgbf32"
       }
     },
     "crop.1000": {
@@ -72,10 +138,10 @@
       }
     },
     "crop.875": {
+      "on_by_default": "yes",
       "extra_env": {
         "_CROP_FACTOR": "87.5"
-      },
-      "on_by_default": "yes"
+      }
     },
     "external_file": {
       "extra_customize": {
@@ -83,7 +149,25 @@
       },
       "extra_env": {
         "_SUBSET_OFFSET": "0",
-        "_SUBSET_VOLUME": ""
+        "_SUBSET_VOLUME": "1"
+      }
+    },
+    "first.1": {
+      "extra_customize": {
+        "package_extra_name": " (first 1)"
+      },
+      "extra_env": {
+        "_SUBSET_OFFSET": "0",
+        "_SUBSET_VOLUME": "1"
+      }
+    },
+    "first.5": {
+      "extra_customize": {
+        "package_extra_name": " (first 5)"
+      },
+      "extra_env": {
+        "_SUBSET_OFFSET": "0",
+        "_SUBSET_VOLUME": "5"
       }
     },
     "first.20": {
@@ -93,33 +177,25 @@
       "extra_env": {
         "_SUBSET_OFFSET": "0",
         "_SUBSET_VOLUME": "20"
-      },
-      "on_by_default": "yes"
-    },
-    "for-mobilenet": {
-      "extra_customize": {
-        "soft_uoa": "dataset.imagenet.preprocessed.rgbf32"
-      },
-      "extra_env": {
-        "_DATA_TYPE": "float32",
-        "_GIVEN_CHANNEL_MEANS": "",
-        "_INTERPOLATION_METHOD": "INTER_LINEAR",
-        "_NEW_EXTENSION": "rgbf32",
-        "_NORMALIZE_DATA": "YES",
-        "_SUBTRACT_MEAN": "0"
       }
     },
-    "for-resnet": {
+    "first.500": {
+      "on_by_default": "yes",
       "extra_customize": {
-        "soft_uoa": "dataset.imagenet.preprocessed.rgbf32"
+        "package_extra_name": " (first 500)"
       },
       "extra_env": {
-        "_DATA_TYPE": "float32",
-        "_GIVEN_CHANNEL_MEANS": "123.68 116.78 103.94",
-        "_INTERPOLATION_METHOD": "INTER_AREA",
-        "_NEW_EXTENSION": "rgbf32",
-        "_NORMALIZE_DATA": "0",
-        "_SUBTRACT_MEAN": "YES"
+        "_SUBSET_OFFSET": "0",
+        "_SUBSET_VOLUME": "500"
+      }
+    },
+    "first.1024": {
+      "extra_customize": {
+        "package_extra_name": " (first 1024)"
+      },
+      "extra_env": {
+        "_SUBSET_OFFSET": "0",
+        "_SUBSET_VOLUME": "1024"
       }
     },
     "full": {
@@ -128,27 +204,12 @@
       },
       "extra_env": {
         "_SUBSET_OFFSET": "0",
-        "_SUBSET_VOLUME": ""
+        "_SUBSET_VOLUME": "50000"
       }
     },
-    "inter.area": {
+    "side.96": {
       "extra_env": {
-        "_INTERPOLATION_METHOD": "INTER_AREA"
-      }
-    },
-    "inter.linear": {
-      "extra_env": {
-        "_INTERPOLATION_METHOD": "INTER_LINEAR"
-      },
-      "on_by_default": "yes"
-    },
-    "last.20": {
-      "extra_customize": {
-        "package_extra_name": " (last 20)"
-      },
-      "extra_env": {
-        "_SUBSET_OFFSET": "-20",
-        "_SUBSET_VOLUME": ""
+        "_INPUT_SQUARE_SIDE": "96"
       }
     },
     "side.128": {
@@ -167,10 +228,10 @@
       }
     },
     "side.224": {
+      "on_by_default": "yes",
       "extra_env": {
         "_INPUT_SQUARE_SIDE": "224"
-      },
-      "on_by_default": "yes"
+      }
     },
     "side.240": {
       "extra_env": {
@@ -192,29 +253,32 @@
         "_INPUT_SQUARE_SIDE": "300"
       }
     },
-    "side.96": {
+    "layout.nhwc": {
+      "on_by_default": "yes",
       "extra_env": {
-        "_INPUT_SQUARE_SIDE": "96"
+        "_DATA_LAYOUT": "NHWC"
       }
     },
-    "universal": {
-      "extra_customize": {
-        "soft_uoa": "dataset.imagenet.preprocessed"
-      },
+    "layout.nchw": {
       "extra_env": {
-        "_DATA_TYPE": "uint8",
-        "_GIVEN_CHANNEL_MEANS": "",
-        "_NEW_EXTENSION": "rgb8",
-        "_NORMALIZE_DATA": "0",
-        "_SUBTRACT_MEAN": "0"
-      },
-      "on_by_default": "yes"
+        "_DATA_LAYOUT": "NCHW"
+      }
     },
-    "unmutilated": {
+    "inter.linear": {
+      "on_by_default": "yes",
       "extra_env": {
-        "_AUDIT_TEST03": ""
-      },
-      "on_by_default": "yes"
+        "_INTERPOLATION_METHOD": "INTER_LINEAR"
+      }
+    },
+    "inter.area": {
+      "extra_env": {
+        "_INTERPOLATION_METHOD": "INTER_AREA"
+      }
+    },
+    "calibration": {
+      "extra_env": {
+        "_CALIBRATE": "yes"
+      }
     }
   }
 }
