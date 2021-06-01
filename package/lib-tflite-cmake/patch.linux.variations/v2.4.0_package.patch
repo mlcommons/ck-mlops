@@ -1,0 +1,26 @@
+diff --git a/tensorflow/core/platform/bfloat16.h b/tensorflow/core/platform/bfloat16.h
+index 3e3ab2ce55a..b5d7d17daf9 100644
+--- a/tensorflow/core/platform/bfloat16.h
++++ b/tensorflow/core/platform/bfloat16.h
+@@ -22,7 +22,7 @@ limitations under the License.
+ // clang-format on
+ 
+ namespace tensorflow {
+-typedef Eigen::bfloat16 bfloat16;
++//typedef Eigen::bfloat16 bfloat16;
+ }  // end namespace tensorflow
+ 
+ #endif  // TENSORFLOW_CORE_LIB_BFLOAT16_BFLOAT16_H_
+diff --git a/tensorflow/lite/interpreter_builder.cc b/tensorflow/lite/interpreter_builder.cc
+index c1595dd3f99..19a1181fe82 100644
+--- a/tensorflow/lite/interpreter_builder.cc
++++ b/tensorflow/lite/interpreter_builder.cc
+@@ -648,7 +648,7 @@ TfLiteStatus InterpreterBuilder::operator()(
+     (*interpreter)->AddSubgraphs(subgraphs->size() - 1);
+   }
+ 
+-  (*interpreter)->SetProfiler(tflite::profiling::MaybeCreatePlatformProfiler());
++  //(*interpreter)->SetProfiler(tflite::profiling::MaybeCreatePlatformProfiler());
+ 
+   for (int subgraph_index = 0; subgraph_index < subgraphs->size();
+        ++subgraph_index) {
