@@ -2,7 +2,7 @@ FROM intelaipg/intel-optimized-tensorflow:1.15.2-mkl-py3
 
 # News:
 #  * 20210525: Grigori updated this container to support the latest CK framework
-#              with the latest CK components from ctuning@ck-ml repo
+#              with the latest CK components from ctuning@ai repo
 LABEL maintainer="Grigori Fursin <grigori@octoml.ai>"
 
 # Use the Bash shell.
@@ -59,8 +59,8 @@ RUN ${DUMMY_CK} ${CK_PYTHON} -m pip install ck --user
 RUN ck create_entry --data_uoa=experiment --data_uid=bc0409fb61f0aa82 --path=${CK_REPOS}/local\
  && chmod -R g+w ${CK_REPOS}/local/experiment
 
-# Pull CK repositories (including ck-mlperf, ck-env, ck-autotuning, ck-tensorflow, ck-docker).
-RUN ck pull repo:ck-ml
+# Pull CK repositories
+RUN ck pull repo:ai
 
 # Use generic Linux settings with dummy frequency setting scripts.
 RUN ck detect platform.os --platform_init_uoa=generic-linux-dummy

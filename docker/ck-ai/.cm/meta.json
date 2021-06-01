@@ -14,7 +14,9 @@
     }
   },
   "docker_tags": [
-    "ubuntu-20.04"
+    "ubuntu-20.04",
+    "ubuntu-18.04",
+    "centos-7"
   ],
   "tags": [
     "adaptive-container",
@@ -23,7 +25,7 @@
   "tested": [
     {
       "email": "grigori@octoml.ai",
-      "iso_datetime": "2021-05-26T09:46:25.175776",
+      "iso_datetime": "2021-05-26T09:46:49.839336",
       "name": "Grigori Fursin"
     }
   ]

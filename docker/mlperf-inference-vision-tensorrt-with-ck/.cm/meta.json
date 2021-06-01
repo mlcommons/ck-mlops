@@ -9,7 +9,6 @@
   "docker_tags": [
     "tensorrt-7-20.03-py3-tf-2.1.0"
   ],
-  "outdated": "yes",
   "tags": [
     "adaptive-container",
     "ck",

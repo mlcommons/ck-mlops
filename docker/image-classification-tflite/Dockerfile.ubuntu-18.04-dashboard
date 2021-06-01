@@ -24,6 +24,7 @@ RUN apt update -y\
  cmake\
  python3 python3-pip\
  vim\
+ mc \
  && apt clean
 
 # Create non-root user.
@@ -50,8 +51,8 @@ RUN ${DUMMY_CK} ${CK_PYTHON} -m pip install --ignore-installed pip setuptools wh
 RUN ${DUMMY_CK} ${CK_PYTHON} -m pip install pyyaml virtualenv --user
 RUN ${DUMMY_CK} ${CK_PYTHON} -m pip install ck --user
 
-# Pull CK repositories (including ck-mlperf, ck-env, ck-autotuning, ck-tensorflow, ck-docker).
-RUN ck pull repo:ck-ml
+# Pull CK repositories
+RUN ck pull repo:ai
 
 # Create a repository for benchmarking results.
 RUN ck create repo:mlperf-mobilenets --quiet

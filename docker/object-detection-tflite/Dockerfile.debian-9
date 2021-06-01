@@ -50,8 +50,8 @@ RUN ${DUMMY_CK} ${CK_PYTHON} -m pip install --ignore-installed pip setuptools wh
 RUN ${DUMMY_CK} ${CK_PYTHON} -m pip install pyyaml virtualenv --user
 RUN ${DUMMY_CK} ${CK_PYTHON} -m pip install ck --user
 
-# Pull CK repositories (including ck-env, ck-autotuning and ck-tensorflow).
-RUN ck pull repo:ck-ml
+# Pull CK repositories
+RUN ck pull repo:ai
 
 # Use generic Linux settings with dummy frequency setting scripts.
 RUN ck detect platform.os --platform_init_uoa=generic-linux-dummy

@@ -1,97 +1,65 @@
+# Adaptive container with the CK interface
+# Concept: https://arxiv.org/abs/2011.01149
+
+# (CK automation 6ab9df569d0d1e6b)
 FROM ubuntu:20.04
 
-LABEL maintainer="Grigori Fursin <gfursin@cknowledge.io>"
+LABEL maintainer="Grigori Fursin <grigori@octoml.ai>"
 
-# Based on docker:mlperf-inference-v0.7.openvino
-
-# Use the Bash shell.
 SHELL ["/bin/bash", "-c"]
-
-# Allow stepping into the Bash shell interactively.
 ENTRYPOINT ["/bin/bash", "-c"]
 
-# Install known system dependencies and immediately clean up to make the image smaller.
-# CK needs: git, wget, zip.
-# cv2 needs: libgthread-2.0.
-# Python 3.7 needs: libssl, libbz2, libffi.
-ENV DEBIAN_FRONTEND=noninteractive
-RUN apt update -y\
- && apt install -y apt-utils\
- && apt upgrade -y\
- && apt install -y\
- python3-all \
- python3-pip \
- libglib2.0-0 libsm6\
- git wget bzip2 zip libz-dev\
- cmake\
- libgtk2.0-dev\
- libssl-dev libbz2-dev libffi-dev\
- mc\
- vim tree\
- && apt clean
+ARG DEBIAN_FRONTEND=noninteractive
 
-## Install Python 3.7 (needed to install TensorFlow 1.15.2 via pip).
-#RUN cd /tmp \
-# && wget https://www.python.org/ftp/python/3.7.8/Python-3.7.8.tgz \
-# && tar xvf Python-3.7.8.tgz \
-# && cd Python-3.7.8 \
-# && ./configure --enable-optimizations --enable-shared --with-ensurepip=install \
-# && make -j20 \
-# && make altinstall \
-# && rm -rf /tmp/*
+# (CK automation ee47d84311b9373d)
+# Notes: https://runnable.com/blog/9-common-dockerfile-mistakes
+# Install system dependencies
+RUN apt update && \
+    apt install -y --no-install-recommends \
+           apt-utils \
+           git wget zip bzip2 libz-dev libbz2-dev cmake curl unzip \
+           openssh-client vim mc tree \
+           gcc g++ autoconf autogen libtool make libc6-dev \
+           libssl-dev libbz2-dev libffi-dev \
+           python3 python3-pip python3-dev \
+           sudo
 
-# Create a non-root user with a fixed group id 1500 and a fixed user id 2000
-# (hopefully distinct from any host user id for security reasons).
-# See the README for the gory details.
-RUN groupadd -g 1500 ckg
-RUN useradd -u 2000 -g ckg --create-home --shell /bin/bash ck
-USER ck:ckg
-WORKDIR /home/ck
+# Prepare a user with a user group with a random id (CK automation 7b3ec2b6534f3394)
+RUN groupadd -g 1111 ckuser
+RUN useradd -u 2222 -g ckuser --create-home --shell /bin/bash ckuser
+RUN echo "ckuser:ckuser" | chpasswd
+RUN adduser ckuser sudo
+RUN echo "ckuser   ALL=(ALL)  NOPASSWD:ALL" >> /etc/sudoers
 
-# Install Collective Knowledge (CK). Make it group-executable.
-ENV CK_ROOT=/home/ck/CK \
-    CK_REPOS=/home/ck/CK_REPOS \
-    CK_TOOLS=/home/ck/CK_TOOLS \
-    PATH=${CK_ROOT}/bin:/home/ck/.local/bin:${PATH} \
-    LD_LIBRARY_PATH=/usr/local/lib \
-    CK_CC=gcc \
-    CK_PYTHON=python3.8 \
-    GIT_USER="ctuning" \
-    GIT_EMAIL="admin@ctuning.org" \
-    LANG=C.UTF-8
-
-RUN mkdir -p ${CK_ROOT} ${CK_REPOS} ${CK_TOOLS}
-
-# Install CK (CK automation f49f20744aba90e2)
-# We need to install new pip and setuptools otherwise there is a conflict 
-# with the local CK installation of Python packages ...
-RUN export DUMMY_CK=A
-RUN ${CK_PYTHON} --version
-RUN ${DUMMY_CK} ${CK_PYTHON} -m pip install --ignore-installed pip setuptools wheel --user
-RUN ${DUMMY_CK} ${CK_PYTHON} -m pip install pyyaml virtualenv --user
-RUN ${DUMMY_CK} ${CK_PYTHON} -m pip install ck --user
-
-# Pull CK AI repository
-RUN ck pull repo:ai
-
-# Use generic Linux settings with dummy frequency setting scripts.
-RUN ck detect platform.os --platform_init_uoa=generic-linux-dummy
-
-# Detect C/C++ compiler (gcc).
-RUN ck detect soft:compiler.gcc --full_path=`which ${CK_CC}`
-
-# Detect CMake build tool.
-RUN ck detect soft --tags=cmake --full_path=`which cmake`
-
-# Detect Python.
-RUN ck detect soft --tags=compiler,python --full_path=`which ${CK_PYTHON}`
+# Set user (CK automation 8b8944a9b2c1f341)
+USER ckuser:ckuser
+WORKDIR /home/ckuser
+ENV PATH="/home/ckuser/.local/bin:${PATH}"
+RUN mkdir .ssh
 
 # Set the CK web service defaults.
 ENV CK_PORT=3344 \
     WFE_PORT=3344 
 
-# Expose CK port
 EXPOSE ${CK_PORT}
+
+# Install CK (CK automation f49f20744aba90e2)
+RUN export DUMMY_CK=B
+RUN ${DUMMY_CK} python3 -m pip install setuptools
+RUN ${DUMMY_CK} python3 -m pip install virtualenv
+RUN ${DUMMY_CK} python3 -m pip install ck
+
+# Clone CK repo(s) or pull them from Zenodo (CK automation f49f20744aba90e2)
+RUN ck pull repo:ai
+
+# Configure CK (CK automation ddea4415c4133ef9)
+RUN ck setup kernel --var.install_to_env=yes
+
+RUN ck detect platform.os --platform_init_uoa=generic-linux-dummy
+RUN ck detect soft:compiler.python --full_path=/usr/bin/python3
+RUN ck detect soft:compiler.gcc --full_path=`which gcc`
+
+# Install CK packages (CK automation 271a9004c9799191)
 
 # Start bash
 CMD bash

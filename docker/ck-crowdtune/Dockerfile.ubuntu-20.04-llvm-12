@@ -51,7 +51,7 @@ RUN ${DUMMY_CK} python3 -m pip install virtualenv
 RUN ${DUMMY_CK} python3 -m pip install ck
 
 # Clone CK repo(s) or pull them from Zenodo (CK automation f49f20744aba90e2)
-RUN ck pull repo:ck-ml
+RUN ck pull repo:ai
 
 # Configure CK (CK automation ddea4415c4133ef9)
 RUN ck setup kernel --var.install_to_env=yes

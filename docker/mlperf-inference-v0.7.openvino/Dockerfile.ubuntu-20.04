@@ -2,7 +2,7 @@ FROM ubuntu:20.04
 
 # News:
 #  * 20210525: Grigori updated this container to support the latest CK framework
-#              with the latest CK components from ctuning@ck-ml repo
+#              with the latest CK components from ctuning@ai repo
 LABEL maintainer="Grigori Fursin <grigori@octoml.ai>"
 
 # Use the Bash shell.
@@ -75,8 +75,8 @@ RUN ${DUMMY_CK} ${CK_PYTHON} -m pip install ck --user
 RUN ck create_entry --data_uoa=experiment --data_uid=bc0409fb61f0aa82 --path=${CK_REPOS}/local\
  && chmod -R g+w ${CK_REPOS}/local/experiment
 
-# Pull CK repositories (including ck-mlperf, ck-env, ck-autotuning, ck-tensorflow, ck-docker).
-RUN ck pull repo:ck-ml
+# Pull CK repositories
+RUN ck pull repo:ai
 
 # Use generic Linux settings with dummy frequency setting scripts.
 RUN ck detect platform.os --platform_init_uoa=generic-linux-dummy
@@ -121,7 +121,7 @@ RUN ck install package --tags=lib,loadgen,static
 #-----------------------------------------------------------------------------#
 RUN ck install package --tags=lib,intel,open-model-zoo,2020.2
 RUN ck install package --tags=lib,openvino,2020.2
-RUN ck compile ck-ml:program:mlperf-inference-v0.5 \
+RUN ck compile ai:program:mlperf-inference-v0.5 \
 --dep_add_tags.opencv=with-variations
 #-----------------------------------------------------------------------------#
 
@@ -185,7 +185,7 @@ RUN ck install package --tags=tool,coco,api
 # Step 9. Make final preparations to run the OpenVINO program.
 #-----------------------------------------------------------------------------#
 # Allow the program create tmp files when running under an external user.
-RUN chmod -R g+rwx `ck find ck-ml:program:mlperf-inference-v0.5`
+RUN chmod -R g+rwx `ck find ai:program:mlperf-inference-v0.5`
 #- # The program expects to find val_map.txt in the dataset directory (segfaults otherwise).
 #- RUN head -n 500 `ck locate env --tags=aux`/val.txt > `ck locate env --tags=raw,val`/val_map.txt
 #- #-----------------------------------------------------------------------------#
@@ -198,11 +198,11 @@ RUN chmod -R g+rwx `ck find ck-ml:program:mlperf-inference-v0.5`
 #- # using all (virtual) CPU cores.
 #- #-----------------------------------------------------------------------------#
 #- CMD ["export NPROCS=`grep -c processor /proc/cpuinfo` \
-#-  && ck run ck-ml:program:mlperf-inference-v0.5 --skip_print_timers \
+#-  && ck run ai:program:mlperf-inference-v0.5 --skip_print_timers \
 #-     --cmd_key=image-classification --env.CK_OPENVINO_MODEL_NAME=resnet50 \
 #-     --env.CK_LOADGEN_SCENARIO=Offline --env.CK_LOADGEN_MODE=Accuracy --env.CK_LOADGEN_DATASET_SIZE=500 \
 #-     --env.CK_OPENVINO_NTHREADS=$NPROCS --env.CK_OPENVINO_NSTREAMS=$NPROCS --env.CK_OPENVINO_NIREQ=$NPROCS \
-#-  && cat /home/dvdt/CK_REPOS/ck-ml/program/mlperf-inference-v0.5/tmp/accuracy.txt"]
+#-  && cat /home/dvdt/CK_REPOS/ai/program/mlperf-inference-v0.5/tmp/accuracy.txt"]
 #-
 
 #-----------------------------------------------------------------------------#
@@ -212,8 +212,8 @@ RUN chmod -R g+rwx `ck find ck-ml:program:mlperf-inference-v0.5`
 # using all (virtual) CPU cores.
 #-----------------------------------------------------------------------------#
 CMD ["export NPROCS=`grep -c processor /proc/cpuinfo` \
- && ck run ck-ml:program:mlperf-inference-v0.5 --skip_print_timers \
+ && ck run ai:program:mlperf-inference-v0.5 --skip_print_timers \
     --cmd_key=object-detection --env.CK_OPENVINO_MODEL_NAME=ssd-mobilenet \
     --env.CK_LOADGEN_SCENARIO=Offline --env.CK_LOADGEN_MODE=Accuracy --env.CK_LOADGEN_DATASET_SIZE=50 \
     --env.CK_OPENVINO_NTHREADS=$NPROCS --env.CK_OPENVINO_NSTREAMS=$NPROCS --env.CK_OPENVINO_NIREQ=$NPROCS \
- && cat /home/dvdt/CK_REPOS/ck-ml/program/mlperf-inference-v0.5/tmp/accuracy.txt"]
+ && cat /home/dvdt/CK_REPOS/ai/program/mlperf-inference-v0.5/tmp/accuracy.txt"]

@@ -2,10 +2,11 @@ FROM nvcr.io/nvidia/tensorrt:20.03-py3
 
 # News:
 #  * 20210525: Grigori updated this container to support the latest CK framework
-#              with the latest CK components from ctuning@ck-ml repo
-#              However, it currently fails with CUDA run-time error
+#              with the latest CK components from ctuning@ck-ml repo .
+#              Works with AWS: Deep Learning AMI (Ubuntu 18.04) Version 44.0 - ami-0e5406a90a38f0b79
+#              g4dn.xlarge
+
 LABEL maintainer="Grigori Fursin <grigori@octoml.ai>"
-LABEL maintainer="Anton Lokhmotov <anton@dividiti.com>"
 
 # Use the Bash shell.
 SHELL ["/bin/bash", "-c"]
@@ -62,8 +63,9 @@ RUN ${DUMMY_CK} ${CK_PYTHON} -m pip install ck --user
 RUN ck create_entry --data_uoa=experiment --data_uid=bc0409fb61f0aa82 --path=${CK_REPOS}/local\
  && chmod -R g+w ${CK_REPOS}/local/experiment
 
-# Pull CK repositories (including ck-mlperf, ck-env, ck-autotuning, ck-tensorflow, ck-docker).
-RUN ck pull repo:ck-object-detection
+# Pull CK repositories
+#RUN ck pull repo:ck-object-detection
+RUN ck pull repo:ai
 
 # Use generic Linux settings with dummy frequency setting scripts.
 RUN ck detect platform.os --platform_init_uoa=generic-linux-dummy
@@ -124,10 +126,9 @@ RUN ck detect soft:compiler.cuda --full_path=/usr/local/cuda-10.2/bin/nvcc \
  && ck detect soft:lib.cublas --full_path=/usr/lib/x86_64-linux-gnu/libcublas.so \
  && ck detect soft:lib.cudnn
 # Install TF build dependencies.
-RUN ck install ck-env:package:jdk-8u131-universal
-RUN ck install ck-env:package:tool-bazel-0.27.1-linux
+RUN ck install package:jdk-8u131-universal
+RUN ck install package:tool-bazel-0.27.1-linux
 # Build TF from sources with TensorRT support. Remove the Bazel cache (~16 GB) once done.
-RUN ck pull repo:ck-env
 RUN ck install package --tags=lib,tensorflow,vsrc,vcuda,v2.1.0 \
 --env.CK_TF_NEED_TENSORRT=YES --cus.version=2.1.0\
  && rm -rf ~/.cache/bazel
@@ -154,7 +155,7 @@ RUN ck install package --tags=tool,coco,api
 #-----------------------------------------------------------------------------#
 # Install TF model API, but remove useless API files to free up space.
 RUN ck detect soft --tags=cmake --full_path=/usr/local/bin/cmake
-RUN ck install package --tags=model,tensorflow,api\
+RUN ck install package --tags=model,tensorflow,api,r1.13.0\
  && ck virtual env --tags=model,tensorflow,api --shell_cmd=\
 'cd $CK_ENV_TENSORFLOW_MODELS;\
  mv object_detection ..;\
@@ -167,16 +168,16 @@ RUN ck install package --tags=model,tensorflow,api\
  rm .git -rf'
 
 RUN ck install package --tags=rcnn,nas,lowproposals,vcoco
-RUN ck install package --tags=rcnn,resnet50,lowproposals\
-RUN ck install package --tags=rcnn,resnet101,lowproposals\
-RUN ck install package --tags=rcnn,inception-resnet-v2,lowproposals\
-RUN ck install package --tags=rcnn,inception-v2\
-RUN ck install package --tags=ssd,inception-v2\
-RUN ck install package --tags=ssd,mobilenet-v1,non-quantized,mlperf,tf\
-RUN ck install package --tags=ssd,mobilenet-v1,quantized,mlperf,tf\
-RUN ck install package --tags=ssd,mobilenet-v1,fpn\
-RUN ck install package --tags=ssd,resnet50,fpn\
-RUN ck install package --tags=ssdlite,mobilenet-v2,vcoco\
+RUN ck install package --tags=rcnn,resnet50,lowproposals
+RUN ck install package --tags=rcnn,resnet101,lowproposals
+RUN ck install package --tags=rcnn,inception-resnet-v2,lowproposals
+RUN ck install package --tags=rcnn,inception-v2
+RUN ck install package --tags=ssd,inception-v2
+RUN ck install package --tags=ssd,mobilenet-v1,non-quantized,mlperf,tf,from-zenodo
+RUN ck install package --tags=ssd,mobilenet-v1,quantized,mlperf,tf,from-zenodo
+RUN ck install package --tags=ssd,mobilenet-v1,fpn
+RUN ck install package --tags=ssd,resnet50,fpn
+RUN ck install package --tags=ssdlite,mobilenet-v2,vcoco
 RUN ck install package --tags=yolo-v3
 #-----------------------------------------------------------------------------#
 
@@ -188,7 +189,7 @@ RUN ck install package --tags=yolo-v3
 # (Some have already been installed.)
 RUN ck install package --tags=lib,python-package,cv2,opencv-python-headless
 # Allow the program create tmp files when running under an external user.
-RUN chmod -R g+rwx ${CK_REPOS}/ck-tensorflow/program/object-detection-tf-py/
+RUN chmod -R g+rwx ${CK_REPOS}/ai/program/object-detection-tf-py/
 #-----------------------------------------------------------------------------#
 
 
@@ -199,5 +200,5 @@ RUN chmod -R g+rwx ${CK_REPOS}/ck-tensorflow/program/object-detection-tf-py/
 #-----------------------------------------------------------------------------#
 CMD ["ck run program:object-detection-tf-py \
 --dep_add_tags.lib-tensorflow=python-package \
---dep_add_tags.weights=ssd-mobilenet,non-quantized,mlperf \
+--dep_add_tags.weights=ssd-mobilenet,non-quantized,mlperf,from-zenodo \
 --env.CK_BATCH_SIZE=1 --env.CK_BATCH_COUNT=50"]

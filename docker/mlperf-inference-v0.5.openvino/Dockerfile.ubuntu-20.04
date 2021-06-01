@@ -1,6 +1,6 @@
 # News:
 #  * 20210525: Grigori updated this container to support the latest CK framework
-#              with the latest CK components from ctuning@ck-ml repo
+#              with the latest CK components from ctuning@ai repo
 
 FROM ubuntu:20.04
 
@@ -30,11 +30,12 @@ RUN apt update -y\
  && apt clean
 
 # Install Python 3.7 (needed to install TensorFlow 1.15.2 via pip).
+# && ./configure --enable-optimizations --enable-shared --with-ensurepip=install \
 RUN cd /tmp \
  && wget https://www.python.org/ftp/python/3.7.7/Python-3.7.7.tgz \
  && tar xvf Python-3.7.7.tgz \
  && cd Python-3.7.7 \
- && ./configure --enable-optimizations --enable-shared --with-ensurepip=install \
+ && ./configure --enable-shared --with-ensurepip=install \
  && make -j20 \
  && make altinstall \
  && rm -rf /tmp/*
@@ -75,8 +76,8 @@ RUN ${DUMMY_CK} ${CK_PYTHON} -m pip install ck --user
 RUN ck create_entry --data_uoa=experiment --data_uid=bc0409fb61f0aa82 --path=${CK_REPOS}/local\
  && chmod -R g+w ${CK_REPOS}/local/experiment
 
-# Pull CK repositories (including ck-mlperf, ck-env, ck-autotuning, ck-tensorflow, ck-docker).
-RUN ck pull repo:ck-ml
+# Pull CK repositories
+RUN ck pull repo:ai
 
 # Use generic Linux settings with dummy frequency setting scripts.
 RUN ck detect platform.os --platform_init_uoa=generic-linux-dummy
@@ -123,7 +124,7 @@ RUN ck install package --tags=lib,loadgen,static
 #-----------------------------------------------------------------------------#
 RUN ck install package --tags=lib,intel,open-model-zoo,2019_R3
 RUN ck install package --tags=lib,openvino,2019_R3
-RUN ck compile ck-ml:program:mlperf-inference-v0.5
+RUN ck compile ai:program:mlperf-inference-v0.5
 #-----------------------------------------------------------------------------#
 
 
@@ -189,7 +190,7 @@ RUN ck install package --tags=tool,coco,api
 # Step 9. Make final preparations to run the OpenVINO program.
 #-----------------------------------------------------------------------------#
 # Allow the program create tmp files when running under an external user.
-RUN chmod -R g+rwx `ck find ck-ml:program:mlperf-inference-v0.5`
+RUN chmod -R g+rwx `ck find ai:program:mlperf-inference-v0.5`
 # The program expects to find val_map.txt in the dataset directory (segfaults otherwise).
 RUN head -n 500 `ck locate env --tags=aux`/val.txt > `ck locate env --tags=raw,val`/val_map.txt
 #-----------------------------------------------------------------------------#
@@ -202,8 +203,8 @@ RUN head -n 500 `ck locate env --tags=aux`/val.txt > `ck locate env --tags=raw,v
 # using all (virtual) CPU cores.
 #-----------------------------------------------------------------------------#
 CMD ["export NPROCS=`grep -c processor /proc/cpuinfo` \
- && ck run ck-ml:program:mlperf-inference-v0.5 --skip_print_timers \
+ && ck run ai:program:mlperf-inference-v0.5 --skip_print_timers \
     --cmd_key=image-classification --env.CK_OPENVINO_MODEL_NAME=resnet50 \
     --env.CK_LOADGEN_SCENARIO=Offline --env.CK_LOADGEN_MODE=Accuracy --env.CK_LOADGEN_DATASET_SIZE=500 \
     --env.CK_OPENVINO_NTHREADS=$NPROCS --env.CK_OPENVINO_NSTREAMS=$NPROCS --env.CK_OPENVINO_NIREQ=$NPROCS \
- && cat /home/dvdt/CK_REPOS/ck-ml/program/mlperf-inference-v0.5/tmp/accuracy.txt"]
+ && cat /home/dvdt/CK_REPOS/ai/program/mlperf-inference-v0.5/tmp/accuracy.txt"]
