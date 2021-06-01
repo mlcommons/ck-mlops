@@ -28,6 +28,7 @@ install:
 build: false
 
 test_script:
-  - "ck pull repo:ai"
+  - "ck pull repo:octoml@venv"                                                      # test octoml@venv repo
+  - "ck pull repo:octoml@mlops"
 
 # TBD: add tests for Windows
