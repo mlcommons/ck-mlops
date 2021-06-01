@@ -16,7 +16,10 @@ def dirs(i):
 
     if config_source == 'MLPERF_INFERENCE_GIT_CHECKOUT':
         mlperf_source_repo_env  = i['cfg']['deps']['mlperf-inference-src']['dict']['env']
-        search_in_path          = mlperf_source_repo_env['CK_ENV_MLPERF_INFERENCE_V05']
+        if 'CK_ENV_MLPERF_INFERENCE_V05' in mlperf_source_repo_env:
+           search_in_path          = mlperf_source_repo_env['CK_ENV_MLPERF_INFERENCE_V05']
+        else:
+           search_in_path          = mlperf_source_repo_env['CK_ENV_MLPERF_INFERENCE']
     elif config_source == 'SOFT_ENTRY_INTERNAL':
         search_in_path          = i['soft_entry_path']
 
