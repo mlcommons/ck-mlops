@@ -1,9 +1,0 @@
-{
-  "all": [
-    {
-      "model": "Odroid", 
-      "vendor": "Hardkernel", 
-      "name": "ODROID-XU3"
-    }
-  ]
-}

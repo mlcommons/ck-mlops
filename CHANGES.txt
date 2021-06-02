@@ -1,3 +1,6 @@
+20210602:
+  * removed platform.* (except platform.init) because it's available in repo:ck-crowdtuning-platforms
+
 20210601:
   * major clean up of testing of all Docker images
 

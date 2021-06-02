@@ -1,7 +1,0 @@
-{
-  "features": {
-    "model": "HVM domU",
-    "name": "Xen 4.1.2_115-908.790. (HVM domU)",
-    "vendor": "Xen"
-  }
-}
