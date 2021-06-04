@@ -4,7 +4,8 @@
 # See CK LICENSE.txt for licensing details
 # See CK COPYRIGHT.txt for copyright details
 #
-# Developer: dividiti
+# Developer(s):
+#   * Grigori Fursin <grigori@octoml.ai>
 #
 
 import os
@@ -22,13 +23,31 @@ def dirs(i):
 ##############################################################################
 # parse software version
 
-def parse_version(i):
+def version_cmd(i):
 
-    lst=i['output']
+    fp=i.get('full_path','')
 
-    ver=''
+    ver_dir=os.path.dirname(os.path.dirname(fp))
+    ver_file=os.path.join(ver_dir, 'version.py')
+
+    ver = ''
+
+    if os.path.isfile(ver_file):
+        r=ck.load_text_file({'text_file':ver_file, 'split_to_list':'yes'})
+        if r['return']>0: return r
+
+        lst=r['lst']
+
+        for l in lst:
+            if '__version__' in l:
+                 import re
+                 vers=re.findall('"([^"]*)"', l)
+                 ver=vers[0]
+
+                 break
 
     return {'return':0, 'version':ver}
+
 
 ##############################################################################
 # setup environment
