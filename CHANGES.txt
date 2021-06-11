@@ -1,3 +1,6 @@
+20210611:
+  * removing unneeded entries
+
 20210602:
   * removed platform.* (except platform.init) because it's available in repo:ck-crowdtuning-platforms
 
