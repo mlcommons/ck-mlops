@@ -10,6 +10,8 @@
 
 import os
 
+extra_dirs=[]
+
 ##############################################################################
 # customize directories to automatically find and register software
 
