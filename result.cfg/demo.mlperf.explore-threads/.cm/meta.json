@@ -1,0 +1,93 @@
+{
+  "data_config": {
+    "dimensions": [
+      {
+        "key": "seq_number",
+        "name": "Sequence",
+        "view_key": "seq_number"
+      },
+      {
+        "key": "_const",
+        "name": "Const",
+        "view_key": "_const"
+      },
+      {
+        "key": "time_min_ms",
+        "name": "Time (ms)"
+      },
+      {
+        "key": "batch_size",
+        "name": "Batch size",
+        "view_key": "batch_size"
+      },
+      {
+        "key": "threads",
+        "name": "Threads",
+        "view_key": "threads"
+      }
+    ],
+    "raw_config": {
+      "colorDimension": "_const",
+      "tooltipValues": [
+        "batch_size",
+        "threads"
+      ],
+      "xDimension": "seq_number",
+      "xVariationVisible": false,
+      "yDimension": "time_min_ms",
+      "yMax": 40,
+      "yMin": 10,
+      "yVariationVisible": true
+    },
+    "selector": [],
+    "selector2": [],
+    "selector3": [],
+    "table_view": [
+      {
+        "key": "seq_number",
+        "name": "Sequence number"
+      },
+      {
+        "check_extra_key": "max",
+        "format": "%.2f",
+        "key": "time_min_ms#min",
+        "name": "Time (ms)"
+      },
+      {
+        "key": "batch_size",
+        "name": "Batch size"
+      },
+      {
+        "key": "threads",
+        "name": "Threads"
+      }
+    ]
+  },
+  "data_uoa": "-",
+  "experiment_convertor": [
+    {
+      "key1": "##characteristics#run#results#TestScenario.SingleStream#percentiles#95.0#min",
+      "multiply": 1000,
+      "out_key": "time_min_ms#min"
+    },
+    {
+      "key1": "##characteristics#run#results#TestScenario.SingleStream#percentiles#95.0#max",
+      "multiply": 1000,
+      "out_key": "time_min_ms#max"
+    },
+    {
+      "key1": "##characteristics#run#results#args#max_batchsize#min",
+      "out_key": "batch_size"
+    },
+    {
+      "key1": "##characteristics#run#results#args#threads#min",
+      "out_key": "threads"
+    }
+  ],
+  "experiment_uoa": "mlperf-image-classification-single-stream-onnx-explore-threads",
+  "update_html": {
+    "ck_html_title": "MLPerf inferenceh benchmark dashboard; ONNX; Explore threads",
+    "ck_html_title_main": "MLPerf inferenceh benchmark dashboard; ONNX; Explore threads",
+    "ck_html_title_note": "<center><i>Demo</i></center>\n"
+  }
+}

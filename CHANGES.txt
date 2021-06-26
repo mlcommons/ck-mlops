@@ -1,3 +1,15 @@
+20210626:
+  * added wfe:result template for the new CK dashboard
+  * added result.cfg to configure new CK dashboards:
+    * demo.mlperf.explore-threads
+    * demo.mlperf.inference
+    * demo.mlperf.mobilenets
+    * demo.request.asplos18
+  * added demo of results for new CK dashboards:
+    * demo.mlperf.inference
+    * demo.mlperf.mobilenets.all
+    * demo.request.asplos18
+
 20210611:
   * removing unneeded entries
 

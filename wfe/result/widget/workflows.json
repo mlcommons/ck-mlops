@@ -1,0 +1,13 @@
+{
+    "defaultWorkflowIndex": 0,
+    "workflows": [
+        {
+            "name": "CK results",
+            "moduleUoa": "result",
+            "xDimension": "",
+            "yDimension": "",
+            "xVariationVisible": false,
+            "yVariationVisible": false
+        }
+    ]
+}

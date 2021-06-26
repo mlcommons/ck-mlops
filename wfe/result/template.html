@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!------------------------------------------------------------------------------>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+
+<link rel="icon" type="image/png" href="$#ck_url_template_pull#$images/logo2.png" />
+
+<link rel="stylesheet" href="$#ck_url_template_pull#$css/bootstrap.min.css">
+<link rel="stylesheet" href="$#ck_url_template_pull#$css/style.css">
+
+<script src="$#ck_url_template_pull#$js/d3.v5.min.js"></script>
+<script src="$#ck_url_template_pull#$js/jquery-3.4.1.min.js"></script>
+<script src="$#ck_url_template_pull#$widget/widget.js"></script>
+
+<title>$#ck_html_title#$</title>
+</head>
+
+
+<!-------------------------------------------------------------------------------------------->
+<body>
+
+
+  <div id="vspace8">
+  
+  <center>
+   <h3>
+    $#ck_html_title_main#$
+   </h3>
+  </center>
+
+   $#ck_html_title_note#$
+
+   <div id="vspace4">
+ 
+   <form action="" name="ck_result_form" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+
+   $#ck_html_form#$
+
+    <div id="ck_entries">
+     <div id="ck-repo-widget-header"></div>
+     <div id="ck-repo-widget"></div>
+     <div id="ck-repo-widget-loading-layer">
+      <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+     </div>
+    </div>
+
+   </form>
+  
+ <script type="text/javascript">
+
+   function initWidget() {
+     let url = '/'
+     let scenario = 'result';
+     let extra_scenario = '0';
+     let path = url.pathname;
+
+     const widget = new CkRepoWdiget();
+
+     if (widget)
+       console.log('initializing widget');
+       try {
+         widget.init({
+           isLocalRun: false,
+           scenario: scenario,
+           extra_scenario: extra_scenario,
+           ck_cfg_uoa:"$#ck_cfg_uoa#$",
+           ck_cfg_id:"$#ck_cfg_id#$",
+           ck_repo_uoa:"$#ck_repo_uoa#$",
+           ck_data_uoa:"$#ck_data_uoa#$",
+           ck_tags:"$#ck_tags#$",
+           ck_user:"$#ck_user#$",
+           ck_experiment_repo_uoa:"$#ck_experiment_repo_uoa#$",
+           ck_experiment_uoa:"$#ck_experiment_uoa#$",
+           ck_experiment_tags:"$#ck_experiment_tags#$",
+           apiUrlPrefix: "$#ck_url_without_template#$",
+           workflows: "$#ck_url_template_pull#$widget/workflows.json",
+         });
+       } catch (error) {
+         console.error('Internal error: '+error);
+       }
+   }
+
+   initWidget();
+
+   document.getElementById("ck-repo-widget-loading-layer").style.visibility="hidden";
+
+   $(function () {
+     $('.ck-repo-widget-table-container0-w').on('scroll', function (e) {
+         $('.ck-repo-widget-table-container-w').scrollLeft($('.ck-repo-widget-table-container0-w').scrollLeft());
+     }); 
+     $('.ck-repo-widget-table-container-w').on('scroll', function (e) {
+         $('.ck-repo-widget-table-container0-w').scrollLeft($('.ck-repo-widget-table-container-w').scrollLeft());
+     });
+   });
+
+   $(window).on('load', function (e) {
+     $('.ck-repo-widget-table-container0').width($('.ck-repo-widget-table').width());
+     $('.ck-repo-widget-table-container').width($('.ck-repo-widget-table').width());
+   });
+
+ </script>
+
+
+</body>
+</html>

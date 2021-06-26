@@ -1,0 +1,398 @@
+{
+  "data_config": {
+    "dimensions": [
+      {
+        "key": "experiment",
+        "name": "Experiment number",
+        "skip_from_cache": "yes",
+        "view_key": "__number"
+      },
+      {
+        "key": "##characteristics#run#prediction_time_avg_s",
+        "name": "Prediction time per 1 image (min, sec.)"
+      },
+      {
+        "key": "##characteristics#run#inference_latency",
+        "name": "Inference latency for 1 image (min, sec.)"
+      },
+      {
+        "key": "##characteristics#run#inference_throughput",
+        "name": "Inference throughput (max, images per sec.)",
+        "reverse": "yes"
+      },
+      {
+        "key": "##characteristics#run#accuracy_top1",
+        "name": "Accuracy on all images (Top1)"
+      },
+      {
+        "key": "##characteristics#run#accuracy_top5",
+        "name": "Accuracy on all images (Top5)"
+      },
+      {
+        "key": "##features#model_size",
+        "name": "Model size (B)"
+      },
+      {
+        "from_meta": "yes",
+        "key": "##meta#platform_peak_power",
+        "name": "Platform peak power (W)"
+      },
+      {
+        "from_meta": "yes",
+        "key": "##meta#platform_price",
+        "name": "Platform price ($)"
+      },
+      {
+        "key": "##characteristics#run#usage_cost",
+        "name": "Usage cost ($)"
+      },
+      {
+        "from_meta": "yes",
+        "key": "##meta#platform_species",
+        "name": "Platform species"
+      },
+      {
+        "from_meta": "yes",
+        "key": "##meta#model_species",
+        "module_uoa": "38e7de41acb41d3b",
+        "name": "Model species"
+      },
+      {
+        "from_meta": "yes",
+        "key": "##meta#model_precision",
+        "name": "Model precision"
+      },
+      {
+        "from_meta": "yes",
+        "key": "##meta#dataset_species",
+        "name": "Dataset species"
+      },
+      {
+        "key": "##features#freq",
+        "name": "Device frequency (MHz)"
+      },
+      {
+        "key": "##features#cpu_freq",
+        "name": "CPU frequency (MHz)"
+      },
+      {
+        "key": "##features#gpu_freq",
+        "name": "GPU frequency (MHz)"
+      },
+      {
+        "key": "##features#batch_size",
+        "name": "Batch size"
+      }
+    ],
+    "raw_config": {
+      "colorDimension": "experiment",
+      "sizeDimension": "##features#model_size",
+      "xDimension": "##characteristics#run#inference_throughput",
+      "xVariationVisible": true,
+      "yDimension": "##characteristics#run#accuracy_top1",
+      "yVariationVisible": false
+    },
+    "selector": [
+      {
+        "key": "results",
+        "name": "Results",
+        "new_line_after": "yes",
+        "skip_from_reset": "yes",
+        "skip_update": "yes"
+      },
+      {
+        "key": "algorithm_species",
+        "module_uoa": "1702c3e426ca54c5",
+        "name": "Algorithm species"
+      },
+      {
+        "key": "model_species",
+        "module_uoa": "38e7de41acb41d3b",
+        "name": "Model species"
+      },
+      {
+        "key": "model_precision",
+        "name": "Precision"
+      },
+      {
+        "keep_empty": "yes",
+        "key": "dataset_species",
+        "name": "Dataset species",
+        "new_line": "yes"
+      },
+      {
+        "key": "dataset_size",
+        "name": "Dataset size",
+        "type": "int"
+      },
+      {
+        "keep_empty": "yes",
+        "key": "farm",
+        "name": "Cloud/farm",
+        "new_line": "yes"
+      },
+      {
+        "key": "platform_species",
+        "name": "Platform species"
+      },
+      {
+        "key": "plat_name",
+        "name": "Platform"
+      },
+      {
+        "key": "os_name",
+        "name": "OS name",
+        "new_line": "yes"
+      },
+      {
+        "keep_empty": "yes",
+        "key": "cpu_name",
+        "name": "CPU name"
+      },
+      {
+        "keep_empty": "yes",
+        "key": "gpgpu_name",
+        "name": "GPGPU name"
+      }
+    ],
+    "selector2": [
+      {
+        "key": "##choices#data_uoa#min",
+        "name": "Algorithm implementation (CK program)"
+      },
+      {
+        "key": "##meta#model_design_name",
+        "name": "Model design"
+      },
+      {
+        "keep_empty": "yes",
+        "key": "##meta#compiler_name",
+        "name": "Compiler",
+        "new_line": "yes"
+      },
+      {
+        "keep_empty": "yes",
+        "key": "##meta#library_name",
+        "name": "Library/framework"
+      },
+      {
+        "extra_key": "##features#gpgpu@0#gpgpu_misc#opencl_c_version#min",
+        "keep_empty": "yes",
+        "key": "##features#gpgpu@0#gpgpu_misc#opencl c version#min",
+        "name": "OpenCL driver",
+        "new_line": "yes"
+      },
+      {
+        "key": "##features#batch_size#min",
+        "name": "Batch size",
+        "new_line": "yes",
+        "type": "int"
+      },
+      {
+        "keep_empty": "yes",
+        "key": "##features#cpu_freq#min",
+        "name": "CPU freq (MHz)",
+        "type": "int"
+      },
+      {
+        "keep_empty": "yes",
+        "key": "##features#gpu_freq#min",
+        "name": "GPU freq (MHz)",
+        "type": "int"
+      },
+      {
+        "keep_empty": "yes",
+        "key": "##features#freq#min",
+        "name": "Freq (MHz)",
+        "type": "int"
+      }
+    ],
+    "selector3": [
+      {
+        "key": "plot_dimension1",
+        "name": "Plot dimension 1 (X)"
+      },
+      {
+        "key": "plot_variation_dimension1",
+        "name": "Show variation",
+        "new_line_after": "yes"
+      },
+      {
+        "key": "plot_dimension2",
+        "name": "Plot dimension 2 (Y)"
+      },
+      {
+        "key": "plot_variation_dimension2",
+        "name": "Show variation",
+        "new_line_after": "yes"
+      }
+    ],
+    "table_view": [
+      {
+        "key": "##meta#algorithm_species",
+        "module_uoa": "1702c3e426ca54c5",
+        "name": "Algorithm species",
+        "skip_if_key_in_input": "algorithm_species"
+      },
+      {
+        "key": "##choices#data_uoa#min",
+        "name": "Workload (program,model,library)",
+        "skip_if_the_same_key_in_input": "yes"
+      },
+      {
+        "key": "##meta#model_species",
+        "module_uoa": "38e7de41acb41d3b",
+        "name": "Model species",
+        "skip_if_key_in_input": "model_species"
+      },
+      {
+        "key": "##meta#model_precision",
+        "name": "Precision",
+        "skip_if_key_in_input": "model_precision"
+      },
+      {
+        "key": "##meta#dataset_species",
+        "name": "Dataset species",
+        "skip_if_key_in_input": "dataset_species"
+      },
+      {
+        "key": "##meta#dataset_size",
+        "name": "Dataset size",
+        "skip_if_key_in_input": "dataset_size",
+        "type": "int"
+      },
+      {
+        "key": "##meta#farm",
+        "name": "Farm",
+        "skip_if_key_in_input": "farm"
+      },
+      {
+        "key": "##meta#platform_species",
+        "name": "Platform species",
+        "skip_if_key_in_input": "platform_species"
+      },
+      {
+        "key": "##meta#plat_name",
+        "name": "Platform name",
+        "skip_if_key_in_input": "plat_name"
+      },
+      {
+        "key": "##meta#cpu_name",
+        "name": "CPU name",
+        "skip_if_key_in_input": "cpu_name"
+      },
+      {
+        "key": "##features#cpu_freq#min",
+        "name": "CPU freq (MHz)",
+        "skip_if_the_same_key_in_input": "yes"
+      },
+      {
+        "key": "##meta#gpgpu_name",
+        "name": "GPGPU name",
+        "skip_if_key_in_input": "gpgpu_name"
+      },
+      {
+        "key": "##features#gpu_freq#min",
+        "name": "GPU freq (MHz)",
+        "skip_if_the_same_key_in_input": "yes"
+      },
+      {
+        "key": "##meta#os_name",
+        "name": "OS name",
+        "skip_if_key_in_input": "os_name"
+      },
+      {
+        "align": "left",
+        "json_and_pre": "yes",
+        "key": "##meta#versions",
+        "name": "SW deps and versions"
+      },
+      {
+        "key": "##meta#model_design_name",
+        "name": "Model design",
+        "skip_if_the_same_key_in_input": "yes"
+      },
+      {
+        "key": "##meta#compiler_name",
+        "name": "Compiler",
+        "skip_if_the_same_key_in_input": "yes"
+      },
+      {
+        "key": "##meta#library_name",
+        "name": "Library",
+        "skip_if_the_same_key_in_input": "yes"
+      },
+      {
+        "align": "left",
+        "key": "##choices#env#",
+        "name": "Environment",
+        "starts_with": "yes"
+      },
+      {
+        "check_extra_key": "max",
+        "format": "%.4f",
+        "key": "##characteristics#run#prediction_time_avg_s#min",
+        "name": "Classification time per 1 image (sec. min/max)"
+      },
+      {
+        "check_extra_key": "max",
+        "format": "%.4f",
+        "key": "##characteristics#run#inference_latency#min",
+        "name": "Inference latency for 1 image (min, sec.)"
+      },
+      {
+        "check_extra_key": "min",
+        "format": "%.1f",
+        "key": "##characteristics#run#inference_throughput#max",
+        "name": "Inference throughput (max, images per sec.)"
+      },
+      {
+        "key": "##extra#accuracy_sum",
+        "name": "Accuracy (Top1&nbsp;/&nbsp;Top5)"
+      },
+      {
+        "key": "##features#batch_size#min",
+        "name": "Batch size"
+      },
+      {
+        "key": "##features#model_size#min",
+        "name": "Model size (B)"
+      },
+      {
+        "key": "##features#memory_usage#min",
+        "name": "Memory usage (B)"
+      },
+      {
+        "check_extra_key": "max",
+        "format": "%.3f",
+        "key": "##meta#platform_peak_power",
+        "name": "Platform peak power (W)"
+      },
+      {
+        "key": "##meta#platform_price_str",
+        "name": "Platform price ($)"
+      },
+      {
+        "key": "##meta#platform_price_date",
+        "name": "Platform price date"
+      },
+      {
+        "format": "%.2e",
+        "key": "##characteristics#run#usage_cost#min",
+        "name": "Usage cost per image ($)",
+        "type": "float"
+      },
+      {
+        "align": "left",
+        "key": "##extra#html_reproducibility",
+        "name": "Reproducibility"
+      }
+    ]
+  },
+  "tags": "request-asplos18-demo",
+  "update_html": {
+    "ck_html_title": "ACM REQUEST-ASPLOS'18 tournament dashboard",
+    "ck_html_title_main": "ACM REQUEST-ASPLOS'18 tournament dashboard",
+    "ck_html_title_note": "<center><i>Demo</i></center>\n"
+  }
+}

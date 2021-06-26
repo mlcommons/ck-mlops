@@ -1,0 +1,7 @@
+{
+  "update_html": {
+    "ck_html_title": "MLPerf dashboard",
+    "ck_html_title_main": "MLPerf inference benchmark results",
+    "ck_html_title_note": "<center><i>Demo</i></center>\n"
+  }
+}

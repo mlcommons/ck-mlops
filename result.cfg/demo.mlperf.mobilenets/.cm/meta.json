@@ -1,0 +1,480 @@
+{
+  "data_config": {
+    "dimensions": [
+      {
+        "key": "platform",
+        "name": "Platform",
+        "view_key": "platform"
+      },
+      {
+        "key": "library",
+        "name": "Library",
+        "view_key": "library"
+      },
+      {
+        "key": "dataset",
+        "name": "Dataset",
+        "view_key": "dataset"
+      },
+      {
+        "key": "model",
+        "name": "Model",
+        "view_key": "model"
+      },
+      {
+        "format": "%f",
+        "key": "version",
+        "name": "Version",
+        "view_key": "version"
+      },
+      {
+        "format": "%.2f",
+        "key": "multiplier",
+        "name": "Multiplier",
+        "view_key": "multiplier"
+      },
+      {
+        "format": "%f",
+        "key": "resolution",
+        "name": "Resolution",
+        "view_key": "resolution"
+      },
+      {
+        "key": "batch_size",
+        "name": "Batch size",
+        "view_key": "batch_size"
+      },
+      {
+        "key": "batch_count",
+        "name": "Batch count",
+        "view_key": "batch_count"
+      },
+      {
+        "key": "convolution_method",
+        "name": "Convolution method",
+        "view_key": "convolution_method"
+      },
+      {
+        "key": "data_layout",
+        "name": "Data layout",
+        "view_key": "data_layout"
+      },
+      {
+        "key": "kernel_tuner",
+        "name": "Kernel tuner",
+        "view_key": "kernel_tuner"
+      },
+      {
+        "key": "tunerXlayout",
+        "name": "Tuner X Layout",
+        "view_key": "tunerXlayout"
+      },
+      {
+        "key": "methodXlayout",
+        "name": "Method X Layout",
+        "view_key": "methodXlayout"
+      },
+      {
+        "key": "methodXtuner",
+        "name": "Method X Tuner",
+        "view_key": "methodXtuner"
+      },
+      {
+        "format": "%.1f",
+        "key": "rate_max_s",
+        "name": "Image classification rate (maximum, per second)",
+        "view_key": "rate_max_s"
+      },
+      {
+        "format": "%.1f",
+        "key": "rate_max_s_w",
+        "name": "Image classification efficiency (maximum, per second per Watt)",
+        "view_key": "rate_max_s_w"
+      },
+      {
+        "format": "%.3f",
+        "key": "time_min_ms",
+        "name": "Image classification time (minimum, ms)",
+        "view_key": "time_min_ms"
+      },
+      {
+        "format": "%.3f",
+        "key": "time_avg_ms",
+        "name": "Image classification time (average, ms)",
+        "view_key": "time_avg_ms"
+      },
+      {
+        "format": "%.3f",
+        "key": "accuracy_top1",
+        "name": "Image classification accuracy (top 1)",
+        "view_key": "accuracy_top1"
+      },
+      {
+        "format": "%.3f",
+        "key": "accuracy_top5",
+        "name": "Image classification accuracy (top 5)",
+        "view_key": "accuracy_top5"
+      }
+    ],
+    "raw_config": {
+      "call_attribs": {
+        "prefilter_mode": "all"
+      },
+      "colorDimension": "rate_max_s",
+      "colorRange": [
+        "#0000FF",
+        "#00FFFF",
+        "#00FF00",
+        "#FFCC00",
+        "#FF0000"
+      ],
+      "markerDimension": "multiplier",
+      "markerDimensionSets": {
+        "Circles": [
+          "circle"
+        ],
+        "Polygons": [
+          "triangle",
+          "triangle_down",
+          "rect",
+          "pentagon",
+          "hexagon",
+          "diamond",
+          "star",
+          "circle"
+        ],
+        "Sectors v1": [
+          "sector_1_4",
+          "sector_1_2",
+          "sector_3_4",
+          "circle"
+        ],
+        "Sectors v1/v2": [
+          "sector_1_4",
+          "sector_1_3",
+          "sector_1_2",
+          "sector_3_4",
+          "circle",
+          "diamond",
+          "star"
+        ],
+        "Sectors v2": [
+          "sector_1_3",
+          "sector_1_2",
+          "sector_3_4",
+          "circle",
+          "diamond",
+          "star"
+        ]
+      },
+      "markerOverlayDimension": "convolution_method",
+      "markerOverlayDimensionSets": {
+        "1 X N": [
+          "none",
+          "dot",
+          "hline",
+          "vline",
+          "plus",
+          "cross"
+        ],
+        "2 X 2": [
+          "none",
+          "dot",
+          "hline",
+          "vline"
+        ],
+        "2 X 3": [
+          "none",
+          "hline",
+          "vline",
+          "dot",
+          "plus",
+          "cross"
+        ],
+        "3 X 2": [
+          "none",
+          "dot",
+          "hline",
+          "vline",
+          "plus",
+          "cross"
+        ]
+      },
+      "sizeDimension": "resolution",
+      "sizeRange": [
+        4,
+        6
+      ],
+      "tooltipValues": [
+        "model",
+        "rate_max_s",
+        "time_min_ms",
+        "time_avg_ms",
+        "accuracy_top1",
+        "accuracy_top5"
+      ],
+      "xDimension": "time_min_ms",
+      "xVariationVisible": true,
+      "yDimension": "accuracy_top1",
+      "yVariationVisible": false
+    },
+    "selector": [],
+    "selector2": [
+      {
+        "key": "platform",
+        "name": "Platform"
+      },
+      {
+        "key": "os_name",
+        "name": "OS name (target)"
+      },
+      {
+        "key": "library",
+        "name": "Library"
+      },
+      {
+        "key": "dataset",
+        "name": "Dataset"
+      },
+      {
+        "key": "model",
+        "name": "Model"
+      },
+      {
+        "format": "%f",
+        "key": "version",
+        "name": "Version"
+      },
+      {
+        "format": "%.2f",
+        "key": "multiplier",
+        "name": "Multiplier"
+      },
+      {
+        "format": "%f",
+        "key": "resolution",
+        "name": "Resolution"
+      },
+      {
+        "key": "batch_size",
+        "name": "Batch size"
+      },
+      {
+        "key": "batch_count",
+        "name": "Batch count"
+      },
+      {
+        "key": "convolution_method",
+        "name": "Convolution method"
+      },
+      {
+        "key": "data_layout",
+        "name": "Data layout"
+      },
+      {
+        "key": "kernel_tuner",
+        "name": "Kernel tuner"
+      },
+      {
+        "key": "cpu_name",
+        "name": "CPU name (target)"
+      },
+      {
+        "key": "gpgpu_name",
+        "name": "GPGPU name"
+      }
+    ],
+    "selector3": [
+      {
+        "key": "plot_dimension1",
+        "name": "Plot dimension 1 (X)"
+      },
+      {
+        "key": "plot_variation_dimension1",
+        "name": "Show variation"
+      },
+      {
+        "key": "plot_dimension2",
+        "name": "Plot dimension 2 (Y)"
+      },
+      {
+        "key": "plot_variation_dimension2",
+        "name": "Show variation"
+      }
+    ],
+    "table_view": [
+      {
+        "key": "platform",
+        "name": "Platform"
+      },
+      {
+        "key": "library",
+        "name": "Library"
+      },
+      {
+        "key": "dataset",
+        "name": "Dataset"
+      },
+      {
+        "key": "model",
+        "name": "Model"
+      },
+      {
+        "format": "%f",
+        "key": "version",
+        "name": "Version",
+        "view_key": "version"
+      },
+      {
+        "format": "%.2f",
+        "key": "multiplier",
+        "name": "Multiplier",
+        "view_key": "multiplier"
+      },
+      {
+        "format": "%f",
+        "key": "resolution",
+        "name": "Resolution",
+        "view_key": "resolution"
+      },
+      {
+        "key": "batch_size",
+        "name": "Batch size"
+      },
+      {
+        "key": "batch_count",
+        "name": "Batch count"
+      },
+      {
+        "key": "convolution_method",
+        "name": "Convolution method"
+      },
+      {
+        "key": "data_layout",
+        "name": "Data layout"
+      },
+      {
+        "key": "kernel_tuner",
+        "name": "Kernel tuner"
+      },
+      {
+        "format": "%.1f",
+        "key": "rate_max_s",
+        "name": "Image classification rate (maximum, per second)",
+        "view_key": "rate_max_s"
+      },
+      {
+        "format": "%.1f",
+        "key": "rate_max_s_w",
+        "name": "Image classification efficiency (maximum, per second per Watt)",
+        "view_key": "rate_max_s_w"
+      },
+      {
+        "format": "%.3f",
+        "key": "time_min_ms",
+        "name": "Image classification time (minimum, ms)",
+        "view_key": "time_min_ms"
+      },
+      {
+        "format": "%.3f",
+        "key": "time_avg_ms",
+        "name": "Image classification time (average, ms)",
+        "view_key": "time_avg_ms"
+      },
+      {
+        "format": "%.3f",
+        "key": "accuracy_top1",
+        "name": "Image classification accuracy (top 1)",
+        "view_key": "accuracy_top1"
+      },
+      {
+        "format": "%.3f",
+        "key": "accuracy_top5",
+        "name": "Image classification accuracy (top 5)",
+        "view_key": "accuracy_top5"
+      },
+      {
+        "key": "os_name",
+        "name": "OS name (target)"
+      },
+      {
+        "key": "cpu_name",
+        "name": "CPU name (target)"
+      },
+      {
+        "key": "gpgpu_name",
+        "name": "GPGPU name"
+      },
+      {
+        "key": "cpu_freq",
+        "name": "CPU freq (MHz)"
+      },
+      {
+        "key": "gpu_freq",
+        "name": "GPU freq (MHz)"
+      }
+    ]
+  },
+  "experiment_convertor": [
+    {
+      "key1": "##characteristics#run#results#TestScenario.SingleStream#percentiles#95.0#min",
+      "multiply": 5000,
+      "out_key": "time_min_ms"
+    },
+    {
+      "key1": "##characteristics#run#results#TestScenario.SingleStream#percentiles#95.0#min",
+      "multiply": 5000,
+      "out_key": "time_min_ms#min"
+    },
+    {
+      "key1": "##characteristics#run#results#TestScenario.SingleStream#percentiles#95.0#max",
+      "multiply": 5500,
+      "out_key": "time_min_ms#max"
+    },
+    {
+      "key1": "##characteristics#run#results#TestScenario.SingleStream#percentiles#95.0#min",
+      "multiply": 5000,
+      "out_key": "time_avg_ms"
+    },
+    {
+      "key1": "##characteristics#run#results#TestScenario.SingleStream#percentiles#95.0#min",
+      "multiply": 600,
+      "out_key": "time_avg_ms#min"
+    },
+    {
+      "key1": "##characteristics#run#results#TestScenario.SingleStream#percentiles#95.0#min",
+      "multiply": 5000,
+      "out_key": "time_avg_ms#max"
+    },
+    {
+      "out_key": "rate_max_s",
+      "value": 4.744778371402272
+    },
+    {
+      "out_key": "multiplier",
+      "value": 1.0
+    },
+    {
+      "out_key": "resolution",
+      "value": 224
+    },
+    {
+      "out_key": "convolution_method",
+      "value": "DIRECT"
+    },
+    {
+      "out_key": "accuracy_top1",
+      "value": 0.45
+    },
+    {
+      "out_key": "accuracy_top5",
+      "value": 0.65
+    }
+  ],
+  "tags": "mlperf-inference-mobilenets-demo",
+  "update_html": {
+    "ck_html_title": "ML/SW/HW DSE dashboard",
+    "ck_html_title_main": "ML/SW/HW DSE dashboard",
+    "ck_html_title_note": "<center><i>Demo</i></center>\n"
+  }
+}
