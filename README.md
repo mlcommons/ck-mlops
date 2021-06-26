@@ -1,4 +1,4 @@
-# CK repository for AI and ML systems
+# CK repository with automations for AI and ML systems
 
 [![compatibility](https://github.com/ctuning/ck-guide-images/blob/master/ck-compatible.svg)](https://github.com/ctuning/ck)
 [![automation](https://github.com/ctuning/ck-guide-images/blob/master/ck-artifact-automated-and-reusable.svg)](https://cTuning.org/ae)
@@ -17,8 +17,7 @@ These components are also uploaded to the [cKnowledge.io platform](https://cKnow
 similar to PyPI to help you search for specific components and see their connections!*
 
 This repository contains a collection of **stable** CK components 
-for ML systems in the [CK format](https://arxiv.org/pdf/2011.01149.pdf)
-hosted by the [non-profit cTuning foundation](https://cTuning.org):
+for AI and ML systems in the [CK format](https://arxiv.org/pdf/2011.01149.pdf):
 
 * CK modules with automation actions: [[list](https://github.com/ctuning/ck/tree/master/ck/repo/module)]
 * CK program workflows: [[list]( https://cKnowledge.io/programs )]
