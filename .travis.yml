@@ -79,6 +79,7 @@ install:
     - ck install package --tags=lib,python-package,pillow                           # avoid detection by force-installing the package
     - ck install package:lib-tensorflow-1.13.1-cpu                                  # avoid manual selection
     - ck install package:imagenet-2012-val-min                                      # avoid manual selection
+    - ck install package --tags=imagenet,2012,aux,from.dividiti                     # (from.berkeley doesn't work)
     - ck install package --tags=dataset,imagenet,preprocessed,using-pillow,first.20 # we only need a short preprocessed subset
     - ck install package --quiet --tags=lib,python-package,onnx
     - ck install package --quiet --tags=model,image-classification,onnx,mobilenet,non-quantized,nchw,downloaded  # MobileNet ONNX model, downloaded
