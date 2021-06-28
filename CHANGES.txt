@@ -1,3 +1,6 @@
+20210628:
+  * added latest tags to the package:lib-tensorflow-source
+
 20210626:
   * added wfe:result template for the new CK dashboard
   * added result.cfg to configure new CK dashboards:
