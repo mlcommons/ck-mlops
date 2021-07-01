@@ -58,6 +58,14 @@ def load_image(image_path,            # Full path to processing image
     img = Image.fromarray(img)  # numpy image to PIL image
     img = resize_with_aspectratio(img)
     img = center_crop(img)
+
+    # This line fails with 
+    #     return array(a, dtype, copy=False, order=order)
+    #   TypeError: __array__() takes 1 positional argument but 2 were given
+    #img = np.asarray(img, dtype=data_type)
+
+    # Workaround
+    img = np.asarray(img)
     img = np.asarray(img, dtype=data_type)
 
     # Convert to BGR
