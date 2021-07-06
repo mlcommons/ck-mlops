@@ -1,0 +1,31 @@
+{
+  "backup_data_uid": "045c8b8be3d4a211",
+  "data_name": "mlcube",
+  "no_compile": "yes",
+  "no_target_file": "yes",
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "default": {
+      "ignore_return_code": "no",
+      "run_time": {
+        "run_cmd_main": "mlcube $<<CK_MLCUBE_OPTS>>$",
+        "run_output_files": []
+      }
+    }
+  },
+  "run_deps": {
+    "lib-python-mlcube": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Python MLCube library",
+      "sort": 10,
+      "tags": "lib,python-package,mlcube"
+    }
+  },
+  "run_vars": {},
+  "tags": [
+    "lang-python",
+    "mlcube"
+  ]
+}

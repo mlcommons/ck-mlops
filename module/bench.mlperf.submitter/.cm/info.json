@@ -1,0 +1,15 @@
+{
+  "backup_data_uid": "e6a349d5bb2efa09",
+  "backup_module_uid": "032630d041b4fd8a",
+  "backup_module_uoa": "module",
+  "control": {
+    "engine": "CK",
+    "iso_datetime": "2021-07-06T16:25:11.709903",
+    "version": [
+      "2",
+      "5",
+      "5"
+    ]
+  },
+  "data_name": "bench.mlperf.submitter"
+}
