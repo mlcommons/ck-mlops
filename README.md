@@ -9,6 +9,22 @@ Windows: [![Windows Build status](https://ci.appveyor.com/api/projects/status/4r
 
 [![DOI](https://zenodo.org/badge/311647831.svg)](https://zenodo.org/badge/latestdoi/311647831)
 
+## Maintainers
+
+* [cTuning foundation](https://cTuning.org)
+* [OctoML.ai](https://OctoML.ai)
+
+*Contact: grigori@octoml.ai*
+
+## News
+
+* [Project website](https://cKnowledge.org)
+* [CK-powered MLPerf&trade; benchmark automation](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/README.md)
+* [Community projects to improve and redesign CK](https://github.com/ctuning/ck/blob/master/incubator/README.md)
+* [AI/ML repository with all aggregated CK components](https://github.com/ctuning/ai)
+* [OctoML's CK-based MLOps/MLPerf repository](https://github.com/octoml/mlops)
+
+## Overview
 
 *There are numerous CK components spread across numerous GitHub repositories. 
 Based on the feedback from the community, we have created this repository 
@@ -16,7 +32,7 @@ to collect all the main CK components related to AI and ML Systems in one place.
 These components are also uploaded to the [cKnowledge.io platform](https://cKnowledge.io) 
 similar to PyPI to help you search for specific components and see their connections!*
 
-This repository contains a collection of **stable** CK components 
+This repository contains a collection of **stable** CK components (automation recipes and workflows)
 for AI and ML systems in the [CK format](https://arxiv.org/pdf/2011.01149.pdf):
 
 * CK modules with automation actions: [[list](https://github.com/ctuning/ck/tree/master/ck/repo/module)]
