@@ -210,21 +210,153 @@ def ximport(i):
                                meta_perf=r['meta']
 
                                # Reading power
+                               pr=os.path.join(p_scenario, 'performance', 'power')
+                               found_power=False
+                               if os.path.isdir(pr):
+                                  r=get_power({'path_power':pr,
+                                               'path_perf':pp,
+                                               'scenario_dir':lscenario})
+                                  if r['return']>0: return r
 
+                                  raw_meta_power=r['raw_meta']
+                                  meta_power=r['meta']
+
+                                  found_power=True
 
                                # Check associated measurements
                                p_measurements=os.path.join(p_submitter, 'measurements', system, informal_model, scenario)
 
                                if not os.path.isdir(p_measurements):
-                                  ck.out('xyz1')
+                                  ck.out('               WARNING: no measurement directory: '+p_measurements)
+                                  continue
+
+                               r=get_measurement({'path':p_measurements})
+                               if r['return']>0: return r
+
+                               raw_meta_measurements=r['raw_meta']
+                               meta_measurements=r['meta']
+
+                               if meta_measurements.get('problem', False)==True:
+                                  ck.out('               WARNING: problem with measurement directory: '+p_measurements+' ('+meta_measurements['problem_str']+')')
+                                  continue
 
                                # Merging all meta
+
+
 
                                # Recording results
 
 
+
+
     return {'return':0}
 
+##############################################################################
+def get_measurement(i):
+    path=i['path']
+
+    raw_meta={}
+    meta={}
+
+    json_files=[]
+    for f in os.listdir(path):
+        if f.endswith('.json') and f!='config.json':
+           json_files.append(os.path.join(path,f))
+
+    if len(json_files)==0 or len(json_files)>1:
+       # Very rare case
+       meta['problem']=True
+       meta['problem_str']='either couldn\'t find measurements files or found more than 1'
+    else:
+       # Load json file
+       r=ck.load_json_file({'json_file':json_files[0]})
+       if r['return']>0: return r
+
+       raw_meta=r['dict']
+       meta=raw_meta
+
+    return {'return':0, 'raw_meta':raw_meta, 'meta':meta}
+
+##############################################################################
+def get_power(i):
+    # Based on parser from submission-checker.py
+
+    import datetime
+    import json
+
+    path_power=i['path_power']
+    path_perf=i['path_perf']
+
+    scenario_dir=i.get('scenario_dir','')
+
+    datetime_format = '%m-%d-%Y %H:%M:%S.%f'
+
+    raw_meta={}
+    meta={}
+
+    p1=os.path.join(path_power, 'server.json')
+    r=ck.load_json_file({'json_file':p1})
+    if r['return']>0: return r
+
+    server_timezone=datetime.timedelta(seconds=r['dict']["timezone"])
+
+    p2=os.path.join(path_power, 'client.json')
+    r=ck.load_json_file({'json_file':p2})
+    if r['return']>0: return r
+
+    client_timezone=datetime.timedelta(seconds=r['dict']["timezone"])
+
+    # Log
+    p3=os.path.join(path_perf, 'mlperf_log_detail.txt')
+
+    r=ck.load_text_file({'text_file':p3, 'split_to_list':'yes'})
+    if r['return']>0: return r
+
+    lst=r['lst']
+
+    mlperf_log={}
+
+    for l in lst:
+        j1=l.find('{')
+        if j1>=0:
+           j2=l.rfind('}')
+           x=l[j1:j2+1]
+           y=json.loads(x)
+
+        mlperf_log[y['key']]=y['value']
+
+    power_begin = datetime.datetime.strptime(mlperf_log["power_begin"], datetime_format) + client_timezone
+    power_end = datetime.datetime.strptime(mlperf_log["power_end"], datetime_format) + client_timezone
+
+    # Check spl.txt
+    p4=os.path.join(path_perf, 'spl.txt')
+
+    r=ck.load_text_file({'text_file':p4, 'split_to_list':'yes'})
+    if r['return']>0: return r
+
+    lst=r['lst']
+
+    # Similar to parser from submission-checker.py
+    power_list=[]
+    for l in lst:
+        if l!='':
+           timestamp = datetime.datetime.strptime(l.split(",")[1], datetime_format)+server_timezone
+           if timestamp>power_begin and timestamp<power_end:
+              power_list.append(float(l.split(",")[3]))
+
+    avg_power = sum(power_list) / len(power_list)
+    if scenario_dir in ["offline", "server"]:
+        meta['power']=avg_power
+    elif scenario_dir in ['multistream']:
+        power_duration = (power_end - power_begin).total_seconds()
+        num_samples = mlperf_log["generated_query_count"] * mlperf_log["generated_samples_per_query"]
+        meta['power'] = avg_power * power_duration / num_samples
+    elif scenario_dir in ["singlestream"]:
+        power_duration = (power_end - power_begin).total_seconds()
+        num_samples = mlperf_log["result_qps_with_loadgen_overhead"] * power_duration
+        meta['power'] = avg_power * power_duration / num_samples
+
+    return {'return':0, 'raw_meta':raw_meta, 'meta':meta}
 
 ##############################################################################
 def get_accuracy(i):
