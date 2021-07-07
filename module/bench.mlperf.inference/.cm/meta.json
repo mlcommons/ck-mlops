@@ -13,10 +13,10 @@
     "closed"
   ],
   "scenarios": [
-    "SingleStream",
-    "Server",
-    "Offline",
-    "MultiStream"
+    "singlestream",
+    "server",
+    "offline",
+    "multistream"
   ],
   "module_deps": {
     "bench.mlperf.submitter": "e6a349d5bb2efa09",
