@@ -80,6 +80,7 @@ def ximport(i):
 
         ver=ie.get("PACKAGE_VERSION",'')
 
+        ck.out('************************************************************')
         ck.out('MLPerf inference results: '+ver)
 
         path_results=m.get('env',{}).get('CK_ENV_MLPERF_INFERENCE_RESULTS','')
@@ -130,6 +131,133 @@ def ximport(i):
                 r=ck.access(ii)
                 if r['return']>0: return r
 
-                
+                p_submitter=os.path.join(p, submitter)
+
+                p_systems=os.path.join(p_submitter, 'systems')
+
+                # Sometimes directory is empty - skip
+                if not os.path.isdir(p_systems):
+                   ck.out('      WARNING: no systems found!')
+                   continue
+
+                r=get_systems({'submitter':submitter,
+                               'path':p_systems,
+                               'target_repo':target_repo})
+                if r['return']>0: return r
+
+                # systems with dict 
+                d_systems=r['d_systems']
+
+                # Go through systems
+                ck.out('')
+                ck.out('      *** Searching for measurements and results ***')
+                for system in d_systems:
+                    ck.out('         '+system)
+
+                    # Results may not be there (added system but didn't submit results)
+                    p_results=os.path.join(p_submitter, 'results', system)
+
+                    if not os.path.isdir(p_results):
+                       ck.out('           WARNING: results not found')
+                       continue
+
+                    # List ML models
+                    models=os.listdir(p_results)
+
+                    for informal_model in models:
+                        p_model=os.path.join(p_results, informal_model)
+                        if not os.path.isdir(p_model):
+                           continue
+
+                        ck.out('            Informal ML model name: '+informal_model)
+
+                        # List scenarios
+                        for scenario in cfg['scenarios']:
+                            p_scenario=os.path.join(p_model, scenario)
+                            if os.path.isdir(p_scenario):
+                               ck.out('              Scenario: '+scenario)
+
+                               # Checking performance (first run only - other runs are not needed from v1.0)
+                               pp=os.path.join(p_scenario, 'performance', 'run_1')
+                               if not os.path.isdir(pp):
+                                  ck.out('               WARNING: no performance results')
+                                  continue
+
+                               r=get_performance({'path':pp})
+                               if r['return']>0: return r
+
+                               # Reading accuracy
+
+                               # Reading power
+
+
+                               # Check associated measurements
+                               p_measurements=os.path.join(p_submitter, 'measurements', system, informal_model, scenario)
+
+                               if not os.path.isdir(p_measurements):
+                                  ck.out('xyz1')
+
+
+
 
     return {'return':0}
+
+def get_performance(i):
+    path=i['path']
+
+    filename=os.path.join(path, 'mlperf_log_summary.txt')
+
+    r=ck.load_text_file({'text_file':filename, 'split':'yes'})
+    if r['return']>0: return r
+    print (r)
+    input('xyz')
+
+
+    return {'return':0}
+
+def get_systems(i):
+    submitter=i['submitter']
+    p=i['path']
+    target_repo=i['target_repo']
+
+    systems=os.listdir(p)
+
+    d_systems={}
+
+    for system in systems:
+        if system.endswith('.json'):
+
+           system_name=system[:-5]
+
+           ck.out('      System: '+system_name)
+
+           # Load this file
+           ps=os.path.join(p, system)
+
+           r=ck.load_json_file({'json_file':ps})
+           if r['return']>0: return r
+
+           ds=r['dict']
+
+           d_systems[system_name]=ds
+
+           # Add system (should be unique and global)
+           ii={'action':'load',
+               'module_uoa':cfg['module_deps']['bench.mlperf.system'],
+               'data_uoa':system_name,
+               'repo_uoa':target_repo}
+           r=ck.access(ii)
+           if r['return']>0 and r['return']!=16: return r
+
+           if r['return']==0:
+              ck.out('                 ALREADY EXISTS')
+              continue
+
+           ii['action']='add'
+           ii['dict']={'desc':ds}
+           ii['sort_keys']='yes'
+           ii['ignore_update']='yes'
+           r=ck.access(ii)
+           if r['return']>0: return r
+
+    return {'return':0, 'd_systems':d_systems}
