@@ -1,0 +1,12 @@
+{
+  "actions": {
+    "configure": {
+      "desc": "configure MLCube instance"
+    },
+    "run": {
+      "desc": "run MLCube instance"
+    }
+  },
+  "actions_redirect": {},
+  "desc": "CK front-end for MLCube(tm)"
+}

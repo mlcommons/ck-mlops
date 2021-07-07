@@ -1,3 +1,7 @@
+20210706:
+  * added mlcube
+  * started working on a community version of the MLPerf inference submission system
+
 20210628:
   * added latest tags to the package:lib-tensorflow-source
 

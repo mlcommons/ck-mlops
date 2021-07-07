@@ -1,0 +1,15 @@
+{
+  "backup_data_uid": "f5970118779ec9c7",
+  "backup_module_uid": "9e4b6602e644a3a8",
+  "backup_module_uoa": "target",
+  "control": {
+    "engine": "CK",
+    "iso_datetime": "2021-05-14T15:32:36.759185",
+    "version": [
+      "2",
+      "0",
+      "7"
+    ]
+  },
+  "data_name": "aws-demo"
+}

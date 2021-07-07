@@ -36,7 +36,10 @@ def load_labels(labels_filepath):
 def load_and_resize_image(image_filepath, height, width):
     pillow_img = Image.open(image_filepath).resize((width, height)) # sic! The order of dimensions in resize is (W,H)
 
-    input_data = np.float32(pillow_img)
+    # Grigori fixed below
+    #input_data = np.float32(pillow_img)
+    input_data=np.asarray(pillow_img)
+    input_data=np.asarray(input_data, np.float32)
 
     # Normalize
     if normalize_data_bool:
