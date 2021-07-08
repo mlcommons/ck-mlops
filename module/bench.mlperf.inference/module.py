@@ -21,10 +21,10 @@ import os
 
 #from ck_8b543d3874cdfdb0 import ...
 
+line='************************************************************'
+
 ##############################################################################
 # Initialize module
-
-
 
 def init(i):
     """
@@ -46,7 +46,8 @@ def init(i):
 def ximport(i):
     """
     Input:  {
-              (target_repo) - where to record
+              (target_repo) - repo where to record
+              (target_data) - data where to record
             }
 
     Output: {
@@ -58,6 +59,7 @@ def ximport(i):
     """
 
     target_repo=i.get('target_repo','')
+    target_data=i.get('target_data','')
 
     # Query envs with MLPerf inference results
     r=ck.access({'action':'search',
@@ -73,6 +75,8 @@ def ximport(i):
 
     submitters=[]
 
+    ck_submitters=[]
+
     for l in lst:
         p=l['path']
         m=l['meta']
@@ -82,7 +86,7 @@ def ximport(i):
 
         ver=ie.get("PACKAGE_VERSION",'')
 
-        ck.out('************************************************************')
+        ck.out(line)
         ck.out('MLPerf inference results: '+ver)
 
         path_results=m.get('env',{}).get('CK_ENV_MLPERF_INFERENCE_RESULTS','')
@@ -156,6 +160,8 @@ def ximport(i):
                 for system in d_systems:
                     ck.out('         '+system)
 
+                    raw_meta_system=d_systems[system]
+
                     # Results may not be there (added system but didn't submit results)
                     p_results=os.path.join(p_submitter, 'results', system)
 
@@ -206,8 +212,8 @@ def ximport(i):
                                                'scenario_dir':lscenario})
                                if r['return']>0: return r
 
-                               raw_meta_perf=r['raw_meta']
-                               meta_perf=r['meta']
+                               raw_meta_acc=r['raw_meta']
+                               meta_acc=r['meta']
 
                                # Reading power
                                pr=os.path.join(p_scenario, 'performance', 'power')
@@ -241,13 +247,79 @@ def ximport(i):
                                   continue
 
                                # Merging all meta
+                               result={}
 
+                               result.update(raw_meta_system)
 
+                               result.update(raw_meta_perf)
+                               result.update(meta_perf)
+
+                               result.update(raw_meta_acc)
+                               result.update(meta_acc)
+
+                               if found_power:
+                                  result.update(raw_meta_power)
+                                  result.update(meta_power)
+
+                               result.update(raw_meta_measurements)
+                               result.update(meta_measurements)
+
+                               result['mlperf_version']=ver
+
+                               # Convert to int/float
+                               for k in result:
+                                   value=result[k]
+
+                                   try:
+                                      if '.' in value:
+                                         value = float(value)
+                                      else:
+                                         if value=='true' or value=='false':
+                                            value = bool(value)
+                                         else:
+                                            value = int(value)
+                                   except Exception as e:
+                                      pass
+
+                                   result[k]=value
+
+                               # Add extras / calculate ratios
+                               # Check notes
+                               ck_used=False
+                               notes=result.get('sw_notes','').lower()
+                               if 'collective knowledge' in notes or ' ck ' in notes or submitter.lower() in ['octoml','dividiti','krai']:
+                                  ck_used=True
+                                  if submitter=='Dividiti': submitter='dividiti'
+                                  if submitter not in ck_submitters:
+                                     ck_submitters.append(submitter)
+                               result['ck_used']=ck_used
 
                                # Recording results
+                               task=result.get('task','').replace(' ','-').lower()
+                               system_type=result.get('system_type','datacenter') # old format (v0.5) - datacenter
 
+                               if task!='' and system_type!='':
+                                  if target_data!='':
+                                     duoa=target_data
+                                  else:
+                                     duoa='mlperf-inference-all-'+task+'-'+system_type+'-'+lscenario
 
+                                  tags='bench,mlperf,inference,mlperf-inference,all,'+task+','+system_type+','+lscenario
 
+                                  ii={'action':'push',
+                                      'module_uoa':cfg['module_deps']['result'],
+                                      'dict':result,
+                                      'user':submitter,
+                                      'repo_uoa':target_repo,
+                                      'data_uoa':duoa,
+                                      'tags':tags}
+                                  r=ck.access(ii)
+                                  if r['return']>0: return r
+
+#    ck.out(line)
+#    ck.out('CK automation was used by:')
+#    for cks in ck_submitters:
+#        ck.out(' * '+cks)
 
     return {'return':0}
 
@@ -346,15 +418,15 @@ def get_power(i):
 
     avg_power = sum(power_list) / len(power_list)
     if scenario_dir in ["offline", "server"]:
-        meta['power']=avg_power
+        meta['characteristics.power']=avg_power
     elif scenario_dir in ['multistream']:
         power_duration = (power_end - power_begin).total_seconds()
         num_samples = mlperf_log["generated_query_count"] * mlperf_log["generated_samples_per_query"]
-        meta['power'] = avg_power * power_duration / num_samples
+        meta['characteristics.power'] = avg_power * power_duration / num_samples
     elif scenario_dir in ["singlestream"]:
         power_duration = (power_end - power_begin).total_seconds()
         num_samples = mlperf_log["result_qps_with_loadgen_overhead"] * power_duration
-        meta['power'] = avg_power * power_duration / num_samples
+        meta['characteristics.power'] = avg_power * power_duration / num_samples
 
     return {'return':0, 'raw_meta':raw_meta, 'meta':meta}
 
@@ -389,9 +461,9 @@ def get_accuracy(i):
            numbers=re.findall(r"[-+]?\d*\.\d+|\d+", l)
 
            if len(numbers)==3:
-              meta['accuracy']=numbers[0]
-              meta['good']=numbers[1]
-              meta['total']=numbers[2]
+              meta['characteristics.accuracy']=numbers[0]
+              meta['characteristics.good']=numbers[1]
+              meta['characteristics.total']=numbers[2]
 
            found=True
            break
@@ -403,7 +475,7 @@ def get_accuracy(i):
            numbers=re.findall(r"[-+]?\d*\.\d+|\d+", l)
 
            if len(numbers)==1:
-              meta['blue']=numbers[0]
+              meta['characteristics.blue']=numbers[0]
 
            found=True
            break
@@ -415,7 +487,7 @@ def get_accuracy(i):
            numbers=re.findall(r"[-+]?\d*\.\d+|\d+", l)
 
            if len(numbers)==1:
-              meta['mAP']=numbers[0]
+              meta['characteristics.mAP']=numbers[0]
 
            found=True
            break
@@ -427,8 +499,8 @@ def get_accuracy(i):
            numbers=re.findall(r"[-+]?\d*\.\d+|\d+", l)
 
            if len(numbers)==2:
-              meta['exact_match']=numbers[0]
-              meta['f1']=numbers[1]
+              meta['characteristics.exact_match']=numbers[0]
+              meta['characteristics.f1']=numbers[1]
 
            found=True
            break
@@ -440,10 +512,10 @@ def get_accuracy(i):
            numbers=re.findall(r"[-+]?\d*\.\d+|\d+", l)
 
            if len(numbers)==4:
-              meta['mean']=numbers[0]
-              meta['whole tumor']=numbers[1]
-              meta['tumor core']=numbers[2]
-              meta['enhancing tumor']=numbers[3]
+              meta['characteristics.mean']=numbers[0]
+              meta['characteristics.whole tumor']=numbers[1]
+              meta['characteristics.tumor core']=numbers[2]
+              meta['characteristics.enhancing tumor']=numbers[3]
 
            found=True
            break
@@ -454,8 +526,8 @@ def get_accuracy(i):
            numbers=re.findall(r"[-+]?\d*\.\d+|\d+", l)
 
            if len(numbers)==2:
-              meta['word error rate']=numbers[0]
-              meta['accuracy']=numbers[1]
+              meta['characteristics.word error rate']=numbers[0]
+              meta['characteristics.accuracy']=numbers[1]
 
            found=True
            break
@@ -466,7 +538,7 @@ def get_accuracy(i):
            numbers=re.findall(r"[-+]?\d*\.\d+|\d+", l)
 
            if len(numbers)==1:
-              meta['AUC']=numbers[0]
+              meta['characteristics.AUC']=numbers[0]
 
            found=True
            break
@@ -527,28 +599,32 @@ def get_performance(i):
           problem=True
           sproblem='characteristic is not found'
 
-       meta['characteristic.samples_per_second']=v
+       meta['characteristics.samples_per_second']=v
     elif scenario=='server':
        v=raw_meta.get('Scheduled samples per second', None)
        if v==None:
           problem=True
           sproblem='characteristic is not found'
 
-       meta['characteristic.scheduled_queries_per_second']=v
+       meta['characteristics.scheduled_queries_per_second']=v
     elif scenario=='singlestream':
        v=raw_meta.get('90th percentile latency (ns)', None)
        if v==None:
           problem=True
           sproblem='characteristic is not found'
 
-       meta['characteristic.90th_percentile_latency_ns']=v
+       v=float(v)
+       meta['characteristics.90th_percentile_latency_ns']=v
+       meta['characteristics.90th_percentile_latency_us']=v/1e3
+       meta['characteristics.90th_percentile_latency_ms']=v/1e6
+       meta['characteristics.90th_percentile_latency_s']=v/1e9
     elif scenario=='multistream':
        v=raw_meta.get('Samples per query', None)
        if v==None:
           problem=True
           sproblem='characteristic is not found'
 
-       meta['characteristic.samples_per_query']=v
+       meta['characteristics.samples_per_query']=v
 
     meta['Scenario']=scenario
     meta['problem']=problem
