@@ -361,15 +361,100 @@ def ximport(i):
                                      result['characteristics.samples_per_query.normalized_per_processor']=v/normalize_processors
                                      result['characteristics.samples_per_query.normalized_per_core']=v/normalize_cores
 
+
+                               # Check dataset, modle and accuracy
+                               system_type=result.get('system_type','datacenter') # old format (v0.5) - datacenter
+                               task=result.get('task','').replace(' ','-').lower()
+                               xtask=task.replace('-',' ')
+                               result['task2']=xtask
+
+                               if task=='' or system_type=='':
+                                  continue
+
+                               dataset=''
+                               if task=='image-classification':
+                                  dataset='ImageNet 2012'
+                                  dataset_link='https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/datasets/imagenet2012.md'
+                                  formal_model='resnet50-v1.5'
+                                  formal_model_link='https://github.com/octoml/mlops/tree/main/package, https://github.com/ctuning/ai/tree/main/package'
+                                  accuracy=99.0
+
+                                  if ver=='v0.5' and 'mobilenet' in informal_model:
+                                     formal_model='mobilenets-v1'
+
+                               elif task=='object-detection':
+                                  dataset_link='https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/datasets/coco2017.md'
+                                  formal_model_link='https://github.com/octoml/mlops/tree/main/package, https://github.com/ctuning/ai/tree/main/package'
+
+                                  dataset='COCO 2017 (1200x1200)'
+                                  formal_model='ssd-resnet34'
+                                  accuracy=99.0
+
+                                  if system_type=='edge' or 'ssd' in informal_model or 'mobilenet' in informal_model:
+                                     dataset='COCO 2017 (300x300)'
+                                     formal_model='ssd-mobilenet'
+
+                               elif task=='image-segmentation':
+                                  dataset='BraTS 2019'
+                                  dataset_link='https://www.med.upenn.edu/cbica/brats2019/data.html'
+                                  formal_model_link=''
+                                  formal_model='3d-unet'
+                                  accuracy=99.9 if '99.9' in informal_model else 99.0
+
+                               elif task=='speech-recognition':
+                                  dataset='LibriSpeech'
+                                  dataset_link=''
+                                  formal_model_link=''
+                                  formal_model='rnn-t'
+                                  accuracy=99.0
+
+                               elif task=='nlp':
+                                  dataset='SQuAD v1.1'
+                                  dataset_link=''
+                                  formal_model_link=''
+                                  formal_model='bert'
+                                  accuracy=99.9 if '99.9' in informal_model else 99.0
+
+                               elif task=='nmt':
+                                  dataset='WMT E-G'
+                                  dataset_link=''
+                                  formal_model_link=''
+                                  formal_model='nmt'
+                                  accuracy=99.0
+
+                               elif task=='recommendation':
+                                  dataset='1TB Click Logs'
+                                  dataset_link=''
+                                  formal_model_link=''
+                                  formal_model='dlrm'
+                                  accuracy=99.9 if '99.9' in informal_model else 99.0
+
+                               else:
+                                  return {'return':1, 'error':'task ('+task+') is not recognized'}
+
+                               result['dataset']=dataset
+                               result['dataset_link']=dataset_link
+
+                               result['formal_model']=formal_model
+                               result['formal_model_link']=formal_model_link
+
+                               result['formal_model_accuracy']=accuracy
+
+                               result['informal_model']=informal_model
+                               if division=='open':
+                                  result['formal_model']=informal_model
+
+                               # Link to submitter and system in CK
+                               result['submitter_link']='https://github.com/ctuning/ck-mlperf-inference/tree/main/bench.mlperf.submitter/'+submitter
+                               result['system_link']='https://github.com/ctuning/ck-mlperf-inference/tree/main/bench.mlperf.system/'+system
+                               result['ck_system']=system
+
                                # Generate result UID
                                r=ck.gen_uid(i)
                                result['uid']=r['data_uid']
 
-                               # Recording results
-                               task=result.get('task','').replace(' ','-').lower()
-                               xtask=task.replace('-',' ')
-                               result['task2']=xtask
-                               system_type=result.get('system_type','datacenter') # old format (v0.5) - datacenter
+                               ###############################################################################
+                               # Recording results-
 
                                if task!='' and system_type!='':
                                   if target_data!='':
@@ -385,12 +470,17 @@ def ximport(i):
                                       'user':submitter,
                                       'repo_uoa':target_repo,
                                       'data_uoa':duoa,
-                                      'tags':tags}
+                                      'tags':tags+',raw'}
+                                  r=ck.access(ii)
+                                  if r['return']>0: return r
+
+                                  ii['data_uoa']=duoa+'-pareto'
+                                  ii['tags']=tags+',pareto'
                                   r=ck.access(ii)
                                   if r['return']>0: return r
 
                                   # Create associated graph config
-                                  fconfig='config-'+duoa+'.json'
+                                  fconfig='config-'+duoa+'-raw.json'
 
                                   dconfig={
                                     "data_config": {
@@ -408,7 +498,7 @@ def ximport(i):
                                   }
 
                                   dconfig['id']=duoa
-                                  dconfig['tags']='mlperf-inference,all,'+task+','+system_type+','+lscenario
+                                  dconfig['tags']='mlperf-inference,all,'+task+','+system_type+','+lscenario+',raw'
                                   dconfig['name']='MLPerf&trade; inference benchmark; '+xtask+'; '+system_type+'; '+lscenario
 
                                   # Accuracy depending on a task
@@ -527,6 +617,16 @@ def ximport(i):
                                   dconfig['data_config']['dimensions']+=dims
                                   dconfig['data_config']['table_view']+=tv
                                   dconfig['data_config']['raw_config']['tooltipValues']+=tt
+
+                                  ff=os.path.join(cur_dir, fconfig)
+                                  r=ck.save_json_to_file({'json_file':fconfig, 'dict':dconfig, 'sort_keys':'yes'})
+                                  if r['return']>0: return r
+
+                                  fconfig='config-'+duoa+'-pareto.json'
+
+                                  dconfig['id']=duoa+'-pareto'
+                                  dconfig['tags']='mlperf-inference,all,'+task+','+system_type+','+lscenario+',pareto'
+                                  dconfig['name']='MLPerf&trade; inference benchmark; '+xtask+'; '+system_type+'; '+lscenario+' (Pareto per submitter)'
 
                                   ff=os.path.join(cur_dir, fconfig)
                                   r=ck.save_json_to_file({'json_file':fconfig, 'dict':dconfig, 'sort_keys':'yes'})
@@ -689,16 +789,14 @@ def get_accuracy(i):
     # Attempt to automatically detect the type of accuracy
     found=False
     for l in lst:
-        if 'accuracy' in l and 'good' in l and 'total' in l:
-           # image classification
-           meta['task']='image classification'
+
+        if 'AUC=' in l:
+           meta['task']='recommendation'
 
            numbers=re.findall(r"[-+]?\d*\.\d+|\d+", l)
 
-           if len(numbers)==3:
-              meta['characteristics.accuracy']=numbers[0]
-              meta['characteristics.good']=numbers[1]
-              meta['characteristics.total']=numbers[2]
+           if len(numbers)==1:
+              meta['characteristics.AUC']=numbers[0]
 
            found=True
            break
@@ -767,16 +865,20 @@ def get_accuracy(i):
            found=True
            break
 
-        elif 'AUC=' in l:
-           meta['task']='recommendation'
+        elif 'accuracy' in l and 'good' in l and 'total' in l:
+           # image classification (must be at the end since has similar keys for AUC in v0.7
+           meta['task']='image classification'
 
            numbers=re.findall(r"[-+]?\d*\.\d+|\d+", l)
 
-           if len(numbers)==1:
-              meta['characteristics.AUC']=numbers[0]
+           if len(numbers)==3:
+              meta['characteristics.accuracy']=numbers[0]
+              meta['characteristics.good']=numbers[1]
+              meta['characteristics.total']=numbers[2]
 
            found=True
            break
+
 
     if not found:
        meta['problem']=True
