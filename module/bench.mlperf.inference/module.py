@@ -58,6 +58,8 @@ def ximport(i):
 
     """
 
+    cur_dir=os.getcwd()
+
     target_repo=i.get('target_repo','')
     target_data=i.get('target_data','')
 
@@ -82,12 +84,19 @@ def ximport(i):
         m=l['meta']
 
         cus=m.get('customize',{})
+        install_env=cus.get('install_env',{})
+        package_url=install_env.get('PACKAGE_URL','')
+
+        package_url_tree=package_url+'/tree/master'
+
+        cus=m.get('customize',{})
         ie=cus.get('install_env',{})
 
         ver=ie.get("PACKAGE_VERSION",'')
 
         ck.out(line)
         ck.out('MLPerf inference results: '+ver)
+        ck.out('Package URL: '+package_url)
 
         path_results=m.get('env',{}).get('CK_ENV_MLPERF_INFERENCE_RESULTS','')
         ck.out('Path results: '+path_results)
@@ -270,6 +279,14 @@ def ximport(i):
                                for k in result:
                                    value=result[k]
 
+                                   if k=='host_processor_core_count' and type(value)==str and value!='' and value!=None:
+                                      # Process special cases like "4 (big); 4 (LITTLE)" (Arm)
+                                      numbers=re.findall(r"[-+]?\d*\.\d+|\d+", value)
+
+                                      value=0
+                                      for n in numbers:
+                                          value+=int(n)
+
                                    try:
                                       if '.' in value:
                                          value = float(value)
@@ -283,6 +300,13 @@ def ximport(i):
 
                                    result[k]=value
 
+                               # Add code/detail notes
+                               note_details=package_url_tree+'/'+division+'/'+submitter+'/results/'+system
+                               note_code=package_url_tree+'/'+division+'/'+submitter+'/code'
+
+                               result['note_details']=note_details
+                               result['note_code']=note_code
+
                                # Add extras / calculate ratios
                                # Check notes
                                ck_used=False
@@ -294,8 +318,57 @@ def ximport(i):
                                      ck_submitters.append(submitter)
                                result['ck_used']=ck_used
 
+                               # Check cores and normalize
+                               hp=result.get('host_processors_per_node','')
+                               if hp!='' and hp!=None:
+                                  hpc=result.get('host_processor_core_count','')
+                                  if hpc!='' and hpc!=None:
+                                     total_cores=hp*hpc
+                                     result['total_cores']=total_cores
+
+                               # Normalize per scenario for Processor vs Accelerator
+                               use_accelerator=True
+                               x=result.get('accelerator_model_name','')
+                               y=result.get('accelerators_per_node','')
+                               if x==None or x=='' or x=='-' or y==None or y=='' or y=='0' or y==0:
+                                  use_accelerator=False
+                               result['use_accelerator']=use_accelerator
+
+                               normalize_processors=result.get('accelerators_per_node',1) if use_accelerator else result.get('host_processors_per_node',1)
+                               normalize_cores=result.get('accelerators_per_node',1) if use_accelerator else result.get('total_cores',1)
+
+                               result['normalize_processors']=normalize_processors
+                               result['normalize_cores']=normalize_cores
+
+                               power=result.get('characteristics.power',None)
+                               if power!=None:
+                                  result['characteristics.power.normalized_per_processor']=power/normalize_processors
+                                  result['characteristics.power.normalized_per_core']=power/normalize_cores
+
+                               if lscenario=="server":
+                                  v=result.get('characteristics.scheduled_queries_per_second',None)
+                                  if v!=None:
+                                     result['characteristics.scheduled_queries_per_second.normalized_per_processor']=v/normalize_processors
+                                     result['characteristics.scheduled_queries_per_second.normalized_per_core']=v/normalize_cores
+                               elif lscenario=="offline":
+                                  v=result.get('characteristics.samples_per_second',None)
+                                  if v!=None:
+                                     result['characteristics.samples_per_second.normalized_per_processor']=v/normalize_processors
+                                     result['characteristics.samples_per_second.normalized_per_core']=v/normalize_cores
+                               elif lscenario=="multistream":
+                                  v=result.get('characteristics.samples_per_query',None)
+                                  if v!=None:
+                                     result['characteristics.samples_per_query.normalized_per_processor']=v/normalize_processors
+                                     result['characteristics.samples_per_query.normalized_per_core']=v/normalize_cores
+
+                               # Generate result UID
+                               r=ck.gen_uid(i)
+                               result['uid']=r['data_uid']
+
                                # Recording results
                                task=result.get('task','').replace(' ','-').lower()
+                               xtask=task.replace('-',' ')
+                               result['task2']=xtask
                                system_type=result.get('system_type','datacenter') # old format (v0.5) - datacenter
 
                                if task!='' and system_type!='':
@@ -316,10 +389,172 @@ def ximport(i):
                                   r=ck.access(ii)
                                   if r['return']>0: return r
 
+                                  # Create associated graph config
+                                  fconfig='config-'+duoa+'.json'
+
+                                  dconfig={
+                                    "data_config": {
+                                      "dimensions": [
+                                      ],
+                                      "raw_config": {
+                                        "tooltipValues": [
+                                        ],
+                                        "xVariationVisible": False,
+                                        "yVariationVisible": False
+                                      },
+                                      "table_view": [
+                                      ]
+                                    }
+                                  }
+
+                                  dconfig['id']=duoa
+                                  dconfig['tags']='mlperf-inference,all,'+task+','+system_type+','+lscenario
+                                  dconfig['name']='MLPerf&trade; inference benchmark; '+xtask+'; '+system_type+'; '+lscenario
+
+                                  # Accuracy depending on a task
+                                  if task=='image-classification':
+                                     x1=('characteristics.accuracy', 'Accuracy (%)')
+                                     tv=[{'key':x1[0], 'name':x1[1]}]
+                                     dims=[{'key':x1[0], 'name':x1[1], 'view_key':x1[0]}]
+                                     tt=[x1[0]]
+                                     ydim=x1[0]
+                                  elif task=='nmt':
+                                     x1=('characteristics.blue', 'BLUE')
+                                     tv=[{'key':x1[0], 'name':x1[1]}]
+                                     dims=[{'key':x1[0], 'name':x1[1], 'view_key':x1[0]}]
+                                     tt=[x1[0]]
+                                     ydim=x1[0]
+                                  elif task=='object-detection':
+                                     x1=('characteristics.mAP', 'mAP (%)')
+                                     tv=[{'key':x1[0], 'name':x1[1]}]
+                                     dims=[{'key':x1[0], 'name':x1[1], 'view_key':x1[0]}]
+                                     tt=[x1[0]]
+                                     ydim=x1[0]
+                                  elif task=='nlp':
+                                     x1=('characteristics.exact_match', 'Exact Match')
+                                     x2=('characteristics.f1', 'F1')
+                                     tv=[{'key':x1[0], 'name':x1[1]},
+                                         {'key':x2[0], 'name':x2[1]}]
+                                     dims=[{'key':x1[0], 'name':x1[1], 'view_key':x1[0]},
+                                           {'key':x2[0], 'name':x2[1], 'view_key':x2[0]}]
+                                     tt=[x1[0],x2[0]]
+                                     ydim=x1[0]
+                                  elif task=='image-segmentation':
+                                     x1=('characteristics.mean', 'Mean')
+                                     x2=('characteristics.whole tumor', 'Whole Tumor')
+                                     x3=('characteristics.tumor core', 'Tumor Core')
+                                     x4=('characteristics.enhancing tumor', 'Enhancing Tumor')
+                                     tv=[{'key':x1[0], 'name':x1[1]},
+                                         {'key':x2[0], 'name':x2[1]},
+                                         {'key':x3[0], 'name':x3[1]},
+                                         {'key':x4[0], 'name':x4[1]}]
+                                     dims=[{'key':x1[0], 'name':x1[1], 'view_key':x1[0]},
+                                           {'key':x2[0], 'name':x2[1], 'view_key':x2[0]},
+                                           {'key':x3[0], 'name':x3[1], 'view_key':x3[0]},
+                                           {'key':x4[0], 'name':x4[1], 'view_key':x4[0]}]
+                                     tt=[x1[0],x2[0],x3[0],x4[0]]
+                                     ydim=x1[0]
+                                  elif task=='speech-recognition':
+                                     x1=('characteristics.accuracy', 'Accuracy (%)')
+                                     x2=('characteristics.word error rate', 'Word Error Rate')
+                                     tv=[{'key':x1[0], 'name':x1[1]},
+                                         {'key':x2[0], 'name':x2[1]}]
+                                     dims=[{'key':x1[0], 'name':x1[1], 'view_key':x1[0]},
+                                           {'key':x2[0], 'name':x2[1], 'view_key':x2[0]}]
+                                     tt=[x1[0],x2[0]]
+                                     ydim=x1[0]
+                                  elif task=='recommendation':
+                                     x1=('characteristics.AUC', 'AUC')
+                                     tv=[{'key':x1[0], 'name':x1[1]}]
+                                     dims=[{'key':x1[0], 'name':x1[1], 'view_key':x1[0]}]
+                                     tt=[x1[0]]
+                                     ydim=x1[0]
+                                  else:
+                                     return {'return':1, 'error':'task ('+task+') is not recognized'}
+
+                                  # Process other characteristics depending on scenario
+                                  if lscenario=="singlestream":
+                                     x1=('characteristics.90th_percentile_latency_ms', 'Latency (ms)')
+                                     tv+=[{'key':x1[0], 'name':x1[1]}]
+                                     dims+=[{'key':x1[0], 'name':x1[1], 'view_key':x1[0]}]
+                                     tt+=[x1[0]]
+                                     xdim=x1[0]
+                                  elif lscenario=="server":
+                                     x1=('characteristics.scheduled_queries_per_second', 'scheduled queries/second')
+                                     x2=('characteristics.scheduled_queries_per_second.normalized_per_processor', 'scheduled queries/second/processor (experimental)')
+                                     x3=('characteristics.scheduled_queries_per_second.normalized_per_core', 'scheduled queries/second/core (experimental)')
+                                     tv+=[{'key':x1[0], 'name':x1[1]},
+                                         {'key':x2[0], 'name':x2[1]},
+                                         {'key':x3[0], 'name':x3[1]}]
+                                     dims+=[{'key':x1[0], 'name':x1[1], 'view_key':x1[0]},
+                                           {'key':x2[0], 'name':x2[1], 'view_key':x2[0]},
+                                           {'key':x3[0], 'name':x3[1], 'view_key':x3[0]}]
+                                     tt+=[x1[0],x2[0],x3[0]]
+                                     xdim=x1[0]
+                                  elif lscenario=="offline":
+                                     x1=('characteristics.samples_per_second', 'samples/second')
+                                     x2=('characteristics.samples_per_second.normalized_per_processor', 'samples/second/processor (experimental)')
+                                     x3=('characteristics.samples_per_second.normalized_per_core', 'samples/second/core (experimental)')
+                                     tv+=[{'key':x1[0], 'name':x1[1]},
+                                         {'key':x2[0], 'name':x2[1]},
+                                         {'key':x3[0], 'name':x3[1]}]
+                                     dims+=[{'key':x1[0], 'name':x1[1], 'view_key':x1[0]},
+                                           {'key':x2[0], 'name':x2[1], 'view_key':x2[0]},
+                                           {'key':x3[0], 'name':x3[1], 'view_key':x3[0]}]
+                                     tt+=[x1[0],x2[0],x3[0]]
+                                     xdim=x1[0]
+                                  elif lscenario=="multistream":
+                                     x1=('characteristics.samples_per_query', 'samples/query')
+                                     x2=('characteristics.samples_per_query.normalized_per_processor', 'samples/query/processor (experimental)')
+                                     x3=('characteristics.samples_per_query.normalized_per_core', 'samples/query/core (experimental)')
+                                     tv+=[{'key':x1[0], 'name':x1[1]},
+                                         {'key':x2[0], 'name':x2[1]},
+                                         {'key':x3[0], 'name':x3[1]}]
+                                     dims+=[{'key':x1[0], 'name':x1[1], 'view_key':x1[0]},
+                                           {'key':x2[0], 'name':x2[1], 'view_key':x2[0]},
+                                           {'key':x3[0], 'name':x3[1], 'view_key':x3[0]}]
+                                     tt+=[x1[0],x2[0],x3[0]]
+                                     xdim=x1[0]
+
+                                  if task=='nlp':
+                                     ydim=xdim
+                                     xdim='seq_number'
+
+                                  dconfig['data_config']['raw_config']['xDimension']=xdim
+                                  dconfig['data_config']['raw_config']['yDimension']=ydim
+
+                                  # Finalize config
+                                  dconfig['data_config']['dimensions']+=dims
+                                  dconfig['data_config']['table_view']+=tv
+                                  dconfig['data_config']['raw_config']['tooltipValues']+=tt
+
+                                  ff=os.path.join(cur_dir, fconfig)
+                                  r=ck.save_json_to_file({'json_file':fconfig, 'dict':dconfig, 'sort_keys':'yes'})
+                                  if r['return']>0: return r
+
+
 #    ck.out(line)
 #    ck.out('CK automation was used by:')
 #    for cks in ck_submitters:
 #        ck.out(' * '+cks)
+
+    ruoa=target_repo if target_repo!='' else 'local'
+    duoa=target_data if target_data!='' else 'mlperf-inference-*'
+
+    ck.out(line)
+    ck.out('Archiving results ...')
+
+    p=os.path.join(cur_dir, 'ckr.zip')
+    if os.path.isfile(p):
+       ck.out('  Deleting old archive...')
+       os.remove(p)
+
+    r=ck.access({'action':'zip',
+                 'out':'con',
+                 'module_uoa':'repo',
+                 'repo_uoa':ruoa,
+                 'data':ruoa+':result:'+duoa})
+    if r['return']>0: return r
 
     return {'return':0}
 
