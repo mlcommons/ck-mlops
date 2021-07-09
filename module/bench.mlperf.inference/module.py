@@ -79,6 +79,8 @@ def ximport(i):
 
     ck_submitters=[]
 
+    # Hack
+#    lst=[]
     for l in lst:
         p=l['path']
         m=l['meta']
@@ -464,21 +466,6 @@ def ximport(i):
 
                                   tags='bench,mlperf,inference,mlperf-inference,all,'+task+','+system_type+','+lscenario
 
-                                  ii={'action':'push',
-                                      'module_uoa':cfg['module_deps']['result'],
-                                      'dict':result,
-                                      'user':submitter,
-                                      'repo_uoa':target_repo,
-                                      'data_uoa':duoa,
-                                      'tags':tags+',raw'}
-                                  r=ck.access(ii)
-                                  if r['return']>0: return r
-
-                                  ii['data_uoa']=duoa+'-pareto'
-                                  ii['tags']=tags+',pareto'
-                                  r=ck.access(ii)
-                                  if r['return']>0: return r
-
                                   # Create associated graph config
                                   fconfig='config-'+duoa+'-raw.json'
 
@@ -606,9 +593,11 @@ def ximport(i):
                                      tt+=[x1[0],x2[0],x3[0]]
                                      xdim=x1[0]
 
+                                  result['dim_y_maximize']=True # Accuracy
                                   if task=='nlp':
                                      ydim=xdim
                                      xdim='seq_number'
+                                     result['dim_y_maximize']=False
 
                                   dconfig['data_config']['raw_config']['xDimension']=xdim
                                   dconfig['data_config']['raw_config']['yDimension']=ydim
@@ -622,15 +611,43 @@ def ximport(i):
                                   r=ck.save_json_to_file({'json_file':fconfig, 'dict':dconfig, 'sort_keys':'yes'})
                                   if r['return']>0: return r
 
-                                  fconfig='config-'+duoa+'-pareto.json'
+                                  # If CK v1.x used, prepare for Pareto to remove suboptimal points from raw DSE
+                                  pareto=False
+                                  if (task=='image-classification' or task=='object-detection') and lscenario=="singlestream":
+                                     pareto=True
 
-                                  dconfig['id']=duoa+'-pareto'
-                                  dconfig['tags']='mlperf-inference,all,'+task+','+system_type+','+lscenario+',pareto'
-                                  dconfig['name']='MLPerf&trade; inference benchmark; '+xtask+'; '+system_type+'; '+lscenario+' (Pareto per submitter)'
+                                  if pareto:
+                                     fconfig='config-'+duoa+'-pareto.json'
 
-                                  ff=os.path.join(cur_dir, fconfig)
-                                  r=ck.save_json_to_file({'json_file':fconfig, 'dict':dconfig, 'sort_keys':'yes'})
+                                     dconfig['id']=duoa+'-pareto'
+                                     dconfig['tags']='mlperf-inference,all,'+task+','+system_type+','+lscenario+',pareto'
+                                     dconfig['name']='MLPerf&trade; inference benchmark; '+xtask+'; '+system_type+'; '+lscenario+' (Pareto per submitter)'
+
+                                     ff=os.path.join(cur_dir, fconfig)
+                                     r=ck.save_json_to_file({'json_file':fconfig, 'dict':dconfig, 'sort_keys':'yes'})
+                                     if r['return']>0: return r
+
+                                  result['dim_x_default']=xdim
+                                  result['dim_y_default']=ydim
+
+                                  # Next result
+
+                                  ii={'action':'push',
+                                      'module_uoa':cfg['module_deps']['result'],
+                                      'dict':result,
+                                      'user':submitter,
+                                      'repo_uoa':target_repo,
+                                      'data_uoa':duoa,
+                                      'tags':tags+',raw'}
+                                  r=ck.access(ii)
                                   if r['return']>0: return r
+
+                                  if pareto:
+                                     ii['data_uoa']=duoa+'-pareto'
+                                     ii['tags']=tags+',pareto'
+                                     r=ck.access(ii)
+                                     if r['return']>0: return r
+
 
 
 #    ck.out(line)
@@ -640,6 +657,8 @@ def ximport(i):
 
     ruoa=target_repo if target_repo!='' else 'local'
     duoa=target_data if target_data!='' else 'mlperf-inference-*'
+
+    # Finalizing archive
 
     ck.out(line)
     ck.out('Archiving results ...')
@@ -797,6 +816,7 @@ def get_accuracy(i):
 
            if len(numbers)==1:
               meta['characteristics.AUC']=numbers[0]
+              meta['key.accuracy']='characteristics.AUC'
 
            found=True
            break
@@ -809,6 +829,7 @@ def get_accuracy(i):
 
            if len(numbers)==1:
               meta['characteristics.blue']=numbers[0]
+              meta['key.accuracy']='characteristics.blue'
 
            found=True
            break
@@ -821,6 +842,7 @@ def get_accuracy(i):
 
            if len(numbers)==1:
               meta['characteristics.mAP']=numbers[0]
+              meta['key.accuracy']='characteristics.mAP'
 
            found=True
            break
@@ -834,6 +856,7 @@ def get_accuracy(i):
            if len(numbers)==2:
               meta['characteristics.exact_match']=numbers[0]
               meta['characteristics.f1']=numbers[1]
+              meta['key.accuracy']='characteristics.f1'
 
            found=True
            break
@@ -849,6 +872,7 @@ def get_accuracy(i):
               meta['characteristics.whole tumor']=numbers[1]
               meta['characteristics.tumor core']=numbers[2]
               meta['characteristics.enhancing tumor']=numbers[3]
+              meta['key.accuracy']='characteristics.mean'
 
            found=True
            break
@@ -861,6 +885,7 @@ def get_accuracy(i):
            if len(numbers)==2:
               meta['characteristics.word error rate']=numbers[0]
               meta['characteristics.accuracy']=numbers[1]
+              meta['key.accuracy']='characteristics.accuracy'
 
            found=True
            break
@@ -875,6 +900,7 @@ def get_accuracy(i):
               meta['characteristics.accuracy']=numbers[0]
               meta['characteristics.good']=numbers[1]
               meta['characteristics.total']=numbers[2]
+              meta['key.accuracy']='characteristics.accuracy'
 
            found=True
            break
