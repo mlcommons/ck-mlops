@@ -78,6 +78,10 @@ ck import bench.mlperf.inference --target_repo=ck-mlperf-inference
 ck display dashboard --template=result --cfg=mlperf.inference.all
 ```
 
+## Display results at cKnowledge.io
+
+* [List dashboards](https://cknowledge.io/?q=%22mlperf-inference-all-*%22)
+
 ## Process results on a Pareto frontier
 
 ```bash
