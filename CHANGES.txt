@@ -1,3 +1,6 @@
+20210710:
+  * added Paretor frontier filter demo
+
 20210706:
   * added mlcube
   * started working on a community version of the MLPerf inference submission system
