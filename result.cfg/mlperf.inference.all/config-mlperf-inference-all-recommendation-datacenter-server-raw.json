@@ -1,0 +1,59 @@
+{
+  "data_config": {
+    "dimensions": [
+      {
+        "key": "characteristics.AUC",
+        "name": "AUC",
+        "view_key": "characteristics.AUC"
+      },
+      {
+        "key": "characteristics.scheduled_queries_per_second",
+        "name": "scheduled queries/second",
+        "view_key": "characteristics.scheduled_queries_per_second"
+      },
+      {
+        "key": "characteristics.scheduled_queries_per_second.normalized_per_processor",
+        "name": "scheduled queries/second/processor (experimental)",
+        "view_key": "characteristics.scheduled_queries_per_second.normalized_per_processor"
+      },
+      {
+        "key": "characteristics.scheduled_queries_per_second.normalized_per_core",
+        "name": "scheduled queries/second/core (experimental)",
+        "view_key": "characteristics.scheduled_queries_per_second.normalized_per_core"
+      }
+    ],
+    "raw_config": {
+      "tooltipValues": [
+        "characteristics.AUC",
+        "characteristics.scheduled_queries_per_second",
+        "characteristics.scheduled_queries_per_second.normalized_per_processor",
+        "characteristics.scheduled_queries_per_second.normalized_per_core"
+      ],
+      "xDimension": "characteristics.scheduled_queries_per_second",
+      "xVariationVisible": false,
+      "yDimension": "characteristics.AUC",
+      "yVariationVisible": false
+    },
+    "table_view": [
+      {
+        "key": "characteristics.AUC",
+        "name": "AUC"
+      },
+      {
+        "key": "characteristics.scheduled_queries_per_second",
+        "name": "scheduled queries/second"
+      },
+      {
+        "key": "characteristics.scheduled_queries_per_second.normalized_per_processor",
+        "name": "scheduled queries/second/processor (experimental)"
+      },
+      {
+        "key": "characteristics.scheduled_queries_per_second.normalized_per_core",
+        "name": "scheduled queries/second/core (experimental)"
+      }
+    ]
+  },
+  "id": "mlperf-inference-all-recommendation-datacenter-server",
+  "name": "MLPerf&trade; inference benchmark; recommendation; datacenter; server",
+  "tags": "mlperf-inference,all,recommendation,datacenter,server,raw"
+}

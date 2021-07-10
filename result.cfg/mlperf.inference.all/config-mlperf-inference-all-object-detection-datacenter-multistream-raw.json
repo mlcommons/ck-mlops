@@ -1,0 +1,59 @@
+{
+  "data_config": {
+    "dimensions": [
+      {
+        "key": "characteristics.mAP",
+        "name": "mAP (%)",
+        "view_key": "characteristics.mAP"
+      },
+      {
+        "key": "characteristics.samples_per_query",
+        "name": "samples/query",
+        "view_key": "characteristics.samples_per_query"
+      },
+      {
+        "key": "characteristics.samples_per_query.normalized_per_processor",
+        "name": "samples/query/processor (experimental)",
+        "view_key": "characteristics.samples_per_query.normalized_per_processor"
+      },
+      {
+        "key": "characteristics.samples_per_query.normalized_per_core",
+        "name": "samples/query/core (experimental)",
+        "view_key": "characteristics.samples_per_query.normalized_per_core"
+      }
+    ],
+    "raw_config": {
+      "tooltipValues": [
+        "characteristics.mAP",
+        "characteristics.samples_per_query",
+        "characteristics.samples_per_query.normalized_per_processor",
+        "characteristics.samples_per_query.normalized_per_core"
+      ],
+      "xDimension": "characteristics.samples_per_query",
+      "xVariationVisible": false,
+      "yDimension": "characteristics.mAP",
+      "yVariationVisible": false
+    },
+    "table_view": [
+      {
+        "key": "characteristics.mAP",
+        "name": "mAP (%)"
+      },
+      {
+        "key": "characteristics.samples_per_query",
+        "name": "samples/query"
+      },
+      {
+        "key": "characteristics.samples_per_query.normalized_per_processor",
+        "name": "samples/query/processor (experimental)"
+      },
+      {
+        "key": "characteristics.samples_per_query.normalized_per_core",
+        "name": "samples/query/core (experimental)"
+      }
+    ]
+  },
+  "id": "mlperf-inference-all-object-detection-datacenter-multistream",
+  "name": "MLPerf&trade; inference benchmark; object detection; datacenter; multistream",
+  "tags": "mlperf-inference,all,object-detection,datacenter,multistream,raw"
+}

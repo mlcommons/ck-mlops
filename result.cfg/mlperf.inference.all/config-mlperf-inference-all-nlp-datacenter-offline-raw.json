@@ -1,0 +1,69 @@
+{
+  "data_config": {
+    "dimensions": [
+      {
+        "key": "characteristics.exact_match",
+        "name": "Exact Match",
+        "view_key": "characteristics.exact_match"
+      },
+      {
+        "key": "characteristics.f1",
+        "name": "F1",
+        "view_key": "characteristics.f1"
+      },
+      {
+        "key": "characteristics.samples_per_second",
+        "name": "samples/second",
+        "view_key": "characteristics.samples_per_second"
+      },
+      {
+        "key": "characteristics.samples_per_second.normalized_per_processor",
+        "name": "samples/second/processor (experimental)",
+        "view_key": "characteristics.samples_per_second.normalized_per_processor"
+      },
+      {
+        "key": "characteristics.samples_per_second.normalized_per_core",
+        "name": "samples/second/core (experimental)",
+        "view_key": "characteristics.samples_per_second.normalized_per_core"
+      }
+    ],
+    "raw_config": {
+      "tooltipValues": [
+        "characteristics.exact_match",
+        "characteristics.f1",
+        "characteristics.samples_per_second",
+        "characteristics.samples_per_second.normalized_per_processor",
+        "characteristics.samples_per_second.normalized_per_core"
+      ],
+      "xDimension": "seq_number",
+      "xVariationVisible": false,
+      "yDimension": "characteristics.samples_per_second",
+      "yVariationVisible": false
+    },
+    "table_view": [
+      {
+        "key": "characteristics.exact_match",
+        "name": "Exact Match"
+      },
+      {
+        "key": "characteristics.f1",
+        "name": "F1"
+      },
+      {
+        "key": "characteristics.samples_per_second",
+        "name": "samples/second"
+      },
+      {
+        "key": "characteristics.samples_per_second.normalized_per_processor",
+        "name": "samples/second/processor (experimental)"
+      },
+      {
+        "key": "characteristics.samples_per_second.normalized_per_core",
+        "name": "samples/second/core (experimental)"
+      }
+    ]
+  },
+  "id": "mlperf-inference-all-nlp-datacenter-offline",
+  "name": "MLPerf&trade; inference benchmark; nlp; datacenter; offline",
+  "tags": "mlperf-inference,all,nlp,datacenter,offline,raw"
+}

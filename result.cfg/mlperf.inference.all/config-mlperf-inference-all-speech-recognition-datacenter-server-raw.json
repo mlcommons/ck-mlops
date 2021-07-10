@@ -1,0 +1,69 @@
+{
+  "data_config": {
+    "dimensions": [
+      {
+        "key": "characteristics.accuracy",
+        "name": "Accuracy (%)",
+        "view_key": "characteristics.accuracy"
+      },
+      {
+        "key": "characteristics.word error rate",
+        "name": "Word Error Rate",
+        "view_key": "characteristics.word error rate"
+      },
+      {
+        "key": "characteristics.scheduled_queries_per_second",
+        "name": "scheduled queries/second",
+        "view_key": "characteristics.scheduled_queries_per_second"
+      },
+      {
+        "key": "characteristics.scheduled_queries_per_second.normalized_per_processor",
+        "name": "scheduled queries/second/processor (experimental)",
+        "view_key": "characteristics.scheduled_queries_per_second.normalized_per_processor"
+      },
+      {
+        "key": "characteristics.scheduled_queries_per_second.normalized_per_core",
+        "name": "scheduled queries/second/core (experimental)",
+        "view_key": "characteristics.scheduled_queries_per_second.normalized_per_core"
+      }
+    ],
+    "raw_config": {
+      "tooltipValues": [
+        "characteristics.accuracy",
+        "characteristics.word error rate",
+        "characteristics.scheduled_queries_per_second",
+        "characteristics.scheduled_queries_per_second.normalized_per_processor",
+        "characteristics.scheduled_queries_per_second.normalized_per_core"
+      ],
+      "xDimension": "characteristics.scheduled_queries_per_second",
+      "xVariationVisible": false,
+      "yDimension": "characteristics.accuracy",
+      "yVariationVisible": false
+    },
+    "table_view": [
+      {
+        "key": "characteristics.accuracy",
+        "name": "Accuracy (%)"
+      },
+      {
+        "key": "characteristics.word error rate",
+        "name": "Word Error Rate"
+      },
+      {
+        "key": "characteristics.scheduled_queries_per_second",
+        "name": "scheduled queries/second"
+      },
+      {
+        "key": "characteristics.scheduled_queries_per_second.normalized_per_processor",
+        "name": "scheduled queries/second/processor (experimental)"
+      },
+      {
+        "key": "characteristics.scheduled_queries_per_second.normalized_per_core",
+        "name": "scheduled queries/second/core (experimental)"
+      }
+    ]
+  },
+  "id": "mlperf-inference-all-speech-recognition-datacenter-server",
+  "name": "MLPerf&trade; inference benchmark; speech recognition; datacenter; server",
+  "tags": "mlperf-inference,all,speech-recognition,datacenter,server,raw"
+}

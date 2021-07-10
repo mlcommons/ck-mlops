@@ -1,0 +1,49 @@
+{
+  "data_config": {
+    "dimensions": [
+      {
+        "key": "characteristics.exact_match",
+        "name": "Exact Match",
+        "view_key": "characteristics.exact_match"
+      },
+      {
+        "key": "characteristics.f1",
+        "name": "F1",
+        "view_key": "characteristics.f1"
+      },
+      {
+        "key": "characteristics.90th_percentile_latency_ms",
+        "name": "Latency (ms)",
+        "view_key": "characteristics.90th_percentile_latency_ms"
+      }
+    ],
+    "raw_config": {
+      "tooltipValues": [
+        "characteristics.exact_match",
+        "characteristics.f1",
+        "characteristics.90th_percentile_latency_ms"
+      ],
+      "xDimension": "seq_number",
+      "xVariationVisible": false,
+      "yDimension": "characteristics.90th_percentile_latency_ms",
+      "yVariationVisible": false
+    },
+    "table_view": [
+      {
+        "key": "characteristics.exact_match",
+        "name": "Exact Match"
+      },
+      {
+        "key": "characteristics.f1",
+        "name": "F1"
+      },
+      {
+        "key": "characteristics.90th_percentile_latency_ms",
+        "name": "Latency (ms)"
+      }
+    ]
+  },
+  "id": "mlperf-inference-all-nlp-edge-singlestream",
+  "name": "MLPerf&trade; inference benchmark; nlp; edge; singlestream",
+  "tags": "mlperf-inference,all,nlp,edge,singlestream,raw"
+}

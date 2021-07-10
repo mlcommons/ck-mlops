@@ -1,0 +1,39 @@
+{
+  "data_config": {
+    "dimensions": [
+      {
+        "key": "characteristics.accuracy",
+        "name": "Accuracy (%)",
+        "view_key": "characteristics.accuracy"
+      },
+      {
+        "key": "characteristics.90th_percentile_latency_ms",
+        "name": "Latency (ms)",
+        "view_key": "characteristics.90th_percentile_latency_ms"
+      }
+    ],
+    "raw_config": {
+      "tooltipValues": [
+        "characteristics.accuracy",
+        "characteristics.90th_percentile_latency_ms"
+      ],
+      "xDimension": "characteristics.90th_percentile_latency_ms",
+      "xVariationVisible": false,
+      "yDimension": "characteristics.accuracy",
+      "yVariationVisible": false
+    },
+    "table_view": [
+      {
+        "key": "characteristics.accuracy",
+        "name": "Accuracy (%)"
+      },
+      {
+        "key": "characteristics.90th_percentile_latency_ms",
+        "name": "Latency (ms)"
+      }
+    ]
+  },
+  "id": "mlperf-inference-all-image-classification-datacenter-singlestream",
+  "name": "MLPerf&trade; inference benchmark; image classification; datacenter; singlestream",
+  "tags": "mlperf-inference,all,image-classification,datacenter,singlestream,raw"
+}

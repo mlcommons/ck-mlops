@@ -1,0 +1,323 @@
+{
+  "update_html": {
+    "ck_html_title": "MLPerf&trade; inference dashboard",
+    "ck_html_title_main": "MLPerf&trade; inference benchmark",
+    "ck_html_title_note": "<center><i>Aggregated results</i></center>\n",
+    "ck_html_end_note": "<center><i>Created and maintained by <a href=\"https://fursin.net\">Grigori Fursin</a></i></center>\n"
+  },
+  "data_config": {
+    "dimensions": [
+      {
+        "key": "seq_number",
+        "name": "Sequence",
+        "view_key": "seq_number"
+      },
+      {
+        "key": "_const",
+        "name": "Const",
+        "view_key": "_const"
+      },
+      {
+        "key": "submitter",
+        "name": "Submitter",
+        "view_key": "submitter"
+      },
+      {
+        "key": "mlperf_version",
+        "name": "MLPerf version",
+        "view_key": "mlperf_version"
+      },
+      {
+        "key": "division",
+        "name": "Division",
+        "view_key": "division"
+      },
+      {
+        "key": "system_name",
+        "name": "System",
+        "view_key": "system_name"
+      },
+      {
+        "key": "system_link",
+        "name": "CK system link",
+        "view_key": "system_link"
+      },
+      {
+        "key": "host_processor_model_name",
+        "name": "Processor",
+        "view_key": "host_processor_model_name"
+      },
+      {
+        "key": "host_processors_per_node",
+        "name": "Processors",
+        "view_key": "host_processors_per_node"
+      },
+      {
+        "key": "host_processor_core_count",
+        "name": "Cores per processor",
+        "view_key": "host_processor_core_count"
+      },
+      {
+        "key": "host_memory_capacity",
+        "name": "Host memory",
+        "view_key": "host_memory_capacity"
+      },
+      {
+        "key": "use_accelerator",
+        "name": "Accelerator used?",
+        "view_key": "use_accelerator"
+      },
+      {
+        "key": "accelerator_model_name",
+        "name": "Accelerator",
+        "view_key": "accelerator_model_name"
+      },
+      {
+        "key": "accelerators_per_node",
+        "name": "Accelerators",
+        "view_key": "accelerators_per_node"
+      },
+      {
+        "key": "framework",
+        "name": "Software",
+        "view_key": "framework"
+      },
+      {
+        "key": "ck_used",
+        "name": "CK automation",
+        "view_key": "ck_used"
+      },
+      {
+        "key": "normalize_processors",
+        "name": "Normalize processors (experimental)",
+        "view_key": "normalize_processors"
+      },
+      {
+        "key": "normalize_cores",
+        "name": "Normalize cores (experimental)",
+        "view_key": "normalize_processors"
+      },
+      {
+        "key": "dataset",
+        "name": "Dataset",
+        "view_key": "dataset"
+      },
+      {
+        "key": "dataset_link",
+        "name": "Dataset link",
+        "view_key": "dataset_link"
+      },
+      {
+        "key": "formal_model",
+        "name": "Model",
+        "view_key": "formal_model"
+      },
+      {
+        "key": "formal_model_link",
+        "name": "Model link",
+        "view_key": "formal_model_link"
+      },
+      {
+        "key": "formal_model_accuracy",
+        "name": "Model accuracy",
+        "view_key": "formal_model_accuracy"
+      },
+      {
+        "key": "input_data_types",
+        "name": "Model input data types",
+        "view_key": "input_data_types"
+      },
+      {
+        "key": "informal_model",
+        "name": "Informal model (open)",
+        "view_key": "informal_model"
+      },
+      {
+        "key": "sw_notes",
+        "name": "Notes",
+        "view_key": "sw_notes"
+      },
+      {
+        "key": "note_code",
+        "name": "Code",
+        "view_key": "note_code"
+      },
+      {
+        "key": "note_details",
+        "name": "Detail",
+        "view_key": "note_details"
+      },
+      {
+        "key": "characteristics.power",
+        "name": "Power (W)",
+        "view_key": "characteristics.power"
+      },
+      {
+        "key": "characteristics.power.normalized_per_processor",
+        "name": "Power/processor (W, experimental)",
+        "view_key": "characteristics.power.normalized_per_processor"
+      },
+      {
+        "key": "characteristics.power.normalized_per_core",
+        "name": "Power/core (W, experimental)",
+        "view_key": "characteristics.power.normalized_per_core"
+      }
+    ],
+    "raw_config": {
+      "colorDimension": "submitter",
+      "colorRange": ["#0000FF", "#00FFFF", "#00FF00", "#FFCC00", "#FF0000"],
+      "sizeDimension": "normalize_cores",
+      "sizeRange": [3,6],
+      "markerDimension": "mlperf_version",
+      "markerDimensionSets": {
+          "Default": ["circle", "triangle", "triangle_down", "sector_1_4", "rect", "pentagon", "hexagon", "star", "diamond"]
+      },
+      "tooltipValues": [
+        "mlperf_version",
+        "division",
+        "system_name",
+        "host_processor_model_name",
+        "host_processors_per_node",
+        "use_accelerator",
+        "acceleator_model_name",
+        "accelerators_per_node",
+        "host_processor_core_count",
+        "host_memory_capacity",
+        "ck_used",
+        "normalize_processors",
+        "normalize_cores",
+        "dataset",
+        "formal_model",
+        "formal_model_accuracy",
+        "input_data_types",
+        "informal_model",
+        "sw_notes",
+        "characteristics.power",
+        "characteristics.power.normalized_per_processor",
+        "characteristics.power.normalized_per_core"
+      ]
+    },
+    "selector": [],
+    "selector2": [],
+    "selector3": [],
+    "table_view": [
+      {
+        "key": "submitter",
+        "name": "Submitter"
+      },
+      {
+        "key": "mlperf_version",
+        "name": "MLPerf version"
+      },
+      {
+        "key": "division",
+        "name": "MLPerf division"
+      },
+      {
+        "key": "system_name",
+        "name": "System"
+      },
+      {
+        "key": "system_link",
+        "name": "CK system link"
+      },
+      {
+        "key": "host_processor_model_name",
+        "name": "Processor"
+      },
+      {
+        "key": "host_processors_per_node",
+        "name": "#"
+      },
+      {
+        "key": "host_processor_core_count",
+        "name": "Cores per processor"
+      },
+      {
+        "key": "host_memory_capacity",
+        "name": "Host memory"
+      },
+      {
+        "key": "use_accelerator",
+        "name": "Accelerator used?"
+      },
+      {
+        "key": "accelerator_model_name",
+        "name": "Accelerator"
+      },
+      {
+        "key": "accelerators_per_node",
+        "name": "#"
+      },
+      {
+        "key": "ck_used",
+        "name": "CK automation"
+      },
+      {
+        "key": "normalize_processors",
+        "name": "Normalize processors (experimental)"
+      },
+      {
+        "key": "normalize_cores",
+        "name": "Normalize cores (experimental)"
+      },
+      {
+        "key": "framework",
+        "name": "Framework"
+      },
+      {
+        "key": "dataset",
+        "name": "Dataset"
+      },
+      {
+        "key": "dataset_link",
+        "name": "Dataset link"
+      },
+      {
+        "key": "formal_model",
+        "name": "Model"
+      },
+      {
+        "key": "formal_model_link",
+        "name": "Model link"
+      },
+      {
+        "key": "formal_model_accuracy",
+        "name": "Model accuracy"
+      },
+      {
+        "key": "input_data_types",
+        "name": "Model input data types"
+      },
+      {
+        "key": "informal_model",
+        "name": "Informal model (open)"
+      },
+      {
+        "key": "sw_notes",
+        "name": "Notes"
+      },
+      {
+        "key": "note_code",
+        "name": "Code"
+      },
+      {
+        "key": "note_details",
+        "name": "Detail"
+      },
+      {
+        "key": "characteristics.power",
+        "name": "Power (W)"
+      },
+      {
+        "key": "characteristics.power.normalized_per_processor",
+        "name": "Power/processor (W, experimental)"
+      },
+      {
+        "key": "characteristics.power.normalized_per_core",
+        "name": "Power/core (W, experimental)"
+      }
+    ]
+  },
+  "multiple_configs":"yes"
+}

@@ -1,0 +1,59 @@
+{
+  "data_config": {
+    "dimensions": [
+      {
+        "key": "characteristics.mAP",
+        "name": "mAP (%)",
+        "view_key": "characteristics.mAP"
+      },
+      {
+        "key": "characteristics.samples_per_second",
+        "name": "samples/second",
+        "view_key": "characteristics.samples_per_second"
+      },
+      {
+        "key": "characteristics.samples_per_second.normalized_per_processor",
+        "name": "samples/second/processor (experimental)",
+        "view_key": "characteristics.samples_per_second.normalized_per_processor"
+      },
+      {
+        "key": "characteristics.samples_per_second.normalized_per_core",
+        "name": "samples/second/core (experimental)",
+        "view_key": "characteristics.samples_per_second.normalized_per_core"
+      }
+    ],
+    "raw_config": {
+      "tooltipValues": [
+        "characteristics.mAP",
+        "characteristics.samples_per_second",
+        "characteristics.samples_per_second.normalized_per_processor",
+        "characteristics.samples_per_second.normalized_per_core"
+      ],
+      "xDimension": "characteristics.samples_per_second",
+      "xVariationVisible": false,
+      "yDimension": "characteristics.mAP",
+      "yVariationVisible": false
+    },
+    "table_view": [
+      {
+        "key": "characteristics.mAP",
+        "name": "mAP (%)"
+      },
+      {
+        "key": "characteristics.samples_per_second",
+        "name": "samples/second"
+      },
+      {
+        "key": "characteristics.samples_per_second.normalized_per_processor",
+        "name": "samples/second/processor (experimental)"
+      },
+      {
+        "key": "characteristics.samples_per_second.normalized_per_core",
+        "name": "samples/second/core (experimental)"
+      }
+    ]
+  },
+  "id": "mlperf-inference-all-object-detection-edge-offline",
+  "name": "MLPerf&trade; inference benchmark; object detection; edge; offline",
+  "tags": "mlperf-inference,all,object-detection,edge,offline,raw"
+}

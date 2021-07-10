@@ -1,5 +1,6 @@
 20210710:
   * added Paretor frontier filter demo
+  * added improved MLPerf dashboard configuration
 
 20210706:
   * added mlcube

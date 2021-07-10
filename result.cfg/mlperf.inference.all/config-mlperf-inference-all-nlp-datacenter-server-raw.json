@@ -1,0 +1,69 @@
+{
+  "data_config": {
+    "dimensions": [
+      {
+        "key": "characteristics.exact_match",
+        "name": "Exact Match",
+        "view_key": "characteristics.exact_match"
+      },
+      {
+        "key": "characteristics.f1",
+        "name": "F1",
+        "view_key": "characteristics.f1"
+      },
+      {
+        "key": "characteristics.scheduled_queries_per_second",
+        "name": "scheduled queries/second",
+        "view_key": "characteristics.scheduled_queries_per_second"
+      },
+      {
+        "key": "characteristics.scheduled_queries_per_second.normalized_per_processor",
+        "name": "scheduled queries/second/processor (experimental)",
+        "view_key": "characteristics.scheduled_queries_per_second.normalized_per_processor"
+      },
+      {
+        "key": "characteristics.scheduled_queries_per_second.normalized_per_core",
+        "name": "scheduled queries/second/core (experimental)",
+        "view_key": "characteristics.scheduled_queries_per_second.normalized_per_core"
+      }
+    ],
+    "raw_config": {
+      "tooltipValues": [
+        "characteristics.exact_match",
+        "characteristics.f1",
+        "characteristics.scheduled_queries_per_second",
+        "characteristics.scheduled_queries_per_second.normalized_per_processor",
+        "characteristics.scheduled_queries_per_second.normalized_per_core"
+      ],
+      "xDimension": "seq_number",
+      "xVariationVisible": false,
+      "yDimension": "characteristics.scheduled_queries_per_second",
+      "yVariationVisible": false
+    },
+    "table_view": [
+      {
+        "key": "characteristics.exact_match",
+        "name": "Exact Match"
+      },
+      {
+        "key": "characteristics.f1",
+        "name": "F1"
+      },
+      {
+        "key": "characteristics.scheduled_queries_per_second",
+        "name": "scheduled queries/second"
+      },
+      {
+        "key": "characteristics.scheduled_queries_per_second.normalized_per_processor",
+        "name": "scheduled queries/second/processor (experimental)"
+      },
+      {
+        "key": "characteristics.scheduled_queries_per_second.normalized_per_core",
+        "name": "scheduled queries/second/core (experimental)"
+      }
+    ]
+  },
+  "id": "mlperf-inference-all-nlp-datacenter-server",
+  "name": "MLPerf&trade; inference benchmark; nlp; datacenter; server",
+  "tags": "mlperf-inference,all,nlp,datacenter,server,raw"
+}

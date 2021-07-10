@@ -1,0 +1,69 @@
+{
+  "data_config": {
+    "dimensions": [
+      {
+        "key": "characteristics.mean",
+        "name": "Mean",
+        "view_key": "characteristics.mean"
+      },
+      {
+        "key": "characteristics.whole tumor",
+        "name": "Whole Tumor",
+        "view_key": "characteristics.whole tumor"
+      },
+      {
+        "key": "characteristics.tumor core",
+        "name": "Tumor Core",
+        "view_key": "characteristics.tumor core"
+      },
+      {
+        "key": "characteristics.enhancing tumor",
+        "name": "Enhancing Tumor",
+        "view_key": "characteristics.enhancing tumor"
+      },
+      {
+        "key": "characteristics.90th_percentile_latency_ms",
+        "name": "Latency (ms)",
+        "view_key": "characteristics.90th_percentile_latency_ms"
+      }
+    ],
+    "raw_config": {
+      "tooltipValues": [
+        "characteristics.mean",
+        "characteristics.whole tumor",
+        "characteristics.tumor core",
+        "characteristics.enhancing tumor",
+        "characteristics.90th_percentile_latency_ms"
+      ],
+      "xDimension": "characteristics.90th_percentile_latency_ms",
+      "xVariationVisible": false,
+      "yDimension": "characteristics.mean",
+      "yVariationVisible": false
+    },
+    "table_view": [
+      {
+        "key": "characteristics.mean",
+        "name": "Mean"
+      },
+      {
+        "key": "characteristics.whole tumor",
+        "name": "Whole Tumor"
+      },
+      {
+        "key": "characteristics.tumor core",
+        "name": "Tumor Core"
+      },
+      {
+        "key": "characteristics.enhancing tumor",
+        "name": "Enhancing Tumor"
+      },
+      {
+        "key": "characteristics.90th_percentile_latency_ms",
+        "name": "Latency (ms)"
+      }
+    ]
+  },
+  "id": "mlperf-inference-all-image-segmentation-edge-singlestream",
+  "name": "MLPerf&trade; inference benchmark; image segmentation; edge; singlestream",
+  "tags": "mlperf-inference,all,image-segmentation,edge,singlestream,raw"
+}

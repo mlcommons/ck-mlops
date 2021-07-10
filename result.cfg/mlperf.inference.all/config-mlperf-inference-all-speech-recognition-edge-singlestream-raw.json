@@ -1,0 +1,49 @@
+{
+  "data_config": {
+    "dimensions": [
+      {
+        "key": "characteristics.accuracy",
+        "name": "Accuracy (%)",
+        "view_key": "characteristics.accuracy"
+      },
+      {
+        "key": "characteristics.word error rate",
+        "name": "Word Error Rate",
+        "view_key": "characteristics.word error rate"
+      },
+      {
+        "key": "characteristics.90th_percentile_latency_ms",
+        "name": "Latency (ms)",
+        "view_key": "characteristics.90th_percentile_latency_ms"
+      }
+    ],
+    "raw_config": {
+      "tooltipValues": [
+        "characteristics.accuracy",
+        "characteristics.word error rate",
+        "characteristics.90th_percentile_latency_ms"
+      ],
+      "xDimension": "characteristics.90th_percentile_latency_ms",
+      "xVariationVisible": false,
+      "yDimension": "characteristics.accuracy",
+      "yVariationVisible": false
+    },
+    "table_view": [
+      {
+        "key": "characteristics.accuracy",
+        "name": "Accuracy (%)"
+      },
+      {
+        "key": "characteristics.word error rate",
+        "name": "Word Error Rate"
+      },
+      {
+        "key": "characteristics.90th_percentile_latency_ms",
+        "name": "Latency (ms)"
+      }
+    ]
+  },
+  "id": "mlperf-inference-all-speech-recognition-edge-singlestream",
+  "name": "MLPerf&trade; inference benchmark; speech recognition; edge; singlestream",
+  "tags": "mlperf-inference,all,speech-recognition,edge,singlestream,raw"
+}

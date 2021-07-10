@@ -1,0 +1,39 @@
+{
+  "data_config": {
+    "dimensions": [
+      {
+        "key": "characteristics.blue",
+        "name": "BLUE",
+        "view_key": "characteristics.blue"
+      },
+      {
+        "key": "characteristics.90th_percentile_latency_ms",
+        "name": "Latency (ms)",
+        "view_key": "characteristics.90th_percentile_latency_ms"
+      }
+    ],
+    "raw_config": {
+      "tooltipValues": [
+        "characteristics.blue",
+        "characteristics.90th_percentile_latency_ms"
+      ],
+      "xDimension": "characteristics.90th_percentile_latency_ms",
+      "xVariationVisible": false,
+      "yDimension": "characteristics.blue",
+      "yVariationVisible": false
+    },
+    "table_view": [
+      {
+        "key": "characteristics.blue",
+        "name": "BLUE"
+      },
+      {
+        "key": "characteristics.90th_percentile_latency_ms",
+        "name": "Latency (ms)"
+      }
+    ]
+  },
+  "id": "mlperf-inference-all-nmt-datacenter-singlestream",
+  "name": "MLPerf&trade; inference benchmark; nmt; datacenter; singlestream",
+  "tags": "mlperf-inference,all,nmt,datacenter,singlestream,raw"
+}

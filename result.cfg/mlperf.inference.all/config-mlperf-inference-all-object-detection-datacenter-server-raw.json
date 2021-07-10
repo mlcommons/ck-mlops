@@ -1,0 +1,59 @@
+{
+  "data_config": {
+    "dimensions": [
+      {
+        "key": "characteristics.mAP",
+        "name": "mAP (%)",
+        "view_key": "characteristics.mAP"
+      },
+      {
+        "key": "characteristics.scheduled_queries_per_second",
+        "name": "scheduled queries/second",
+        "view_key": "characteristics.scheduled_queries_per_second"
+      },
+      {
+        "key": "characteristics.scheduled_queries_per_second.normalized_per_processor",
+        "name": "scheduled queries/second/processor (experimental)",
+        "view_key": "characteristics.scheduled_queries_per_second.normalized_per_processor"
+      },
+      {
+        "key": "characteristics.scheduled_queries_per_second.normalized_per_core",
+        "name": "scheduled queries/second/core (experimental)",
+        "view_key": "characteristics.scheduled_queries_per_second.normalized_per_core"
+      }
+    ],
+    "raw_config": {
+      "tooltipValues": [
+        "characteristics.mAP",
+        "characteristics.scheduled_queries_per_second",
+        "characteristics.scheduled_queries_per_second.normalized_per_processor",
+        "characteristics.scheduled_queries_per_second.normalized_per_core"
+      ],
+      "xDimension": "characteristics.scheduled_queries_per_second",
+      "xVariationVisible": false,
+      "yDimension": "characteristics.mAP",
+      "yVariationVisible": false
+    },
+    "table_view": [
+      {
+        "key": "characteristics.mAP",
+        "name": "mAP (%)"
+      },
+      {
+        "key": "characteristics.scheduled_queries_per_second",
+        "name": "scheduled queries/second"
+      },
+      {
+        "key": "characteristics.scheduled_queries_per_second.normalized_per_processor",
+        "name": "scheduled queries/second/processor (experimental)"
+      },
+      {
+        "key": "characteristics.scheduled_queries_per_second.normalized_per_core",
+        "name": "scheduled queries/second/core (experimental)"
+      }
+    ]
+  },
+  "id": "mlperf-inference-all-object-detection-datacenter-server",
+  "name": "MLPerf&trade; inference benchmark; object detection; datacenter; server",
+  "tags": "mlperf-inference,all,object-detection,datacenter,server,raw"
+}

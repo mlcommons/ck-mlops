@@ -1,0 +1,89 @@
+{
+  "data_config": {
+    "dimensions": [
+      {
+        "key": "characteristics.mean",
+        "name": "Mean",
+        "view_key": "characteristics.mean"
+      },
+      {
+        "key": "characteristics.whole tumor",
+        "name": "Whole Tumor",
+        "view_key": "characteristics.whole tumor"
+      },
+      {
+        "key": "characteristics.tumor core",
+        "name": "Tumor Core",
+        "view_key": "characteristics.tumor core"
+      },
+      {
+        "key": "characteristics.enhancing tumor",
+        "name": "Enhancing Tumor",
+        "view_key": "characteristics.enhancing tumor"
+      },
+      {
+        "key": "characteristics.samples_per_second",
+        "name": "samples/second",
+        "view_key": "characteristics.samples_per_second"
+      },
+      {
+        "key": "characteristics.samples_per_second.normalized_per_processor",
+        "name": "samples/second/processor (experimental)",
+        "view_key": "characteristics.samples_per_second.normalized_per_processor"
+      },
+      {
+        "key": "characteristics.samples_per_second.normalized_per_core",
+        "name": "samples/second/core (experimental)",
+        "view_key": "characteristics.samples_per_second.normalized_per_core"
+      }
+    ],
+    "raw_config": {
+      "tooltipValues": [
+        "characteristics.mean",
+        "characteristics.whole tumor",
+        "characteristics.tumor core",
+        "characteristics.enhancing tumor",
+        "characteristics.samples_per_second",
+        "characteristics.samples_per_second.normalized_per_processor",
+        "characteristics.samples_per_second.normalized_per_core"
+      ],
+      "xDimension": "characteristics.samples_per_second",
+      "xVariationVisible": false,
+      "yDimension": "characteristics.mean",
+      "yVariationVisible": false
+    },
+    "table_view": [
+      {
+        "key": "characteristics.mean",
+        "name": "Mean"
+      },
+      {
+        "key": "characteristics.whole tumor",
+        "name": "Whole Tumor"
+      },
+      {
+        "key": "characteristics.tumor core",
+        "name": "Tumor Core"
+      },
+      {
+        "key": "characteristics.enhancing tumor",
+        "name": "Enhancing Tumor"
+      },
+      {
+        "key": "characteristics.samples_per_second",
+        "name": "samples/second"
+      },
+      {
+        "key": "characteristics.samples_per_second.normalized_per_processor",
+        "name": "samples/second/processor (experimental)"
+      },
+      {
+        "key": "characteristics.samples_per_second.normalized_per_core",
+        "name": "samples/second/core (experimental)"
+      }
+    ]
+  },
+  "id": "mlperf-inference-all-image-segmentation-edge-offline",
+  "name": "MLPerf&trade; inference benchmark; image segmentation; edge; offline",
+  "tags": "mlperf-inference,all,image-segmentation,edge,offline,raw"
+}

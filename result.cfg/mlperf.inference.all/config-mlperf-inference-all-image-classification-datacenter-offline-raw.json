@@ -1,0 +1,59 @@
+{
+  "data_config": {
+    "dimensions": [
+      {
+        "key": "characteristics.accuracy",
+        "name": "Accuracy (%)",
+        "view_key": "characteristics.accuracy"
+      },
+      {
+        "key": "characteristics.samples_per_second",
+        "name": "samples/second",
+        "view_key": "characteristics.samples_per_second"
+      },
+      {
+        "key": "characteristics.samples_per_second.normalized_per_processor",
+        "name": "samples/second/processor (experimental)",
+        "view_key": "characteristics.samples_per_second.normalized_per_processor"
+      },
+      {
+        "key": "characteristics.samples_per_second.normalized_per_core",
+        "name": "samples/second/core (experimental)",
+        "view_key": "characteristics.samples_per_second.normalized_per_core"
+      }
+    ],
+    "raw_config": {
+      "tooltipValues": [
+        "characteristics.accuracy",
+        "characteristics.samples_per_second",
+        "characteristics.samples_per_second.normalized_per_processor",
+        "characteristics.samples_per_second.normalized_per_core"
+      ],
+      "xDimension": "characteristics.samples_per_second",
+      "xVariationVisible": false,
+      "yDimension": "characteristics.accuracy",
+      "yVariationVisible": false
+    },
+    "table_view": [
+      {
+        "key": "characteristics.accuracy",
+        "name": "Accuracy (%)"
+      },
+      {
+        "key": "characteristics.samples_per_second",
+        "name": "samples/second"
+      },
+      {
+        "key": "characteristics.samples_per_second.normalized_per_processor",
+        "name": "samples/second/processor (experimental)"
+      },
+      {
+        "key": "characteristics.samples_per_second.normalized_per_core",
+        "name": "samples/second/core (experimental)"
+      }
+    ]
+  },
+  "id": "mlperf-inference-all-image-classification-datacenter-offline",
+  "name": "MLPerf&trade; inference benchmark; image classification; datacenter; offline",
+  "tags": "mlperf-inference,all,image-classification,datacenter,offline,raw"
+}

@@ -1,0 +1,59 @@
+{
+  "data_config": {
+    "dimensions": [
+      {
+        "key": "characteristics.blue",
+        "name": "BLUE",
+        "view_key": "characteristics.blue"
+      },
+      {
+        "key": "characteristics.scheduled_queries_per_second",
+        "name": "scheduled queries/second",
+        "view_key": "characteristics.scheduled_queries_per_second"
+      },
+      {
+        "key": "characteristics.scheduled_queries_per_second.normalized_per_processor",
+        "name": "scheduled queries/second/processor (experimental)",
+        "view_key": "characteristics.scheduled_queries_per_second.normalized_per_processor"
+      },
+      {
+        "key": "characteristics.scheduled_queries_per_second.normalized_per_core",
+        "name": "scheduled queries/second/core (experimental)",
+        "view_key": "characteristics.scheduled_queries_per_second.normalized_per_core"
+      }
+    ],
+    "raw_config": {
+      "tooltipValues": [
+        "characteristics.blue",
+        "characteristics.scheduled_queries_per_second",
+        "characteristics.scheduled_queries_per_second.normalized_per_processor",
+        "characteristics.scheduled_queries_per_second.normalized_per_core"
+      ],
+      "xDimension": "characteristics.scheduled_queries_per_second",
+      "xVariationVisible": false,
+      "yDimension": "characteristics.blue",
+      "yVariationVisible": false
+    },
+    "table_view": [
+      {
+        "key": "characteristics.blue",
+        "name": "BLUE"
+      },
+      {
+        "key": "characteristics.scheduled_queries_per_second",
+        "name": "scheduled queries/second"
+      },
+      {
+        "key": "characteristics.scheduled_queries_per_second.normalized_per_processor",
+        "name": "scheduled queries/second/processor (experimental)"
+      },
+      {
+        "key": "characteristics.scheduled_queries_per_second.normalized_per_core",
+        "name": "scheduled queries/second/core (experimental)"
+      }
+    ]
+  },
+  "id": "mlperf-inference-all-nmt-datacenter-server",
+  "name": "MLPerf&trade; inference benchmark; nmt; datacenter; server",
+  "tags": "mlperf-inference,all,nmt,datacenter,server,raw"
+}

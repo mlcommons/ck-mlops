@@ -1,0 +1,39 @@
+{
+  "data_config": {
+    "dimensions": [
+      {
+        "key": "characteristics.mAP",
+        "name": "mAP (%)",
+        "view_key": "characteristics.mAP"
+      },
+      {
+        "key": "characteristics.90th_percentile_latency_ms",
+        "name": "Latency (ms)",
+        "view_key": "characteristics.90th_percentile_latency_ms"
+      }
+    ],
+    "raw_config": {
+      "tooltipValues": [
+        "characteristics.mAP",
+        "characteristics.90th_percentile_latency_ms"
+      ],
+      "xDimension": "characteristics.90th_percentile_latency_ms",
+      "xVariationVisible": false,
+      "yDimension": "characteristics.mAP",
+      "yVariationVisible": false
+    },
+    "table_view": [
+      {
+        "key": "characteristics.mAP",
+        "name": "mAP (%)"
+      },
+      {
+        "key": "characteristics.90th_percentile_latency_ms",
+        "name": "Latency (ms)"
+      }
+    ]
+  },
+  "id": "mlperf-inference-all-object-detection-edge-singlestream-pareto",
+  "name": "MLPerf&trade; inference benchmark; object detection; edge; singlestream (Pareto per submitter)",
+  "tags": "mlperf-inference,all,object-detection,edge,singlestream,pareto"
+}
