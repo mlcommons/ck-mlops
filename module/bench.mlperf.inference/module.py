@@ -19,7 +19,7 @@ import re
 import os
 #sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-#from ck_8b543d3874cdfdb0 import ...
+#from ck_8b543d3874cdfdb0 import multidimensional_pareto as mul_par
 
 line='************************************************************'
 
@@ -1045,3 +1045,146 @@ def get_systems(i):
            if r['return']>0: return r
 
     return {'return':0, 'd_systems':d_systems}
+
+##############################################################################
+# filter results (Pareto frontier)
+
+def xfilter(i):
+    """
+    Input:  {
+            }
+
+    Output: {
+              return       - return code =  0, if successful
+                                         >  0, if error
+              (error)      - error text if return > 0
+            }
+
+    """
+
+    duoa=i.get('data_uoa','mlperf-inference-*-pareto')
+    tags=i.get('tags','pareto')
+
+    r=ck.access({'action':'search',
+                 'module_uoa':cfg['module_deps']['result'],
+                 'data_uoa':duoa,
+                 'tags':tags})
+    if r['return']>0: return r
+
+    lst=r['lst']
+
+    for l in lst:
+        ck.out(line)
+        ck.out(l['data_uoa'])
+
+        p=l['path']
+
+        p1=os.path.join(p,'users')
+        if not os.path.isdir(p1):
+           continue
+
+        for s in os.listdir(p1):
+            # Raw (unprocessed) results from DSE come from 2 submitters mostly
+            # Need to optimize based on our ACM REQUEST methodology
+            if s.lower()!='dividiti' and s.lower()!='krai':
+               continue
+
+            p2=os.path.join(p1,s)
+            if os.path.isdir(p2):
+               results=[]
+               ck.out('  '+p2)
+               for res in os.listdir(p2):
+                   if res.startswith('result-') and res.endswith('.json'):
+                      pr=os.path.join(p2,res)
+                      ck.out('  '+pr)
+
+                      r=ck.load_json_file({'json_file':pr})
+                      if r['return']>0: return r
+
+                      d=r['dict']
+
+                      results+=d
+
+                      dim_x_default=results[0]['dim_x_default']
+                      dim_y_default=results[0]['dim_y_default']
+                      dim_y_maximize=results[0]['dim_y_maximize']
+
+                      frontier_keys=[dim_x_default,dim_y_default]
+                      reverse_keys=[]
+                      if dim_y_maximize:
+                         reverse_keys=[dim_y_default]
+
+                      lresults=len(results)
+                      ck.out('    Raw results: {}'.format(lresults))
+
+                      r=frontier_2d({'points':results,
+                                     'frontier_keys':frontier_keys,
+                                     'reverse_keys':reverse_keys,
+                                     'plot':'yes'})
+                      if r['return']>0: return r
+
+                      frontier=r['frontier']
+
+                      lpresults=len(frontier)
+                      ck.out('    Results on Pareto: {}'.format(lpresults))
+
+                      r=ck.save_json_to_file({'json_file':pr, 'dict':frontier})
+                      if r['return']>0: return r
+
+    return {'return':0}
+
+def frontier_2d(i):
+    plot=i.get('plot','')=='yes'
+    
+    points=i['points']
+
+    frontier_keys=i['frontier_keys']
+    assert len(frontier_keys)==2, 'must be 2 frontier keys'
+
+    reverse_keys=i.get('reverse_keys',[])
+
+    kx=frontier_keys[0]
+    ky=frontier_keys[1]
+
+    revx=True if kx in reverse_keys else False
+    revy=True if ky in reverse_keys else False
+
+
+    if len(points)<3:
+       frontier=points
+    else: 
+       # Sort by 0 dim
+       spoints=sorted(points, key=lambda x: x.get(kx,0), reverse=revx)
+
+       frontier=[spoints[0]]
+
+       for p in spoints[1:]:
+           if revy:
+              if p.get(ky,0)>=frontier[-1].get(ky,0):
+                  frontier.append(p)
+           elif p.get(ky,0)<=frontier[-1].get(ky,0):
+              frontier.append(p)
+
+    if plot:
+       import matplotlib.pyplot as plt   
+
+       x1=[]
+       y1=[]
+       for v in points:
+           x1.append(v.get(kx,0))
+           y1.append(v.get(ky,0))
+
+       plt.scatter(x1,y1)
+
+       x2=[]
+       y2=[]
+       for v in frontier:
+           x2.append(v.get(kx,0))
+           y2.append(v.get(ky,0))
+
+       plt.plot(x2,y2)
+
+       plt.show()
+
+    return {'return':0, 'frontier':frontier}
+
