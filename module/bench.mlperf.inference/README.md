@@ -48,6 +48,11 @@ ck create venv:mlperf --template=generic
 ck activate venv:mlperf
 ```
 
+## Pull CK repo with MLOps automation recipes
+```bash
+ck pull repo:octoml@mlops
+```
+
 ## Pull already processed results
 ```bash
 ck pull repo:ck-mlperf-inference
