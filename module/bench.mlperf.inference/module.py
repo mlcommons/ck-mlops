@@ -1117,7 +1117,7 @@ def xfilter(i):
                       lresults=len(results)
                       ck.out('    Raw results: {}'.format(lresults))
 
-                      r=ck.access({'action':'frontier_2d',
+                      r=ck.access({'action':'filter_2d',
                                    'module_uoa':cfg['module_deps']['math.frontier'],
                                    'points':results,
                                    'frontier_keys':frontier_keys,
