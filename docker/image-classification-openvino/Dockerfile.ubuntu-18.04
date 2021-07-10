@@ -60,7 +60,7 @@ RUN ck create_entry --data_uoa=experiment --data_uid=bc0409fb61f0aa82 --path=${C
  && chmod -R g+w ${CK_REPOS}/local/experiment
 
 # Pull CK repositories
-RUN ck pull repo:ai
+RUN ck pull repo:ck-mlops
 
 # Use generic Linux settings with dummy frequency setting scripts.
 RUN ck detect platform.os --platform_init_uoa=generic-linux-dummy
@@ -173,8 +173,8 @@ RUN chmod -R g+rwx `ck find ai:program:mlperf-inference-v0.5`
 # using all (virtual) CPU cores.
 #-----------------------------------------------------------------------------#
 CMD ["export NPROCS=`grep -c processor /proc/cpuinfo` \
- && ck run ai:program:mlperf-inference-v0.5 --skip_print_timers \
+ && ck run program:mlperf-inference-v0.5 --skip_print_timers \
     --cmd_key=image-classification --env.CK_OPENVINO_MODEL_NAME=resnet50 \
     --env.CK_LOADGEN_SCENARIO=Offline --env.CK_LOADGEN_MODE=Accuracy --env.CK_LOADGEN_DATASET_SIZE=500 \
     --env.CK_OPENVINO_NTHREADS=$NPROCS --env.CK_OPENVINO_NSTREAMS=$NPROCS --env.CK_OPENVINO_NIREQ=$NPROCS \
- && cat /home/dvdt/CK_REPOS/ai/program/mlperf-inference-v0.5/tmp/accuracy.txt"]
+ && cat /home/dvdt/CK_REPOS/ck-mlops/program/mlperf-inference-v0.5/tmp/accuracy.txt"]

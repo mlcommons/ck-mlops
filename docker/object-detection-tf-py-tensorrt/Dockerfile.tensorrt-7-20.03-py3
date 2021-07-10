@@ -65,7 +65,7 @@ RUN ck create_entry --data_uoa=experiment --data_uid=bc0409fb61f0aa82 --path=${C
 
 # Pull CK repositories
 #RUN ck pull repo:ck-object-detection
-RUN ck pull repo:ai
+RUN ck pull repo:ck-mlops
 
 # Use generic Linux settings with dummy frequency setting scripts.
 RUN ck detect platform.os --platform_init_uoa=generic-linux-dummy
@@ -189,7 +189,7 @@ RUN ck install package --tags=yolo-v3
 # (Some have already been installed.)
 RUN ck install package --tags=lib,python-package,cv2,opencv-python-headless
 # Allow the program create tmp files when running under an external user.
-RUN chmod -R g+rwx ${CK_REPOS}/ai/program/object-detection-tf-py/
+RUN chmod -R g+rwx ${CK_REPOS}/ck-mlops/program/object-detection-tf-py/
 #-----------------------------------------------------------------------------#
 
 

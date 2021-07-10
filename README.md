@@ -3,8 +3,8 @@
 [![compatibility](https://github.com/ctuning/ck-guide-images/blob/master/ck-compatible.svg)](https://github.com/ctuning/ck)
 [![automation](https://github.com/ctuning/ck-guide-images/blob/master/ck-artifact-automated-and-reusable.svg)](https://cTuning.org/ae)
 
-Linux/MacOS: [![Travis Build Status](https://travis-ci.com/ctuning/ai.svg)](https://travis-ci.com/ctuning/ai)
-Windows: [![Windows Build status](https://ci.appveyor.com/api/projects/status/4ry307jh6tks9dg9?svg=true)](https://ci.appveyor.com/project/gfursin/ai)
+Linux/MacOS: [![Travis Build Status](https://travis-ci.com/ctuning/ck-mlops.svg)](https://travis-ci.com/ctuning/ck-mlops)
+Windows: [![Windows Build status](https://ci.appveyor.com/api/projects/status/4ry307jh6tks9dg9?svg=true)](https://ci.appveyor.com/project/gfursin/ck-mlops)
 
 
 [![DOI](https://zenodo.org/badge/311647831.svg)](https://zenodo.org/badge/latestdoi/311647831)
@@ -21,7 +21,7 @@ Windows: [![Windows Build status](https://ci.appveyor.com/api/projects/status/4r
 * [Project website](https://cKnowledge.org)
 * [CK-powered MLPerf&trade; benchmark automation](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/README.md)
 * [Community projects to improve and redesign CK](https://github.com/ctuning/ck/blob/master/incubator/README.md)
-* [AI/ML repository with all aggregated CK components](https://github.com/ctuning/ai)
+* [AI/ML repository with all aggregated CK components](https://github.com/ctuning/ck-mlops)
 * [OctoML's CK-based MLOps/MLPerf repository](https://github.com/octoml/mlops)
 
 ## Overview

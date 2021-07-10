@@ -1,10 +1,10 @@
 {
-  "data_uoa": "ai",
+  "data_uoa": "ck-mlops",
   "data_uid": "46644adb4c6670dd",
-  "data_alias": "ai",
-  "data_name": "ai",
+  "data_alias": "ck-mlops",
+  "data_name": "ck-mlops",
   "dict": {
     "shared": "git",
-    "url": "https://github.com/ctuning/ai"
+    "url": "https://github.com/ctuning/ck-mlops"
   }
 }
