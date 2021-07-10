@@ -1117,10 +1117,11 @@ def xfilter(i):
                       lresults=len(results)
                       ck.out('    Raw results: {}'.format(lresults))
 
-                      r=frontier_2d({'points':results,
-                                     'frontier_keys':frontier_keys,
-                                     'reverse_keys':reverse_keys,
-                                     'plot':'yes'})
+                      r=ck.access({'action':'frontier_2d',
+                                   'module_uoa':cfg['module_deps']['math.frontier'],
+                                   'points':results,
+                                   'frontier_keys':frontier_keys,
+                                   'reverse_keys':reverse_keys})
                       if r['return']>0: return r
 
                       frontier=r['frontier']
@@ -1132,59 +1133,3 @@ def xfilter(i):
                       if r['return']>0: return r
 
     return {'return':0}
-
-def frontier_2d(i):
-    plot=i.get('plot','')=='yes'
-    
-    points=i['points']
-
-    frontier_keys=i['frontier_keys']
-    assert len(frontier_keys)==2, 'must be 2 frontier keys'
-
-    reverse_keys=i.get('reverse_keys',[])
-
-    kx=frontier_keys[0]
-    ky=frontier_keys[1]
-
-    revx=True if kx in reverse_keys else False
-    revy=True if ky in reverse_keys else False
-
-
-    if len(points)<3:
-       frontier=points
-    else: 
-       # Sort by 0 dim
-       spoints=sorted(points, key=lambda x: x.get(kx,0), reverse=revx)
-
-       frontier=[spoints[0]]
-
-       for p in spoints[1:]:
-           if revy:
-              if p.get(ky,0)>=frontier[-1].get(ky,0):
-                  frontier.append(p)
-           elif p.get(ky,0)<=frontier[-1].get(ky,0):
-              frontier.append(p)
-
-    if plot:
-       import matplotlib.pyplot as plt   
-
-       x1=[]
-       y1=[]
-       for v in points:
-           x1.append(v.get(kx,0))
-           y1.append(v.get(ky,0))
-
-       plt.scatter(x1,y1)
-
-       x2=[]
-       y2=[]
-       for v in frontier:
-           x2.append(v.get(kx,0))
-           y2.append(v.get(ky,0))
-
-       plt.plot(x2,y2)
-
-       plt.show()
-
-    return {'return':0, 'frontier':frontier}
-
