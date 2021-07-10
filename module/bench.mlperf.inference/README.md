@@ -40,7 +40,7 @@ Follow this [guide](https://github.com/ctuning/ck#installation) for more details
 
 ## Install CK automation for Python virtual environment
 
-```
+```bash
 ck pull repo:octoml@venv
 
 ck create venv:mlperf --template=generic
@@ -49,7 +49,7 @@ ck activate venv:mlperf
 ```
 
 ## Pull already processed results
-```
+```bash
 ck pull repo:ck-mlperf-inference
 ```
 
@@ -69,7 +69,7 @@ ck import bench.mlperf.inference --target_repo=ck-mlperf-inference
 
 ## Display results locally
 
-```
+```bash
 ck display dashboard --template=result --cfg=mlperf.inference.all
 ```
 
