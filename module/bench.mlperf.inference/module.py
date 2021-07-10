@@ -79,8 +79,15 @@ def ximport(i):
 
     ck_submitters=[]
 
+    # Attempt to load meta from "result.cfg:mlperf.inference.all"
+    result_cfg={}
+    r=ck.access({'action':'load',
+                 'module_uoa':'result.cfg',
+                 'data_uoa':'mlperf.inference.all'})
+    if r['return']==0:
+       result_cfg=r['dict']
+
     # Hack
-#    lst=[]
     for l in lst:
         p=l['path']
         m=l['meta']
@@ -642,13 +649,49 @@ def ximport(i):
                                   r=ck.access(ii)
                                   if r['return']>0: return r
 
+                                  dconfig['data_config']['default_key_x']=xdim
+                                  dconfig['data_config']['default_key_y']=ydim
+                                  dconfig['data_config']['default_sort_key']=xdim
+
+                                  import copy
+                                  tmp_result_cfg=copy.deepcopy(result_cfg)
+                                  merge_dicts_and_append_lists({'dict1': tmp_result_cfg, 'dict2': dconfig})
+
+                                  xmeta={
+                                          "meta": {
+                                            "info": " ",
+                                            "scenario": "universal",
+                                            "scenario_uid": "3bf7371412455a8f",
+                                            "title": dconfig['name'],
+                                            "viz_engine": "ck_beta"
+                                          },
+                                          "source": dconfig['name'],
+                                          "tags": dconfig['tags'].split(',')
+                                        }
+
+                                  presult=r['path']
+                                  pdesc=os.path.join(presult,'desc.json')
+                                  r=ck.save_json_to_file({'json_file':pdesc, 'dict':tmp_result_cfg, 'sort_keys':'yes'})
+                                  if r['return']>0: return r
+
+                                  pdesc=os.path.join(presult,'meta.json')
+                                  r=ck.save_json_to_file({'json_file':pdesc, 'dict':xmeta, 'sort_keys':'yes'})
+                                  if r['return']>0: return r
+
                                   if pareto:
                                      ii['data_uoa']=duoa+'-pareto'
                                      ii['tags']=tags+',pareto'
                                      r=ck.access(ii)
                                      if r['return']>0: return r
 
+                                     presult=r['path']
+                                     pdesc=os.path.join(presult,'desc.json')
+                                     r=ck.save_json_to_file({'json_file':pdesc, 'dict':tmp_result_cfg, 'sort_keys':'yes'})
+                                     if r['return']>0: return r
 
+                                     pdesc=os.path.join(presult,'meta.json')
+                                     r=ck.save_json_to_file({'json_file':pdesc, 'dict':xmeta, 'sort_keys':'yes'})
+                                     if r['return']>0: return r
 
 #    ck.out(line)
 #    ck.out('CK automation was used by:')
@@ -676,6 +719,54 @@ def ximport(i):
     if r['return']>0: return r
 
     return {'return':0}
+
+##############################################################################
+# Merge intelligently dict1 with dict2 key by key in contrast with dict1.update(dict2)
+#
+# TARGET: end users
+
+def merge_dicts_and_append_lists(i):
+    """Merge intelligently dict1 with dict2 key by key in contrast with dict1.update(dict2)
+       Target audience: end users
+
+       It can merge sub-dictionaries and lists instead of substituting them
+
+    Args:    
+              dict1 (dict): merge this dict with dict2 (will be directly modified!)
+              dict2 (dict): dict to be merged
+
+    Returns:
+              (dict): Unified CK dictionary:
+
+                return (int): return code =  0, if successful
+                                          >  0, if error
+                (error) (str): error text if return > 0
+
+                dict1 (dict): dict1 passed through the function
+
+    """
+
+    a = i['dict1']
+    b = i['dict2']
+
+    for k in b:
+        v = b[k]
+        if type(v) is dict:
+            if k not in a:
+                a.update({k: b[k]})
+            elif type(a[k]) == dict:
+                merge_dicts_and_append_lists({'dict1': a[k], 'dict2': b[k]})
+            else:
+                a[k] = b[k]
+        elif type(v) is list:
+            if k not in a:
+               a[k] = []
+            for y in v:
+                a[k].append(y)
+        else:
+            a[k] = b[k]
+
+    return {'return': 0, 'dict1': a}
 
 ##############################################################################
 def get_measurement(i):
