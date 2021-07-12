@@ -42,7 +42,7 @@ ck install package --tags=mlperf,inference,results
 
 ### Set MLPerf inference version
 ```bash
-ck set kernel var.mlperf_inference_version=1.0
+ck set kernel --var.mlperf_inference_version=1.0
 ```
  or
 ```bash
@@ -51,7 +51,7 @@ export CK_MLPERF_INFERENCE_VERSION=1.0
 
 ### Set MLPerf inference division
 ```bash
-ck set kernel var.mlperf_inference_division=closed
+ck set kernel --var.mlperf_inference_division=closed
 ```
  or
 ```bash
@@ -60,21 +60,21 @@ export CK_MLPERF_INFERENCE_DIVISION=closed
 
 ### Set MLPerf submitter
 ```bash
-ck set kernel var.mlperf_submitter=OctoML
+ck set kernel --var.mlperf_inference_submitter=OctoML
 ```
  or
 ```bash
-export CK_MLPERF_SUBMITTER=OctoML
+export CK_MLPERF_INFERENCE_SUBMITTER=OctoML
 ```
 
 
 ### Set the name of the base system
 ```bash
-ck set kernel.var.mlperf_system_base=rpi4-ubuntu20.04
+ck set kernel --var.mlperf_inference_system=rpi4-ubuntu20.04
 ```
  or
 ```bash
-export CK_MLPERF_SYSTEM_BASE=rpi4-ubuntu20.04
+export CK_MLPERF_INFERENCE_SYSTEM=rpi4-ubuntu20.04
 ```
 
 ### Add CK entry for the base system
@@ -107,6 +107,8 @@ or in your own private submission repo, use the following command:
 ```bash
 ck add {target CK repo name}:bench.mlperf.system:rpi4-ubuntu20.04
 ```
+
+
 
 
 

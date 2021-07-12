@@ -1235,6 +1235,8 @@ def run(i):
                                 ("1.1", "1.0", "0.7", "0.5")
 
               (division) [str] - "closed" or "open"
+
+              (framework) [str] - MLPerf framework
             }
 
     Output: {
@@ -1246,14 +1248,9 @@ def run(i):
     """
 
     # Check MLPerf version
-    version=i.get('version','')
-    if version=='':
-       version=os.environ.get('CK_MLPERF_INFERENCE_VERSION','')
-       if version=='':
-          version=ck.cfg.get('mlperf_inference_version','')
-
-    if version=='':
-       return {'return':1, 'error':'--version is not defined'}
+    r=check_mlperf_param(i, 'version', default='')
+    if r['return']>0: return r
+    version=r['value']
 
     ck.out('* MLPerf inference version: {}'.format(version))
 
@@ -1274,17 +1271,12 @@ def run(i):
     ck.out('* Path to MLPerf inference results: {}'.format(path_submission_root))
 
     # Check division
-    division=i.get('division','')
-    if division=='':
-       division=os.environ.get('CK_MLPERF_INFERENCE_DIVISION','')
-       if division=='':
-          division=ck.cfg.get('mlperf_inference_division','')
-
-    if division=='':
-       return {'return':1, 'error':'--division is not defined'}
+    r=check_mlperf_param(i, 'division', default='')
+    if r['return']>0: return r
+    division=r['value']
 
     if division not in ['open','closed']:
-       return {'return':1, 'error':'--division must be "open" or "closed"'}
+       return {'return':1, 'error':'"division" must be "open" or "closed"'}
 
     ck.out('* MLPerf inference division: {}'.format(division))
 
@@ -1293,14 +1285,9 @@ def run(i):
        os.makedirs(path_submission_division)
 
     # Check submitter
-    submitter=i.get('submitter','')
-    if submitter=='':
-       submitter=os.environ.get('CK_MLPERF_SUBMITTER','')
-       if submitter=='':
-          submitter=ck.cfg.get('mlperf_submitter','')
-
-    if submitter=='':
-       return {'return':1, 'error':'--submitter is not defined'}
+    r=check_mlperf_param(i, 'submitter', default='')
+    if r['return']>0: return r
+    submitter=r['value']
 
     ck.out('* MLPerf inference submitter: {}'.format(submitter))
 
@@ -1318,7 +1305,88 @@ def run(i):
         if not os.path.isdir(paths[p]):
            os.makedirs(paths[p])
 
-    # 
+    # SUT base
+    r=check_mlperf_param(i, 'system', default='')
+    if r['return']>0: return r
+    system=r['value']
+
+
+    # Target (device: cpu/gpu)
+    r=check_mlperf_param(i, 'target', default='cpu')
+    if r['return']>0: return r
+    target=r['value']
+
+    # Framework
+    r=check_mlperf_param(i, 'framework')
+    if r['return']>0: return r
+    framework=r['value']
+
+    # Framework version (should be taken from the CK later)
+    r=check_mlperf_param(i, 'framework_version', default=' ')
+    if r['return']>0: return r
+    framework_version=r['value'].strip()
+
+    # Framework version (should be taken from the CK later)
+    r=check_mlperf_param(i, 'framework_ext', default=' ')
+    if r['return']>0: return r
+    framework_ext=r['value'].strip()
+
+
+    # Prepare final MLPerf system name
+    sut=system+'-'+framework
+
+    if framework_version!='':
+       sut+='-'+framework_version
+
+    if framework_ext!='':
+       sut+='-'+framework_ext
+
+    if framework_ext!='':
+       sut+='-'+framework_ext
+
+    if target!='':
+       sut+='-'+target
+
+    sut_file=sut+'.json'
+
+    # Prepare sut JSON and record
+
+
+
+
 
 
     return {'return':0}
+
+##############################################################################
+# Internal function: check parameter
+
+def check_mlperf_param(i, key, default=''):
+    """
+    Input:  i [dict] - input
+            key - key in input
+
+    Output: {
+              return       - return code =  0, if successful
+                                         >  0, if error
+              (error)      - error text if return > 0
+
+              value
+            }
+    """
+
+    env='CK_MLPERF_INFERENCE_'+key.upper()
+
+    value=i.get(key,'')
+    if value=='':
+       value=os.environ.get(env,'')
+       if value=='':
+          value=ck.cfg.get('mlperf_inference_'+key,'')
+
+    if value=='' and default!='':
+       value=default
+
+    if value=='':
+       return {'return':1, 'error':key+' is not defined (--'+key+', '+env+', ck.cfg["mlperf_'+key+'"])'}
+
+    return {'return':0, 'value':value}
