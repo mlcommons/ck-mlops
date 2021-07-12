@@ -1224,3 +1224,99 @@ def xfilter(i):
                       if r['return']>0: return r
 
     return {'return':0}
+
+##############################################################################
+# run MLPerf inference benchmark
+
+def run(i):
+    """
+    Input:  {
+              (version) [str] - version of MLPerf inference benchmark (where to save results)
+                                ("1.1", "1.0", "0.7", "0.5")
+
+              (division) [str] - "closed" or "open"
+            }
+
+    Output: {
+              return       - return code =  0, if successful
+                                         >  0, if error
+              (error)      - error text if return > 0
+            }
+
+    """
+
+    # Check MLPerf version
+    version=i.get('version','')
+    if version=='':
+       version=os.environ.get('CK_MLPERF_INFERENCE_VERSION','')
+       if version=='':
+          version=ck.cfg.get('mlperf_inference_version','')
+
+    if version=='':
+       return {'return':1, 'error':'--version is not defined'}
+
+    ck.out('* MLPerf inference version: {}'.format(version))
+
+    # Attempt to find/install package with MLPerf inference results
+    r=ck.access({'action':'set',
+                 'module_uoa':'env',
+                 'tags':'mlperf,inference,results,v'+version,
+                 'out':'con'})
+    if r['return']>0: return r
+
+    lst=r['lst']
+
+    if len(lst)==0:
+       return {'return':1, 'error':'can\'t find CK package with MLPerf inference results'}
+
+    path_submission_root=lst[0]['meta']['env']['CK_ENV_MLPERF_INFERENCE_RESULTS']
+
+    ck.out('* Path to MLPerf inference results: {}'.format(path_submission_root))
+
+    # Check division
+    division=i.get('division','')
+    if division=='':
+       division=os.environ.get('CK_MLPERF_INFERENCE_DIVISION','')
+       if division=='':
+          division=ck.cfg.get('mlperf_inference_division','')
+
+    if division=='':
+       return {'return':1, 'error':'--division is not defined'}
+
+    if division not in ['open','closed']:
+       return {'return':1, 'error':'--division must be "open" or "closed"'}
+
+    ck.out('* MLPerf inference division: {}'.format(division))
+
+    path_submission_division=os.path.join(path_submission_root, division)
+    if not os.path.isdir(path_submission_division):
+       os.makedirs(path_submission_division)
+
+    # Check submitter
+    submitter=i.get('submitter','')
+    if submitter=='':
+       submitter=os.environ.get('CK_MLPERF_SUBMITTER','')
+       if submitter=='':
+          submitter=ck.cfg.get('mlperf_submitter','')
+
+    if submitter=='':
+       return {'return':1, 'error':'--submitter is not defined'}
+
+    ck.out('* MLPerf inference submitter: {}'.format(submitter))
+
+    path_submission=os.path.join(path_submission_division, submitter)
+    if not os.path.isdir(path_submission):
+       os.makedirs(path_submission)
+
+    # Prepare basic structure
+    ck.out('')
+    ck.out('Preparing submission directory structure ...')
+    paths={}
+    for p in cfg['dir_structure']:
+        paths[p]=os.path.join(path_submission, p)
+
+        if not os.path.isdir(paths[p]):
+           os.makedirs(paths[p])
+
+
+    return {'return':0}

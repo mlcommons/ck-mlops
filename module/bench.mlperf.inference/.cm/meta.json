@@ -5,11 +5,14 @@
     },
     "import": {
       "desc": "import results"
+    },
+    "run": {
+      "desc": "run MLPerf inference benchmark"
     }
   },
   "actions_redirect": {
-    "import": "ximport",
-    "filter": "xfilter"
+    "filter": "xfilter",
+    "import": "ximport"
   },
   "desc": "MLPerf inference benchmark automation",
   "divisions": [
@@ -28,5 +31,12 @@
     "server",
     "offline",
     "multistream"
+  ],
+  "dir_structure": [
+    "code",
+    "compliance",
+    "measurements",
+    "results",
+    "systems"
   ]
 }
