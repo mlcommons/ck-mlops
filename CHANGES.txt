@@ -1,3 +1,6 @@
+20210712:
+  * added "add bench.mlperf.system" and improved MLPerf docs
+
 20210710:
   * added Paretor frontier filter demo
   * added improved MLPerf dashboard configuration
