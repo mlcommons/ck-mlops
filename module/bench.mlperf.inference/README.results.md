@@ -1,4 +1,6 @@
-## Install CK automation for Python virtual environment
+# Process MLPerf inference results into CK database format
+
+## Install CK automation for the Python virtual environment
 
 ```bash
 ck pull repo:octoml@venv
