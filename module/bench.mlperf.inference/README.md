@@ -51,37 +51,6 @@ Follow [this guide](README.results.md)
 
 
 
-## Install CK automation for Python virtual environment
-
-List available templates:
-```bash
-ck ls venv.template | sort
-```
-
-```bash
-ck pull repo:octoml@venv
-
-ck create venv:mlperf --template=mlperf-inference-1.0
-
-ck activate venv:mlperf
-```
-
-
-
-## Pull CK repo with MLOps automation recipes from OctoML
-```bash
-ck pull repo:octoml@mlops
-```
-
-## Pull already processed MLPerf inference results
-```bash
-ck pull repo:ck-mlperf-inference
-```
-
-
-
-
-
 # Maintainers
 
 * [cTuning foundation](https://cTuning.org)
