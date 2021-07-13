@@ -1272,12 +1272,9 @@ def run(i):
                  'out':'con'})
     if r['return']>0: return r
 
-    lst=r['lst']
-
-    if len(lst)==0:
+    path_submission_root=r.get('dict',{}).get('env',{}).get('CK_ENV_MLPERF_INFERENCE_RESULTS','')
+    if path_submission_root=='':
        return {'return':1, 'error':'can\'t find CK package with MLPerf inference results'}
-
-    path_submission_root=r['dict']['env']['CK_ENV_MLPERF_INFERENCE_RESULTS']
 
     ck.out('* Path to MLPerf inference results: {}'.format(path_submission_root))
 
@@ -1432,8 +1429,6 @@ def run(i):
     if scenario not in cfg['scenarios'][version]:
        return {'return':1, 'error':'"scenario" must be in {}'.format(cfg['scenarios'][version])}
 
-    ck.out('* MLPerf inference division: {}'.format(division))
-
     # Mode (accuracy, performance)
     mode=i.get('mode','')
     if mode=='': mode='accuracy'
@@ -1441,6 +1436,11 @@ def run(i):
     if mode not in cfg['modes']:
        return {'return':1, 'error':'"mode" is not in {}'.format(cfg['modes'])}
 
+    # CMD Key
+    cmd_key=mode+'-'+scenario
+
+    ck.out('* MLPerf inference CK workflow CMD key: {}'.format(cmd_key))
+    ck.out('* MLPerf inference mode: {}'.format(mode))
 
     # Prepare basic structure
     ck.out('')
@@ -1537,7 +1537,19 @@ def run(i):
 
        ck.out('* Path to compliance: {}'.format(path_compliance))
 
+    # Run CK program workflow
 
+    ck.out(line)
+    ck.out('Starting CK workflow...')
+    ck.out('')
+
+    ii={'action':'run',
+        'module_uoa':cfg['module_deps']['program'],
+        'data_uoa':workflow,
+        'cmd_key':cmd_key,
+        'out':'con'}
+    r=ck.access(ii)
+    if r['return']>0: return r
 
 
 
