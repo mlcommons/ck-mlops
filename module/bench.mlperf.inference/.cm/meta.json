@@ -14,7 +14,36 @@
     "filter": "xfilter",
     "import": "ximport"
   },
+  "closed_division_models": {
+    "1.0": [
+      "3d-unet-99",
+      "3d-unet-99.9",
+      "bert-99",
+      "dlrm-99",
+      "dlrm-99.9",
+      "resnet50",
+      "rnnt",
+      "ssd-resnet34"
+    ],
+    "1.1": [
+      "3d-unet-99",
+      "3d-unet-99.9",
+      "bert-99",
+      "dlrm-99",
+      "dlrm-99.9",
+      "resnet50",
+      "rnnt",
+      "ssd-resnet34"
+    ]
+  },
   "desc": "MLPerf inference benchmark automation",
+  "dirs": [
+    "code",
+    "compliance",
+    "measurements",
+    "results",
+    "systems"
+  ],
   "divisions": [
     "open",
     "closed"
@@ -24,6 +53,7 @@
     "bench.mlperf.system": "4edfa6cce73e7297",
     "env": "9b9b3208ac44b891",
     "math.frontier": "99d08d331cdc5478",
+    "program": "b0ac08fe1d3c2615",
     "result": "4cd2850867df4241"
   },
   "scenarios": [
@@ -32,23 +62,34 @@
     "offline",
     "multistream"
   ],
-  "dirs": [
-    "code",
-    "compliance",
-    "measurements",
-    "results",
-    "systems"
-  ],
-  "closed_division_models": {
-    "1.1": ["3d-unet-99", "3d-unet-99.9", "bert-99", "dlrm-99", "dlrm-99.9", "resnet50", "rnnt", "ssd-resnet34"],
-    "1.0": ["3d-unet-99", "3d-unet-99.9", "bert-99", "dlrm-99", "dlrm-99.9", "resnet50", "rnnt", "ssd-resnet34"]
-  },
   "tasks": {
-    "image-classification": ["resnet50"],
-    "object-detection": ["ssd-resnet34"],
-    "image-segmentation": ["3d-unet-99", "3d-unet-99.9"],
-    "speech-recognition": ["rnnt"],
-    "nlp": ["bert-99"],
-    "recommendation": ["dlrm-99", "dlrm-99.9"]
+    "image-classification": [
+      "resnet50"
+    ],
+    "image-segmentation": [
+      "3d-unet-99",
+      "3d-unet-99.9"
+    ],
+    "nlp": [
+      "bert-99"
+    ],
+    "object-detection": [
+      "ssd-resnet34"
+    ],
+    "recommendation": [
+      "dlrm-99",
+      "dlrm-99.9"
+    ],
+    "speech-recognition": [
+      "rnnt"
+    ]
+  },
+  "scenarios": {
+    "1.1": [
+      "singlestream", "offline", "server"
+    ],
+    "1.0": [
+      "singlestream", "multistream", "offline", "server"
+    ]
   }
 }

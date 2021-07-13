@@ -1238,8 +1238,16 @@ def run(i):
               (division) [str] - "closed" or "open"
 
               (framework) [str] - MLPerf framework
+              (framework_ver) [str] -
+              (framework_ext) [str] -
 
               (model) [str] - strict name if closed division and any name if open division
+
+              (task) [str] -
+
+              (workflow) [str] - force CK program workflow to run benchmark
+
+              (scenario) [str] - usage scenario
             }
 
     Output: {
@@ -1381,6 +1389,49 @@ def run(i):
 
     ck.out('* MLPerf inference task: {}'.format(task))
 
+    # Check CK workflow to run MLPerf inference
+    r=check_mlperf_param(i, 'workflow', default=' ')
+    if r['return']>0: return r
+    workflow=r['value'].strip()
+
+    ii={'action':'search',
+        'module_uoa':cfg['module_deps']['program'],
+        'data_uoa':workflow}
+
+    tags=''
+    if workflow=='':
+       # Add tags to search
+       tags='mlperf-inference-benchmark,task-'+task+',framework-'+framework+',target-'+target
+       ii['tags']=tags
+
+    r=ck.access(ii)
+    if r['return']>0: return r
+
+    lst=r['lst']
+
+    if len(lst)==0:
+       return {'return':1, 'error':'can\'t find CK program workflow based on tags "{}"'.format(tags)}
+
+    if len(lst)>1:
+       return {'return':1, 'error':'more than one CK program workflow found based on tags "{}"'.format(tags)}
+
+    workflow=lst[0]['data_uoa']
+    workflow_path=lst[0]['path']
+
+    ck.out('* MLPerf inference CK workflow: "program:{}"'.format(workflow))
+    ck.out('* MLPerf inference CK workflow path: {}'.format(workflow_path))
+
+
+    # Check scenario
+    r=check_mlperf_param(i, 'scenario', default='')
+    if r['return']>0: return r
+    scenario=r['value']
+
+    if scenario not in cfg['scenarios'][version]:
+       return {'return':1, 'error':'"scenario" must be in {}'.format(cfg['scenarios'][version])}
+
+    ck.out('* MLPerf inference division: {}'.format(division))
+
 
     # Prepare basic structure
     ck.out('')
@@ -1425,7 +1476,59 @@ def run(i):
                             'sort_keys':'yes'})
     if r['return']>0: return r
 
-    
+    # Adding directory structure for the given task, model, scenario, workflow
+    path_results=os.path.join(path_submission, paths['results'], sut, model, scenario)
+    if not os.path.isdir(path_results):
+       os.makedirs(path_results)
+
+    # Prepare measurement file (probably after workflow execution based on model package
+    path_measurements=os.path.join(path_submission, paths['measurements'], sut, model, scenario)
+    if not os.path.isdir(path_measurements):
+       os.makedirs(path_measurements)
+
+    # Above: mlperf.conf; user.conf; calibration doc; README.md
+    # {sut}_{workflow}_{scenario}.json
+    file_measurement=sut+'_'+workflow+'_'+scenario+'.json'
+    path_file_measurement=os.path.join(path_measurements, file_measurement)
+
+    dm={}
+
+    r=ck.save_json_to_file({'json_file':path_file_measurement, 
+                            'dict':dm,
+                            'sort_keys':'yes'})
+    if r['return']>0: return r
+
+    path_file_measurement_readme=os.path.join(path_measurements, 'README.md')
+    r=ck.save_text_file({'text_file':path_file_measurement_readme, 'string':''})
+    if r['return']>0: return r
+
+    # Prepare code
+    path_code=os.path.join(path_submission, paths['code'], model, workflow)
+    if not os.path.isdir(path_code):
+       os.makedirs(path_code)
+
+    path_file_code_readme=os.path.join(path_code, 'README.md')
+    r=ck.save_text_file({'text_file':path_file_code_readme, 'string':''})
+    if r['return']>0: return r
+
+    ck.out('')
+    ck.out('* Path to results: {}'.format(path_results))
+    ck.out('* Path to measurements: {}'.format(path_measurements))
+    ck.out('* Path to measurement JSON file: {}'.format(path_file_measurement))
+    ck.out('* Path to measurement Readme file: {}'.format(path_file_measurement_readme))
+    ck.out('* Path to code: {}'.format(path_code))
+    ck.out('* Path to code Readme file: {}'.format(path_file_code_readme))
+
+    path_compliance=''
+    if division=='closed':
+       # Prepare compliance
+       path_compliance=os.path.join(path_submission, paths['compliance'], sut, model, scenario)
+       if not os.path.isdir(path_compliance):
+          os.makedirs(path_compliance)
+
+       ck.out('* Path to compliance: {}'.format(path_compliance))
+
+
 
 
 
