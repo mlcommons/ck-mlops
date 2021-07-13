@@ -1264,10 +1264,8 @@ def run(i):
 
     if len(lst)==0:
        return {'return':1, 'error':'can\'t find CK package with MLPerf inference results'}
-    elif len(lst)>1:
-       return {'return':1, 'error':'more than one CK package with MLPerf inference results found - use "--result_tag" to specify version!'}
 
-    path_submission_root=lst[0]['meta']['env']['CK_ENV_MLPERF_INFERENCE_RESULTS']
+    path_submission_root=r['dict']['env']['CK_ENV_MLPERF_INFERENCE_RESULTS']
 
     ck.out('* Path to MLPerf inference results: {}'.format(path_submission_root))
 
