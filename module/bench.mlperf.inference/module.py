@@ -1231,8 +1231,9 @@ def xfilter(i):
 def run(i):
     """
     Input:  {
-              (version) [str] - version of MLPerf inference benchmark (where to save results)
-                                ("1.1", "1.0", "0.7", "0.5")
+              (result_tag) [str] - extra tags to find environment with MLPerf inference results
+
+              (version) [str] - MLPerf inference version (1.1 by default)
 
               (division) [str] - "closed" or "open"
 
@@ -1247,17 +1248,15 @@ def run(i):
 
     """
 
-    # Check MLPerf version
-    r=check_mlperf_param(i, 'version', default='')
-    if r['return']>0: return r
-    version=r['value']
-
-    ck.out('* MLPerf inference version: {}'.format(version))
+    result_tag=i.get('result_tag','')
 
     # Attempt to find/install package with MLPerf inference results
+    tags='mlperf,inference,results'
+    if result_tag!='': tags+=','+result_tag
+
     r=ck.access({'action':'set',
                  'module_uoa':'env',
-                 'tags':'mlperf,inference,results,v'+version,
+                 'tags':tags,
                  'out':'con'})
     if r['return']>0: return r
 
@@ -1265,10 +1264,23 @@ def run(i):
 
     if len(lst)==0:
        return {'return':1, 'error':'can\'t find CK package with MLPerf inference results'}
+    elif len(lst)>1:
+       return {'return':1, 'error':'more than one CK package with MLPerf inference results found - use "--result_tag" to specify version!'}
 
     path_submission_root=lst[0]['meta']['env']['CK_ENV_MLPERF_INFERENCE_RESULTS']
 
     ck.out('* Path to MLPerf inference results: {}'.format(path_submission_root))
+
+    # Check version
+    r=check_mlperf_param(i, 'version', default='1.1')
+    if r['return']>0: return r
+    version=r['value']
+
+    if version not in ['1.1', '1.0', '0.7', '0.5']:
+       return {'return':1, 'error':'"version" is not recognized'}
+
+    ck.out('* MLPerf inference version: {}'.format(version))
+
 
     # Check division
     r=check_mlperf_param(i, 'division', default='')
@@ -1299,7 +1311,7 @@ def run(i):
     ck.out('')
     ck.out('Preparing submission directory structure ...')
     paths={}
-    for p in cfg['dir_structure']:
+    for p in cfg['dirs']:
         paths[p]=os.path.join(path_submission, p)
 
         if not os.path.isdir(paths[p]):
@@ -1309,6 +1321,13 @@ def run(i):
     r=check_mlperf_param(i, 'system', default='')
     if r['return']>0: return r
     system=r['value']
+
+    #   Attempt to load SUT
+    r=ck.access({'action':'load',
+                 'module_uoa':cfg['module_deps']['bench.mlperf.system'],
+                 'data_uoa':system})
+    if r['return']>0: return r
+    meta_system_base=r['dict']
 
 
     # Target (device: cpu/gpu)
@@ -1331,6 +1350,10 @@ def run(i):
     if r['return']>0: return r
     framework_ext=r['value'].strip()
 
+    ck.out('Framework: {}'.format(framework))
+    ck.out('Framework version: {}'.format(framework_version))
+    ck.out('Framework ext: {}'.format(framework_ext))
+
 
     # Prepare final MLPerf system name
     sut=system+'-'+framework
@@ -1350,6 +1373,20 @@ def run(i):
     sut_file=sut+'.json'
 
     # Prepare sut JSON and record
+    ck.out('')
+    ck.out('SUT generated filename: {}'.format(sut_file))
+
+    path_system_file=os.path.join(paths['systems'], sut_file)
+    ck.out('SUT path: {}'.format(path_system_file))
+
+    meta_system=meta_system_base
+    meta_system['desc']['division']=division
+    meta_system['desc']['submitter']=submitter
+
+    r=ck.save_json_to_file({'json_file':path_system_file,
+                            'dict':meta_system,
+                            'sort_keys':'yes'})
+    if r['return']>0: return r
 
 
 

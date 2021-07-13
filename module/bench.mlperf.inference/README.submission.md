@@ -1,18 +1,56 @@
 # Automate MLPerf inference benchmark submission using CK
 
+[![compatibility](https://github.com/ctuning/ck-guide-images/blob/master/ck-compatible.svg)](https://github.com/ctuning/ck)
+[![automation](https://github.com/ctuning/ck-guide-images/blob/master/ck-artifact-automated-and-reusable.svg)](https://cTuning.org/ae)
+
+
+## Install CK
+
+```bash
+$ python3 -m pip install ck -U
+
+```
+or
+```bash
+$ python3 -m pip install ck -U --user
+```
+
+```bash
+
+$ ck
+
+CK version: 2.5.7
+
+Python executable used by CK: /usr/bin/python3
+
+Python version used by CK: 3.6.9 (default, Jan 26 2021, 15:33:00)
+   [GCC 8.4.0]
+
+Path to the CK kernel:    /home/gfursin/.local/lib/python3.6/site-packages/ck/kernel.py
+Path to the default repo: /home/gfursin/.local/lib/python3.6/site-packages/ck/repo
+Path to the local repo:   /mnt/CK/local
+Path to CK repositories:  /mnt/CK
+
+Documentation:        https://github.com/ctuning/ck/wiki
+CK Google group:      https://bit.ly/ck-google-group
+CK Slack channel:     https://cKnowledge.org/join-slack
+Stable CK components: https://cKnowledge.io
+```
+
+Follow this [guide](https://github.com/ctuning/ck#installation) for more details.
+
+
+
+
 
 
 ## Install CK automation for the Python virtual environment
 
-List available templates:
-```bash
-ck ls venv.template | sort
-```
-
+Create virtual environment for MLPerf
 ```bash
 ck pull repo:octoml@venv
 
-ck create venv:mlperf --template=mlperf-inference-1.0
+ck create venv:mlperf --template=generic
 
 ck activate venv:mlperf
 ```
@@ -20,33 +58,70 @@ ck activate venv:mlperf
 
 
 ## Pull CK repo with MLOps automation recipes from OctoML
+
 ```bash
 ck pull repo:octoml@mlops
 ```
 
 ## Pull already processed MLPerf inference results
+
 ```bash
 ck pull repo:ck-mlperf-inference
 ```
 
 
 
-## Install CK package with MLPerf inference results (can be private for submission)
+## Install CK package with MLPerf inference results
+
+### New (private) repository for submission
+
+Let's consider that you've created a new (private) Git(Hub) repository 
+to save MLPerf results: {{MLPERF_RESULTS_URL}}.
+
+Note that you must have some README.md file in the root directory -
+it is used by CK to set up paths.
+
+You can install it via CK to be used with CK automation as follows:
+
 
 ```bash
-ck install package --tags=mlperf,inference,results
+ck install package --tags=mlperf,inference,results,r1.1 --env.PACKAGE_URL={{MLPERF_RESULTS_URL}}
+```
+
+Alternatively, you can set up a local empty repository for MLPerf results as follows:
+```bash
+ck install package --tags=mlperf,inference,results,dummy
+```
+
+You can find its location as follows:
+```bash
+ck locate env --tags=mlperf,inference,results
+```
+
+You can install this package to another place as follows:
+```bash
+ck install package --tags=mlperf,inference,results,dummy --install_path={{YOUR PATH}}
+```
+
+You can use already existing directory to register in the CK as a place 
+to store MLPerf inference results as follows (it should also contain README.md
+in the root):
+
+```bash
+ck detect soft --tags=mlperf,inference,results --full_path={{PATH TO README.md IN YOUR DIR WITH MLPERF inference results}} --force_version=1.1
 ```
 
 
-## Configure submission
+## Configure your submission
 
-### Set MLPerf inference version
+
+### Set MLPerf inference division
 ```bash
-ck set kernel --var.mlperf_inference_version=1.0
+ck set kernel --var.mlperf_inference_version=1.1
 ```
  or
 ```bash
-export CK_MLPERF_INFERENCE_VERSION=1.0
+export CK_MLPERF_INFERENCE_VERSION=1.1
 ```
 
 ### Set MLPerf inference division
@@ -112,6 +187,13 @@ ck add {target CK repo name}:bench.mlperf.system:rpi4-ubuntu20.04
 
 
 
+
+
+## Run MLPerf inference benchmark
+
+```bash
+ck run bench.mlperf.inference
+```
 
 
 
