@@ -1248,6 +1248,8 @@ def run(i):
               (workflow) [str] - force CK program workflow to run benchmark
 
               (scenario) [str] - usage scenario
+
+              (mode) [str] - (accuracy/performance) "accuracy" by default
             }
 
     Output: {
@@ -1431,6 +1433,13 @@ def run(i):
        return {'return':1, 'error':'"scenario" must be in {}'.format(cfg['scenarios'][version])}
 
     ck.out('* MLPerf inference division: {}'.format(division))
+
+    # Mode (accuracy, performance)
+    mode=i.get('mode','')
+    if mode=='': mode='accuracy'
+
+    if mode not in cfg['modes']:
+       return {'return':1, 'error':'"mode" is not in {}'.format(cfg['modes'])}
 
 
     # Prepare basic structure
