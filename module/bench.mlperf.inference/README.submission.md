@@ -192,7 +192,7 @@ ck add {target CK repo name}:bench.mlperf.system:rpi4-ubuntu20.04
 ## Run MLPerf inference benchmark
 
 ```bash
-ck run bench.mlperf.inference
+ck run bench.mlperf.inference --division=closed --framework=onnx --model=resnet50 --scenario=singlestream
 ```
 
 

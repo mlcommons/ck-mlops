@@ -1238,6 +1238,8 @@ def run(i):
               (division) [str] - "closed" or "open"
 
               (framework) [str] - MLPerf framework
+
+              (model) [str] - strict name if closed division and any name if open division
             }
 
     Output: {
@@ -1305,15 +1307,7 @@ def run(i):
     if not os.path.isdir(path_submission):
        os.makedirs(path_submission)
 
-    # Prepare basic structure
-    ck.out('')
-    ck.out('Preparing submission directory structure ...')
-    paths={}
-    for p in cfg['dirs']:
-        paths[p]=os.path.join(path_submission, p)
 
-        if not os.path.isdir(paths[p]):
-           os.makedirs(paths[p])
 
     # SUT base
     r=check_mlperf_param(i, 'system', default='')
@@ -1348,10 +1342,55 @@ def run(i):
     if r['return']>0: return r
     framework_ext=r['value'].strip()
 
-    ck.out('Framework: {}'.format(framework))
-    ck.out('Framework version: {}'.format(framework_version))
-    ck.out('Framework ext: {}'.format(framework_ext))
+    ck.out('* Target: {}'.format(target))
+    ck.out('* Framework: {}'.format(framework))
+    ck.out('* Framework version: {}'.format(framework_version))
+    ck.out('* Framework ext: {}'.format(framework_ext))
 
+
+    # Check model (strict for closed and any for open)
+    r=check_mlperf_param(i, 'model', default='')
+    if r['return']>0: return r
+    model=r['value']
+
+    if division=='closed':
+      allowed_models=cfg['closed_division_models'][version]
+      if model not in allowed_models:
+         return {'return':1, 'error':'closed division model must be in {}'.format(allowed_models)}
+
+    ck.out('* MLPerf inference model: {}'.format(model))
+
+    # Check task
+    r=check_mlperf_param(i, 'task', default=' ')
+    if r['return']>0: return r
+    task=r['value'].strip()
+
+    if task=='':
+       # Attempt to detect from the model name
+       tasks=cfg['tasks']
+
+       for t in tasks:
+           if model in tasks[t]:
+              task=t
+              break
+
+    if task=='':
+       # Fail here with a note
+       r=check_mlperf_param(i, 'task', default='')
+       if r['return']>0: return r
+
+    ck.out('* MLPerf inference task: {}'.format(task))
+
+
+    # Prepare basic structure
+    ck.out('')
+    ck.out('Preparing submission directory structure ...')
+    paths={}
+    for p in cfg['dirs']:
+        paths[p]=os.path.join(path_submission, p)
+
+        if not os.path.isdir(paths[p]):
+           os.makedirs(paths[p])
 
     # Prepare final MLPerf system name
     sut=system+'-'+framework
@@ -1370,7 +1409,7 @@ def run(i):
 
     sut_file=sut+'.json'
 
-    # Prepare sut JSON and record
+    # Prepare SUT JSON and record
     ck.out('')
     ck.out('SUT generated filename: {}'.format(sut_file))
 
@@ -1386,6 +1425,7 @@ def run(i):
                             'sort_keys':'yes'})
     if r['return']>0: return r
 
+    
 
 
 
