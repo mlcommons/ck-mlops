@@ -2,28 +2,28 @@
 
 Please check [this guide](https://ck.readthedocs.io/en/latest/guide/how-to-contribute.html)
 
-**Thank you very much for supporting this community project!**
+*Thank you very much for supporting this community project!*
 
 # CK author
 
-* Grigori Fursin, <Grigori.Fursin@cTuning.org>, https://cKnowledge.io/@gfursin
+* Grigori Fursin, &lt;Grigori.Fursin@cTuning.org&gt;, https://cKnowledge.io/@gfursin
 
 # Contributors in alphabetical order (feedback, ideas, components, extensions)
 
-* Anatoly Belonog <anatolybelonog@gmail.com>
-* Nikolay Chunosov <nikolay.chunosov@xored.com>
-* Alan Melo Clappis <alanmeloclappis@gmail.com>
-* Daniil Efremov <daniil.efremov@xored.com>
-* Herve Guillou <guillou.herve@gmail.com>
-* Leo Gordon <leo@dividiti.com>
-* Anton Lokhmotov <anton@dividiti.com>
-* Ivan Osipov <ivan.osipov@xored.com>
-* Lahiru Rasnayake <lahiru.rasnayake@ntnu.no>
-* Dmitry Savenko <ds@dsavenko.com>
-* Gavin Simpson <gavin.s.simpson@gmail.com>
-* Stuart Taylor <Stuart.Taylor@arm.com>
-* Flavio Vella <Flavio.Vella@unibz.it>
-* Emanuele Vitali <emanuele.vitali@polimi.it>
+* Anatoly Belonog &lt;anatolybelonog@gmail.com&gt;
+* Nikolay Chunosov &lt;nikolay.chunosov@xored.com&gt;
+* Alan Melo Clappis &lt;alanmeloclappis@gmail.com&gt;
+* Daniil Efremov &lt;daniil.efremov@xored.com&gt;
+* Herve Guillou &lt;guillou.herve@gmail.com&gt;
+* Leo Gordon &lt;leo@dividiti.com&gt;
+* Anton Lokhmotov &lt;anton@dividiti.com&gt;
+* Ivan Osipov &lt;ivan.osipov@xored.com&gt;
+* Lahiru Rasnayake &lt;lahiru.rasnayake@ntnu.no&gt;
+* Dmitry Savenko &lt;ds@dsavenko.com&gt;
+* Gavin Simpson &lt;gavin.s.simpson@gmail.com&gt;
+* Stuart Taylor &lt;Stuart.Taylor@arm.com&gt;
+* Flavio Vella &lt;Flavio.Vella@unibz.it&gt;
+* Emanuele Vitali &lt;emanuele.vitali@polimi.it&gt;
 * Wen Yang @w-simon
 * @alexanderzubarev
 * @fanranGit
