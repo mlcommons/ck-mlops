@@ -1251,6 +1251,9 @@ def run(i):
               (scenario) [str] - usage scenario
 
               (mode) [str] - (accuracy/performance) "accuracy" by default
+
+              (env) [dict] - environment for CK program workflow
+              (env.{KEY})  - set env[KEY]=value (user-friendly interface via CMD)
             }
 
     Output: {
@@ -1265,6 +1268,11 @@ def run(i):
     cur_dir=os.getcwd()
 
     result_tag=i.get('result_tag','')
+
+    env=i.get('env',{})
+    for q in i:
+        if q.startswith('env.'):
+           env[q[4:]]=i[q]
 
     # Attempt to find/install package with MLPerf inference results
     tags='mlperf,inference,results'
@@ -1332,6 +1340,13 @@ def run(i):
     if r['return']>0: return r
     meta_system_base=r['dict']
 
+    # Check if user.conf
+    path_system_base=r['path']
+    path_system_base_user_conf=os.path.join(path_system_base, 'user.'+version+'.conf')
+    print (path_system_base_user_conf)
+    if os.path.isfile(path_system_base_user_conf):
+       ck.out('* MLPerf user config: {}'.format(path_system_base_user_conf))
+       env['CK_MLPERF_USER_CONF']=path_system_base_user_conf
 
     # Target (device: cpu/gpu)
     r=check_mlperf_param(i, 'target', default='cpu')
@@ -1496,6 +1511,7 @@ def run(i):
 
     # Prepare measurement file (probably after workflow execution based on model package
     path_measurements=os.path.join(path_submission, paths['measurements'], sut, model, scenario)
+    if scenario=='performance': path_measurements=os.path.join(path_measurements, 'run_1')
     if not os.path.isdir(path_measurements):
        os.makedirs(path_measurements)
 
@@ -1550,6 +1566,7 @@ def run(i):
         'module_uoa':cfg['module_deps']['program'],
         'data_uoa':workflow,
         'cmd_key':cmd_key,
+        'env':env,
         'record_deps':'ck-deps.json',
         'clean':'yes',
         'out':'con'}

@@ -183,6 +183,11 @@ or in your own private submission repo, use the following command:
 ck add {target CK repo name}:bench.mlperf.system:rpi4-ubuntu20.04
 ```
 
+You can add "user.conf" to the above CK entry to be automatically picked up by CK MLPerf workflows.
+You need to add the MLPerf version to this filename: "user.{MLPerf version}.conf", 
+i.e. "user.1.1.conf".
+
+
 
 
 
