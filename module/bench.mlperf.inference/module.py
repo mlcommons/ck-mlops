@@ -14,6 +14,7 @@ ck = None  # Will be updated by CK (initialized CK kernel)
 # Local settings
 
 import re
+import shutil
 
 #import sys
 import os
@@ -1260,6 +1261,9 @@ def run(i):
 
     """
 
+    # Save current user directory
+    cur_dir=os.getcwd()
+
     result_tag=i.get('result_tag','')
 
     # Attempt to find/install package with MLPerf inference results
@@ -1486,7 +1490,7 @@ def run(i):
     if r['return']>0: return r
 
     # Adding directory structure for the given task, model, scenario, workflow
-    path_results=os.path.join(path_submission, paths['results'], sut, model, scenario)
+    path_results=os.path.join(path_submission, paths['results'], sut, model, scenario, mode)
     if not os.path.isdir(path_results):
        os.makedirs(path_results)
 
@@ -1538,7 +1542,6 @@ def run(i):
        ck.out('* Path to compliance: {}'.format(path_compliance))
 
     # Run CK program workflow
-
     ck.out(line)
     ck.out('Starting CK workflow...')
     ck.out('')
@@ -1547,15 +1550,98 @@ def run(i):
         'module_uoa':cfg['module_deps']['program'],
         'data_uoa':workflow,
         'cmd_key':cmd_key,
+        'record_deps':'ck-deps.json',
+        'clean':'yes',
         'out':'con'}
-    r=ck.access(ii)
+    rw=ck.access(ii)
+    if rw['return']>0: return rw
+
+    # Directory with MLPerf raw results and CK postprocessed results from the CK workflow
+    tmp_dir=rw['tmp_dir']
+
+    # Detect path to MLPerf inference from workflow deps
+    deps=rw['deps']
+
+    path_mlperf_inference_conf=''
+    for d in deps:
+        v=deps[d]
+        # search for package UOA of the MLperf inference source
+        if v.get('package_uoa','')=='e4b96c0d80445eca':
+           path_mlperf_inference_conf=v.get('dict',{}).get('env',{}).get('CK_ENV_MLPERF_INFERENCE_MLPERF_CONF','')
+
+    if path_mlperf_inference_conf=='':
+       return {'return':1, 'error':'Path to MLPerf inference conf was not found'}
+
+    if not os.path.isfile(path_mlperf_inference_conf):
+       return {'return':1, 'error':'File "{}" not found'.format(path_mlperf_inference_conf)}
+
+    # Save raw output
+    pout=os.path.join(tmp_dir, 'ck-workflow-output.json')
+
+    r=ck.save_json_to_file({'json_file':pout, 'dict':r, 'sort_keys':'yes'})
     if r['return']>0: return r
 
+    # Process a few raw files from CK
+    os.chdir(tmp_dir)
+
+    if os.path.isfile('results.json'):
+       shutil.copy('results.json', 'ck-results.json')
+
+    if os.path.isfile('tmp-ck-timer.json'):
+       shutil.copy('tmp-ck-timer.json', 'ck-timer.json')
+
+    # Copying output to MLPerf results
+    ck.out(line)
+    ck.out('Copying CK workflow output to MLPerf results:')
+    ck.out('Input directory: {}'.format(tmp_dir))
+    ck.out('Output directory (results): {}'.format(path_results))
+    ck.out('Output directory (measurements): {}'.format(path_results))
+ 
+    # Copy MLPerf files to results directory
+    ck.out('')
+    files=[]
+
+    if mode=='accuracy': files.append('accuracy.txt')
+
+    for f in os.listdir():
+        if f.startswith('mlperf'):
+           files.append(f)
+
+    for f in files:
+        ck.out(' * '+f)
+        p_target=os.path.join(path_results, f)
+        shutil.copy(f, p_target)
+
+    # Copy user.conf and CK to measurements directory
+    ck.out('')
+    files=[]
+
+    if os.path.isfile('user.conf'): files.append('user.conf')
+
+    for f in os.listdir():
+        if f.startswith('ck-'):
+           files.append(f)
+
+    for f in files:
+        ck.out(' * '+f)
+        f1='ck-'+mode+'-'+f[3:] if f.startswith('ck-') else f
+        p_target=os.path.join(path_measurements, f1)
+        shutil.copy(f, p_target)
+
+    ck.out(' * mlperf.conf')
+    shutil.copy(path_mlperf_inference_conf, os.path.join(path_measurements, 'mlperf.conf'))
 
 
 
 
-    return {'return':0}
+
+
+
+    # Restore current directory
+    os.chdir(cur_dir)
+
+    # Return output from the CK workflow
+    return rw
 
 ##############################################################################
 # Internal function: check parameter
