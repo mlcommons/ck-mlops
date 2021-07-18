@@ -60,6 +60,8 @@ def setup(i):
     cus=i.get('customize',{})
     fp=cus.get('full_path','')
 
+    env=i['env']
+
     hosd=i['host_os_dict']
     tosd=i['target_os_dict']
 
@@ -73,8 +75,6 @@ def setup(i):
 
     remote=tosd.get('remote','')
     tbits=tosd.get('bits','')
-
-    env=i['env']
 
     pi=os.path.dirname(fp)
 
@@ -95,5 +95,13 @@ def setup(i):
     if x!='': 
        env[ep+'_LABELS_NAME']=x
        env[ep+'_LABELS']=pi+sdirs+x
+
+    # Call common script
+    r=ck.access({'action':'run', 'module_uoa':'script', 'data_uoa':'process-model', 
+                 'code':'common_vars', 'func':'process', 
+                 'dict':i})
+    if r['return']>0: return r
+
+    env.update(r['env'])
 
     return {'return':0, 'bat':s}

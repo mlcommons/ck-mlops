@@ -1,3 +1,7 @@
+20210717:
+  * added script:process-model to process common paramaters
+    of different ML models
+
 20210712:
   * added "add bench.mlperf.system" and improved MLPerf docs
 
