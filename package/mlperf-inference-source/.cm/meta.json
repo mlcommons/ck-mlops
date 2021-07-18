@@ -45,7 +45,7 @@
         "PACKAGE_GIT_CHECKOUT": "r1.1"
       },
       "extra_customize": {
-        "package_extra_name": " (OctoML's r1.1 branch with TVM backedn)",
+        "package_extra_name": " (OctoML's r1.1 branch with TVM backend)",
         "version": "r1.1-tvm"
       }
     },
