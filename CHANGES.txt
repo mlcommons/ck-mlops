@@ -1,3 +1,6 @@
+20210720:
+  * addded ML_MODEL_ROOT env to ML model detection and installation scripts
+
 20210717:
   * added script:process-model to process common paramaters
     of different ML models

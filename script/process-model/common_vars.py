@@ -27,6 +27,11 @@ def process(i):
     # Provide the installation root where all files live:
     env[ep + '_ROOT'] = install_root
 
+    # Set universal names
+    env['ML_MODEL_ROOT'] = install_root
+    env['ML_MODEL_FILENAME'] = os.path.basename(fp)
+    env['ML_MODEL_FILEPATH'] = fp
+
     # Init common variables, they are set for all models:
     #
     # This group should end with _FILE prefix e.g. TFLITE_FILE
