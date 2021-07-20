@@ -81,9 +81,6 @@ def setup(i):
 
     ep=cus['env_prefix']
 
-    # Provide the installation root where all files live:
-    env[ep + '_ROOT'] = install_root
-
     # Omit the trivial preprocessing step by detecting the necessary model files during installation
     #
     # These automatically detected values take lower precedence and can be overridden by values in install_env
@@ -107,28 +104,12 @@ def setup(i):
                         elif line_parts[0] == 'Output:':
                             env[ep + '_OUTPUT_LAYER_NAME'] = line_parts[1].strip()
 
-    # Init common variables, they are set for all models:
-    #
-    # This group should end with _FILE prefix e.g. TFLITE_FILE
-    # This suffix will be cut off and prefixed by cus['env_prefix']
-    # so we'll get vars like CK_ENV_TENSORFLOW_MODEL_TFLITE
-    for varname in install_env.keys():
-        if varname.endswith('_FILE'):
-            env[ep + '_' + varname[:-len('_FILE')]] = os.path.join(install_root, install_env[varname])
+    # Call common script
+    r=ck.access({'action':'run', 'module_uoa':'script', 'data_uoa':'process-model', 
+                 'code':'common_vars', 'func':'process', 
+                 'dict':i})
+    if r['return']>0: return r
 
-    # Init model-specific variables:
-    #
-    # This other group should be started with MODEL_ prefix e.g. MODEL_MOBILENET_RESOLUTION
-    # This prefix will be cut off as it already contained in cus['env_prefix']
-    # so we'll get vars like CK_ENV_TENSORFLOW_MODEL_MOBILENET_RESOLUTION
-    for varname in install_env.keys():
-        if varname.startswith('MODEL_'):
-            env[ep+varname[len('MODEL'):]] = install_env[varname]
+    env.update(r['env'])
 
-    # Just copy those without any change in the name:
-    #
-    for varname in install_env.keys():
-        if varname.startswith('ML_MODEL_'):
-            env[varname] = install_env[varname]
-    
     return {'return':0, 'bat':s}

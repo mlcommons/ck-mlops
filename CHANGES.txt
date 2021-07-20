@@ -1,3 +1,14 @@
+20210720:
+  * added ML_MODEL_ROOT env to ML model detection and installation scripts
+  * added CK_ENV_DATASET_ROOT env to ImageNet and COCO datasets
+
+20210717:
+  * added script:process-model to process common paramaters
+    of different ML models
+
+20210712:
+  * added "add bench.mlperf.system" and improved MLPerf docs
+
 20210710:
   * added Paretor frontier filter demo
   * added improved MLPerf dashboard configuration

@@ -7,7 +7,7 @@
     "limit_recursion_dir_search": {
       "linux": 5
     },
-    "soft_file_universal": "inference-results$#sep#$README.md"
+    "soft_file_universal": "README.md"
   },
   "soft_name": "MLPerf Inference results",
   "tags": [

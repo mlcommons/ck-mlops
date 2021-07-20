@@ -54,8 +54,7 @@ def setup(i):
 
     full_path = cus.get('full_path','')
     install_dir, model_filename = os.path.split(full_path)
-    
-    
+
     install_env = cus.get('install_env', {})
 
     # Init common variables, they are expected to be set for all models

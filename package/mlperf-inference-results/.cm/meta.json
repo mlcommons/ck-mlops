@@ -29,37 +29,58 @@
   ],
   "use_scripts_from_another_entry": {
     "data_uoa": "cd9ccc74060b3d18",
+    "data_uoa#": "download-and-install-package",
     "module_uoa": "script"
   },
   "variations": {
-    "v0.5": {
+    "dummy": {
       "extra_customize": {
-        "package_extra_name": " (v0.5)",
-        "version": "v0.5"
+        "package_extra_name": " (dummy)",
+        "version": "1.1"
       },
       "extra_env": {
         "PACKAGE_GIT_CLONE_FLAGS": "",
-        "PACKAGE_URL": "https://github.com/mlcommons/inference_results_v0.5"
+        "PACKAGE_URL": "https://github.com/gfursin/mlperf-inference-results-dummy"
+      }
+    },
+    "v1.1": {
+      "extra_customize": {
+        "package_extra_name": " (v1.1)",
+        "version": "1.1"
+      },
+      "extra_env": {
+        "PACKAGE_GIT_CLONE_FLAGS": "",
+        "PACKAGE_URL": "https://github.com/mlcommons/inference_results_v1.0"
+      }
+    },
+    "v1.0": {
+      "extra_customize": {
+        "package_extra_name": " (v1.0)",
+        "version": "1.0"
+      },
+      "extra_env": {
+        "PACKAGE_GIT_CLONE_FLAGS": "",
+        "PACKAGE_URL": "https://github.com/mlcommons/inference_results_v1.0"
       }
     },
     "v0.7": {
       "extra_customize": {
         "package_extra_name": " (v0.7)",
-        "version": "v0.7"
+        "version": "0.7"
       },
       "extra_env": {
         "PACKAGE_GIT_CLONE_FLAGS": "",
         "PACKAGE_URL": "https://github.com/mlcommons/inference_results_v0.7"
       }
     },
-    "v1.0": {
+    "v0.5": {
       "extra_customize": {
-        "package_extra_name": " (v1.0)",
-        "version": "v1.0"
+        "package_extra_name": " (v0.5)",
+        "version": "0.5"
       },
       "extra_env": {
         "PACKAGE_GIT_CLONE_FLAGS": "",
-        "PACKAGE_URL": "https://github.com/mlcommons/inference_results_v1.0"
+        "PACKAGE_URL": "https://github.com/mlcommons/inference_results_v0.5"
       }
     }
   }
