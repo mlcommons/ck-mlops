@@ -15,7 +15,7 @@
       "win": "model.pt"
     }
   },
-  "soft_name": "PyTorch model (net and weights)",
+  "soft_name": "PyTorch model",
   "tags": [
     "pytorch",
     "weights",
