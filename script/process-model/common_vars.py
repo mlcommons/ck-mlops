@@ -29,8 +29,19 @@ def process(i):
 
     # Set universal names
     env['ML_MODEL_ROOT'] = install_root
-    env['ML_MODEL_FILENAME'] = os.path.basename(fp)
-    env['ML_MODEL_FILEPATH'] = fp
+
+    model_path=fp
+    model_file=os.path.basename(fp)
+    model_root=os.path.dirname(fp)
+
+    if model_file=='dummy' or not os.path.isfile(fp):
+       # When variations, the name can be different.
+       # Then try to detect from PACKAGE_NAME
+       model_file=install_env['PACKAGE_NAME']
+       model_path=os.path.join(model_root, model_file)
+
+    env['ML_MODEL_FILENAME'] = model_file
+    env['ML_MODEL_FILEPATH'] = model_path
 
     # Init common variables, they are set for all models:
     #

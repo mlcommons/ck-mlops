@@ -90,8 +90,6 @@ def setup(i):
         if filename.endswith('.onnx'):
             env[ep + '_ONNX_FILENAME'] = filename
             env[ep + '_ONNX_FILEPATH'] = filepath
-            env['ML_MODEL_FILENAME'] = filename
-            env['ML_MODEL_FILEPATH'] = filepath
         elif filename.endswith('_info.txt'):
             # Read input and output layer names from graph info file
             with open(filepath, 'r') as f:
