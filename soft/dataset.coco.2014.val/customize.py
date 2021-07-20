@@ -102,6 +102,7 @@ def setup(i):
 
     env['CK_ENV_DATASET_TYPE']='coco'
     env[ep] = pi
+    env['CK_ENV_DATASET_ROOT']=pi
 
     return {'return':0, 'bat':s}
 

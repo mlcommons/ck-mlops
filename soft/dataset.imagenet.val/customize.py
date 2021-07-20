@@ -80,6 +80,7 @@ def setup(i):
 
     ep=cus.get('env_prefix','')
     env[ep]=pi
+    env['CK_ENV_DATASET_ROOT']=pi
 
     env['CK_CAFFE_IMAGENET_VAL']=pi+sdirs
 

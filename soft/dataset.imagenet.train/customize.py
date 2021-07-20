@@ -81,5 +81,6 @@ def setup(i):
 
     ep=cus['env_prefix']
     env[ep]=pi
+    env['CK_ENV_DATASET_ROOT']=pi
 
     return {'return':0, 'bat':s}
