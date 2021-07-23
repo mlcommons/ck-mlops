@@ -1,3 +1,8 @@
+20210723:
+  * added docker:test-ck to test CK functionality, workflows and components
+    (to be extended) - we plan to use it to gradually substitute travis CI 
+    with GitHub actions
+
 20210720:
   * added ML_MODEL_ROOT env to ML model detection and installation scripts
   * added CK_ENV_DATASET_ROOT env to ImageNet and COCO datasets

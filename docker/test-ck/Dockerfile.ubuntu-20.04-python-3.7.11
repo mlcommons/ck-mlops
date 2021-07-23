@@ -1,0 +1,136 @@
+# Adaptive container with the CK interface
+# Concept: https://arxiv.org/abs/2011.01149
+
+# (CK automation 6ab9df569d0d1e6b)
+FROM ubuntu:20.04
+
+LABEL maintainer="Grigori Fursin <grigori@octoml.ai>"
+
+SHELL ["/bin/bash", "-c"]
+ENTRYPOINT ["/bin/bash", "-c"]
+
+ARG DEBIAN_FRONTEND=noninteractive
+
+# (CK automation ee47d84311b9373d)
+# Notes: https://runnable.com/blog/9-common-dockerfile-mistakes
+# Install system dependencies
+RUN apt update && \
+    apt install -y --no-install-recommends \
+           apt-utils \
+           git wget zip bzip2 libz-dev libbz2-dev cmake curl unzip \
+           openssh-client vim mc tree \
+           gcc g++ autoconf autogen libtool make libc6-dev \
+           libssl-dev libbz2-dev libffi-dev \
+           python3 python3-pip python3-dev \
+           libsqlite3-dev \
+           sudo
+
+# Install required Python: 3.7.11
+ENV PYTHON_VERSION=3.7.11
+RUN cd /usr/src \
+ && wget https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tgz --no-check-certificate \
+ && tar xzf Python-${PYTHON_VERSION}.tgz \
+ && rm Python-${PYTHON_VERSION}.tgz \
+ && cd /usr/src/Python-${PYTHON_VERSION} && ./configure --enable-shared --enable-loadable-sqlite-extensions --with-ensurepip=install \
+ && make altinstall \
+ && rm -rf /usr/src/Python-${PYTHON_VERSION}*
+ENV LD_LIBRARY_PATH="/usr/local/lib:/usr/local/lib64:${LD_LIBRARY_PATH}"
+ENV CK_PYTHON=python3.7
+
+# Check python version
+RUN which ${CK_PYTHON}
+RUN ${CK_PYTHON} --version
+
+# Prepare a user with a user group with a random id (CK automation 7b3ec2b6534f3394)
+RUN groupadd -g 1111 ckuser
+RUN useradd -u 2222 -g ckuser --create-home --shell /bin/bash ckuser
+RUN echo "ckuser:ckuser" | chpasswd
+RUN adduser ckuser sudo
+RUN echo "ckuser   ALL=(ALL)  NOPASSWD:ALL" >> /etc/sudoers
+
+# Set user (CK automation 8b8944a9b2c1f341)
+USER ckuser:ckuser
+WORKDIR /home/ckuser
+ENV PATH="/home/ckuser/.local/bin:${PATH}"
+RUN mkdir .ssh
+
+# Set the CK web service defaults.
+ENV CK_PORT=3344 \
+    WFE_PORT=3344 
+
+EXPOSE ${CK_PORT}
+
+# Install CK (CK automation f49f20744aba90e2)
+# We need to install new pip and setuptools otherwise there is a conflict 
+# with the local CK installation of Python packages ...
+RUN ${CK_PYTHON} -m pip install --ignore-installed pip setuptools wheel --user
+RUN ${CK_PYTHON} -m pip install virtualenv --user
+RUN ${CK_PYTHON} -m pip install coveralls --user
+RUN ${CK_PYTHON} -m pip install pyyaml --user
+
+# Install CK from GitHub to test the latest version
+# Change the DUMMY_CK variable to rebuild Docker from this point
+RUN export DUMMY_CK=A
+RUN echo "{DUMMY_CK}"
+RUN git clone https://github.com/ctuning/ck.git ck-from-git
+RUN cd ck-from-git \
+ && ${CK_PYTHON} setup.py install --user\
+ && ${CK_PYTHON} -c "import ck.kernel as ck; print ('Collective Knowledge v%s' % ck.__version__)"
+
+RUN ck
+
+RUN ck version
+
+# Test CK internals
+RUN cd ck-from-git && coverage run -m tests.test
+
+# Clone CK repo(s) or pull them from Zenodo (CK automation f49f20744aba90e2)
+RUN ck pull repo:octoml@mlops
+
+# Configure CK (CK automation ddea4415c4133ef9)
+RUN ck setup kernel --var.install_to_env=yes
+
+# May need to setup up different platform with different scripts if needed
+# (for Windows or MacOS for example)
+RUN ck detect platform.os --platform_init_uoa=generic-linux-dummy
+RUN ck detect soft:compiler.python --full_path=/usr/local/bin/${CK_PYTHON}
+RUN ck detect soft:compiler.gcc --full_path=`which gcc`
+
+# Old testing from travis (to be updated to cover the latest ML/SW/HW stacks)
+RUN  ck install package --tags=lib,python-package,numpy
+RUN  ck install package --tags=lib,python-package,scipy
+RUN  ck install package --tags=lib,python-package,pillow
+RUN  ck install package:lib-tensorflow-1.13.1-cpu
+RUN  ck install package:imagenet-2012-val-min
+# (from.berkeley doesn't work)
+RUN  ck install package --tags=imagenet,2012,aux,from.dividiti
+RUN  ck install package --tags=dataset,imagenet,preprocessed,using-pillow,first.20
+RUN  ck install package --quiet --tags=lib,python-package,onnx
+RUN  ck install package --quiet --tags=model,image-classification,onnx,mobilenet,non-quantized,nchw,downloaded
+RUN  ck install package --quiet --tags=model,onnx,mobilenet,nhwc,converted
+RUN  ck install package --quiet --tags=model,onnx,resnet,nchw,converted
+RUN  ck install package --quiet --tags=model,onnx,resnet,nhwc,converted
+RUN  ck install package --quiet --tags=lib,python-package,onnxruntime,cpu
+
+RUN  ck install package --tags=tool,cmake,prebuilt --quiet
+
+RUN  ck install package --quiet --tags=mlperf,inference,src,r1.0
+
+RUN  ck install package --tags=lib,python-package,absl
+
+RUN  ck install package --tags=lib,python-package,mlperf,loadgen
+RUN  ck install package --tags=lib,mlperf,loadgen,static
+
+RUN  ck show env
+
+RUN  ck compile program:cbench-automotive-susan --speed
+RUN  ck run program:cbench-automotive-susan --cmd_key=corners --dataset_uoa=image-pgm-0001  --repeat=1 --env.MY_ENV=123 --env.TEST=xyz --return_error_if_external_fail
+    
+RUN  ck run program:image-classification-onnx-py --quiet --dep_add_tags.weights=mobilenet,converted --cmd_key=barebones --env.CK_BATCH_SIZE=3 --return_error_if_external_fail
+RUN  ck run program:image-classification-onnx-py --dep_add_tags.weights=mobilenet,downloaded --cmd_key=preprocessed --env.CK_BATCH_COUNT=2 --return_error_if_external_fail
+RUN  ck run program:image-classification-onnx-py --dep_add_tags.weights=resnet,nchw,converted --cmd_key=preprocessed --return_error_if_external_fail
+RUN  ck run program:image-classification-onnx-py --dep_add_tags.weights=resnet,nhwc,converted --cmd_key=preprocessed --return_error_if_external_fail
+RUN  ck run program:image-classification-onnx-py --cmd_key=preprocessed --dep_add_tags.weights=resnet,nchw,converted --env.CK_IMAGE_FILE=ILSVRC2012_val_00000003.JPEG --return_error_if_external_fail
+
+# Start bash
+CMD bash

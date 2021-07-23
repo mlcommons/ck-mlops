@@ -1,0 +1,34 @@
+{
+  "cmd": {
+    "default": {
+      "build": "-f $#CK_PATH#$/Dockerfile$#CK_TAG_DOT#$ -t $#CK_DOCKER_ORGANIZATION#$/$#CK_DOCKER_NAME#$$#CK_TAG_COLON#$ $#CK_PATH#$",
+      "push": "$#CK_DOCKER_ORGANIZATION#$/$#CK_DOCKER_NAME#$$#CK_TAG_COLON#$",
+      "run": "--rm -it $#CK_DOCKER_ORGANIZATION#$/$#CK_DOCKER_NAME#$$#CK_TAG_COLON#$",
+      "run_extra_cmd": "--env CK_HOST=0.0.0.0 --env WFE_HOST=localhost --env CK_PORT=$#CK_PORT#$ --env WFE_PORT=$#CK_PORT#$ -p $#CK_PORT#$:$#CK_PORT#$"
+    }
+  },
+  "convert_input_to_vars": {
+    "port": {
+      "default": "3344",
+      "key": "CK_PORT"
+    }
+  },
+  "docker_tags": [
+    "ubuntu-20.04-python-3.7.11",
+    "ubuntu-20.04-python-3.8.11",
+    "ubuntu-20.04-python-3.9.6-without-coverage",
+    "ubuntu-20.04-python-3.9.6",
+    "ubuntu-18.04-python-3.7.11"
+  ],
+  "tags": [
+    "adaptive-container",
+    "ck"
+  ],
+  "tested": [
+    {
+      "email": "grigori@octoml.ai",
+      "iso_datetime": "2021-05-26T09:46:25.175776",
+      "name": "Grigori Fursin"
+    }
+  ]
+}

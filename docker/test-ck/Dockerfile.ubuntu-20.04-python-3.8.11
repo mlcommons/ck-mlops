@@ -1,0 +1,137 @@
+# Adaptive container with the CK interface
+# Concept: https://arxiv.org/abs/2011.01149
+
+# (CK automation 6ab9df569d0d1e6b)
+FROM ubuntu:20.04
+
+LABEL maintainer="Grigori Fursin <grigori@octoml.ai>"
+
+SHELL ["/bin/bash", "-c"]
+ENTRYPOINT ["/bin/bash", "-c"]
+
+ARG DEBIAN_FRONTEND=noninteractive
+
+# (CK automation ee47d84311b9373d)
+# Notes: https://runnable.com/blog/9-common-dockerfile-mistakes
+# Install system dependencies
+RUN apt update && \
+    apt install -y --no-install-recommends \
+           apt-utils \
+           git wget zip bzip2 libz-dev libbz2-dev cmake curl unzip \
+           openssh-client vim mc tree \
+           gcc g++ autoconf autogen libtool make libc6-dev \
+           libssl-dev libbz2-dev libffi-dev \
+           python3 python3-pip python3-dev \
+           libsqlite3-dev \
+           sudo
+
+# Install required Python: 3.8.11
+ENV PYTHON_VERSION=3.8.11
+RUN cd /usr/src \
+ && wget https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tgz --no-check-certificate \
+ && tar xzf Python-${PYTHON_VERSION}.tgz \
+ && rm Python-${PYTHON_VERSION}.tgz \
+ && cd /usr/src/Python-${PYTHON_VERSION} && ./configure --enable-shared --enable-loadable-sqlite-extensions --with-ensurepip=install \
+ && make altinstall \
+ && rm -rf /usr/src/Python-${PYTHON_VERSION}*
+ENV LD_LIBRARY_PATH="/usr/local/lib:/usr/local/lib64:${LD_LIBRARY_PATH}"
+ENV CK_PYTHON=python3.8
+
+# Check python version
+RUN which ${CK_PYTHON}
+RUN ${CK_PYTHON} --version
+
+# Prepare a user with a user group with a random id (CK automation 7b3ec2b6534f3394)
+RUN groupadd -g 1111 ckuser
+RUN useradd -u 2222 -g ckuser --create-home --shell /bin/bash ckuser
+RUN echo "ckuser:ckuser" | chpasswd
+RUN adduser ckuser sudo
+RUN echo "ckuser   ALL=(ALL)  NOPASSWD:ALL" >> /etc/sudoers
+
+# Set user (CK automation 8b8944a9b2c1f341)
+USER ckuser:ckuser
+WORKDIR /home/ckuser
+ENV PATH="/home/ckuser/.local/bin:${PATH}"
+RUN mkdir .ssh
+
+# Set the CK web service defaults.
+ENV CK_PORT=3344 \
+    WFE_PORT=3344 
+
+EXPOSE ${CK_PORT}
+
+# Install CK (CK automation f49f20744aba90e2)
+# We need to install new pip and setuptools otherwise there is a conflict 
+# with the local CK installation of Python packages ...
+RUN ${CK_PYTHON} -m pip install --ignore-installed pip setuptools wheel --user
+RUN ${CK_PYTHON} -m pip install virtualenv --user
+RUN ${CK_PYTHON} -m pip install coveralls --user
+RUN ${CK_PYTHON} -m pip install pyyaml --user
+
+# Install CK from GitHub to test the latest version
+# Change the DUMMY_CK variable to rebuild Docker from this point
+RUN export DUMMY_CK=A
+RUN echo "{DUMMY_CK}"
+RUN git clone https://github.com/ctuning/ck.git ck-from-git
+RUN cd ck-from-git \
+ && ${CK_PYTHON} setup.py install --user\
+ && ${CK_PYTHON} -c "import ck.kernel as ck; print ('Collective Knowledge v%s' % ck.__version__)"
+
+RUN ck
+
+RUN ck version
+
+# Test CK internals
+RUN cd ck-from-git && coverage run -m tests.test
+
+# Clone CK repo(s) or pull them from Zenodo (CK automation f49f20744aba90e2)
+RUN ck pull repo:octoml@mlops
+
+# Configure CK (CK automation ddea4415c4133ef9)
+RUN ck setup kernel --var.install_to_env=yes
+
+# May need to setup up different platform with different scripts if needed
+# (for Windows or MacOS for example)
+RUN ck detect platform.os --platform_init_uoa=generic-linux-dummy
+RUN ck detect soft:compiler.python --full_path=/usr/local/bin/${CK_PYTHON}
+RUN ck detect soft:compiler.gcc --full_path=`which gcc`
+
+# New testing
+RUN ck install package --tags=tool,cmake,prebuilt,v3.18.2
+
+RUN ck install package --tags=lib,python-package,absl
+RUN ck install package --tags=lib,python-package,numpy
+RUN ck install package --tags=lib,python-package,scipy
+RUN ck install package --tags=lib,python-package,matplotlib
+RUN ck install package --tags=lib,python-package,cython
+RUN ck install package --tags=lib,python-package,pillow
+RUN ck install package --tags=lib,python-package,opencv-python-headless
+
+# Need to change to OctoML branch soon
+RUN ck install package --tags=mlperf,inference,src,r1.1
+RUN ck install package --tags=lib,python-package,mlperf,loadgen
+
+RUN ck install package --tags=tool,coco,api
+
+RUN ck install package --tags=dataset,coco,val,2017,full
+
+RUN ck install package --tags=lib,python-package,onnxruntime-cpu,1.7.0
+RUN ck install package --tags=lib,python-package,onnx,1.9.0
+
+RUN ck install package --tags=model,object-detection,mlperf,onnx,ssd-mobilenet,side.300,non-quantized,opset-8
+RUN ck install package --tags=model,object-detection,mlperf,onnx,ssd-mobilenet,side.300,non-quantized,opset-11
+RUN ck install package --tags=model,object-detection,mlperf,onnx,ssd-resnet34,side.1200,non-quantized,opset-8
+
+RUN ck show env
+
+# Install MLPerf task requirements
+RUN ck run program:mlperf-inference-bench-object-detection-onnx-cpu --cmd_key=install-python-requirements
+
+# Run TVM-based MLPerf inference benchmark (Offline;Accuracy)
+RUN ck run program:mlperf-inference-bench-object-detection-onnx-cpu \
+          --dep_add_tags.model=side.300,opset-11 \
+          --cmd_key=accuracy-offline \
+          --env.EXTRA_OPS="--count 100"
+
+# Start bash
+CMD bash
