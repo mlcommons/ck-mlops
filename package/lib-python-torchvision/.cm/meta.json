@@ -2,7 +2,7 @@
   "check_exit_status": "yes",
   "customize": {
     "install_env": {
-      "PIP_INSTALL_OPTIONS": "--ignore-installed",
+      "PIP_INSTALL_OPTIONS": "",
       "PYTHON_PACKAGE_NAME": "torchvision"
     }
   },
@@ -38,7 +38,44 @@
     "vmaster"
   ],
   "use_scripts_from_another_entry": {
-    "data_uoa": "e4d8d3d2c4c67902",
-    "module_uoa": "package"
+    "data_uoa": "e8363e22e84dedba",
+    "data_uoa#": "install-python-package",
+    "module_uoa": "script"
+  },
+  "variations": {
+    "latest": {
+      "extra_customize": {
+      },
+      "extra_env": {
+      },
+      "on_by_default": "yes"
+    },
+    "0.10.0": {
+      "extra_customize": {
+        "version": "0.10.0"
+      },
+      "extra_env": {
+        "PACKAGE_VERSION":"0.10.0"
+      },
+      "on_by_default": "no"
+    },
+    "0.9.0": {
+      "extra_customize": {
+        "version": "0.9.0"
+      },
+      "extra_env": {
+        "PACKAGE_VERSION":"0.9.0"
+      },
+      "on_by_default": "no"
+    },
+    "0.8.0": {
+      "extra_customize": {
+        "version": "0.8.0"
+      },
+      "extra_env": {
+        "PACKAGE_VERSION":"0.8.0"
+      },
+      "on_by_default": "no"
+    }
   }
 }

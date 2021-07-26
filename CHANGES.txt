@@ -1,4 +1,6 @@
 202107026:
+  * added latest PyTorchVision varations up to 0.10. as asked by users
+    (package:lib-python-torchvision)
   * added latest PyTorch varations up to 1.9.0 as asked by users
     (package:lib-python-torch)
 
