@@ -1,3 +1,7 @@
+202107026:
+  * added latest PyTorch varations up to 1.9.0 as asked by users
+    (package:lib-python-torch)
+
 20210723:
   * added docker:test-ck to test CK functionality, workflows and components
     (to be extended) - we plan to use it to gradually substitute travis CI 

@@ -4,19 +4,7 @@
     "install_env": {
       "PIP_INSTALL_OPTIONS": "--ignore-installed",
       "PYTHON_PACKAGE_NAME": "torch"
-    },
-    "supported_versions": [
-      "1.0.0",
-      "1.0.1",
-      "1.1.0",
-      "1.2.0",
-      "1.3.0",
-      "1.3.1",
-      "1.4.0",
-      "1.5.0",
-      "1.5.1",
-      "1.6.0"
-    ]
+    }
   },
   "deps": {
     "python": {
@@ -43,7 +31,134 @@
     "pytorch"
   ],
   "use_scripts_from_another_entry": {
-    "data_uoa": "e4d8d3d2c4c67902",
-    "module_uoa": "package"
+    "data_uoa": "e8363e22e84dedba",
+    "data_uoa#": "install-python-package",
+    "module_uoa": "script"
+  },
+  "variations": {
+    "latest": {
+      "extra_customize": {
+      },
+      "extra_env": {
+      },
+      "on_by_default": "yes"
+    },
+    "1.9.0": {
+      "extra_customize": {
+        "version": "1.9.0"
+      },
+      "extra_env": {
+        "PACKAGE_VERSION":"1.9.0"
+      },
+      "on_by_default": "no"
+    },
+    "1.8.0": {
+      "extra_customize": {
+        "version": "1.8.0"
+      },
+      "extra_env": {
+        "PACKAGE_VERSION":"1.8.0"
+      },
+      "on_by_default": "no"
+    },
+    "1.7.0": {
+      "extra_customize": {
+        "version": "1.7.0"
+      },
+      "extra_env": {
+        "PACKAGE_VERSION":"1.7.0"
+      },
+      "on_by_default": "no"
+    },
+    "1.6.0": {
+      "extra_customize": {
+        "version": "1.6.0"
+      },
+      "extra_env": {
+        "PACKAGE_VERSION":"1.6.0"
+      },
+      "on_by_default": "no"
+    },
+    "1.5.1": {
+      "extra_customize": {
+        "version": "1.5.1"
+      },
+      "extra_env": {
+        "PACKAGE_VERSION":"1.5.1"
+      },
+      "on_by_default": "no"
+    },
+    "1.5.0": {
+      "extra_customize": {
+        "version": "1.5.0"
+      },
+      "extra_env": {
+        "PACKAGE_VERSION":"1.5.0"
+      },
+      "on_by_default": "no"
+    },
+    "1.4.0": {
+      "extra_customize": {
+        "version": "1.4.0"
+      },
+      "extra_env": {
+        "PACKAGE_VERSION":"1.4.0"
+      },
+      "on_by_default": "no"
+    },
+    "1.3.1": {
+      "extra_customize": {
+        "version": "1.3.1"
+      },
+      "extra_env": {
+        "PACKAGE_VERSION":"1.3.1"
+      },
+      "on_by_default": "no"
+    },
+    "1.3.0": {
+      "extra_customize": {
+        "version": "1.3.0"
+      },
+      "extra_env": {
+        "PACKAGE_VERSION":"1.3.0"
+      },
+      "on_by_default": "no"
+    },
+    "1.2.0": {
+      "extra_customize": {
+        "version": "1.2.0"
+      },
+      "extra_env": {
+        "PACKAGE_VERSION":"1.2.0"
+      },
+      "on_by_default": "no"
+    },
+    "1.1.0": {
+      "extra_customize": {
+        "version": "1.1.0"
+      },
+      "extra_env": {
+        "PACKAGE_VERSION":"1.1.0"
+      },
+      "on_by_default": "no"
+    },
+    "1.0.1": {
+      "extra_customize": {
+        "version": "1.0.1"
+      },
+      "extra_env": {
+        "PACKAGE_VERSION":"1.0.1"
+      },
+      "on_by_default": "no"
+    },
+    "1.0.0": {
+      "extra_customize": {
+        "version": "1.0.0"
+      },
+      "extra_env": {
+        "PACKAGE_VERSION":"1.0.0"
+      },
+      "on_by_default": "no"
+    }
   }
 }
