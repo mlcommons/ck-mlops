@@ -1,0 +1,22 @@
+{
+  "auto_detect": "yes",
+  "customize": {
+    "check_that_exists": "yes",
+    "ck_version": 10,
+    "env_prefix": "CK_ENV_LIB_DNNL",
+    "limit_recursion_dir_search": {
+      "linux": 5,
+      "win": 5
+    },
+    "soft_file_universal": "libdnnl$#file_ext_dll#$"
+  },
+  "soft_name": "DNNL (oneAPI one DNN) library",
+  "tags": [
+    "lib",
+    "oneapi",
+    "oneapi-dnnl",
+    "oneapi-onednn",
+    "onednn",
+    "dnnl"
+  ]
+}
