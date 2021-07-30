@@ -201,8 +201,23 @@ def setup(i):
        cus['path_include']      = os.path.join(path_install, 'include')
 
        path_lib                 = os.path.join(path_install, 'lib')
+       if not os.path.isdir( path_lib ):
+           tmp_path_lib = os.path.join(path_install, 'lib64')
+           if os.path.isdir( tmp_path_lib ):
+               path_lib = tmp_path_lib
+
        if os.path.isdir( path_lib ):
-            cus['path_lib']     = path_lib
+           cus['path_lib'] = path_lib
+
+           # Add dynamic libraries
+           env[env_prefix + '_LIB'] = path_lib
+
+           r = ck.access({'action': 'lib_path_export_script', 
+                   'module_uoa': 'os', 
+                   'host_os_dict': hosd, 
+                   'lib_path': cus.get('path_lib', '')})
+           if r['return']>0: return r
+           s += r['script']
 
        pname=os.path.basename(full_path)
 
@@ -586,6 +601,5 @@ def setup(i):
        if y not in x:
           x+=' '+y
           env["CK_COMPILER_FLAGS_OBLIGATORY"]=x
-
 
     return {'return':0, 'bat':s}
