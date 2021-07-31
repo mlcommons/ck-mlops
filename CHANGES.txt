@@ -1,3 +1,6 @@
+20210731:
+  * added new version to tool.cmake and aarch64 support
+
 20210730:
   * added soft:lib.dnnl
 

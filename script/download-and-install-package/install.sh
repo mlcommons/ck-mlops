@@ -574,9 +574,19 @@ if [ "${PACKAGE_SKIP_CLEAN_OBJ}" != "YES" ] ; then
   echo ""
   echo "Cleaning obj directory ..."
 
- cd ${INSTALL_DIR}
- rm -rf obj
+  cd ${INSTALL_DIR}
+  rm -rf obj
 fi
+
+############################################################
+if [ "${PACKAGE_RENAME_DIR}" == "YES" ] ; then
+  echo ""
+  echo "Renaming directory ${PACKAGE_RENAME_DIR1} to ${PACKAGE_RENAME_DIR2} ..."
+
+  cd ${INSTALL_DIR}
+  mv ${PACKAGE_RENAME_DIR1} ${PACKAGE_RENAME_DIR2}
+fi
+
 
 ############################################################
 # CAREFUL - when GIT, CK can't afterwards go to this dir to get revision number ...
