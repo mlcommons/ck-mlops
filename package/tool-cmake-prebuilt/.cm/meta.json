@@ -107,18 +107,6 @@
       "extra_tags": [
         "v3.18"
       ],
-      "on_by_default": "no"
-    },
-    "v3.21.1": {
-      "extra_env": {
-        "CMAKE_VERSION_MM": "3.21.1",
-        "CMAKE_VERSION_MMR": "3.21.1",
-        "CMAKE_AARCH64": "YES",
-        "CMAKE_GITHUB_HOST": "YES"
-      },
-      "extra_tags": [
-        "v3.21"
-      ],
       "on_by_default": "yes"
     }
   }

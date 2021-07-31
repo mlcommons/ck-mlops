@@ -87,33 +87,54 @@ def setup(i):
     ie=cus.get('install_env',{})
     nie={} # new env
 
-    # Update vars
-    if (habi.startswith('arm') or habi.startswith('aarch')):
-       ck.out('')
-       ck.out('Detected Arm-based host!')
-       ck.out('')
+    version=ie['CMAKE_VERSION']
+    print(version)
 
-       if ie.get('CMAKE_AARCH64','')!='YES':
-          return {'return':1, 'error':'this version doesn\'t support aarch64'}
+    # Specializing downloads
+    if macos=='yes':
+       if hbits!='64':
+          return {'return':1, 'error':'this package doesn\'t support non 64-bit MacOS'}
 
-       x=ie['PACKAGE_NAME_LINUX'][:-13]+'aarch64.tar'
+       name='cmake-'+version+'-macos-universal'
 
-       nie['PACKAGE_NAME1_LINUX']=x
-       nie['PACKAGE_NAME_LINUX']=x+'.gz'
-       nie['CMAKE_LINUX']='aarch64'
+       nie['PACKAGE_NAME']=name+'.tar.gz'
+       nie['PACKAGE_NAME1']=name+'.tar'
 
-       # Hack to be able to find target binary to register software
-       # Need to provide support to change "end_full_path" from here!
+       nie['PACKAGE_UNGZIP']='YES'
+       nie['PACKAGE_UNTAR']='YES'
 
-       x='cmake-'+ie['CMAKE_VERSION_MMR']
+    elif hname=='win':
+       name='cmake-'+version+'-'
+       if hbits=='64':
+          name+='x86_64'
+       else:
+          name+='i386'
 
-       nie['PACKAGE_RENAME_DIR']='YES'
-       nie['PACKAGE_RENAME_DIR1']=x+'-linux-aarch64'
-       nie['PACKAGE_RENAME_DIR2']=x+'-Linux-x86_64'
+       nie['PACKAGE_NAME']=name+'.zip'
 
-    if ie.get('CMAKE_GITHUB_HOST','')=='YES':
-       for k in ["PACKAGE_URL_LINUX", "PACKAGE_URL_MACOS", "PACKAGE_URL_WINDOWS"]:
-           nie[k] = ie[k].replace('https://cmake.org/files',
-                                  'https://github.com/Kitware/CMake/releases/download')
+       nie['PACKAGE_WGET_EXTRA']=ie['PACKAGE_WGET_EXTRA']+' -O '+f
+       nie['PACKAGE_UNZIP']='YES'
+
+    else:
+       name='cmake-'+version+'-linux-'
+       if habi.startswith('arm') or habi.startswith('aarch'):
+          if hbits=='64':
+             name+='aarch64'
+          else:
+             return {'return':1, 'error':'this package doesn\'t support armv7'}
+       else:
+          name+='x86_64'
+
+       nie['PACKAGE_NAME']=name+'.tar.gz'
+       nie['PACKAGE_NAME1']=name+'.tar'
+
+       nie['PACKAGE_UNGZIP']='YES'
+       nie['PACKAGE_UNTAR']='YES'
+
+
+    # Unify output directory to prebuilt
+    nie['PACKAGE_RENAME_DIR']='YES'
+    nie['PACKAGE_RENAME_DIR1']=name
+    nie['PACKAGE_RENAME_DIR2']='prebuilt'
 
     return {'return':0, 'install_env':nie}

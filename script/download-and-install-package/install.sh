@@ -584,6 +584,11 @@ if [ "${PACKAGE_RENAME_DIR}" == "YES" ] ; then
   echo "Renaming directory ${PACKAGE_RENAME_DIR1} to ${PACKAGE_RENAME_DIR2} ..."
 
   cd ${INSTALL_DIR}
+
+  if [ -d ${PACKAGE_RENAME_DIR2} ] ; then
+    rm -rf ${PACKAGE_RENAME_DIR2}
+  fi
+
   mv ${PACKAGE_RENAME_DIR1} ${PACKAGE_RENAME_DIR2}
 fi
 
