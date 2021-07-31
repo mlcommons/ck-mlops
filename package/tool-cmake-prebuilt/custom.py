@@ -87,53 +87,8 @@ def setup(i):
     ie=cus.get('install_env',{})
     nie={} # new env
 
-    version=ie['CMAKE_VERSION']
-
     # Specializing downloads
-    if macos=='yes':
-       if hbits!='64':
-          return {'return':1, 'error':'this package doesn\'t support non 64-bit MacOS'}
-
-       name='cmake-'+version+'-macos-universal'
-
-       nie['PACKAGE_NAME']=name+'.tar.gz'
-       nie['PACKAGE_NAME1']=name+'.tar'
-
-       nie['PACKAGE_UNGZIP']='YES'
-       nie['PACKAGE_UNTAR']='YES'
-
-    elif hname=='win':
-       name='cmake-'+version+'-'
-       if hbits=='64':
-          name+='x86_64'
-       else:
-          name+='i386'
-
-       nie['PACKAGE_NAME']=name+'.zip'
-
-       nie['PACKAGE_WGET_EXTRA']=ie['PACKAGE_WGET_EXTRA']+' -O '+f
-       nie['PACKAGE_UNZIP']='YES'
-
-    else:
-       name='cmake-'+version+'-linux-'
-       if habi.startswith('arm') or habi.startswith('aarch'):
-          if hbits=='64':
-             name+='aarch64'
-          else:
-             return {'return':1, 'error':'this package doesn\'t support armv7'}
-       else:
-          name+='x86_64'
-
-       nie['PACKAGE_NAME']=name+'.tar.gz'
-       nie['PACKAGE_NAME1']=name+'.tar'
-
-       nie['PACKAGE_UNGZIP']='YES'
-       nie['PACKAGE_UNTAR']='YES'
-
-
-    # Unify output directory to prebuilt
-    nie['PACKAGE_RENAME_DIR']='YES'
-    nie['PACKAGE_RENAME_DIR1']=name
-    nie['PACKAGE_RENAME_DIR2']='prebuilt'
+    if habi.startswith('arm') or habi.startswith('aarch'):
+        return {'return':1, 'error':'this package doesn\'t support Arm architecture'}
 
     return {'return':0, 'install_env':nie}
