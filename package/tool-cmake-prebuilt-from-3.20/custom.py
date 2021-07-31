@@ -103,7 +103,7 @@ def setup(i):
        nie['PACKAGE_UNTAR']='YES'
 
     elif hname=='win':
-       name='cmake-'+version+'-'
+       name='cmake-'+version+'-windows-'
        if hbits=='64':
           name+='x86_64'
        else:
@@ -111,7 +111,7 @@ def setup(i):
 
        nie['PACKAGE_NAME']=name+'.zip'
 
-       nie['PACKAGE_WGET_EXTRA']=ie['PACKAGE_WGET_EXTRA']+' -O '+f
+       nie['PACKAGE_WGET_EXTRA']=ie['PACKAGE_WGET_EXTRA']+' -O '+name+'.zip'
        nie['PACKAGE_UNZIP']='YES'
 
     else:
