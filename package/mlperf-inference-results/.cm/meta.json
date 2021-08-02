@@ -43,14 +43,14 @@
         "PACKAGE_URL": "https://github.com/gfursin/mlperf-inference-results-dummy"
       }
     },
-    "v1.1": {
+    "v1.1-submission-private": {
       "extra_customize": {
-        "package_extra_name": " (v1.1)",
-        "version": "1.1"
+        "package_extra_name": " (v1.1 submission)",
+        "version": "1.1-submission"
       },
       "extra_env": {
         "PACKAGE_GIT_CLONE_FLAGS": "",
-        "PACKAGE_URL": "https://github.com/mlcommons/inference_results_v1.0"
+        "PACKAGE_URL": "https://github.com/mlcommons/submissions_inference_1_1"
       }
     },
     "v1.0": {
@@ -61,7 +61,8 @@
       "extra_env": {
         "PACKAGE_GIT_CLONE_FLAGS": "",
         "PACKAGE_URL": "https://github.com/mlcommons/inference_results_v1.0"
-      }
+      },
+      "on_by_default": "yes"
     },
     "v0.7": {
       "extra_customize": {
