@@ -137,6 +137,7 @@
     }
   },
   "run_vars": {
+    "CK_LOADGEN_USER_CONF_USE_STAR": "NO",
     "CK_LOADGEN_BUFFER_SIZE": 1024,
     "CK_LOADGEN_CONF_FILE": "",
     "CK_LOADGEN_DATASET_SIZE": 0,

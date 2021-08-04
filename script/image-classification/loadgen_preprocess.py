@@ -48,10 +48,14 @@ def user_conf_and_audit_config(i):
         or dep_env('weights', 'ML_MODEL_MODEL_NAME')
         or deps['weights']['dict']['deps']['model-source']['dict']['customize']['install_env']['MODEL_NAME'] )
     print('\n-=-=-=-=-= Generating user.conf for model "{}" ...'.format(model_name))
+
     scenario            = env['CK_LOADGEN_SCENARIO']
     user_conf_rel_path  = env['CK_LOADGEN_USER_CONF']
+
     user_conf           = []
+
     env_to_conf         = {
+        'CK_LOADGEN_MIN_QUERY_COUNT':                   ('min_query_count', 1),
         'CK_LOADGEN_MAX_QUERY_COUNT':                   ('max_query_count', 1),
         'CK_LOADGEN_BUFFER_SIZE':                       ('performance_sample_count_override', 1),
         'CK_LOADGEN_SAMPLES_PER_QUERY':                 ('samples_per_query', 1),
@@ -61,13 +65,17 @@ def user_conf_and_audit_config(i):
         'CK_LOADGEN_MAX_DURATION_S':                    ('max_duration_ms', 1000),
         'CK_LOADGEN_OFFLINE_EXPECTED_QPS':              ('offline_expected_qps', 1),
     }
+
+    use_star = True if env.get('CK_LOADGEN_USER_CONF_USE_STAR', '').strip().lower()=='yes' else False
+
     for env_key in env_to_conf.keys():
         if env_key in env:
             orig_value = env[env_key]
             (config_category_name, multiplier) = env_to_conf[env_key]
             new_value = orig_value if multiplier==1 else float(orig_value)*multiplier
-            
-            user_conf.append("{}.{}.{} = {}\n".format(model_name, scenario, config_category_name, new_value))
+
+            x_model_name = '*' if use_star else model_name
+            user_conf.append("{}.{}.{} = {}\n".format(x_model_name, scenario, config_category_name, new_value))
 
     # Write 'user.conf' into the current directory ('tmp').
     user_conf_abs_path = os.path.join(os.path.abspath(os.path.curdir), user_conf_rel_path)

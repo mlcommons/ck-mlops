@@ -1,3 +1,7 @@
+20210804:
+  * enhanced image classification with TFLite and loadgen
+  * removed outdated packages/scripts/programs
+
 20210731:
   * added new version to tool.cmake and aarch64 support
 
