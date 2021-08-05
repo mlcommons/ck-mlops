@@ -1,3 +1,6 @@
+20210805:
+  * added older variations in torchvision package to support older PyTorch versions for MLPerf inference benchmark
+
 20210804:
   * enhanced image classification with TFLite and loadgen
   * removed outdated packages/scripts/programs
