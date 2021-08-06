@@ -1,0 +1,135 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "install_env": {
+      "PIP_INSTALL_OPTIONS": "--ignore-installed",
+      "PYTHON_PACKAGE_NAME": "tensorflow-gpu"
+    }
+  },
+  "deps": {
+    "python": {
+      "add_to_path": "yes",
+      "local": "yes",
+      "name": "Python interpreter",
+      "sort": 10,
+      "tags": "compiler,python"
+    },
+    "cuda": {
+      "add_to_path": "yes",
+      "local": "yes",
+      "name": "CUDA",
+      "sort": 40,
+      "tags": "compiler,lang-c-cuda"
+    }
+  },
+  "end_full_path_universal": "build$#sep#$tensorflow$#sep#$__init__.py",
+  "only_for_host_os_tags": [],
+  "only_for_target_os_tags": [
+    "windows",
+    "linux"
+  ],
+  "process_script": "install",
+  "soft_uoa": "68d5481814639a2f",
+  "soft_uoa#": "lib.python.tensorflow",
+  "suggested_path": "lib-python-tensorflow-gpu",
+  "tags": [
+    "lib",
+    "python-package",
+    "tensorflow",
+    "tensorflow-gpu",
+    "gpu"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "e8363e22e84dedba",
+    "data_uoa#": "install-python-package",
+    "module_uoa": "script"
+  },
+  "variations": {
+    "1.13.2": {
+      "extra_customize": {
+        "version": "1.13.2"
+      },
+      "extra_env": {
+        "PACKAGE_VERSION": "1.13.2"
+      },
+      "on_by_default": "no"
+    },
+    "1.14.0": {
+      "extra_customize": {
+        "version": "1.14.0"
+      },
+      "extra_env": {
+        "PACKAGE_VERSION": "1.14.0"
+      },
+      "on_by_default": "no"
+    },
+    "1.15.5": {
+      "extra_customize": {
+        "version": "1.15.5"
+      },
+      "extra_env": {
+        "PACKAGE_VERSION": "1.15.5"
+      },
+      "on_by_default": "no"
+    },
+    "2.0.4": {
+      "extra_customize": {
+        "version": "2.0.4"
+      },
+      "extra_env": {
+        "PACKAGE_VERSION": "2.0.4"
+      },
+      "on_by_default": "no"
+    },
+    "2.1.4": {
+      "extra_customize": {
+        "version": "2.1.4"
+      },
+      "extra_env": {
+        "PACKAGE_VERSION": "2.1.4"
+      },
+      "on_by_default": "no"
+    },
+    "2.2.3": {
+      "extra_customize": {
+        "version": "2.2.3"
+      },
+      "extra_env": {
+        "PACKAGE_VERSION": "2.2.3"
+      },
+      "on_by_default": "no"
+    },
+    "2.3.3": {
+      "extra_customize": {
+        "version": "2.3.3"
+      },
+      "extra_env": {
+        "PACKAGE_VERSION": "2.3.3"
+      },
+      "on_by_default": "no"
+    },
+    "2.4.2": {
+      "extra_customize": {
+        "version": "2.4.2"
+      },
+      "extra_env": {
+        "PACKAGE_VERSION": "2.4.2"
+      },
+      "on_by_default": "no"
+    },
+    "2.5.0": {
+      "extra_customize": {
+        "version": "2.5.0"
+      },
+      "extra_env": {
+        "PACKAGE_VERSION": "2.5.0"
+      },
+      "on_by_default": "no"
+    },
+    "latest": {
+      "extra_customize": {},
+      "extra_env": {},
+      "on_by_default": "yes"
+    }
+  }
+}

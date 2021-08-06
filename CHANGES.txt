@@ -1,5 +1,6 @@
 20210806:
   * added variations for PyTorch&TorchVision CUDA
+  * added TF python packages (CPU & GPU)
 
 20210805:
   * added older variations in torchvision package to support older PyTorch versions for MLPerf inference benchmark
