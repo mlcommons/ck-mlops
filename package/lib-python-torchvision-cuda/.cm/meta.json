@@ -2,7 +2,7 @@
   "check_exit_status": "yes",
   "customize": {
     "install_env": {
-      "PIP_INSTALL_OPTIONS": "",
+      "PIP_INSTALL_OPTIONS": "-f https://download.pytorch.org/whl/torch_stable.html",
       "PYTHON_PACKAGE_NAME": "torchvision"
     }
   },
@@ -19,7 +19,14 @@
       "local": "yes",
       "name": "PyTorch python library",
       "sort": 20,
-      "tags": "lib,pytorch"
+      "tags": "lib,pytorch,cuda"
+    },
+    "cuda": {
+      "add_to_path": "yes",
+      "local": "yes",
+      "name": "CUDA",
+      "sort": 40,
+      "tags": "compiler,lang-c-cuda"
     }
   },
   "end_full_path_universal": "build$#sep#$torchvision$#sep#$__init__.py",
@@ -35,8 +42,9 @@
     "lib",
     "python-package",
     "torchvision",
-    "torchvision-cpu",
-    "cpu",
+    "torchvision-gpu",
+    "torchvision-cuda",
+    "gpu",
     "vmaster"
   ],
   "use_scripts_from_another_entry": {
@@ -45,55 +53,21 @@
     "module_uoa": "script"
   },
   "variations": {
-    "latest": {
+    "0.10.0+cu111": {
       "extra_customize": {
+        "version": "0.10.0+cu111"
       },
       "extra_env": {
+        "PACKAGE_VERSION": "0.10.0+cu111"
       },
       "on_by_default": "yes"
     },
-    "0.10.0": {
+    "0.6.0+cu101": {
       "extra_customize": {
-        "version": "0.10.0"
+        "version": "0.6.0+cu101"
       },
       "extra_env": {
-        "PACKAGE_VERSION":"0.10.0"
-      },
-      "on_by_default": "no"
-    },
-    "0.9.0": {
-      "extra_customize": {
-        "version": "0.9.0"
-      },
-      "extra_env": {
-        "PACKAGE_VERSION":"0.9.0"
-      },
-      "on_by_default": "no"
-    },
-    "0.8.0": {
-      "extra_customize": {
-        "version": "0.8.0"
-      },
-      "extra_env": {
-        "PACKAGE_VERSION":"0.8.0"
-      },
-      "on_by_default": "no"
-    },
-    "0.7.0": {
-      "extra_customize": {
-        "version": "0.7.0"
-      },
-      "extra_env": {
-        "PACKAGE_VERSION":"0.7.0"
-      },
-      "on_by_default": "no"
-    },
-    "0.6.0": {
-      "extra_customize": {
-        "version": "0.6.0"
-      },
-      "extra_env": {
-        "PACKAGE_VERSION":"0.6.0"
+        "PACKAGE_VERSION": "0.6.0+cu101"
       },
       "on_by_default": "no"
     }

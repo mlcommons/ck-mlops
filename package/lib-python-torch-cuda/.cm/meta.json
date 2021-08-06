@@ -1,0 +1,80 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "install_env": {
+      "PIP_INSTALL_OPTIONS": "--ignore-installed -f https://download.pytorch.org/whl/torch_stable.html",
+      "PYTHON_PACKAGE_NAME": "torch"
+    }
+  },
+  "deps": {
+    "python": {
+      "add_to_path": "yes",
+      "local": "yes",
+      "name": "Python interpreter",
+      "sort": 10,
+      "tags": "compiler,python"
+    },
+    "cuda": {
+      "add_to_path": "yes",
+      "local": "yes",
+      "name": "CUDA",
+      "sort": 40,
+      "tags": "compiler,lang-c-cuda"
+    }
+  },
+  "end_full_path_universal": "build$#sep#$torch$#sep#$__init__.py",
+  "only_for_host_os_tags": [],
+  "only_for_target_os_tags": [
+    "windows",
+    "linux"
+  ],
+  "process_script": "install",
+  "soft_uoa": "5a423646b847b21d",
+  "suggested_path": "lib-python-torch",
+  "tags": [
+    "lib",
+    "python-package",
+    "torch",
+    "pytorch",
+    "torch-gpu",
+    "pytorch-gpu",
+    "torch-cuda",
+    "pytorch-cuda",
+    "gpu",
+    "cuda"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "e8363e22e84dedba",
+    "data_uoa#": "install-python-package",
+    "module_uoa": "script"
+  },
+  "variations": {
+    "1.5.0+cu101": {
+      "extra_customize": {
+        "version": "1.5.0+cu101"
+      },
+      "extra_env": {
+        "PACKAGE_VERSION": "1.5.0+cu101"
+      },
+      "on_by_default": "no"
+    },
+    "1.9.0+cu102": {
+      "extra_customize": {
+        "version": "1.9.0+cu102"
+      },
+      "extra_env": {
+        "PACKAGE_VERSION": "1.9.0+cu102"
+      },
+      "on_by_default": "no"
+    },
+    "1.9.0+cu111": {
+      "extra_customize": {
+        "version": "1.9.0+cu111"
+      },
+      "extra_env": {
+        "PACKAGE_VERSION": "1.9.0+cu111"
+      },
+      "on_by_default": "yes"
+    }
+  }
+}
