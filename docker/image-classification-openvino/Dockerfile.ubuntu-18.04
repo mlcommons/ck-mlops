@@ -107,7 +107,7 @@ RUN ck install package --tags=lib,loadgen,static
 #-----------------------------------------------------------------------------#
 RUN ck install package --tags=lib,intel,open-model-zoo,2019_R3
 RUN ck install package --tags=lib,openvino,2019_R3
-RUN ck compile ai:program:mlperf-inference-v0.5
+RUN ck compile program:mlperf-inference-v0.5
 #-----------------------------------------------------------------------------#
 
 
@@ -162,7 +162,7 @@ RUN ck install package --tags=model,openvino,mobilenet
 # Step 9. Make final preparations to run the OpenVINO program.
 #-----------------------------------------------------------------------------#
 # Allow the program create tmp files when running under an external user.
-RUN chmod -R g+rwx `ck find ai:program:mlperf-inference-v0.5`
+RUN chmod -R g+rwx `ck find program:mlperf-inference-v0.5`
 #-----------------------------------------------------------------------------#
 
 
