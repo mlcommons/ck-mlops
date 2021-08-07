@@ -118,6 +118,20 @@
         "inference_engine_backend": "xnnpack",
         "inference_engine_version": "v2.3.0",
         "program_name": "object-detection-tflite-loadgen"
+      },
+      "tflite-v2.4.1-ruy": {
+        "deps": "--dep_add_tags.library=tflite,v2.4.1,with.ruy",
+        "inference_engine": "tflite",
+        "inference_engine_backend": "ruy",
+        "inference_engine_version": "v2.4.1",
+        "program_name": "object-detection-tflite-loadgen"
+      },
+      "tflite-v2.4.2-ruy": {
+        "deps": "--dep_add_tags.library=tflite,v2.4.2,with.ruy",
+        "inference_engine": "tflite",
+        "inference_engine_backend": "ruy",
+        "inference_engine_version": "v2.4.2",
+        "program_name": "object-detection-tflite-loadgen"
       }
     },
     "mode": {

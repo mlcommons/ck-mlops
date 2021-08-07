@@ -2,6 +2,12 @@
 
 This C++ implementation runs TFLite models for Image Classification using TFLite.
 
+## Reproducibility study
+
+* [x8664](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/reproduce/ck-image-classification-x86-64-tflite.md)
+* [RPi4](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/reproduce/ck-image-classification-rpi4-tflite.md)
+* [Jetson Nano](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/reproduce/ck-image-classification-jetson-nano-tflite.md)
+
 ## Prerequisites
 
 ### [Preprocess ImageNet on an x86 machine](https://github.com/arm-software/armnn-mlperf#preprocess-on-an-x86-machine-and-detect-on-an-arm-dev-board)
@@ -103,6 +109,3 @@ Average latency:                  433287227ns  (2.30794 fps)
 Max latency:                      679467557ns  (1.47174 fps)
 ------------------------------------------------------------
 ```
-
-## Explore different models
-**TODO**
