@@ -102,6 +102,15 @@
       },
       "on_by_default": "no"
     },
+    "v2.5.0": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "v2.5.0",
+        "PACKAGE_PATCH__PACKAGE": "v2.4.0_package.patch",
+        "PACKAGE_PATCH__OFFSETOF": "v2.3.90_offsetof.patch",
+        "PACKAGE_VERSION": "2.5.0"
+      },
+      "on_by_default": "no"
+    },
     "v2.4.2": {
       "extra_env": {
         "PACKAGE_GIT_CHECKOUT": "v2.4.2",

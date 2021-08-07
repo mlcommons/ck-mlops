@@ -1,0 +1,20 @@
+{
+  "backup_data_uid": "a37814470ca23aa7",
+  "backup_module_uid": "5e1100048ab875d7",
+  "backup_module_uoa": "soft",
+  "control": {
+    "author": "cTuning foundation",
+    "author_email": "admin@cTuning.org",
+    "author_webpage": "http://cTuning.org",
+    "copyright": "See CK COPYRIGHT.txt for copyright details",
+    "engine": "CK",
+    "iso_datetime": "2021-08-07T15:25:00.842518",
+    "license": "See CK LICENSE.txt for licensing details",
+    "version": [
+      "2",
+      "5",
+      "8"
+    ]
+  },
+  "data_name": "lib.python.torchvision"
+}

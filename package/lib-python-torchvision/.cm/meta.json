@@ -29,7 +29,8 @@
     "linux"
   ],
   "process_script": "install",
-  "soft_uoa": "f74f8a3bf408fa14",
+  "soft_uoa": "a37814470ca23aa7",
+  "soft_uoa#": "lib.python.torchvision",
   "suggested_path": "lib-python-torchvision",
   "tags": [
     "lib",
