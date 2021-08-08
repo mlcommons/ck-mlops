@@ -2,9 +2,14 @@
   "check_exit_status": "yes",
   "customize": {
     "install_env": {
+      "MLPERF_MODEL_NAME": "resnet50",
+      "MLPERF_PROFILE_EXT": "",
+      "MLPERF_TVM_OUTPUT_ORDER": "1",
       "ML_MODEL_DATA_LAYOUT": "NHWC",
       "ML_MODEL_GIVEN_CHANNEL_MEANS": "123.68 116.78 103.94",
+      "ML_MODEL_INPUT_SHAPES": "\\\"input_tensor\\\": (BATCH_SIZE, 224, 224, 3)",
       "ML_MODEL_MODEL_NAME": "resnet50",
+      "ML_MODEL_OUTPUT_LAYERS": "softmax_tensor",
       "MODEL_IMAGE_HEIGHT": "224",
       "MODEL_IMAGE_WIDTH": "224",
       "MODEL_INPUT_LAYER_NAME": "input_tensor",
