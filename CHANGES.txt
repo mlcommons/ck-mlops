@@ -1,3 +1,6 @@
+20210808:
+  * added TFLite python package for the reference MLPerf benchmark
+
 20210806:
   * added variations for PyTorch&TorchVision CUDA
   * added TF python packages (CPU & GPU)
