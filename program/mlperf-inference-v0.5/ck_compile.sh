@@ -4,7 +4,9 @@ BLD_DIR=${PWD}
 SRC_DIR=../ov_mlperf_cpu/
 
 # Configure.
-${CK_ENV_TOOL_CMAKE_BIN}/${CK_CMAKE} ${CK_VERBOSE:-"--verbose=1"} \
+#${CK_VERBOSE:-"--verbose=1"} \
+
+${CK_ENV_TOOL_CMAKE_BIN}/${CK_CMAKE} \
 -DCMAKE_C_COMPILER="${CK_CC_FULL_PATH}"              \
 -DCMAKE_C_FLAGS="${CK_CC_FLAGS} ${EXTRA_FLAGS}"      \
 -DCMAKE_CXX_COMPILER="${CK_CXX_FULL_PATH}"           \

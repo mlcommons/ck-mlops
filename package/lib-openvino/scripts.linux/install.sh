@@ -116,10 +116,16 @@ echo "Copying the include files to '${INC_DIR}' ..."
 cp -r ${OPENVINO_DIR}/inference-engine/include/* ${INC_DIR}
 exit_if_error "copying the include files failed"
 
-if [ "${PACKAGE_GIT_CHECKOUT}" == "2019_R3.1" ] || [ "${PACKAGE_GIT_CHECKOUT}" == "2019_R3" ] || [ "${PACKAGE_GIT_CHECKOUT}" == "pre-release" ]; then
+#if [ "${PACKAGE_GIT_CHECKOUT}" == "2019_R3.1" ] || [ "${PACKAGE_GIT_CHECKOUT}" == "2019_R3" ] || [ "${PACKAGE_GIT_CHECKOUT}" == "pre-release" ]; then
 # Set up the calibration tool.
+
+  # Get python version in build dir
+  pushd ${OPENVINO_DIR}/inference-engine/bin/intel64/Release/lib/python_api
+  python_vers=(*)
+  popd
+
   CALIBRATION_TOOL_PATH=${OPENVINO_DIR}/inference-engine/tools/calibration_tool/openvino
-  INFERENCE_ENGINE_PATH=${OPENVINO_DIR}/inference-engine/bin/intel64/Release/lib/python_api/${CK_PYTHON_BIN}/openvino/
+  INFERENCE_ENGINE_PATH=${OPENVINO_DIR}/inference-engine/bin/intel64/Release/lib/python_api/${python_vers[0]}/openvino/
   OPENVINO_TOOLS_PATH=${OPENVINO_DIR}
   if [ ! -d "$CALIBRATION_TOOL_PATH" ]; then
     mkdir ${CALIBRATION_TOOL_PATH}
@@ -127,7 +133,7 @@ if [ "${PACKAGE_GIT_CHECKOUT}" == "2019_R3.1" ] || [ "${PACKAGE_GIT_CHECKOUT}" =
     ln -s ${OPENVINO_TOOLS_PATH}/tools/ ${CALIBRATION_TOOL_PATH}/tools
     ln -s ${INFERENCE_ENGINE_PATH}/tools/statistics_collector ${CALIBRATION_TOOL_PATH}/tools/statistics_collector
   fi
-fi
+#fi
 
 
 return 0

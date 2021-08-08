@@ -27,8 +27,8 @@ def ck_postprocess(i):
   deps              = i['deps']
   SIDELOAD_JSON     = env.get('CK_LOADGEN_SIDELOAD_JSON', '')
   include_trace     = env.get('CK_LOADGEN_INCLUDE_TRACE', '') in ('YES', 'Yes', 'yes', 'TRUE', 'True', 'true', 'ON', 'On', 'on', '1')
-  inference_src_env = deps['mlperf-inference-src']['dict']['env']
-  MLPERF_MAIN_CONF  = inference_src_env['CK_ENV_MLPERF_INFERENCE_MLPERF_CONF']
+  inference_src_env = deps['mlperf-inference-src'].get('dict',{}).get('env',{})
+  MLPERF_MAIN_CONF  = inference_src_env.get('CK_ENV_MLPERF_INFERENCE_MLPERF_CONF','')
 
   save_dict = {}
 

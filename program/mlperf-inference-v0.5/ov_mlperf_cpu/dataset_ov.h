@@ -425,6 +425,7 @@ public:
         this->need_transpose_ = image_format == "NHWC" ? false : true;
 
         string image_list_file = datapath + "/val_map.txt";
+
         std::ifstream imglistfile;
         imglistfile.open(image_list_file, std::ios::binary);
 
