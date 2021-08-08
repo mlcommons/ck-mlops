@@ -31,8 +31,7 @@
     "model-zoo",
     "model",
     "zoo",
-    "intel",
-    "v2019"
+    "intel"
   ], 
   "use_scripts_from_another_entry": {
     "data_uoa": "cd9ccc74060b3d18",
