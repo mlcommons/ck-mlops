@@ -4,7 +4,7 @@
     "install_env": {
       "MLPERF_MODEL_NAME": "resnet50",
       "MLPERF_PROFILE_EXT": "",
-      "MLPERF_TVM_OUTPUT_ORDER": "1",
+      "MLPERF_TVM_OUTPUT_ORDER": "",
       "ML_MODEL_DATA_LAYOUT": "NHWC",
       "ML_MODEL_GIVEN_CHANNEL_MEANS": "123.68 116.78 103.94",
       "ML_MODEL_INPUT_SHAPES": "\\\"input_tensor\\\": (BATCH_SIZE, 224, 224, 3)",
