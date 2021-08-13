@@ -49,6 +49,16 @@
         "version": "r1.1-tvm"
       }
     },
+    "r1.1-tvm-seed": {
+      "extra_env": {
+        "PACKAGE_URL": "https://github.com/octoml/mlcommons-inference",
+        "PACKAGE_GIT_CHECKOUT": "r1.1-seed"
+      },
+      "extra_customize": {
+        "package_extra_name": " (OctoML's r1.1 branch with TVM backend with correct seed)",
+        "version": "r1.1-tvm-seed"
+      }
+    },
     "r1.0": {
       "on_by_default": "yes",
       "extra_env": {
