@@ -568,6 +568,22 @@ if NOT "%PACKAGE_SKIP_CLEAN_OBJ%" == "YES" (
   )
 )
 
+
+rem ############################################################
+if "%PACKAGE_RENAME_DIR%" == "YES" (
+  echo.
+  echo Renaming directory %PACKAGE_RENAME_DIR1% to %PACKAGE_RENAME_DIR2% ...
+
+  cd /D %INSTALL_DIR%
+
+  if EXIST "%PACKAGE_RENAME_DIR2%" (
+     del /Q /S %PACKAGE_RENAME_DIR2%
+  )
+
+  rename %PACKAGE_RENAME_DIR1% %PACKAGE_RENAME_DIR2%
+)
+
+
 rem  ############################################################
 rem  CAREFUL - when GIT, CK can't afterwards go to this dir to get revision number ...
 

@@ -1,3 +1,6 @@
+20210813:
+  * added TF Python 2.6.0 variation
+
 20210808:
   * added TFLite python package for the reference MLPerf benchmark
 
