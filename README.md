@@ -1,6 +1,6 @@
-# CK repository with automation recipes for portable MLOps
+# CK repository with automation workflows for MLPerf and MLOps
 
-[![compatibility](https://github.com/ctuning/ck-guide-images/blob/master/ck-compatible.svg)](https://github.com/ctuning/ck)
+[![compatibility](https://github.com/ctuning/ck-guide-images/blob/master/ck-compatible.svg)](https://github.com/mlcommons/ck)
 [![automation](https://github.com/ctuning/ck-guide-images/blob/master/ck-artifact-automated-and-reusable.svg)](https://cTuning.org/ae)
 
 Linux/MacOS: [![Travis Build Status](https://travis-ci.com/ctuning/ck-mlops.svg)](https://travis-ci.com/ctuning/ck-mlops)
@@ -8,14 +8,6 @@ Windows: [![Windows Build status](https://ci.appveyor.com/api/projects/status/sg
 
 
 [![DOI](https://zenodo.org/badge/311647831.svg)](https://zenodo.org/badge/latestdoi/311647831)
-
-## News
-
-* [Project website](https://cKnowledge.org)
-* [CK-powered MLPerf&trade; benchmark automation](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/README.md)
-* [Community projects to improve and redesign CK](https://github.com/ctuning/ck/blob/master/incubator/README.md)
-* [AI/ML repository with all aggregated CK components](https://github.com/ctuning/ck-mlops)
-* [OctoML's CK-based MLOps/MLPerf repository](https://github.com/octoml/mlops)
 
 ## Overview
 
@@ -45,14 +37,12 @@ for AI and ML systems in the [CK format](https://arxiv.org/pdf/2011.01149.pdf):
 # Use cases
 
 * [CK-powered MLPerf&trade; benchmark automation](https://github.com/ctuning/mlcommons/blob/master/docs/mlperf-automation/README.md)
-* [MLOps from OctoML.ai](https://github.com/octoml/mlops)
 * [Other projects from our partners]( https://cKnowledge.org/partners.html )
 
 # Motivation
 
-* [White paper](https://arxiv.org/pdf/2006.07161.pdf) and [extended journal article](https://arxiv.org/pdf/2011.01149.pdf)
 * [ACM TechTalk on YouTube](https://www.youtube.com/watch?=7zpeIVwICa4)
-* [OctoML.ai](https://OctoML.ai)
+* [White paper](https://arxiv.org/pdf/2006.07161.pdf) and [extended journal article](https://arxiv.org/pdf/2011.01149.pdf)
 
 # Problems
 
