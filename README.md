@@ -9,13 +9,6 @@ Windows: [![Windows Build status](https://ci.appveyor.com/api/projects/status/sg
 
 [![DOI](https://zenodo.org/badge/311647831.svg)](https://zenodo.org/badge/latestdoi/311647831)
 
-## Maintainers
-
-* [cTuning foundation](https://cTuning.org)
-* [OctoML.ai](https://OctoML.ai)
-
-*Contact: grigori@octoml.ai*
-
 ## News
 
 * [Project website](https://cKnowledge.org)
@@ -26,24 +19,16 @@ Windows: [![Windows Build status](https://ci.appveyor.com/api/projects/status/sg
 
 ## Overview
 
-*There are numerous CK components spread across numerous GitHub repositories. 
-Based on the feedback from the community, we have created this repository 
-to collect all the main CK components related to AI and ML Systems in one place. 
-These components are also uploaded to the [cKnowledge.io platform](https://cKnowledge.io) 
-similar to PyPI to help you search for specific components and see their connections!*
-
 This repository contains a collection of **stable** CK components (automation recipes and workflows)
 for AI and ML systems in the [CK format](https://arxiv.org/pdf/2011.01149.pdf):
 
-* CK modules with automation actions: [[list](https://github.com/ctuning/ck/tree/master/ck/repo/module)]
+* CK modules with automation actions: [[list](https://github.com/mlcommons/ck/tree/master/ck/repo/module)]
 * CK program workflows: [[list]( https://cKnowledge.io/programs )]
 * CK meta packages: [[list]( https://cKnowledge.io/packages )]
 * CK software detection: [[list]( https://cKnowledge.io/soft )]
 * CK datasets: [[list]( https://cKnowledge.io/c/dataset )]
 * CK adaptive containers: [[list]( https://cKnowledge.io/c/docker )]
 * CK OS: [[list]( https://cKnowledge.io/c/os )]
-* CK MLPerf&trade; system descriptions: [[list]( https://cKnowledge.io/c/sut )]
-* CK MLPerf&trade; benchmark CMD generators: [[list]( https://cKnowledge.io/c/cmdgen )]
 
 ## Current projects
 * Developing a platform to automate SW/HW co-design for ML Systems across diverse models, data sets, frameworks and platforms based on user constraints in terms of speed, accuracy, energy and costs: [OctoML.ai](https://OctoML.ai) & [cKnowledge.io](https://cKnowledge.io)
@@ -53,12 +38,13 @@ for AI and ML systems in the [CK format](https://arxiv.org/pdf/2011.01149.pdf):
 * [Other real-world use cases](https://cKnowledge.org/partners.html) from MLPerf&trade;, Qualcomm, Arm, General Motors, IBM, the Raspberry Pi foundation, ACM and other great partners;
 
 
-# Install and use CK framework
-* https://github.com/ctuning/ck
+# Install and use MLCommons CK framework
 
-# Real world use-cases
+* https://github.com/mlcommons/ck
 
-* [CK-powered MLPerf&trade; benchmark automation](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/README.md)
+# Use cases
+
+* [CK-powered MLPerf&trade; benchmark automation](https://github.com/ctuning/mlcommons/blob/master/docs/mlperf-automation/README.md)
 * [MLOps from OctoML.ai](https://github.com/octoml/mlops)
 * [Other projects from our partners]( https://cKnowledge.org/partners.html )
 
@@ -70,9 +56,4 @@ for AI and ML systems in the [CK format](https://arxiv.org/pdf/2011.01149.pdf):
 
 # Problems
 
-Don't hesitate to report issues or submit feature requests [here](https://github.com/ctuning/ck-ml/issues).
-
-# Feedback
-
-Сontact [Grigori Fursin](https://cKnowledge.io/@gfursin) ([OctoML.ai](https://octoml.ai), [MLCommons&trade; member](https://mlcommons.org))
-
+Don't hesitate to report issues or submit feature requests [here](https://github.com/mlcommons/ck-mlops/issues).

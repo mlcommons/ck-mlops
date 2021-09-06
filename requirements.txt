@@ -1,2 +1,2 @@
 virtualenv
-ck>=2.5.6
+ck>=2.5.8
