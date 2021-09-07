@@ -1,7 +1,7 @@
 # News 
 * **20210529: [Grigori Fursin](https://cKnowledge.io/@gfursin) converted this container to support the latest CK version! 
   However, the MLPerf workflow fails with a run-time CUDA error. We decided to archive it.
-  See [octoml@mlops repo](https://github.com/octoml/mlops) and [MLPerf automation docs](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/README.md) for more details.**
+  See [octoml@mlops repo](https://github.com/octoml/mlops) and [MLPerf automation docs](https://github.com/mlcommons/ck/blob/master/docs/mlperf-automation/README.md) for more details.**
 
 # MLPerf Inference - Object Detection - TensorFlow with NVIDIA TensorRT
 
@@ -51,7 +51,7 @@ Note that you may need to run commands below with `sudo`, unless you [manage Doc
 ## Set up Collective Knowledge
 
 You will need to install [Collective Knowledge](http://cknowledge.org) to build images and save benchmarking results.
-Please follow the [CK installation instructions](https://github.com/ctuning/ck#installation) and then pull our object detection repository:
+Please follow the [CK installation instructions](https://github.com/mlcommons/ck#installation) and then pull our object detection repository:
 
 ```bash
 $ ck pull repo:ck-ml

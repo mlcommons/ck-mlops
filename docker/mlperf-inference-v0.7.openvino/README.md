@@ -1,10 +1,10 @@
 # News 
 * **20210525: This container was tested, fixed and improved by [Grigori Fursin](https://cKnowledge.io/@gfursin) to support the latest CK version! 
-  See [octoml@mlops repo](https://github.com/octoml/mlops) and [MLPerf automation docs](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/README.md) for more details.**
+  See [octoml@mlops repo](https://github.com/octoml/mlops) and [MLPerf automation docs](https://github.com/mlcommons/ck/blob/master/docs/mlperf-automation/README.md) for more details.**
 
 # MLPerf Inference v0.7 - OpenVINO
 
-Adaptive CK containers with [automated CK workflows](https://github.com/ctuning/ck) for OpenVINO workoads.
+Adaptive CK containers with [automated CK workflows](https://github.com/mlcommons/ck) for OpenVINO workoads.
 
 | `CK_TAG` (`Dockerfile`'s extension)  | Python | GCC   | Comments |
 |-|-|-|-|
@@ -14,7 +14,7 @@ Adaptive CK containers with [automated CK workflows](https://github.com/ctuning/
 ## Set up Collective Knowledge
 
 You will need to install [Collective Knowledge](httpы://cknowledge.org) to build images and save benchmarking results.
-Please follow the [CK installation instructions](https://github.com/ctuning/ck#installation) and then pull the ck-mlperf repository:
+Please follow the [CK installation instructions](https://github.com/mlcommons/ck#installation) and then pull the ck-mlperf repository:
 
 ```bash
 $ ck pull repo:ck-ml

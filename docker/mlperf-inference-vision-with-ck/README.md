@@ -29,7 +29,7 @@ Note that you may need to run commands below with `sudo`, unless you [manage Doc
 ## Set up Collective Knowledge
 
 You will need to install [Collective Knowledge](http://cknowledge.org) to build images and save benchmarking results.
-Please follow the [CK installation instructions](https://github.com/ctuning/ck#installation) and then pull our object detection repository:
+Please follow the [CK installation instructions](https://github.com/mlcommons/ck#installation) and then pull our object detection repository:
 
 ```bash
 $ ck pull repo:ck-mlperf
