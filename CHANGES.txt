@@ -1,3 +1,7 @@
+20210906:
+  * cTuning foundation and OctoML donated this repository to MLCommons
+    as a part of their MLPerf inference benchmark v1.1 submission.
+
 20210813:
   * added TF Python 2.6.0 variation
 
