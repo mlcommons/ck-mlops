@@ -1,0 +1,103 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "install_env": {
+      "MLPERF_MODEL_NAME": "resnet50",
+      "MLPERF_PROFILE_EXT": "",
+      "ML_MODEL_DATA_LAYOUT": "NCHW",
+      "ML_MODEL_GIVEN_CHANNEL_MEANS": "?",
+      "ML_MODEL_INPUT_LAYERS": "input_tensor:0",
+      "ML_MODEL_INPUT_SHAPES": "(\\\"input_tensor:0\\\", [BATCH_SIZE, 3, 224, 224])",
+      "ML_MODEL_OUTPUT_LAYERS": "output",
+      "MODEL_DATASET": "imagenet2012-val",
+      "MODEL_FRAMEWORK": "pytorch",
+      "MODEL_IMAGE_HEIGHT": "224",
+      "MODEL_IMAGE_WIDTH": "224",
+      "MODEL_INPUT_LAYERS": "input",
+      "MODEL_INPUT_LAYER_NAME": "?",
+      "MODEL_NORMALIZE_DATA": "0",
+      "MODEL_ONNX_OPSET": "",
+      "MODEL_OUTPUT_LAYERS": "output",
+      "MODEL_OUTPUT_LAYER_NAME": "?",
+      "MODEL_RETRAINING": "no",
+      "MODEL_SUBTRACT_MEAN": "?",
+      "MODEL_VERSION": "1.5",
+      "MODEL_WEIGHT_TRANSFORMATIONS": "no",
+      "PACKAGE_SKIP_CLEAN_PACKAGE": "YES",
+      "PACKAGE_SKIP_LINUX_MAKE": "YES",
+      "PACKAGE_UNGZIP": "NO",
+      "PACKAGE_VERSION": "1.5",
+      "PACKAGE_WGET": "YES"
+    },
+    "model_notes": "Edgecortix <a href=\"https://github.com/mlcommons/inference/blob/master/vision/classification_and_detection/tools/calibrate_torchvision_model.py\">quantization script</a>",
+    "no_os_in_suggested_path": "yes",
+    "no_ver_in_suggested_path": "yes",
+    "skip_file_check": "yes"
+  },
+  "end_full_path_universal": "dummy",
+  "only_for_host_os_tags": [],
+  "only_for_target_os_tags": [],
+  "process_script": "install",
+  "soft_uoa": "34c70aa3ff65a22c",
+  "soft_uoa#": "model.pytorch",
+  "suggested_path": "ml-model-mlperf-resnet50-v1.5-pytorch",
+  "tags": [
+    "octoml",
+    "ml-model",
+    "model",
+    "image-classification",
+    "pytorch",
+    "nchw",
+    "resnet",
+    "resnet50",
+    "side.224",
+    "mlperf",
+    "downloaded",
+    "imagenet-val"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "download-and-install-package",
+    "module_uoa": "script"
+  },
+  "variations": {
+    "v1.5-int8-quantized": {
+      "extra_customize": {
+        "package_extra_name": " (MLPerf ResNet50, pytorch, int8, quantized)"
+      },
+      "extra_env": {
+        "PACKAGE_NAME": "resnet50_INT8bit_quantized.pt",
+        "PACKAGE_URL": "https://zenodo.org/record/4589637/files",
+        "MODEL_ACCURACY": "75.790",
+        "MODEL_INPUT_DATA_TYPES": "int8",
+        "MODEL_PRECISION": "int8",
+        "MODEL_WEIGHT_DATA_TYPES": "int8"
+      },
+      "extra_tags": [
+        "resnet50-v1.5",
+        "v1.5",
+        "int8",
+        "quantized"
+      ],
+      "on_by_default": "yes"
+    },
+    "v1.5-fp32": {
+      "extra_customize": {
+        "package_extra_name": " (MLPerf ResNet50, pytorch, fp32)"
+      },
+      "extra_env": {
+        "PACKAGE_NAME": "resnet50-19c8e357.pth",
+        "PACKAGE_URL": "https://zenodo.org/record/4588417/files",
+        "MODEL_ACCURACY": "76.014",
+        "MODEL_INPUT_DATA_TYPES": "fp32",
+        "MODEL_PRECISION": "fp32",
+        "MODEL_WEIGHT_DATA_TYPES": "fp32"
+      },
+      "extra_tags": [
+        "resnet50-v1.5",
+        "v1.5",
+        "fp32"
+      ],
+      "on_by_default": "no"
+    }
+  }
+}

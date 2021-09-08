@@ -1,0 +1,87 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "install_env": {
+      "MODEL_NAME": "MLPERF BERT Large on SQuAD v1.1",
+      "MODEL_F1": "90.874",
+      "MODEL_VOCAB_TXT": "vocab.txt",
+      "MODEL_DATASET": "squad-1.1",
+      "MODEL_FRAMEWORK": "onnx",
+      "MODEL_MAX_SEQ_LENGTH": "384",
+      "MODEL_OUTPUT_START_LOGITS_NAME": "output_start_logits",
+      "MODEL_OUTPUT_END_LOGITS_NAME": "output_end_logits",
+      "PACKAGE_SKIP_CLEAN_PACKAGE": "YES",
+      "PACKAGE_SKIP_LINUX_MAKE": "YES",
+      "PACKAGE_WGET": "YES"
+    },
+    "model_notes": "<a href=\"https://github.com/google-research/bert\">BERT-Large</a>, trained with <a href=\"https://github.com/NVIDIA/DeepLearningExamples/tree/master/TensorFlow/LanguageModeling/BERT\">NVIDIA DeepLearningExamples</a>, converted with <a href=\"/mlcommons/inference/blob/master/language/bert/bert_tf_to_pytorch.py\">bert_tf_to_pytorch.py</a>",
+    "no_os_in_suggested_path": "yes",
+    "no_ver_in_suggested_path": "yes",
+    "skip_file_check": "yes",
+    "version": "reference"
+  },
+  "end_full_path_universal": "model.onnx",
+  "only_for_host_os_tags": [],
+  "only_for_target_os_tags": [],
+  "process_script": "install",
+  "soft_uoa": "bcaac306e9041879",
+  "soft_uoa#": "model.onnx",
+  "suggested_path": "ml-model-mlperf-bert-large-squad-onnx",
+  "tags": [
+    "octoml",
+    "ml-model",
+    "model",
+    "language",
+    "question-answering",
+    "onnx",
+    "bert",
+    "bert-large",
+    "bert-large-squad",
+    "squad-1.1",
+    "mlperf",
+    "downloaded"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "download-and-install-package",
+    "module_uoa": "script"
+  },
+  "variations": {
+    "fp32": {
+      "extra_customize": {
+        "package_extra_name": " (MLPerf BERT-Large SQuAD fp32 non-quantized onnx)"
+      },
+      "extra_env": {
+        "MODEL_PRECISION": "fp32",
+        "PACKAGE_NAME": "model.onnx",
+        "PACKAGE_URL": "https://zenodo.org/record/3733910/files",
+        "MODEL_INPUT_IDS_NAME": "input_ids",
+        "MODEL_INPUT_SEGMENTS_NAME": "segment_ids",
+        "MODEL_INPUT_MASK_NAME": "input_mask"
+      },
+      "extra_tags": [
+        "fp32",
+        "non-quantized"
+      ],
+      "on_by_default": "yes"
+    },
+    "int8": {
+      "extra_customize": {
+        "package_extra_name": " (MLPerf BERT-Large SQuAD int8 quantized onnx)"
+      },
+      "extra_env": {
+        "MODEL_PRECISION": "int8",
+        "MLPERF_MODEL_QUANTIZED": "YES",
+        "PACKAGE_NAME": "bert_large_v1_1_fake_quant.onnx",
+        "PACKAGE_URL": "https://zenodo.org/record/3750364/files",
+        "MODEL_INPUT_IDS_NAME": "input_ids",
+        "MODEL_INPUT_SEGMENTS_NAME": "segment_ids",
+        "MODEL_INPUT_MASK_NAME": "input_mask"
+      },
+      "extra_tags": [
+        "int8",
+        "quantized"
+      ],
+      "on_by_default": "no"
+    }
+  }
+}

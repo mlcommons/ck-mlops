@@ -1,0 +1,36 @@
+{
+  "_base_entry": "program.template:dc17edb4f5341afb",
+  "_base_entry#": "program.template:mlperf-inference-bench-language",
+  "run_deps": {
+    "lib-python-onnx-support": {
+      "local": "yes",
+      "name": "Python ONNX runtime (CPU)",
+      "sort": 80,
+      "tags": "lib,python-package,onnxruntime-cpu"
+    }
+  },
+  "run_vars": {
+    "CK_LOADGEN_MAX_EXAMPLES": "",
+    "CK_LOADGEN_OPTS": "",
+    "CK_MLPERF_PROFILE": "",
+    "CUDA_VISIBLE_DEVICES": "0",
+    "MLPERF_BACKEND": "onnxruntime",
+    "MLPERF_DEVICE": "gpu"
+  },
+  "tags": [
+    "mlperf",
+    "loadgen",
+    "mlperf-loadgen",
+    "mlperf-benchmark",
+    "mlperf-inference-benchmark",
+    "mlperf-benchmark-loadgen",
+    "lang-python",
+    "language",
+    "question-answering",
+    "onnx",
+    "onnxruntime",
+    "task.language",
+    "framework.onnx",
+    "target.cpu"
+  ]
+}

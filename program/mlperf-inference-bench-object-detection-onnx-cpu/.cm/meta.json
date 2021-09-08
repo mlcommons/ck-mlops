@@ -1,0 +1,42 @@
+{
+  "_base_entry": "program.template:be040afa642b8e28",
+  "_base_entry#": "program.template:mlperf-inference-bench-object-detection",
+
+  "run_deps": {
+    "model": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Object Detection model (mlperf, onnx)",
+      "sort": 100,
+      "tags": "model,onnx,object-detection,mlperf,onnx"
+    },
+    "lib-python-onnx-support": {
+      "local": "yes",
+      "name": "Python ONNX runtime",
+      "sort": 80,
+      "tags": "lib,python-package,onnxruntime-cpu"
+    }
+  },
+  "run_vars": {
+    "MLPERF_BACKEND": "onnxruntime",
+    "MLPERF_DEVICE": "cpu",
+    "CUDA_VISIBLE_DEVICES": ""
+  },
+  "tags": [
+    "mlperf",
+    "loadgen",
+    "mlperf-loadgen",
+    "mlperf-benchmark",
+    "mlperf-inference-benchmark",
+    "mlperf-benchmark-loadgen",
+    "lang-python",
+    "classification",
+    "classification_and_detection",
+    "object-detection",
+    "onnx",
+    "onnxruntime",
+    "task.object-detection",
+    "framework.onnx",
+    "target.cpu"
+  ]
+}

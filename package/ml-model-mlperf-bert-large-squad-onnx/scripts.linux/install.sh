@@ -1,0 +1,3 @@
+#!/bin/bash
+
+wget -O ${INSTALL_DIR}/${MODEL_VOCAB_TXT} ${PACKAGE_URL}/${MODEL_VOCAB_TXT}

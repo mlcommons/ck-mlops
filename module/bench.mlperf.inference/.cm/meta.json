@@ -1,0 +1,109 @@
+{
+  "actions": {
+    "filter": {
+      "desc": "filter results (Pareto frontier)"
+    },
+    "import": {
+      "desc": "import results"
+    },
+    "run": {
+      "desc": "run MLPerf inference benchmark"
+    },
+    "zip": {
+      "desc": "zip results"
+    }
+  },
+  "actions_redirect": {
+    "filter": "xfilter",
+    "import": "ximport",
+    "zip": "xzip"
+  },
+  "closed_division_models": {
+    "1.0": [
+      "3d-unet-99",
+      "3d-unet-99.9",
+      "bert-99",
+      "dlrm-99",
+      "dlrm-99.9",
+      "resnet50",
+      "rnnt",
+      "ssd-resnet34"
+    ],
+    "1.1": [
+      "3d-unet-99",
+      "3d-unet-99.9",
+      "bert-99",
+      "dlrm-99",
+      "dlrm-99.9",
+      "resnet50",
+      "rnnt",
+      "ssd-resnet34"
+    ]
+  },
+  "compliance_tests": [
+    "TEST01",
+    "TEST04-B",
+    "TEST04-A",
+    "TEST05"
+  ],
+  "desc": "MLPerf inference benchmark automation",
+  "dirs": [
+    "code",
+    "compliance",
+    "measurements",
+    "results",
+    "systems"
+  ],
+  "divisions": [
+    "open",
+    "closed"
+  ],
+  "modes": [
+    "prereq",
+    "accuracy",
+    "performance"
+  ],
+  "module_deps": {
+    "bench.mlperf.submitter": "e6a349d5bb2efa09",
+    "bench.mlperf.system": "4edfa6cce73e7297",
+    "env": "9b9b3208ac44b891",
+    "math.frontier": "99d08d331cdc5478",
+    "program": "b0ac08fe1d3c2615",
+    "result": "4cd2850867df4241"
+  },
+  "scenarios": {
+    "1.0": [
+      "singlestream",
+      "multistream",
+      "offline",
+      "server"
+    ],
+    "1.1": [
+      "singlestream",
+      "offline",
+      "server"
+    ]
+  },
+  "tasks": {
+    "image-classification": [
+      "resnet50"
+    ],
+    "image-segmentation": [
+      "3d-unet-99",
+      "3d-unet-99.9"
+    ],
+    "nlp": [
+      "bert-99"
+    ],
+    "object-detection": [
+      "ssd-resnet34"
+    ],
+    "recommendation": [
+      "dlrm-99",
+      "dlrm-99.9"
+    ],
+    "speech-recognition": [
+      "rnnt"
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "backup_data_uid": "c635e2941d4b068b",
+  "backup_module_uid": "88eef0cd8c43b68a",
+  "backup_module_uoa": "docker",
+  "control": {
+    "engine": "CK",
+    "iso_datetime": "2021-05-08T22:05:13.998547",
+    "version": [
+      "2",
+      "0",
+      "0",
+      "1"
+    ]
+  },
+  "data_name": "ck-mlperf-local-dashboard-demo"
+}

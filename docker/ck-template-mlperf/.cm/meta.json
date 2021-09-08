@@ -1,0 +1,23 @@
+{
+  "default_org":"octoml",
+  "cmd": {
+    "default": {
+      "build": "-f $#CK_PATH#$/Dockerfile$#CK_TAG_DOT#$ -t $#CK_DOCKER_ORGANIZATION#$/$#CK_DOCKER_NAME#$$#CK_TAG_COLON#$ $#CK_PATH#$",
+      "push": "$#CK_DOCKER_ORGANIZATION#$/$#CK_DOCKER_NAME#$$#CK_TAG_COLON#$",
+      "run": "-it $#CK_DOCKER_ORGANIZATION#$/$#CK_DOCKER_NAME#$$#CK_TAG_COLON#$ bash"
+    }
+  },
+  "docker_tags": [
+    "ubuntu-20.04",
+    "ubuntu-18.04",
+    "centos-7"
+  ],
+  "tags": [
+    "adaptive-container",
+    "template",
+    "octoml",
+    "ml",
+    "mlperf",
+    "x8664"
+  ]
+}

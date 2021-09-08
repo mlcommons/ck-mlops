@@ -1,0 +1,39 @@
+{
+  "no_compile": "yes",
+  "no_target_file": "yes",
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "default": {
+      "ignore_return_code": "no",
+      "run_time": {
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ $<<CK_ENV_MLPERF_INFERENCE>>$/loadgen/demos/py_demo_single_stream.py",
+        "run_output_files": [
+        ]
+      }
+    }
+  },
+  "run_deps": {
+    "lib-python-loadgen": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Python MLPerf loadgen library",
+      "sort": 10,
+      "tags": "lib,python-package,mlperf,loadgen"
+    },
+    "mlperf-inference-src": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "MLPerf Inference source",
+      "sort": 20,
+      "tags": "mlperf,inference,source"
+    }
+  },
+  "run_vars": {},
+  "tags": [
+    "lang-python",
+    "test",
+    "mlperf",
+    "loadgen"
+  ]
+}

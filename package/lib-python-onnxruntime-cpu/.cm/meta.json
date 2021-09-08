@@ -1,0 +1,85 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "install_env": {
+      "PIP_INSTALL_OPTIONS": "--ignore-installed",
+      "PYTHON_PACKAGE_NAME": "onnxruntime"
+    }
+  },
+  "deps": {
+    "python": {
+      "add_to_path": "yes",
+      "local": "yes",
+      "name": "Python interpreter",
+      "sort": 10,
+      "tags": "compiler,python"
+    }
+  },
+  "package_extra_name": " (cpu)",
+  "end_full_path_universal": "build$#sep#$onnxruntime$#sep#$__init__.py",
+  "only_for_host_os_tags": [],
+  "only_for_target_os_tags": [
+    "windows",
+    "linux"
+  ],
+  "process_script": "install",
+  "soft_uoa": "2029d994d58a457e",
+  "suggested_path": "lib-python-onnxruntime",
+  "tags": [
+    "lib",
+    "python-package",
+    "onnxruntime",
+    "onnxruntime-cpu",
+    "cpu"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "e8363e22e84dedba",
+    "data_uoa#": "install-python-package",
+    "module_uoa": "script"
+  },
+  "variations": {
+    "latest": {
+      "extra_customize": {
+      },
+      "extra_env": {
+      },
+      "on_by_default": "yes"
+    },
+    "1.8.1": {
+      "extra_customize": {
+        "version": "1.8.1"
+      },
+      "extra_env": {
+        "PACKAGE_VERSION":"1.8.1"
+      },
+      "on_by_default": "no"
+    },
+    "1.8.0": {
+      "extra_customize": {
+        "version": "1.8.0"
+      },
+      "extra_env": {
+        "PACKAGE_VERSION":"1.8.0"
+      },
+      "on_by_default": "no"
+    },
+    "1.7.0": {
+      "extra_customize": {
+        "version": "1.7.0"
+      },
+      "extra_env": {
+        "PACKAGE_VERSION":"1.7.0"
+      },
+      "on_by_default": "no"
+    },
+    "1.6.0": {
+      "extra_customize": {
+        "version": "1.6.0"
+      },
+      "extra_env": {
+        "PACKAGE_VERSION":"1.6.0"
+      },
+      "on_by_default": "no"
+    }
+  }
+}

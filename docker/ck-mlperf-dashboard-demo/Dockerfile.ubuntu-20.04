@@ -1,0 +1,167 @@
+# Adaptive container with the CK interface
+# Concept: https://arxiv.org/abs/2011.01149
+
+FROM ubuntu:20.04
+
+# Contact
+LABEL maintainer="Grigori Fursin <grigori@octoml.ai>"
+
+# Shell info
+SHELL ["/bin/bash", "-c"]
+#ENTRYPOINT ["/bin/bash", "-c"]
+
+# Set noninteractive mode for apt (do not use ENV)
+ARG DEBIAN_FRONTEND=noninteractive
+
+# Notes: https://runnable.com/blog/9-common-dockerfile-mistakes
+# Install system dependencies
+RUN apt update && \
+    apt install -y --no-install-recommends \
+           apt-utils \
+           git wget zip bzip2 libz-dev libbz2-dev cmake curl unzip \
+           openssh-client vim mc tree \
+           gcc g++ autoconf autogen libtool make libc6-dev build-essential \
+           libssl-dev libbz2-dev libffi-dev \
+           python3 python3-pip python3-dev \
+           daemonize\
+           sudo
+
+# Prepare a user with a user group with a random id
+RUN groupadd -g 1111 ckuser
+RUN useradd -u 2222 -g ckuser --create-home --shell /bin/bash ckuser
+RUN echo "ckuser:ckuser" | chpasswd
+RUN adduser ckuser sudo
+RUN echo "ckuser   ALL=(ALL)  NOPASSWD:ALL" >> /etc/sudoers
+
+# Set user
+USER ckuser:ckuser
+WORKDIR /home/ckuser
+ENV PATH="/home/ckuser/.local/bin:${PATH}"
+RUN mkdir .ssh
+
+# Install CK
+RUN export DUMMY_CK=C
+RUN ${DUMMY_CK} pip3 install virtualenv
+RUN ${DUMMY_CK} pip3 install ck
+
+# Install pandas for the CK dashboard
+RUN python3 -m pip install pandas --user
+
+# Clone CK repo
+RUN ck pull repo:ck-mlops
+
+# Install packages to CK env entries
+RUN ck setup kernel --var.install_to_env=yes
+
+RUN ck detect platform.os --platform_init_uoa=generic-linux-dummy
+RUN ck detect soft:compiler.python --full_path=/usr/bin/python3
+
+RUN ck detect soft:compiler.gcc --full_path=`which gcc`
+
+RUN ck install package --tags=tool,cmake,prebuilt --quiet
+
+RUN ck install package --tags=lib,python-package,absl
+RUN ck install package --tags=lib,python-package,numpy
+RUN ck install package --tags=lib,python-package,scipy
+RUN ck install package --tags=lib,python-package,matplotlib
+RUN ck install package --tags=lib,python-package,cython
+RUN ck install package --tags=lib,python-package,pillow
+RUN ck install package --tags=lib,python-package,opencv-python-headless
+
+#RUN ck install package --tags=lib,tflite,via-cmake,v2.4.1,with.ruy
+
+# Install TFLite.
+RUN ck install package --tags=lib,tensorflow-lite,tensorflow-static,v1.13.1 --quiet
+
+# Download and preprocess the first 500 images of the ImageNet 2012 validation dataset.
+RUN ck install package --tags=dataset,imagenet,aux,from.berkeley
+RUN ck install package --tags=dataset,imagenet,val,original,min --no_tags=resized
+RUN ck install package --tags=dataset,imagenet,val,preprocessed,using-pillow,side.224
+
+# Create a repository for benchmarking results.
+# Can't easily change this repo since it's hardwired in module:mlperf* ...
+RUN ck create repo:mlperf-mobilenets --quiet
+
+# Reused from docker:image-classification-tflite.dashboard.ubuntu-18.04
+
+# Download the MobileNet TF/TFLite models (non-quantized and quantized).
+# https://github.com/mlperf/inference/blob/master/edge/object_classification/mobilenets/tflite/README.md#install-the-mobilenet-models-for-tflite
+RUN ck install package --tags=image-classification,model,tf,tflite,mlperf,mobilenet,non-quantized,from-zenodo
+RUN ck install package --tags=image-classification,model,tf,tflite,mlperf,mobilenet,quantized,from-google
+
+# Benchmark the performance of the non-quantized MobileNet model.
+RUN ck benchmark program:image-classification-tflite \
+--repetitions=10 --env.CK_BATCH_SIZE=1 --env.CK_BATCH_COUNT=2 \
+--dep_add_tags.weights=mlperf,image-classification,mobilenet,non-quantized,tflite \
+--record --record_repo=mlperf-mobilenets --record_uoa=mlperf-image-classification-mobilenet-non-quantized-tflite-performance \
+--tags=mlperf,image-classification,mobilenet,non-quantized,tflite,performance \
+--skip_print_timers --skip_stat_analysis --process_multi_keys
+
+# Benchmark the accuracy of the non-quantized MobileNet model.
+RUN ck benchmark program:image-classification-tflite \
+--repetitions=1 --env.CK_BATCH_SIZE=1 --env.CK_BATCH_COUNT=500 \
+--dep_add_tags.weights=mlperf,image-classification,mobilenet,non-quantized,tflite \
+--record --record_repo=mlperf-mobilenets --record_uoa=mlperf-image-classification-mobilenet-non-quantized-tflite-accuracy \
+--tags=mlperf,image-classification,mobilenet,non-quantized,tflite,accuracy \
+--skip_print_timers --skip_stat_analysis --process_multi_keys
+
+# Benchmark the performance of the quantized MobileNet model.
+RUN ck benchmark program:image-classification-tflite \
+--repetitions=10 --env.CK_BATCH_SIZE=1 --env.CK_BATCH_COUNT=2 \
+--dep_add_tags.weights=mlperf,image-classification,mobilenet,quantized,tflite \
+--record --record_repo=mlperf-mobilenets --record_uoa=mlperf-image-classification-mobilenet-quantized-tflite-performance \
+--tags=mlperf,image-classification,mobilenet,quantized,tflite,performance \
+--skip_print_timers --skip_stat_analysis --process_multi_keys
+
+# Benchmark the accuracy of the quantized MobileNet model.
+RUN ck benchmark program:image-classification-tflite \
+--repetitions=1 --env.CK_BATCH_SIZE=1 --env.CK_BATCH_COUNT=500 \
+--dep_add_tags.weights=mlperf,image-classification,mobilenet,quantized,tflite \
+--record --record_repo=mlperf-mobilenets --record_uoa=mlperf-image-classification-mobilenet-quantized-tflite-accuracy \
+--tags=mlperf,image-classification,mobilenet,quantized,tflite,accuracy \
+--skip_print_timers --skip_stat_analysis --process_multi_keys
+
+# Download the ResNet TFLite models (with and without the ArgMax operator).
+# https://github.com/mlperf/inference/blob/master/edge/object_classification/mobilenets/tflite/README.md#install-the-resnet-model
+RUN ck install package --tags=image-classification,model,tflite,mlperf,resnet,downloaded,with-argmax
+RUN ck install package --tags=image-classification,model,tflite,mlperf,resnet,downloaded,no-argmax
+
+# Benchmark the performance of the ResNet model with the ArgMax operator.
+RUN ck benchmark program:image-classification-tflite \
+--repetitions=10 --env.CK_BATCH_SIZE=1 --env.CK_BATCH_COUNT=2 \
+--dep_add_tags.weights=mlperf,image-classification,resnet,with-argmax,tflite \
+--record --record_repo=mlperf-mobilenets --record_uoa=mlperf-image-classification-resnet-with-argmax-tflite-performance \
+--tags=mlperf,image-classification,resnet,with-argmax,tflite,performance \
+--skip_print_timers --skip_stat_analysis --process_multi_keys
+
+# Benchmark the accuracy of the ResNet model with the ArgMax operator.
+RUN ck benchmark program:image-classification-tflite \
+--repetitions=1 --env.CK_BATCH_SIZE=1 --env.CK_BATCH_COUNT=500 \
+--dep_add_tags.weights=mlperf,image-classification,resnet,with-argmax,tflite \
+--record --record_repo=mlperf-mobilenets --record_uoa=mlperf-image-classification-resnet-with-argmax-tflite-accuracy \
+--tags=mlperf,image-classification,resnet,with-argmax,tflite,accuracy \
+--skip_print_timers --skip_stat_analysis --process_multi_keys
+
+# Benchmark the performance of the ResNet model without the ArgMax operator.
+RUN ck benchmark program:image-classification-tflite \
+--repetitions=10 --env.CK_BATCH_SIZE=1 --env.CK_BATCH_COUNT=2 \
+--dep_add_tags.weights=mlperf,image-classification,resnet,no-argmax,tflite \
+--record --record_repo=mlperf-mobilenets --record_uoa=mlperf-image-classification-resnet-no-argmax-tflite-performance \
+--tags=mlperf,image-classification,resnet,no-argmax,tflite,performance \
+--skip_print_timers --skip_stat_analysis --process_multi_keys
+
+# Benchmark the accuracy of the ResNet model without the ArgMax operator.
+RUN ck benchmark program:image-classification-tflite \
+--repetitions=1 --env.CK_BATCH_SIZE=1 --env.CK_BATCH_COUNT=500 \
+--dep_add_tags.weights=mlperf,image-classification,resnet,no-argmax,tflite \
+--record --record_repo=mlperf-mobilenets --record_uoa=mlperf-image-classification-resnet-no-argmax-tflite-accuracy \
+--tags=mlperf,image-classification,resnet,no-argmax,tflite,accuracy \
+--skip_print_timers --skip_stat_analysis --process_multi_keys
+
+# This command spawns the server in the background (daemon) mode, while
+# also brings up an interactive shell in the same container.
+CMD echo -e "You can now point your browser to: http://localhost:3355/?template=dashboard&scenario=mlperf.mobilenets"\
+ && daemonize -o ${HOME}/ck_server.out -e ${HOME}/ck_server.err\
+ `which ck` display dashboard --scenario=mlperf.mobilenets\
+ --host=0.0.0.0 --wfe_host=localhost --wfe_port=3355\
+ && /bin/bash

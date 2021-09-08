@@ -1,0 +1,140 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "install_env": {
+      "PACKAGE_GIT_LLVM": "https://github.com/llvm/llvm-project"
+    },
+    "no_ver_in_suggested_path": "yes"
+  },
+  "deps": {
+    "cmake": {
+      "add_to_path": "no",
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "CMake tool",
+      "skip_from_bat": "yes",
+      "sort": 20,
+      "tags": "tool,cmake",
+      "version_from": [
+        3,
+        13,
+        3
+      ]
+    },
+    "compiler": {
+      "add_to_path": "no",
+      "local": "yes",
+      "name": "C++ compiler",
+      "sort": 10,
+      "tags": "compiler,lang-cpp"
+    }
+  },
+  "end_full_path": {
+    "linux": "install/bin/clang"
+  },
+  "only_for_host_os_tags": [
+    "linux"
+  ],
+  "only_for_target_os_tags": [
+    "linux"
+  ],
+  "package_extra_name": " (built from sources)",
+  "process_script": "install",
+  "soft_uoa": "1c2eb494b8ae3bc4",
+  "suggested_path": "compiler-llvm-from-src",
+  "tags": [
+    "compiler",
+    "llvm",
+    "lang-c",
+    "lang-cpp",
+    "source",
+    "src"
+  ],
+  "variations": {
+    "dev": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "main"
+      },
+      "extra_customize": {
+        "version": "dev"
+      }
+    },
+    "v12.0.0": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "llvmorg-12.0.0"
+      },
+      "extra_customize": {
+        "version": "12.0.0"
+      },
+      "on_by_default": "yes"
+    },
+    "v11.0.1": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "llvmorg-11.0.1"
+      },
+      "extra_customize": {
+        "version": "11.0.1"
+      }
+    },
+    "v11.0.0": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "llvmorg-11.0.0"
+      },
+      "extra_customize": {
+        "version": "11.0.0"
+      }
+    },
+    "v10.0.1": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "llvmorg-10.0.1"
+      },
+      "extra_customize": {
+        "version": "10.0.1"
+      }
+    },
+    "v10.0.0": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "llvmorg-10.0.0"
+      },
+      "extra_customize": {
+        "version": "10.0.0"
+      }
+    },
+    "v9.0.1": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "llvmorg-9.0.1"
+      },
+      "extra_customize": {
+        "version": "9.0.1"
+      }
+    },
+    "v9.0.0": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "llvmorg-9.0.0"
+      },
+      "extra_customize": {
+        "version": "9.0.0"
+      }
+    },
+    "v8.0.1": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "llvmorg-8.0.1"
+      },
+      "extra_customize": {
+        "version": "8.0.1"
+      }
+    },
+    "v8.0.0": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "llvmorg-8.0.0"
+      },
+      "extra_customize": {
+        "version": "8.0.0"
+      }
+    }
+  },
+  "use_preprocess_scripts_from_another_entry": {
+    "data_uoa": "process-compiler-for-cmake",
+    "module_uoa": "script"
+  }
+}

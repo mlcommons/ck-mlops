@@ -1,0 +1,41 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "install_env": {
+      "PACKAGE_URL": "https://github.com/bazelbuild/bazel/releases/download"
+    }
+  },
+  "end_full_path": {
+    "linux": "install/bin/bazel",
+    "macos": "install/bin/bazel",
+    "win": "bazel.exe"
+  },
+  "need_cpu_info": "yes",
+  "only_for_target_os_tags": [
+    "linux",
+    "windows"
+  ],
+  "deps": {},
+  "process_script": "install",
+  "soft_uoa": "b6c840689eea661c",
+  "soft_uoa#": "tool.bazel2",
+  "suggested_path": "tool-bazel",
+  "tags": [
+    "tool",
+    "bazel",
+    "prebuilt"
+  ],
+  "variations": {
+    "v4.1.0": {
+      "extra_env": {
+        "BAZEL_VERSION": "4.1.0"
+      },
+      "extra_tags": [
+        "v4.1.0",
+        "v4.1",
+        "v4"
+      ],
+      "on_by_default": "yes"
+    }
+  }
+}

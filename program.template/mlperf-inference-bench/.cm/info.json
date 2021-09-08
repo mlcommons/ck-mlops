@@ -1,0 +1,15 @@
+{
+  "backup_data_uid": "e774074b553f1ed6",
+  "backup_module_uid": "441fa62fbc6fcc48",
+  "backup_module_uoa": "program.template",
+  "control": {
+    "engine": "CK",
+    "iso_datetime": "2021-05-19T12:36:53.421494",
+    "version": [
+      "2",
+      "1",
+      "0"
+    ]
+  },
+  "data_name": "mlperf-inference-bench"
+}

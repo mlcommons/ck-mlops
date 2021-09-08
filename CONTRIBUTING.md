@@ -18,6 +18,7 @@ MLCommons project work is tracked with issue trackers and pull requests. Modify 
 * Leo Gordon &lt;leo@dividiti.com&gt;
 * Anton Lokhmotov &lt;anton@dividiti.com&gt;
 * Ivan Osipov &lt;ivan.osipov@xored.com&gt;
+* Alexander Peskov <alexander.peskov@deelvin.com>
 * Lahiru Rasnayake &lt;lahiru.rasnayake@ntnu.no&gt;
 * Dmitry Savenko &lt;ds@dsavenko.com&gt;
 * Gavin Simpson &lt;gavin.s.simpson@gmail.com&gt;
@@ -25,6 +26,7 @@ MLCommons project work is tracked with issue trackers and pull requests. Modify 
 * Flavio Vella &lt;Flavio.Vella@unibz.it&gt;
 * Emanuele Vitali &lt;emanuele.vitali@polimi.it&gt;
 * Wen Yang @w-simon
+* Thomas Zhu &lt;thomas.zhu.sh@gmail.com&gt;
 * @alexanderzubarev
 * @fanranGit
 * @maria-18-git

@@ -1,0 +1,126 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "extra_dir": "",
+    "install_env": {
+      "ML_MODEL_DATA_TYPE": "float32",
+      "ML_MODEL_GIVEN_CHANNEL_MEANS": "0.485 0.456 0.406",
+      "ML_MODEL_GIVEN_CHANNEL_STDS": "0.229 0.224 0.225",
+      "ML_MODEL_IMAGE_HEIGHT": "1200",
+      "ML_MODEL_IMAGE_WIDTH": "1200",
+      "ML_MODEL_INPUT_DATA_TYPE": "float32",
+      "ML_MODEL_INPUT_LAYERS": "image",
+      "ML_MODEL_INPUT_SHAPES": "\\\"image\\\": (BATCH_SIZE, 3, 1200, 1200)",
+      "ML_MODEL_NORMALIZE_DATA": "YES",
+      "ML_MODEL_NORMALIZE_LOWER": "0.0",
+      "ML_MODEL_NORMALIZE_UPPER": "1.0",
+      "ML_MODEL_OUTPUT_LAYERS": "bboxes,labels,scores",
+      "ML_MODEL_SKIPS_ORIGINAL_DATASET_CLASSES": "12,26,29,30,45,66,68,69,71,83",
+      "ML_MODEL_USE_INV_MAP": "YES",
+      "MODEL_CLASSES_LABELS": "flatlabels.txt",
+      "MODEL_DATASET": "coco2017-val-1200",
+      "MODEL_DATASET_TYPE": "coco",
+      "MODEL_FRAMEWORK": "onnx",
+      "MODEL_INPUT_DATA_TYPES": "fp32",
+      "MODEL_INPUT_LAYERS": "image",
+      "MODEL_INPUT_LAYER_NAME": "image",
+      "MODEL_MAP": "0.20",
+      "MODEL_NAME": "MLPerf SSD-Resnet34",
+      "MODEL_ONNX_OPSET": "8",
+      "MODEL_OUTPUT_LAYERS": "bboxes,labels,scores",
+      "MODEL_OUTPUT_LAYER_BBOXES": "bboxes",
+      "MODEL_OUTPUT_LAYER_LABELS": "labels",
+      "MODEL_OUTPUT_LAYER_SCORES": "scores",
+      "MODEL_PRECISION": "fp32",
+      "MODEL_RETRAINING": "no",
+      "MODEL_VERSION": "1.0",
+      "MODEL_WEIGHT_DATA_TYPES": "fp32",
+      "MODEL_WEIGHT_TRANSFORMATIONS": "no",
+      "PACKAGE_COPY": "YES",
+      "PACKAGE_SKIP_CLEAN_PACKAGE": "YES",
+      "PACKAGE_SKIP_LINUX_MAKE": "YES",
+      "PACKAGE_WGET": "YES"
+    },
+    "no_os_in_suggested_path": "yes",
+    "no_ver_in_suggested_path": "yes",
+    "skip_file_check": "yes",
+    "version": "reference"
+  },
+  "end_full_path_universal": "dummy",
+  "only_for_host_os_tags": [
+    "linux",
+    "windows"
+  ],
+  "only_for_target_os_tags": [
+    "linux",
+    "windows"
+  ],
+  "process_script": "install",
+  "soft_uoa": "bcaac306e9041879",
+  "soft_uoa#": "model.onnx",
+  "suggested_path": "ml-model-mlperf-ssd-resnet34-1200-onnx",
+  "tags": [
+    "octoml",
+    "ml-model",
+    "model",
+    "mlperf",
+    "object-detection",
+    "onnx",
+    "ssd",
+    "ssd-resnet",
+    "ssd-resnet34",
+    "non-quantized",
+    "nhwc",
+    "vcoco",
+    "side.1200",
+    "downloaded",
+    "fp32"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "download-and-install-package",
+    "module_uoa": "script"
+  },
+  "variations": {
+    "opset-11": {
+      "extra_customize": {
+        "model_notes": "<a href=\"https://zenodo.org/record/3345892/files/tf_ssd_resnet34_22.1.zip\">from zenodo</a> converted using <a href=\"https://github.com/mlcommons/inference/blob/master/vision/classification_and_detection/tools/convert-to-onnx.sh\">this script</a>",
+        "package_extra_name": " (MLPerf SSD-ResNet34, onnx, COCO 1200, fp32, non-quantized, opset-11)",
+        "soft_file_universal": "ssd_resnet34_mAP_20.2.onnx"
+      },
+      "extra_env": {
+        "MLPERF_MODEL_NAME": "ssd-resnet34-tf",
+        "MLPERF_PROFILE": "ssd-resnet34",
+        "MLPERF_PROFILE_EXT": "-tf",
+        "MLPERF_TVM_OUTPUT_ORDER": "0,2,1",
+        "ML_MODEL_DATA_LAYOUT": "NCHW",
+        "MODEL_ONNX_OPSET": "11",
+        "PACKAGE_NAME": "ssd_resnet34_mAP_20.2.onnx",
+        "PACKAGE_URL": "https://zenodo.org/record/4735664/files"
+      },
+      "extra_tags": [
+        "ssd-resnet34-opset-11",
+        "opset-11"
+      ]
+    },
+    "opset-8": {
+      "extra_customize": {
+        "model_notes": "<a href=\"https://github.com/mlperf/inference/tree/master/others/cloud/single_stage_detector\">from mlperf</a> converted using the these <a href=\"https://github.com/BowenBao/inference/tree/master/cloud/single_stage_detector/pytorch#6-onnx\">instructions</a>",
+        "package_extra_name": " (MLPerf SSD-ResNet34, onnx, COCO 1200, fp32, non-quantized, opset-8)",
+        "soft_file_universal": "resnet34-ssd1200.onnx"
+      },
+      "extra_env": {
+        "MLPERF_MODEL_NAME": "ssd-resnet34",
+        "MLPERF_PROFILE_EXT": "",
+        "ML_MODEL_DATA_LAYOUT": "NCHW",
+        "MODEL_ONNX_OPSET": "8",
+        "PACKAGE_NAME": "resnet34-ssd1200.onnx",
+        "PACKAGE_URL": "https://zenodo.org/record/3228411/files"
+      },
+      "extra_tags": [
+        "ssd-resnet34-opset-8",
+        "opset-8"
+      ],
+      "on_by_default": "yes"
+    }
+  }
+}

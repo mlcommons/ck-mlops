@@ -1,0 +1,16 @@
+{
+  "actions": {
+    "prepare": {
+      "desc": "prepare DSE engine based on CK workflows"
+    },
+    "run": {
+      "desc": "run DSE"
+    }
+  },
+  "copyright": "See CK COPYRIGHT.txt for copyright details",
+  "desc": "AI/ML/SW/HW Design Space Exploration API",
+  "developer": "Grigori Fursin",
+  "developer_email": "grigori@octoml.ai",
+  "developer_webpage": "http://fursin.net",
+  "license": "See CK LICENSE.txt for licensing details"
+}

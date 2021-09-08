@@ -15,6 +15,11 @@ The latest version of the CK automation suite supported by MLCommons: **v2.5.8**
 * [CK framework](https://github.com/mlcommons/ck/releases/tag/V2.5.8)
 * [CK workflows and components](https://github.com/mlcommons/ck-mlops)
 
+## Documentation
+
+* [CK-powered MLPerf&trade; benchmark automation and DSE] (https://github.com/mlcommons/ck/blob/master/docs/mlperf-automation/README.md)
+* [CK-powered MLPerf&trade; submission automation suite](https://github.com/mlcommons/ck-mlops/tree/main/module/bench.mlperf.inference)
+
 ## Overview
 
 This repository contains a collection of **stable** CK components (automation recipes and workflows)

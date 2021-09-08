@@ -1,0 +1,45 @@
+{
+  "_base_entry": "program.template:e774074b553f1ed6",
+  "_base_entry#": "program.template:mlperf-inference-bench",
+  "post_process_via_ck": {
+    "data_uoa": "53bb701c440aaa69",
+    "data_uoa#": "mlperf-inference-object-detection",
+    "module_uoa": "script",
+    "script_name": "loadgen_postprocess"
+  },
+  "pre_process_via_ck": {
+    "data_uoa": "53bb701c440aaa69",
+    "data_uoa#": "mlperf-inference-object-detection",
+    "module_uoa": "script",
+    "script_name": "loadgen_preprocess"
+  },
+  "run_deps": {
+    "dataset": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Dataset for object detection",
+      "sort": 10,
+      "tags": "dataset,object-detection,full"
+    },
+    "lib-python-opencv": {
+      "local": "yes",
+      "name": "Python OpenCV library",
+      "sort": 50,
+      "tags": "lib,python-package,cv2"
+    },
+    "lib-python-matplotlib": {
+      "local": "yes",
+      "name": "Python MatPlotLib",
+      "sort": 55,
+      "tags": "lib,python-package,matplotlib"
+    },
+    "tool-coco": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Python API for COCO",
+      "note": "required for all vision apps",
+      "sort": 25,
+      "tags": "tool,coco"
+    }
+  }
+}

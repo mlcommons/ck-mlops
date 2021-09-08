@@ -1,0 +1,50 @@
+{
+  "_base_entry": "program.template:e774074b553f1ed6",
+  "_base_entry#": "program.template:mlperf-inference-bench",
+  "post_process_via_ck": {
+    "data_uoa": "80cd847d1831aed2",
+    "data_uoa#": "mlperf-inference-language",
+    "module_uoa": "script",
+    "script_name": "loadgen_postprocess"
+  },
+  "pre_process_via_ck": {
+    "data_uoa": "80cd847d1831aed2",
+    "data_uoa#": "mlperf-inference-language",
+    "module_uoa": "script",
+    "script_name": "loadgen_preprocess"
+  },
+  "run_deps": {
+    "dataset": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "SQuAD v1.1 (dev)",
+      "sort": 30,
+      "tags": "dataset,squad,v1.1,dev"
+    },
+    "lib-python-transformers": {
+      "local": "yes",
+      "name": "Python Hugging Face Transformers library",
+      "sort": 50,
+      "tags": "lib,python-package,transformers"
+    },
+    "lib-python-tensorflow": {
+      "local": "yes",
+      "name": "Python TensorFlow (for tokenization script)",
+      "sort": 55,
+      "tags": "lib,python-package,tensorflow"
+    },
+    "lib-python-torch": {
+      "local": "yes",
+      "name": "Python PyTorch (for transformers library)",
+      "sort": 60,
+      "tags": "lib,python-package,torch"
+    },
+    "model": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Model for question answering (MLPerf)",
+      "sort": 40,
+      "tags": "model,question-answering,mlperf"
+    }
+  }
+}

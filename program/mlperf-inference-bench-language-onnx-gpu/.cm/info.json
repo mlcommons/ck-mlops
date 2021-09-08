@@ -1,0 +1,15 @@
+{
+  "backup_data_uid": "193c8040159214d2",
+  "backup_module_uid": "b0ac08fe1d3c2615",
+  "backup_module_uoa": "program",
+  "control": {
+    "engine": "CK",
+    "iso_datetime": "2021-08-07T19:47:56.514203",
+    "version": [
+      "2",
+      "5",
+      "8"
+    ]
+  },
+  "data_name": "mlperf-inference-bench-language-onnx-gpu"
+}

@@ -1,0 +1,18 @@
+{
+  "auto_detect": "no",
+  "customize": {
+    "check_that_exists": "yes",
+    "ck_version": 10,
+    "env_prefix": "CK_ENV_MLPERF_ALL_MODELS",
+    "limit_recursion_dir_search": {
+      "linux": 5
+    },
+    "soft_file_universal": "_ck_mlperf_all_models.md",
+    "version":"-"
+  },
+  "soft_name": "MLPerf All Models in One Place",
+  "tags": [
+    "mlperf",
+    "all-models"
+  ]
+}

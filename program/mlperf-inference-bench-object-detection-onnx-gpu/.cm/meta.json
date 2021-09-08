@@ -1,0 +1,35 @@
+{
+  "_base_entry": "program:9bf64926ca4ccf8a",
+  "_base_entry#": "program:mlperf-inference-bench-object-detection-onnx-cpu",
+  "run_deps": {
+    "lib-python-onnx-support": {
+      "local": "yes",
+      "name": "Python ONNX runtime (GPU)",
+      "sort": 80,
+      "tags": "lib,python-package,onnxruntime-gpu"
+    }
+  },
+  "run_vars": {
+    "CK_LOADGEN_OPTS": "",
+    "CUDA_VISIBLE_DEVICES": "0",
+    "MLPERF_BACKEND": "onnxruntime",
+    "MLPERF_DEVICE": "gpu"
+  },
+  "tags": [
+    "mlperf",
+    "loadgen",
+    "mlperf-loadgen",
+    "mlperf-benchmark",
+    "mlperf-inference-benchmark",
+    "mlperf-benchmark-loadgen",
+    "lang-python",
+    "classification",
+    "classification_and_detection",
+    "object-detection",
+    "onnx",
+    "onnxruntime",
+    "task.object-detection",
+    "framework.onnx",
+    "target.gpu"
+  ]
+}

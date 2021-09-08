@@ -1,0 +1,65 @@
+{
+  "_base_entry": "program.template:644dadbc03849925",
+  "_base_entry#": "program.template:mlperf-inference-bench-image-classification",
+  "run_deps": {
+    "model": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Model for image classification (mlperf, pytorch)",
+      "sort": 40,
+      "tags": "model,image-classification,mlperf,pytorch"
+    },
+    "lib-python-torch": {
+      "local": "yes",
+      "name": "PyTorch",
+      "sort": 80,
+      "tags": "lib,python-package,torch"
+    },
+    "lib-python-torch-vision": {
+      "local": "yes",
+      "name": "PyTorchVision",
+      "sort": 90,
+      "tags": "lib,python-package,torchvision"
+    },
+    "compiler-tvm": {
+      "local": "yes",
+      "name": "TVM compiler",
+      "sort": 200,
+      "tags": "compiler,tvm"
+    },
+    "lib-python-scipy": {
+      "local": "yes",
+      "name": "Python SciPy library",
+      "sort": 120,
+      "tags": "lib,python-package,scipy"
+    }
+  },
+  "run_vars": {
+    "CK_LOADGEN_OPTS": "",
+    "CUDA_VISIBLE_DEVICES": "",
+    "MLPERF_BACKEND": "tvm",
+    "MLPERF_DEVICE": "cpu",
+    "MLPERF_PROFILE_BACKEND": "onnxruntime",
+    "MLPERF_DATASET":"imagenet_pytorch",
+    "MLPERF_TVM_EXECUTOR": "graph",
+    "MLPERF_TVM_OPT_LEVEL": 3,
+    "MLPERF_TVM_TARGET": "llvm"
+  },
+  "tags": [
+    "mlperf",
+    "loadgen",
+    "mlperf-loadgen",
+    "mlperf-benchmark",
+    "mlperf-inference-benchmark",
+    "mlperf-benchmark-loadgen",
+    "lang-python",
+    "classification",
+    "classification_and_detection",
+    "image-classification",
+    "tvm",
+    "tvm-pytorch",
+    "task.image-classification",
+    "framework.tvm-pytorch",
+    "target.cpu"
+  ]
+}

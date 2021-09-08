@@ -1,0 +1,101 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "install_env": {
+      "ML_MODEL_DATA_LAYOUT": "NCHW",
+      "ML_MODEL_GIVEN_CHANNEL_MEANS": "123.68 116.78 103.94",
+      "ML_MODEL_INPUT_LAYERS": "input_tensor:0",
+      "ML_MODEL_INPUT_SHAPES": "\\\"input_tensor:0\\\": (BATCH_SIZE, 3, 224, 224)",
+      "ML_MODEL_OUTPUT_LAYERS": "softmax_tensor:0",
+      "MLPERF_MODEL_NAME": "resnet50",
+      "MLPERF_PROFILE_EXT": "",
+      "MODEL_IMAGE_HEIGHT": "224",
+      "MODEL_IMAGE_WIDTH": "224",
+      "MODEL_INPUT_LAYER_NAME": "input_tensor:0",
+      "MODEL_INPUT_LAYERS": "input_tensor:0",
+      "MODEL_NORMALIZE_DATA": "0",
+      "MODEL_OUTPUT_LAYER_NAME": "softmax_tensor:0",
+      "MODEL_OUTPUT_LAYERS": "softmax_tensor:0",
+      "MODEL_SUBTRACT_MEAN": "YES",
+      "MODEL_PRECISION": "fp32",
+      "MODEL_FRAMEWORK": "onnx",
+      "MODEL_ACCURACY":"76.456",
+      "MODEL_VERSION":"1.5",
+      "MODEL_DATASET":"imagenet2012-val",
+      "MODEL_INPUT_DATA_TYPES":"fp32",
+      "MODEL_RETRAINING":"no",
+      "MODEL_WEIGHT_DATA_TYPES":"fp32",
+      "MODEL_WEIGHT_TRANSFORMATIONS":"no",
+      "PACKAGE_SKIP_CLEAN_PACKAGE": "YES",
+      "PACKAGE_SKIP_LINUX_MAKE": "YES",
+      "PACKAGE_UNGZIP": "NO",
+      "PACKAGE_VERSION": "1.5",
+      "PACKAGE_WGET": "YES"
+    },
+    "model_notes":"<a href=\"https://zenodo.org/record/2535873/files/resnet50_v1.pb\">from zenodo</a> converted with <a href=\"https://github.com/mlcommons/inference/blob/master/vision/classification_and_detection/tools/convert-to-onnx.sh\">this script</a>",
+    "no_os_in_suggested_path": "yes",
+    "no_ver_in_suggested_path": "yes",
+    "skip_file_check": "yes"
+  },
+  "end_full_path_universal": "resnet50_v1.onnx",
+  "only_for_host_os_tags": [],
+  "only_for_target_os_tags": [],
+  "process_script": "install",
+  "soft_uoa": "bcaac306e9041879",
+  "soft_uoa#": "model.onnx",
+  "suggested_path": "ml-model-mlperf-resnet50-v1.5-onnx",
+  "tags": [
+    "octoml",
+    "ml-model",
+    "model",
+    "image-classification",
+    "onnx",
+    "nchw",
+    "resnet",
+    "resnet50",
+    "side.224",
+    "mlperf",
+    "downloaded",
+    "from.pb",
+    "imagenet-val",
+    "softmax",
+    "fp32"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "download-and-install-package",
+    "module_uoa": "script"
+  },
+  "variations": {
+    "v1.5-opset-8": {
+      "extra_env": {
+        "PACKAGE_URL": "https://zenodo.org/record/2592612/files/",
+        "PACKAGE_NAME": "resnet50_v1.onnx",
+        "MODEL_ONNX_OPSET": "8"
+      },
+      "extra_customize": {
+        "package_extra_name": " (MLPerf ResNet50, onnx, fp32, non-quantized, opset-8)"
+      },
+      "extra_tags": [
+        "resnet50-v1.5",
+        "v1.5",
+        "opset-8"
+      ],
+      "on_by_default": "yes"
+    },
+    "v1.5-opset-11": {
+      "extra_env": {
+        "PACKAGE_URL": "https://zenodo.org/record/4735647/files",
+        "PACKAGE_NAME": "resnet50_v1.onnx",
+        "MODEL_ONNX_OPSET": "11"
+      },
+      "extra_customize": {
+        "package_extra_name": " (MLPerf ResNet50, onnx, fp32, non-quantized, opset-11)"
+      },
+      "extra_tags": [
+        "resnet50-v1.5",
+        "v1.5",
+        "opset-11"
+      ]
+    }
+  }
+}

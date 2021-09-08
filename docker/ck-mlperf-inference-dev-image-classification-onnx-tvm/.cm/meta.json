@@ -1,0 +1,29 @@
+{
+  "cmd": {
+    "default": {
+      "build": "-f $#CK_PATH#$/Dockerfile$#CK_TAG_DOT#$ -t $#CK_DOCKER_ORGANIZATION#$/$#CK_DOCKER_NAME#$$#CK_TAG_COLON#$ $#CK_PATH#$",
+      "push": "$#CK_DOCKER_ORGANIZATION#$/$#CK_DOCKER_NAME#$$#CK_TAG_COLON#$",
+      "run": "-it $#CK_DOCKER_ORGANIZATION#$/$#CK_DOCKER_NAME#$$#CK_TAG_COLON#$"
+    }
+  },
+  "default_org": "octoml",
+  "docker_tags": [
+    "ubuntu-20.04",
+    "ubuntu-18.04",
+    "ubuntu-16.04",
+    "centos-8",
+    "centos-7"
+  ],
+  "tags": [
+    "adaptive-container",
+    "template",
+    "octoml",
+    "tvm",
+    "image-classification",
+    "mlperf",
+    "v1.1",
+    "mlperf-1.1",
+    "ml",
+    "x8664"
+  ]
+}

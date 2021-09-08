@@ -1,0 +1,15 @@
+{
+  "backup_data_uid": "84af9bdb41a4567b",
+  "backup_module_uid": "1dc07ee0f4742028",
+  "backup_module_uoa": "package",
+  "control": {
+    "engine": "CK",
+    "iso_datetime": "2021-06-29T13:22:38.168938",
+    "version": [
+      "2",
+      "5",
+      "5"
+    ]
+  },
+  "data_name": "tool-bazel"
+}

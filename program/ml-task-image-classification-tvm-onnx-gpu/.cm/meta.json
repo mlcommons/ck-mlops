@@ -1,0 +1,26 @@
+{
+  "_base_entry": "59bfa009fd047d09",
+  "_base_entry#": "mlperf-inference-bench-image-classification-tvm-onnx-cpu",
+
+  "base_uoa":"59bfa009fd047d09",
+  "base_uoa#":"ml-task-image-classification-tvm-onnx-cpu",
+
+  "run_deps": {
+    "cuda": {
+      "local": "yes",
+      "name": "CUDA toolset",
+      "sort": 0,
+      "tags": "compiler,lang-c-cuda"
+    },
+    "lib-python-onnxruntime": {
+      "local": "yes",
+      "name": "Python ONNX runtime (CUDA)",
+      "sort": 130,
+      "tags": "lib,python-package,onnxruntime,gpu"
+    }
+  },
+  "run_vars": {
+    "USE_CUDA": "yes",
+    "TVM_TARGET": "cuda"
+  }
+}

@@ -1,0 +1,228 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "git_src_dir": "tvm",
+    "install_env": {
+      "PACKAGE_GIT_URL": "https://github.com/apache/tvm",
+      "USE_DNNL_CODEGEN": "OFF",
+      "USE_OPENMP": "",
+      "CK_HOST_CPU_NUMBER_OF_PROCESSORS":1
+    },
+    "no_ver_in_suggested_path": "yes"
+  },
+  "deps": {
+    "cmake": {
+      "add_to_path": "no",
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "CMake tool",
+      "skip_from_bat": "yes",
+      "sort": 20,
+      "tags": "tool,cmake",
+      "version_from": [
+        3,
+        13,
+        3
+      ]
+    },
+    "compiler": {
+      "add_to_path": "no",
+      "local": "yes",
+      "name": "C++ compiler",
+      "sort": 10,
+      "tags": "compiler,lang-cpp,llvm"
+    },
+    "cuda": {
+      "enable_if_env": [
+        {
+          "USE_CUDA": [
+            "ON"
+          ]
+        }
+      ],
+      "local": "yes",
+      "name": "CUDA toolset",
+      "sort": 0,
+      "tags": "compiler,lang-c-cuda"
+    },
+    "lib-dnnl": {
+      "add_to_path": "no",
+      "local": "yes",
+      "name": "DNNL library",
+      "sort": 30,
+      "tags": "lib,dnnl",
+      "enable_if_env": [
+        {
+          "USE_DNNL_CODEGEN": [
+            "ON"
+          ]
+        }
+      ]
+    }
+  },
+  "end_full_path_universal": "tvm$#sep#$build$#sep#$libtvm$#file_ext_dll#$",
+  "only_for_host_os_tags": [
+    "linux"
+  ],
+  "process_script": "install",
+  "soft_uoa": "757f02edb31a4008",
+  "soft_uoa#": "compiler.tvm",
+  "suggested_path": "compiler-tvm",
+  "tags": [
+    "compiler",
+    "tvm",
+    "source",
+    "src"
+  ],
+  "use_preprocess_scripts_from_another_entry": {
+    "data_uoa": "process-compiler-for-cmake",
+    "module_uoa": "script"
+  },
+  "variations": {
+    "dev": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "main"
+      },
+      "extra_customize": {
+        "version": "",
+        "skip_version_recheck": "yes",
+        "use_git_revision": "yes"
+      },
+      "on_by_default": "yes"
+    },
+    "dev-dnnl-int8": {
+      "extra_env": {
+        "PACKAGE_GIT_URL": "https://github.com/apeskov/tvm",
+        "PACKAGE_GIT_CHECKOUT": "ap/dnnl-int8"
+      },
+      "extra_customize": {
+        "version": "",
+        "skip_version_recheck": "yes",
+        "use_git_revision": "yes"
+      },
+      "on_by_default": "no"
+    },
+    "dev-dnnl-int8-v2": {
+      "extra_env": {
+        "PACKAGE_GIT_URL": "https://github.com/apeskov/tvm",
+        "PACKAGE_GIT_CHECKOUT": "ap/dnnl-int8-v2"
+      },
+      "extra_customize": {
+        "version": "",
+        "skip_version_recheck": "yes",
+        "use_git_revision": "yes"
+      },
+      "on_by_default": "no"
+    },
+    "dev-0.8-dnnl-int8-v2-mlperf-1.1": {
+      "extra_env": {
+        "PACKAGE_GIT_URL": "https://github.com/ctuning/tvm-mlperf-v1.1",
+        "PACKAGE_GIT_CHECKOUT": "ap/dnnl-int8-v2"
+      },
+      "extra_customize": {
+        "version": "",
+        "skip_version_recheck": "yes",
+        "use_git_revision": "yes"
+      },
+      "on_by_default": "no"
+    },
+    "dev-cuda": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "main",
+        "USE_CUDA":"ON"
+      },
+      "extra_customize": {
+        "version": "",
+        "skip_version_recheck": "yes",
+        "use_git_revision": "yes"
+      },
+      "extra_tags": [
+        "cuda"
+      ],
+      "on_by_default": "no"
+    },
+    "r-d0791d3db971a111826d96201bd1e4c9c0d531da": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "main",
+        "PACKAGE_GIT_SHA": "d0791d3db971a111826d96201bd1e4c9c0d531da"
+      },
+      "extra_customize": {
+        "version": "d0791d3db971a111826d96201bd1e4c9c0d531da"
+      },
+      "on_by_default": "no"
+    },
+    "masahi-onnx-combined-nms-dev": {
+      "extra_env": {
+        "PACKAGE_GIT_URL": "https://github.com/masahi/tvm",
+        "PACKAGE_GIT_CHECKOUT": "onnx-combined-nms",
+        "PACKAGE_GIT_SHA": ""
+      },
+      "extra_customize": {
+        "version": "r-masahi-onnx-combined-nms-dev"
+      },
+      "on_by_default": "no"
+    },
+    "masahi-onnx-combined-nms-c999a840cb5579c493f5b5e7f20bc619260dad08": {
+      "extra_env": {
+        "PACKAGE_GIT_URL": "https://github.com/masahi/tvm",
+        "PACKAGE_GIT_CHECKOUT": "onnx-combined-nms",
+        "PACKAGE_GIT_SHA": "c999a840cb5579c493f5b5e7f20bc619260dad08"
+      },
+      "extra_customize": {
+        "version": "masahi-onnx-combined-nms-c999a840cb5579c493f5b5e7f20bc619260dad08"
+      },
+      "on_by_default": "no"
+    },
+    "r-a1b4f0e8f2bfcc583f98f0f9272adcc0c12f70a5": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "main",
+        "PACKAGE_GIT_SHA": "a1b4f0e"
+      },
+      "extra_customize": {
+        "version": "a1b4f0e8f2bfcc583f98f0f9272adcc0c12f70a5"
+      },
+      "on_by_default": "no"
+    },
+    "tmoreau89_vlk_ci": {
+      "extra_env": {
+        "PACKAGE_GIT_URL": "https://github.com/tmoreau89/tvm",
+        "PACKAGE_GIT_CHECKOUT": "vlk_ci"
+      },
+      "extra_customize": {
+        "version": "tmoreau89_vlk_ci"
+      }
+    },
+    "v0.7.0": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "v0.7.0"
+      },
+      "extra_customize": {
+        "version": "0.7.0"
+      }
+    },
+    "v0.6.1": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "v0.6.1"
+      },
+      "extra_customize": {
+        "version": "0.6.1"
+      }
+    },
+    "v0.6.0": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "v0.6.0"
+      },
+      "extra_customize": {
+        "version": "0.6.0"
+      }
+    },
+    "v0.5": {
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "v0.5"
+      },
+      "extra_customize": {
+        "version": "0.5"
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "actions": {
+    "add": {
+      "desc": "add MLPerf system"
+    }
+  },
+  "actions_redirect": {},
+  "desc": "MLPerf benchmark system (SUT)",
+  "module_deps": {
+    "platform": "707ccdfe444cafac"
+  }
+}

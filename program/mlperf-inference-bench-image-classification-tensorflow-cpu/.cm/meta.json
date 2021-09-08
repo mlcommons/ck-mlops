@@ -1,0 +1,42 @@
+{
+  "_base_entry": "program.template:644dadbc03849925",
+  "_base_entry#": "program.template:mlperf-inference-bench-image-classification",
+  "run_deps": {
+    "lib-python-tensorflow": {
+      "local": "yes",
+      "name": "Python TensorFlow (CPU)",
+      "sort": -10,
+      "tags": "lib,python-package,tensorflow-cpu"
+    },
+    "model": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Model for image classification (mlperf, tf)",
+      "sort": 40,
+      "tags": "model,image-classification,mlperf,tensorflow"
+    }
+  },
+  "run_vars": {
+    "CK_LOADGEN_OPTS": "",
+    "CUDA_VISIBLE_DEVICES": "",
+    "MLPERF_BACKEND": "tf",
+    "MLPERF_DEVICE": "cpu"
+  },
+  "tags": [
+    "mlperf",
+    "loadgen",
+    "mlperf-loadgen",
+    "mlperf-benchmark",
+    "mlperf-inference-benchmark",
+    "mlperf-benchmark-loadgen",
+    "lang-python",
+    "classification",
+    "classification_and_detection",
+    "image-classification",
+    "tensorflow",
+    "tf",
+    "task.image-classification",
+    "framework.tf",
+    "target.cpu"
+  ]
+}

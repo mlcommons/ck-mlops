@@ -1,0 +1,60 @@
+{
+  "_base_entry": "program.template:644dadbc03849925",
+  "_base_entry#": "program.template:mlperf-inference-bench-image-classification",
+  "run_deps": {
+    "compiler-tvm": {
+      "local": "yes",
+      "name": "TVM compiler",
+      "sort": 200,
+      "tags": "compiler,tvm"
+    },
+    "lib-python-scipy": {
+      "local": "yes",
+      "name": "Python SciPy library",
+      "sort": 120,
+      "tags": "lib,python-package,scipy"
+    },
+    "lib-python-tflite": {
+      "local": "yes",
+      "name": "TFlite",
+      "sort": 80,
+      "tags": "lib,python-package,tflite"
+    },
+    "model": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Model for image classification (mlperf, tflite)",
+      "sort": 40,
+      "tags": "model,image-classification,mlperf,tflite"
+    }
+  },
+  "run_vars": {
+    "CK_LOADGEN_OPTS": "",
+    "CUDA_VISIBLE_DEVICES": "",
+    "MLPERF_BACKEND": "tvm",
+    "MLPERF_DATASET": "",
+    "MLPERF_DEVICE": "cpu",
+    "MLPERF_PROFILE_BACKEND": "onnxruntime",
+    "MLPERF_MODEL_FORMAT": "tflite",
+    "MLPERF_TVM_EXECUTOR": "graph",
+    "MLPERF_TVM_OPT_LEVEL": 3,
+    "MLPERF_TVM_TARGET": "llvm"
+  },
+  "tags": [
+    "mlperf",
+    "loadgen",
+    "mlperf-loadgen",
+    "mlperf-benchmark",
+    "mlperf-inference-benchmark",
+    "mlperf-benchmark-loadgen",
+    "lang-python",
+    "classification",
+    "classification_and_detection",
+    "image-classification",
+    "tvm",
+    "tvm-tflite",
+    "task.image-classification",
+    "framework.tvm-tflite",
+    "target.cpu"
+  ]
+}

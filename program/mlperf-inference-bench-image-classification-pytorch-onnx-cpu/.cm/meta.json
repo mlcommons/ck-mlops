@@ -1,0 +1,59 @@
+{
+  "_base_entry": "program.template:644dadbc03849925",
+  "_base_entry#": "program.template:mlperf-inference-bench-image-classification",
+
+  "run_deps": {
+    "model": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Model for image classification (mlperf, onnx)",
+      "sort": 40,
+      "tags": "model,image-classification,mlperf,onnx"
+    },
+    "lib-python-onnx-support": {
+      "local": "yes",
+      "name": "Python ONNX",
+      "sort": 78,
+      "tags": "lib,python-package,onnx"
+    },
+    "lib-python-torch": {
+      "local": "yes",
+      "name": "PyTorch",
+      "sort": 80,
+      "tags": "lib,python-package,torch"
+    },
+    "lib-python-torch-vision": {
+      "local": "yes",
+      "name": "PyTorchVision",
+      "sort": 90,
+      "tags": "lib,python-package,torchvision"
+    }
+  },
+  "run_vars": {
+    "CK_LOADGEN_OPTS": "",
+    "MLPERF_BACKEND": "pytorch",
+    "MLPERF_PROFILE_BACKEND": "onnxruntime",
+    "MLPERF_DATASET": "imagenet",
+    "MLPERF_DEVICE": "cpu",
+    "CUDA_VISIBLE_DEVICES": ""
+  },
+  "tags": [
+    "mlperf",
+    "loadgen",
+    "mlperf-loadgen",
+    "mlperf-benchmark",
+    "mlperf-inference-benchmark",
+    "mlperf-benchmark-loadgen",
+    "lang-python",
+    "classification",
+    "classification_and_detection",
+    "image-classification",
+    "torch",
+    "pytorch",
+    "torch-onnx",
+    "pytorch-onnx",
+    "task.image-classification",
+    "framework.pytorch",
+    "target.cpu"
+  ]
+}

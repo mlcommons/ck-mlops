@@ -1,0 +1,74 @@
+# Adaptive container with the CK interface
+# Concept: https://arxiv.org/abs/2011.01149
+
+# (CK automation 6ab9df569d0d1e6b)
+FROM ubuntu:18.04
+
+LABEL maintainer="Grigori Fursin <grigori@octoml.ai>"
+
+SHELL ["/bin/bash", "-c"]
+ENTRYPOINT ["/bin/bash", "-c"]
+
+ARG DEBIAN_FRONTEND=noninteractive
+
+# (CK automation ee47d84311b9373d)
+# Notes: https://runnable.com/blog/9-common-dockerfile-mistakes
+# Install system dependencies
+RUN apt update && \
+    apt install -y --no-install-recommends \
+           apt-utils \
+           git wget zip bzip2 libz-dev libbz2-dev cmake curl unzip \
+           openssh-client vim mc tree \
+           gcc g++ autoconf autogen libtool make libc6-dev \
+           libssl-dev libbz2-dev libffi-dev \
+           python3 python3-pip python3-dev \
+           sudo
+
+# Prepare a user with a user group with a random id (CK automation 7b3ec2b6534f3394)
+RUN groupadd -g 1111 ckuser
+RUN useradd -u 2222 -g ckuser --create-home --shell /bin/bash ckuser
+RUN echo "ckuser:ckuser" | chpasswd
+RUN adduser ckuser sudo
+RUN echo "ckuser   ALL=(ALL)  NOPASSWD:ALL" >> /etc/sudoers
+
+# Set user (CK automation 8b8944a9b2c1f341)
+USER ckuser:ckuser
+WORKDIR /home/ckuser
+ENV PATH="/home/ckuser/.local/bin:${PATH}"
+RUN mkdir .ssh
+
+# Install CK
+RUN export DUMMY_CK=A
+RUN ${DUMMY_CK} python3 -m pip install --ignore-installed pip setuptools wheel pyyaml --user
+
+# Stable CK V2.4.0 from Zenodo
+RUN wget https://zenodo.org/record/4889404/files/ctuning/ck-V2.5.3.zip --no-check-certificate
+RUN unzip ck-V2.5.3.zip
+RUN cd ctuning-ck-0e43e52 && python3 setup.py install --user
+RUN ck version
+
+# Clone CK repo(s) or pull them from Zenodo (CK automation f49f20744aba90e2)
+RUN wget https://zenodo.org/record/4889369/files/ctuning/ai-V20210601.zip --no-check-certificate
+RUN unzip ai-V20210601.zip
+RUN cd ctuning-ai-3d46688 && ck add repo:ck-mlops --here --quiet
+RUN ck ls repo
+
+# Configure CK (CK automation ddea4415c4133ef9)
+RUN ck setup kernel --var.install_to_env=yes
+
+RUN ck detect platform.os --platform_init_uoa=generic-linux-dummy
+RUN ck detect soft:compiler.python --full_path=/usr/bin/python3
+
+# Install CK packages (CK automation 271a9004c9799191)
+RUN ck install package --quiet --tags=mlperf,inference,src,dev
+
+RUN ck detect soft:compiler.gcc --full_path=`which gcc`
+
+RUN ck install package --tags=tool,cmake,prebuilt --quiet
+
+RUN ck install package --tags=lib,python-package,absl
+RUN ck install package --tags=lib,python-package,numpy
+
+
+#RUN ck install package --tags=lib,python-package,mlperf,loadgen
+#RUN ck install package --tags=lib,mlperf,loadgen,static

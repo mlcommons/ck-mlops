@@ -1,0 +1,20 @@
+{
+  "backup_data_uid": "db60a9af45a890bf",
+  "backup_module_uid": "032630d041b4fd8a",
+  "backup_module_uoa": "module",
+  "control": {
+    "author": "Grigori Fursin",
+    "author_email": "grigori@octoml.ai",
+    "author_webpage": "http://fursin.net",
+    "copyright": "See CK COPYRIGHT.txt for copyright details",
+    "engine": "CK",
+    "iso_datetime": "2021-06-13T19:20:56.840212",
+    "license": "See CK LICENSE.txt for licensing details",
+    "version": [
+      "2",
+      "5",
+      "4"
+    ]
+  },
+  "data_name": "ck-web-service-demo"
+}

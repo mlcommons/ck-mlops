@@ -1,0 +1,151 @@
+{
+  "fine_grain_timer_file": "tmp-ck-timer.json",
+  "ignore_return_code": "no",
+  "no_compile": "yes",
+  "no_target_file": "yes",
+  "only_for_target_os_tags": [
+    "linux"
+  ],
+  "print_files_after_run": [
+    "mlperf_log_summary.txt",
+    "compliance.txt"
+  ],
+  "process_in_tmp": "yes",
+  "program": "yes",
+  "run_cmds": {
+    "install-python-requirements": {
+      "ignore_return_code": "no",
+      "run_time": {
+        "run_cmd_main": "$<<CK_ENV_COMPILER_PYTHON_FILE>>$ -m pip install -r ../requirements.txt",
+        "min_run": "yes"
+      },
+      "run_deps": {
+         "python": {
+           "add_to_path": "yes",
+           "force_target_as_host": "yes",
+           "local": "yes",
+           "name": "Python interpreter",
+           "sort": 0,
+           "tags": "compiler,python"
+         }
+      },
+      "skip_global_deps":"yes",
+      "sort":-1
+    },
+    "accuracy-multistream": {
+      "run_time": {
+        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_main$#script_ext#$",
+        "skip_print_execution_time": "yes"
+      },
+      "run_vars": {
+        "CK_LOADGEN_ACCURACY": "on",
+        "CK_LOADGEN_SCENARIO": "MultiStream"
+      }
+    },
+    "accuracy-offline": {
+      "run_time": {
+        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_main$#script_ext#$",
+        "skip_print_execution_time": "yes"
+      },
+      "run_vars": {
+        "CK_LOADGEN_ACCURACY": "on",
+        "CK_LOADGEN_SCENARIO": "Offline"
+      }
+    },
+    "accuracy-server": {
+      "run_time": {
+        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_main$#script_ext#$",
+        "skip_print_execution_time": "yes"
+      },
+      "run_vars": {
+        "CK_LOADGEN_ACCURACY": "on",
+        "CK_LOADGEN_SCENARIO": "Server"
+      }
+    },
+    "accuracy-singlestream": {
+      "run_time": {
+        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_main$#script_ext#$",
+        "skip_print_execution_time": "yes"
+      },
+      "run_vars": {
+        "CK_LOADGEN_ACCURACY": "on",
+        "CK_LOADGEN_SCENARIO": "SingleStream"
+      }
+    },
+    "performance-multistream": {
+      "run_time": {
+        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_main$#script_ext#$",
+        "skip_print_execution_time": "yes"
+      },
+      "run_vars": {
+        "CK_LOADGEN_ACCURACY": "",
+        "CK_LOADGEN_SCENARIO": "MultiStream"
+      }
+    },
+    "performance-offline": {
+      "run_time": {
+        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_main$#script_ext#$",
+        "skip_print_execution_time": "yes"
+      },
+      "run_vars": {
+        "CK_LOADGEN_ACCURACY": "",
+        "CK_LOADGEN_SCENARIO": "Offline"
+      }
+    },
+    "performance-server": {
+      "run_time": {
+        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_main$#script_ext#$",
+        "skip_print_execution_time": "yes"
+      },
+      "run_vars": {
+        "CK_LOADGEN_ACCURACY": "",
+        "CK_LOADGEN_SCENARIO": "Server"
+      }
+    },
+    "performance-singlestream": {
+      "run_time": {
+        "run_cmd_main": "$<<CK_PATH_TO_COMMON_SCRIPT>>$$#dir_sep#$ck_run_main$#script_ext#$",
+        "skip_print_execution_time": "yes"
+      },
+      "run_vars": {
+        "CK_LOADGEN_ACCURACY": "",
+        "CK_LOADGEN_SCENARIO": "SingleStream"
+      }
+    }
+  },
+  "run_deps": {
+    "lib-python-loadgen": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Python MLPerf loadgen library",
+      "sort": 20,
+      "tags": "lib,python-package,mlperf,loadgen"
+    },
+    "lib-python-numpy": {
+      "local": "yes",
+      "name": "Python Numpy library",
+      "sort": 50,
+      "tags": "lib,python-package,numpy"
+    },
+    "mlperf-inference-src": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "MLPerf Inference source",
+      "sort": 10,
+      "tags": "mlperf,inference,source"
+    }
+  },
+  "run_output_files": [
+    "accuracy.txt",
+    "compliance.txt",
+    "tmp-ck-timer.json",
+    "mlperf_log_accuracy.json",
+    "mlperf_log_detail.txt",
+    "mlperf_log_summary.txt",
+    "mlperf_log_trace.json",
+    "results.json",
+    "user.conf",
+    "audit.conf"
+  ],
+  "skip_print_timers": "yes"
+}

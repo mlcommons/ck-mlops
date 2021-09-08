@@ -1,0 +1,80 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "install_env": {
+      "PACKAGE_GIT": "https://github.com/oneapi-src/oneDNN",
+      "DNNL_BUILD_TESTS": "OFF", 
+      "DNNL_BUILD_EXAMPLES": "OFF",
+      "DNNL_CPU_RUNTIME": "OMP"
+    },
+    "no_ver_in_suggested_path": "yes"
+  },
+  "deps": {
+    "cmake": {
+      "add_to_path": "no",
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "CMake tool",
+      "skip_from_bat": "yes",
+      "sort": 20,
+      "tags": "tool,cmake",
+      "version_from": [
+        3,
+        18,
+        0
+      ]
+    },
+    "compiler": {
+      "add_to_path": "no",
+      "local": "yes",
+      "name": "C++ compiler",
+      "sort": 10,
+      "tags": "compiler,lang-cpp"
+    }
+  },
+  "end_full_path_universal": "install$#sep#$lib$#sep#$libdnnl$#file_ext_dll#$",
+  "end_full_path": {
+    "linux": "install/bin/clang"
+  },
+  "only_for_host_os_tags": [
+    "linux"
+  ],
+  "only_for_target_os_tags": [
+    "linux"
+  ],
+  "package_extra_name": " (built from sources)",
+  "process_script": "install",
+  "soft_uoa": "7ab0333683daf6db",
+  "soft_uoa#": "lib.dnnl",
+  "suggested_path": "lib-dnnl-from-src",
+  "tags": [
+    "lib",
+    "oneapi",
+    "oneapi-dnnl",
+    "oneapi-onednn",
+    "onednn",
+    "dnnl"
+  ],
+  "use_preprocess_scripts_from_another_entry": {
+    "data_uoa": "process-compiler-for-cmake",
+    "module_uoa": "script"
+  },
+  "variations": {
+    "dev": {
+      "extra_customize": {
+        "version": "dev"
+      },
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "master"
+      }
+    },
+    "v2.2.4": {
+      "extra_customize": {
+        "version": "2.2.4"
+      },
+      "extra_env": {
+        "PACKAGE_GIT_CHECKOUT": "v2.2.4"
+      }
+    }
+  }
+}

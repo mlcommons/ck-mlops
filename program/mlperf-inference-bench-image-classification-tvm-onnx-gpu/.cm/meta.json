@@ -1,0 +1,58 @@
+{
+  "_base_entry": "program.template:644dadbc03849925",
+  "_base_entry#": "program.template:mlperf-inference-bench-image-classification",
+  "run_deps": {
+    "compiler-tvm": {
+      "local": "yes",
+      "name": "TVM compiler (CUDA)",
+      "sort": 200,
+      "tags": "compiler,tvm,cuda"
+    },
+    "lib-python-onnx": {
+      "local": "yes",
+      "name": "Python ONNX (to load model)",
+      "sort": 125,
+      "tags": "lib,python-package,onnx"
+    },
+    "lib-python-scipy": {
+      "local": "yes",
+      "name": "Python SciPy library",
+      "sort": 120,
+      "tags": "lib,python-package,scipy"
+    },
+    "model": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Model for image classification (mlperf, onnx)",
+      "sort": 40,
+      "tags": "model,image-classification,mlperf,onnx"
+    }
+  },
+  "run_vars": {
+    "CK_LOADGEN_OPTS": "",
+    "CUDA_VISIBLE_DEVICES": "0",
+    "MLPERF_BACKEND": "tvm",
+    "MLPERF_DEVICE": "gpu",
+    "MLPERF_PROFILE_BACKEND": "onnxruntime",
+    "MLPERF_TVM_EXECUTOR": "graph",
+    "MLPERF_TVM_OPT_LEVEL": 3,
+    "MLPERF_TVM_TARGET": "cuda"
+  },
+  "tags": [
+    "mlperf",
+    "loadgen",
+    "mlperf-loadgen",
+    "mlperf-benchmark",
+    "mlperf-inference-benchmark",
+    "mlperf-benchmark-loadgen",
+    "lang-python",
+    "classification",
+    "classification_and_detection",
+    "image-classification",
+    "tvm",
+    "tvm-onnx",
+    "task.image-classification",
+    "framework.tvm-onnx",
+    "target.gpu"
+  ]
+}
