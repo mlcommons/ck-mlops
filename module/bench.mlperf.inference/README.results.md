@@ -9,7 +9,7 @@ Install CK as described [here](https://github.com/ctuning/ck#installation).
 Prepare virtual CK environment:
 
 ```bash
-ck pull repo:octoml@venv
+ck pull repo:mlcommons@ck-venv
 
 ck create venv:mlperf --template=generic
 
@@ -18,7 +18,7 @@ ck activate venv:mlperf
 
 ## Pull CK repo with MLOps automation recipes
 ```bash
-ck pull repo:octoml@mlops
+ck pull repo:mlcommons@ck-mlops
 ```
 
 ## Pull already processed results

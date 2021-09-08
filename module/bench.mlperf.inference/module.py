@@ -388,7 +388,7 @@ def ximport(i):
                                   dataset='ImageNet 2012'
                                   dataset_link='https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/datasets/imagenet2012.md'
                                   formal_model='resnet50-v1.5'
-                                  formal_model_link='https://github.com/octoml/mlops/tree/main/package, https://github.com/ctuning/ai/tree/main/package'
+                                  formal_model_link='https://github.com/mlcommons/ck-mlops/tree/main/package'
                                   accuracy=99.0
 
                                   if ver=='v0.5' and 'mobilenet' in informal_model:
@@ -396,7 +396,7 @@ def ximport(i):
 
                                elif task=='object-detection':
                                   dataset_link='https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/datasets/coco2017.md'
-                                  formal_model_link='https://github.com/octoml/mlops/tree/main/package, https://github.com/ctuning/ai/tree/main/package'
+                                  formal_model_link='https://github.com/mlcommons/ck-mlops/tree/main/package'
 
                                   dataset='COCO 2017 (1200x1200)'
                                   formal_model='ssd-resnet34'

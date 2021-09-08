@@ -1,6 +1,6 @@
 # News 
 * **20210525: This container was tested, fixed and improved by [Grigori Fursin](https://cKnowledge.io/@gfursin) to support the latest CK version! 
-  See [octoml@mlops repo](https://github.com/octoml/mlops) and [MLPerf automation docs](https://github.com/mlcommons/ck/blob/master/docs/mlperf-automation/README.md) for more details.**
+  See [mlcommons@ck-mlops repo](https://github.com/mlcommons/ck-mlops) and [MLPerf automation docs](https://github.com/mlcommons/ck/blob/master/docs/mlperf-automation/README.md) for more details.**
 
 # [MLPerf Inference - Object Detection - TFLite (Debian 9)](https://hub.docker.com/r/ctuning/object-detection-tflite.debian-9)
 

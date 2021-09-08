@@ -62,7 +62,7 @@ RUN ${DUMMY_CK} ${CK_PYTHON} -m pip install pyyaml virtualenv --user
 RUN ${DUMMY_CK} ${CK_PYTHON} -m pip install ck --user
 
 # Clone private CK repo
-RUN ck pull repo:octoml@mlops
+RUN ck pull repo:mlcommons@ck-mlops
 
 # Install packages to CK env entries
 RUN ck setup kernel --var.install_to_env=yes

@@ -48,7 +48,7 @@ RUN export DUMMY_CK=C
 RUN ${DUMMY_CK} pip3 install ck
 
 # Clone private CK repo
-RUN ck pull repo:octoml@mlops
+RUN ck pull repo:mlcommons@ck-mlops
 
 # Install packages to CK env entries
 RUN ck setup kernel --var.install_to_env=yes

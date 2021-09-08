@@ -50,7 +50,7 @@ RUN ck version
 # Clone CK repo(s) or pull them from Zenodo (CK automation f49f20744aba90e2)
 RUN wget https://zenodo.org/record/4889369/files/ctuning/ai-V20210601.zip --no-check-certificate
 RUN unzip ai-V20210601.zip
-RUN cd ctuning-ai-3d46688 && ck add repo:ck-mlops --here --quiet
+RUN cd ctuning-ai-3d46688 && ck add repo:mlcommons@ck-mlops --here --quiet
 RUN ck ls repo
 
 # Configure CK (CK automation ddea4415c4133ef9)

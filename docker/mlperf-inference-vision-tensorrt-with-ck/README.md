@@ -1,7 +1,7 @@
 # News 
 * **20210529: [Grigori Fursin](https://cKnowledge.io/@gfursin) converted this container to support the latest CK version! 
   However, the MLPerf workflow fails with a run-time CUDA error. We decided to archive it.
-  See [octoml@mlops repo](https://github.com/octoml/mlops) and [MLPerf automation docs](https://github.com/mlcommons/ck/blob/master/docs/mlperf-automation/README.md) for more details.**
+  See [mlcommons@ck-mlops repo](https://github.com/mlcommons/ck-mlops) and [MLPerf automation docs](https://github.com/mlcommons/ck/blob/master/docs/mlperf-automation/README.md) for more details.**
 
 # MLPerf Inference - Object Detection - TensorFlow with NVIDIA TensorRT
 

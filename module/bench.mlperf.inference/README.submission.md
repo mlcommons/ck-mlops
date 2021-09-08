@@ -177,9 +177,9 @@ i.e. "user.1.1.conf".
 
 ## Prepare and test CK workflows for MLPerf image classification
 
-* [Image classification with TVM and ONNX Models](https://github.com/octoml/mlops/tree/main/program/mlperf-inference-bench-image-classification-tvm-onnx-cpu)
-* [Image classification with TVM and PyTorch Models](https://github.com/octoml/mlops/tree/main/program/mlperf-inference-bench-image-classification-tvm-pytorch-cpu)
-* [Image classification with ONNX and ONNX models](https://github.com/octoml/mlops/tree/main/program/mlperf-inference-bench-image-classification-onnx-cpu)
+* [Image classification with TVM and ONNX Models](https://github.com/mlcommons/ck-mlops/tree/main/program/mlperf-inference-bench-image-classification-tvm-onnx-cpu)
+* [Image classification with TVM and PyTorch Models](https://github.com/mlcommons/ck-mlops/tree/main/program/mlperf-inference-bench-image-classification-tvm-pytorch-cpu)
+* [Image classification with ONNX and ONNX models](https://github.com/mlcommons/ck-mlops/tree/main/program/mlperf-inference-bench-image-classification-onnx-cpu)
 
 
 
@@ -188,7 +188,7 @@ i.e. "user.1.1.conf".
 
 CK helps to provide [abstractions at different levels](https://arxiv.org/pdf/2011.01149.pdf) 
 to plug in and extend sub-components independently. 
-We've developed the ["module:bench.mlperf.inference" workflow](https://github.com/octoml/mlops/blob/main/module/bench.mlperf.inference/module.py#L1230) 
+We've developed the ["module:bench.mlperf.inference" workflow](https://github.com/mlcommons/ck-mlops/blob/main/module/bench.mlperf.inference/module.py#L1230) 
 to automatically prepare and test the MLPerf inference submission using above workflows:
 
 ### Install Python prerequisites

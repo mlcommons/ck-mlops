@@ -52,7 +52,7 @@ RUN ${DUMMY_CK} ${CK_PYTHON} -m pip install pyyaml virtualenv --user
 RUN ${DUMMY_CK} ${CK_PYTHON} -m pip install ck --user
 
 # Pull CK repositories
-RUN ck pull repo:ck-mlops
+RUN ck pull repo:mlcommons@ck-mlops
 
 # Create a repository for benchmarking results.
 RUN ck create repo:mlperf-mobilenets --quiet

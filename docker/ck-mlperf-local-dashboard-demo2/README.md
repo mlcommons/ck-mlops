@@ -11,7 +11,7 @@ python3 -m pip install ck
 
 ## Pull this repository via CK
 ```
-ck pull repo:octoml@mlops
+ck pull repo:mlcommons@ck-mlops
 ```
 
 ## Create local mlperf-mobilenets repo

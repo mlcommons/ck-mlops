@@ -28,7 +28,7 @@
 ck install package --tags=model,image-classification,mlperf,pytorch
 ```
 
-For now, we support only [resnet50_INT8bit_quantized.pt](https://github.com/octoml/mlops/blob/main/package/ml-model-mlperf-resnet50-v1.5-pytorch/.cm/meta.json) model.
+For now, we support only [resnet50_INT8bit_quantized.pt]( https://github.com/mlcommons/ck-mlops/blob/main/package/ml-model-mlperf-resnet50-pytorch/.cm/meta.json ) model.
 
 
 ## Python prerequisites

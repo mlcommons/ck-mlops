@@ -9,7 +9,7 @@ python3 -m pip install ck
 # Pull CK repo with MLPerf Docker images
 
 ```bash
-ck pull repo:octoml@mlops
+ck pull repo:mlcommons@ck-mlops
 ```
 
 # Update CK and repos
@@ -28,7 +28,7 @@ ck pull all
 ck build docker:ck-mlperf-inference-dev-image-classification-onnx-tvm
 ```
 
-See available Docker images [here](https://github.com/octoml/mlops/tree/main/docker/ck-mlperf-inference-dev-image-classification-onnx-tvm).
+See available Docker images [here](https://github.com/mlcommons/ck-mlops/tree/main/docker/ck-mlperf-inference-dev-image-classification-onnx-tvm).
 
 Note that MLPerf benchmark fails on CentOS-8.
 
@@ -51,7 +51,7 @@ ck run docker:ck-mlperf-inference-dev-image-classification-onnx-tvm --bash
 ck build docker:ck-mlperf-inference-dev-object-detection-onnx-tvm
 ```
 
-See available Docker images [here](https://github.com/octoml/mlops/tree/main/docker/ck-mlperf-inference-dev-object-detection-onnx-tvm).
+See available Docker images [here](https://github.com/mlcommons/ck-mlops/tree/main/docker/ck-mlperf-inference-dev-object-detection-onnx-tvm).
 
 ## Run Docker image in benchmarking mode
 ```bash

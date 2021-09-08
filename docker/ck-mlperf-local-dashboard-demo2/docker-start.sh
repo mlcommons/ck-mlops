@@ -9,5 +9,5 @@ export CK_HOST_DATASETS=~/datasets
 docker run \
        --volume ${CK_HOST_REPO_EXPERIMENTS}:/home/ckuser/ck-experiments \
        --volume ${CK_HOST_RUN_SCRIPT}:/home/ckuser/${CK_LOCAL_DOCKER_SCRIPT} \
-       -it octoml/ck-mlperf-local-dashboard-demo2 \
+       -it mlcommons/ck-mlperf-local-dashboard-demo2 \
        "./${CK_LOCAL_DOCKER_SCRIPT}"

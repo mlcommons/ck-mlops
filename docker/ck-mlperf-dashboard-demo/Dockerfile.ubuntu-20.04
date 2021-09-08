@@ -48,7 +48,7 @@ RUN ${DUMMY_CK} pip3 install ck
 RUN python3 -m pip install pandas --user
 
 # Clone CK repo
-RUN ck pull repo:ck-mlops
+RUN ck pull repo:mlcommons@ck-mlops
 
 # Install packages to CK env entries
 RUN ck setup kernel --var.install_to_env=yes

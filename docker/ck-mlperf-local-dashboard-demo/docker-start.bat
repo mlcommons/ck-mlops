@@ -13,5 +13,5 @@ set CK_HOST_DATASETS=X:\datasets
 docker run ^
        --volume %CK_HOST_REPO_EXPERIMENTS%:/home/ckuser/ck-experiments ^
        --volume %CK_HOST_RUN_SCRIPT%:/home/ckuser/%CK_LOCAL_DOCKER_SCRIPT% ^
-       -it octoml/ck-mlperf-local-dashboard-demo ^
+       -it mlcommons/ck-mlperf-local-dashboard-demo ^
        "./%CK_LOCAL_DOCKER_SCRIPT%"

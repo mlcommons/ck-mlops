@@ -1,7 +1,7 @@
 # News 
 * **20210525: This container was tested, fixed and improved by [Grigori Fursin](https://cKnowledge.io/@gfursin) to support the latest CK version! 
   There is still some issue with postprocessing that we plan to fix in the new MLPerf release.
-  See [octoml@mlops repo](https://github.com/octoml/mlops) and [MLPerf automation docs](https://github.com/mlcommons/ck/blob/master/docs/mlperf-automation/README.md) for more details.**
+  See [mlcommons@ck-mlops repo](https://github.com/mlcommons/ck-mlops) and [MLPerf automation docs](https://github.com/mlcommons/ck/blob/master/docs/mlperf-automation/README.md) for more details.**
 
 
 # MLPerf Inference - Speech Recognition - RNNT

@@ -54,7 +54,7 @@ RUN ${DUMMY_CK} python3 -m pip install ck --user
 RUN ${DUMMY_CK} python3 -m pip install wheel --user
 
 # Clone CK repo
-RUN ck pull repo:ck-mlops
+RUN ck pull repo:mlcommons@ck-mlops
 
 # Install packages to CK env entries
 RUN ck setup kernel --var.install_to_env=yes

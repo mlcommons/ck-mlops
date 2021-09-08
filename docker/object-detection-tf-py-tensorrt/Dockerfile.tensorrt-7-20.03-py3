@@ -65,7 +65,7 @@ RUN ck create_entry --data_uoa=experiment --data_uid=bc0409fb61f0aa82 --path=${C
 
 # Pull CK repositories
 #RUN ck pull repo:ck-object-detection
-RUN ck pull repo:ck-mlops
+RUN ck pull repo:mlcommons@ck-mlops
 
 # Use generic Linux settings with dummy frequency setting scripts.
 RUN ck detect platform.os --platform_init_uoa=generic-linux-dummy
