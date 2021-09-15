@@ -3,11 +3,7 @@
 [![compatibility](https://github.com/ctuning/ck-guide-images/blob/master/ck-compatible.svg)](https://github.com/mlcommons/ck)
 [![automation](https://github.com/ctuning/ck-guide-images/blob/master/ck-artifact-automated-and-reusable.svg)](https://cTuning.org/ae)
 
-Linux/MacOS: [![Travis Build Status](https://travis-ci.com/ctuning/ck-mlops.svg)](https://travis-ci.com/mlcommons/ck-mlops)
-Windows: [![Windows Build status](https://ci.appveyor.com/api/projects/status/sgmfvegn78svfss0?svg=true)](https://ci.appveyor.com/project/gfursin/ck-mlops)
-
-
-[![DOI](https://zenodo.org/badge/311647831.svg)](https://zenodo.org/badge/latestdoi/311647831)
+[![Windows Build status](https://ci.appveyor.com/api/projects/status/sgmfvegn78svfss0?svg=true)](https://ci.appveyor.com/project/gfursin/ck-mlops)
 
 ## Releases
 
@@ -17,7 +13,7 @@ The latest version of the CK automation suite supported by MLCommons: **v2.5.8**
 
 ## Documentation
 
-* [CK-powered MLPerf&trade; benchmark automation and DSE] (https://github.com/mlcommons/ck/blob/master/docs/mlperf-automation/README.md)
+* [CK-powered MLPerf&trade; benchmark automation and DSE](https://github.com/mlcommons/ck/blob/master/docs/mlperf-automation/README.md)
 * [CK-powered MLPerf&trade; submission automation suite](https://github.com/mlcommons/ck-mlops/tree/main/module/bench.mlperf.inference)
 
 ## Overview
@@ -54,6 +50,10 @@ for AI and ML systems in the [CK format](https://arxiv.org/pdf/2011.01149.pdf):
 
 * [ACM TechTalk on YouTube](https://www.youtube.com/watch?=7zpeIVwICa4)
 * [White paper](https://arxiv.org/pdf/2006.07161.pdf) and [extended journal article](https://arxiv.org/pdf/2011.01149.pdf)
+
+# Coordinator
+
+* [Grigori Fursin (OctoML)](https://fursin.net)
 
 # Problems
 
