@@ -1,0 +1,83 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "install_env": {
+      "MODEL_DATASET": "brats-2019",
+      "MODEL_MEAN_DICE": "0.85300",
+      "MODEL_FRAMEWORK": "onnx",
+      "MODEL_INPUT_NAME": "input",
+      "MODEL_OUTPUT_NAME": "output",
+      "MODEL_NAME": "MLPerf 3D UNET on BraTS 2019 (fold 1)",
+      "PACKAGE_SKIP_CLEAN_PACKAGE": "YES",
+      "PACKAGE_SKIP_LINUX_MAKE": "YES",
+      "PACKAGE_WGET": "YES",
+      "PACKAGE_URL": "https://zenodo.org/record/3928973/files",
+      "MODEL_PRECISION": "fp32"
+    },
+    "model_notes": "Trained in PyTorch using codes from <a href=\"https://github.com/MIC-DKFZ/nnUNet\">nnUnet</a> on <a href=\"https://github.com/mlcommons/inference/blob/master/vision/medical_imaging/3d-unet-brats19/folds/fold0_validation.txt\">Fold 0</a>, <a href=\"https://github.com/mlcommons/inference/blob/master/vision/medical_imaging/3d-unet-brats19/folds/fold2_validation.txt\">Fold 2</a>, <a href=\"https://github.com/mlcommons/inference/blob/master/vision/medical_imaging/3d-unet-brats19/folds/fold3_validation.txt\">Fold 3</a>, and <a href=\"https://github.com/mlcommons/inference/blob/master/vision/medical_imaging/3d-unet-brats19/folds/fold4_validation.txt\">Fold 4</a> of <a href=\"https://www.med.upenn.edu/cbica/brats2019/data.html\" rel=\"nofollow\">BraTS 2019</a> Training Dataset. Converted from the PyTorch model using <a href=\"https://github.comhttps://github.com/mlcommons/inference/blob/master/vision/medical_imaging/3d-unet-brats19/unet_pytorch_to_onnx.py\">script</a>.",
+    "no_os_in_suggested_path": "yes",
+    "no_ver_in_suggested_path": "yes",
+    "skip_file_check": "yes",
+    "version": "reference"
+  },
+  "deps": {
+    "ml-model-mlperf-3d-unet-pytorch": {
+      "local": "yes",
+      "name": "PyTorch model files (for preprocessing and running)",
+      "sort": 30,
+      "tags": "ml-model,medical-imaging,3d-unet,pytorch,mlperf"
+    }
+  },
+  "end_full_path_universal": "224_224_160.onnx",
+  "only_for_host_os_tags": [],
+  "only_for_target_os_tags": [],
+  "process_script": "install",
+  "soft_uoa": "bcaac306e9041879",
+  "soft_uoa#": "model.onnx",
+  "suggested_path": "ml-model-mlperf-3d-unet-onnx",
+  "tags": [
+    "octoml",
+    "ml-model",
+    "model",
+    "medical-imaging",
+    "medical-image-segmentation",
+    "onnx",
+    "3d-unet",
+    "brats",
+    "brats-2019",
+    "mlperf",
+    "downloaded",
+    "fp32",
+    "non-quantized"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "download-and-install-package",
+    "module_uoa": "script"
+  },
+  "variations": {
+    "default": {
+      "extra_customize": {
+        "package_extra_name": " (MLPerf 3D-Unet static batch size onnx)"
+      },
+      "extra_env": {
+        "PACKAGE_NAME": "224_224_160.onnx"
+      },
+      "extra_tags": [
+        "static-batch-size"
+      ],
+      "on_by_default": "yes"
+    },
+    "dynamic-batch-size": {
+      "extra_customize": {
+        "package_extra_name": " (MLPerf 3D-Unet dynamic batch size onnx)"
+      },
+      "extra_env": {
+        "PACKAGE_NAME": "224_224_160_dyanmic_bs.onnx"
+      },
+      "extra_tags": [
+	"dynamic-batch-size"
+      ],
+      "on_by_default": "no"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "auto_detect": "yes",
+  "customize": {
+    "check_that_exists": "yes",
+    "ck_version": 10,
+    "env_prefix": "CK_ENV_DATASET_BRATS_2019_TRAIN",
+    "limit_recursion_dir_search": {
+      "linux": 3,
+      "win": 3
+    },
+    "soft_file_universal#": "HGG/BraTS19_2013_10_1/BraTS19_2013_10_1_flair.nii.gz",
+    "soft_file_universal": "name_mapping.csv"
+  },
+  "deps": {},
+  "soft_name": "BraTS 2019 dataset (train)",
+  "tags": [
+    "medical-imaging",
+    "medical-image-segmentation",
+    "dataset",
+    "brats",
+    "2019",
+    "raw",
+    "original",
+    "train",
+    "nifti"
+  ]
+}

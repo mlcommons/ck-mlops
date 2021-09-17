@@ -1,0 +1,4 @@
+tqdm
+medpy
+batchgenerators>=0.20.0,<0.23
+SimpleITK

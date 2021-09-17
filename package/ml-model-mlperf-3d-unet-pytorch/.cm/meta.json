@@ -1,0 +1,63 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "install_env": {
+      "MODEL_DATASET": "brats-2019",
+      "MODEL_FRAMEWORK": "pytorch",
+      "MODEL_INPUT_NAME": "input",
+      "MODEL_MEAN_DICE": "0.85300",
+      "MODEL_NAME": "MLPerf 3D UNET on BraTS 2019 (fold 1)",
+      "MODEL_OUTPUT_NAME": "output",
+      "MODEL_PRECISION": "fp32",
+      "PACKAGE_SKIP_CLEAN_PACKAGE": "NO",
+      "PACKAGE_SKIP_LINUX_MAKE": "YES",
+      "PACKAGE_URL": "https://zenodo.org/record/3904106/files",
+      "PACKAGE_WGET": "YES",
+      "PACKAGE_UNZIP": "YES"
+    },
+    "model_notes": "Trained in PyTorch using codes from <a href=\"https://github.com/MIC-DKFZ/nnUNet\">nnUnet</a> on <a href=\"https://github.com/mlcommons/inference/blob/master/vision/medical_imaging/3d-unet-brats19/folds/fold0_validation.txt\">Fold 0</a>, <a href=\"https://github.com/mlcommons/inference/blob/master/vision/medical_imaging/3d-unet-brats19/folds/fold2_validation.txt\">Fold 2</a>, <a href=\"https://github.com/mlcommons/inference/blob/master/vision/medical_imaging/3d-unet-brats19/folds/fold3_validation.txt\">Fold 3</a>, and <a href=\"https://github.com/mlcommons/inference/blob/master/vision/medical_imaging/3d-unet-brats19/folds/fold4_validation.txt\">Fold 4</a> of <a href=\"https://www.med.upenn.edu/cbica/brats2019/data.html\" rel=\"nofollow\">BraTS 2019</a> Training Dataset.",
+    "no_os_in_suggested_path": "yes",
+    "no_ver_in_suggested_path": "yes",
+    "skip_file_check": "yes",
+    "version": "reference"
+  },
+  "end_full_path_universal": "nnUNet/3d_fullres/Task043_BraTS2019/nnUNetTrainerV2__nnUNetPlansv2.mlperf.1/plans.pkl",
+  "only_for_host_os_tags": [],
+  "only_for_target_os_tags": [],
+  "process_script": "install",
+  "soft_uoa": "34c70aa3ff65a22c",
+  "soft_uoa#": "model.pytorch",
+  "suggested_path": "ml-model-mlperf-3d-unet-pytorch",
+  "tags": [
+    "octoml",
+    "ml-model",
+    "model",
+    "medical-imaging",
+    "medical-image-segmentation",
+    "pytorch",
+    "3d-unet",
+    "brats",
+    "brats-2019",
+    "mlperf",
+    "downloaded",
+    "fp32",
+    "non-quantized"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "download-and-install-package",
+    "module_uoa": "script"
+  },
+  "variations": {
+    "default": {
+      "extra_customize": {
+        "package_extra_name": " (MLPerf 3D-Unet pytorch)"
+      },
+      "extra_env": {
+        "PACKAGE_NAME": "fold_1.zip"
+      },
+      "extra_tags": [
+      ],
+      "on_by_default": "yes"
+    }
+  }
+}

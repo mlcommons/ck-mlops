@@ -1,0 +1,15 @@
+{
+  "backup_data_uid": "aba49c79cc134c25",
+  "backup_module_uid": "441fa62fbc6fcc48",
+  "backup_module_uoa": "program.template",
+  "control": {
+    "engine": "CK",
+    "iso_datetime": "2021-08-27T09:45:12.826709",
+    "version": [
+      "2",
+      "5",
+      "8"
+    ]
+  },
+  "data_name": "mlperf-inference-bench-medical-imaging"
+}

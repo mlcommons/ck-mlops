@@ -1,0 +1,35 @@
+{
+  "_base_entry": "program.template:aba49c79cc134c25",
+  "_base_entry#": "program.template:mlperf-inference-bench-medical-imaging",
+  "run_deps": {
+    "model": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Model for medical image segmentation (mlperf, pytorch)",
+      "sort": 40,
+      "tags": "model,medical-imaging,mlperf,pytorch"
+    }
+  },
+  "run_vars": {
+    "CK_LOADGEN_OPTS": "",
+    "CK_LOADGEN_PERFORMANCE_COUNT": "",
+    "CUDA_VISIBLE_DEVICES": "",
+    "MLPERF_BACKEND": "pytorch",
+    "MLPERF_DEVICE": "cpu"
+  },
+  "tags": [
+    "mlperf",
+    "loadgen",
+    "mlperf-loadgen",
+    "mlperf-benchmark",
+    "mlperf-inference-benchmark",
+    "mlperf-benchmark-loadgen",
+    "lang-python",
+    "medical-imaging",
+    "medical-image-segmentation",
+    "pytorch",
+    "task.medical-imaging",
+    "framework.pytorch",
+    "target.cpu"
+  ]
+}
