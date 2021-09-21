@@ -1,3 +1,7 @@
+20210921:
+  * removed some non-ML benchmarks and datasets: they are available in ctuning@ctuning-programs and ctuning@ctuning-datasets-min repos
+  * removed Windows components: they are available in ctuning@ck-win
+
 20210906:
   * cTuning foundation and OctoML donated this repository to MLCommons
     as a part of their MLPerf inference benchmark v1.1 submission.
