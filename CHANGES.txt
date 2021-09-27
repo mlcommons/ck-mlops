@@ -1,3 +1,7 @@
+20210927:
+  * added ONNX/PyTorch workflows for MLPerf medical imaging and a package for BraTS 2019 data set
+  * added CK package for MLPerf inference results v1.1
+
 20210921:
   * removed some non-ML benchmarks and datasets: they are available in ctuning@ctuning-programs and ctuning@ctuning-datasets-min repos
   * removed Windows components: they are available in ctuning@ck-win

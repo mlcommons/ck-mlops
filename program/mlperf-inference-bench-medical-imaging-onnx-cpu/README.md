@@ -1,6 +1,6 @@
 # MLPerf inference benchmark workflow
 
-* Automation: [CK](https://github.com/ctuning/ck)
+* Automation: [CK](https://github.com/mlcommons/ck)
 * Task: medical imaging (image segmentation)
 * Dataset: BraTS 2019
 * Framework: [ONNX runtime](https://github.com/microsoft/onnxruntime)
@@ -10,14 +10,15 @@
 # Preparation
 
 * System prerequisites
-  - [x8664; Ubuntu 20.04 (system deps)](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/platform/x8664-ubuntu.md)
+  - [x8664; Ubuntu 20.04 (system deps)](https://github.com/mlcommons/ck/blob/master/docs/mlperf-automation/platform/x8664-ubuntu.md)
 
-* [Common setup](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/setup/common.md)
-* [Framework installation (CPU)](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/setup/framework-onnx.md)
+* [Common setup](https://github.com/mlcommons/ck/blob/master/docs/mlperf-automation/setup/common.md)
+* [Framework installation (ONNX - CPU)](https://github.com/mlcommons/ck/blob/master/docs/mlperf-automation/setup/framework-onnx.md)
+* [Framework installation (PyTorch - to preprocess a dataset)](https://github.com/mlcommons/ck/blob/master/docs/mlperf-automation/setup/framework-pytorch.md)
 
 ## Dataset
 
-* [Installation](https://github.com/ctuning/ck/blob/master/docs/mlperf-automation/datasets/brats2019.md)
+* [Installation](https://github.com/mlcommons/ck/blob/master/docs/mlperf-automation/datasets/brats2019.md)
 
 ## Models
 
