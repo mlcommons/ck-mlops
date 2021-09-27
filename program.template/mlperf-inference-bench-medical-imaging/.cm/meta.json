@@ -1,0 +1,44 @@
+{
+  "_base_entry": "program.template:e774074b553f1ed6",
+  "_base_entry#": "program.template:mlperf-inference-bench",
+  "post_process_via_ck": {
+    "data_uoa": "dbe3fc4fd58fea44",
+    "data_uoa#": "mlperf-inference-medical-imaging",
+    "module_uoa": "script",
+    "script_name": "loadgen_postprocess"
+  },
+  "pre_process_via_ck": {
+    "data_uoa": "dbe3fc4fd58fea44",
+    "data_uoa#": "mlperf-inference-medical-imaging",
+    "module_uoa": "script",
+    "script_name": "loadgen_preprocess"
+  },
+  "run_deps": {
+    "dataset": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "BraTS 2019 (train)",
+      "sort": 30,
+      "tags": "dataset,brats,2019,train"
+    },
+    "lib-python-pandas": {
+      "local": "yes",
+      "name": "Python Pandas (for nnUNet library)",
+      "sort": 50,
+      "tags": "lib,python-package,pandas"
+    },
+    "lib-python-torch": {
+      "local": "yes",
+      "name": "Python PyTorch (for nnUNet library)",
+      "sort": 60,
+      "tags": "lib,python-package,torch"
+    },
+    "model": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Model for medical imaging (MLPerf)",
+      "sort": 40,
+      "tags": "model,medical-imaging,mlperf"
+    }
+  }
+}

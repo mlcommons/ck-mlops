@@ -1,0 +1,42 @@
+{
+  "_base_entry": "program.template:aba49c79cc134c25",
+  "_base_entry#": "program.template:mlperf-inference-bench-medical-imaging",
+  "run_deps": {
+    "lib-python-onnx-support": {
+      "local": "yes",
+      "name": "Python ONNX runtime (CPU)",
+      "sort": 80,
+      "tags": "lib,python-package,onnxruntime-cpu"
+    },
+    "model": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Model for medical image segmentation (mlperf, onnx)",
+      "sort": 40,
+      "tags": "model,medical-imaging,mlperf,onnx"
+    }
+  },
+  "run_vars": {
+    "CK_LOADGEN_PERFORMANCE_COUNT": "",
+    "CK_LOADGEN_OPTS": "",
+    "CUDA_VISIBLE_DEVICES": "",
+    "MLPERF_BACKEND": "onnxruntime",
+    "MLPERF_DEVICE": "cpu"
+  },
+  "tags": [
+    "mlperf",
+    "loadgen",
+    "mlperf-loadgen",
+    "mlperf-benchmark",
+    "mlperf-inference-benchmark",
+    "mlperf-benchmark-loadgen",
+    "lang-python",
+    "medical-imaging",
+    "medical-image-segmentation",
+    "onnx",
+    "onnxruntime",
+    "task.medical-imaging",
+    "framework.onnx",
+    "target.cpu"
+  ]
+}

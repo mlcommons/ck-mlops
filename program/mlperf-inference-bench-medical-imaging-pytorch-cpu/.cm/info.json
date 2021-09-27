@@ -1,0 +1,15 @@
+{
+  "backup_data_uid": "cd47ebae9cf14be8",
+  "backup_module_uid": "b0ac08fe1d3c2615",
+  "backup_module_uoa": "program",
+  "control": {
+    "engine": "CK",
+    "iso_datetime": "2021-09-06T02:48:37.115971",
+    "version": [
+      "2",
+      "5",
+      "8"
+    ]
+  },
+  "data_name": "mlperf-inference-bench-medical-imaging-pytorch-cpu"
+}
