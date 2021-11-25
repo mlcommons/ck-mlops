@@ -1,0 +1,6 @@
+-e git://github.com/mlperf/logging@0.7.0-rc2#egg=mlperf-logging
+scikit-learn
+protobuf
+tqdm
+# needed by pytorch
+tensorboard

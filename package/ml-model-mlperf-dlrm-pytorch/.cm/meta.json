@@ -1,0 +1,94 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "install_env": {
+      "MLPERF_MODEL_NAME": "dlrm",
+      "MLPERF_PROFILE_EXT": "",
+      "ML_MODEL_INPUT_LAYERS": "?",
+      "ML_MODEL_INPUT_SHAPES": "?",
+      "ML_MODEL_OUTPUT_LAYERS": "?",
+      "MODEL_DATASET": "criteo-terabyte",
+      "MODEL_FRAMEWORK": "pytorch",
+      "MODEL_INPUT_DATA_TYPES": "fp32",
+      "MODEL_INPUT_LAYERS": "?",
+      "MODEL_INPUT_LAYER_NAME": "?",
+      "MODEL_NORMALIZE_DATA": "0",
+      "MODEL_ONNX_OPSET": "",
+      "MODEL_OUTPUT_LAYERS": "?",
+      "MODEL_OUTPUT_LAYER_NAME": "?",
+      "MODEL_PRECISION": "fp32",
+      "MODEL_RETRAINING": "no",
+      "MODEL_SUBTRACT_MEAN": "?",
+      "MODEL_VERSION": "1",
+      "MODEL_WEIGHT_DATA_TYPES": "fp32",
+      "MODEL_WEIGHT_TRANSFORMATIONS": "no",
+      "PACKAGE_SKIP_CLEAN_PACKAGE": "YES",
+      "PACKAGE_SKIP_LINUX_MAKE": "YES",
+      "PACKAGE_UNGZIP": "NO",
+      "PACKAGE_URL": "https://dlrm.s3-us-west-1.amazonaws.com/models",
+      "PACKAGE_VERSION": "1",
+      "PACKAGE_WGET": "YES"
+    },
+    "model_notes": "DLRM model from https://github.com/mlcommons/inference/tree/master/recommendation/dlrm/pytorch",
+    "no_os_in_suggested_path": "yes",
+    "no_ver_in_suggested_path": "yes",
+    "skip_file_check": "yes"
+  },
+  "end_full_path_universal": "dummy",
+  "only_for_host_os_tags": [],
+  "only_for_target_os_tags": [],
+  "process_script": "install",
+  "soft_uoa": "34c70aa3ff65a22c",
+  "soft_uoa#": "model.pytorch",
+  "suggested_path": "ml-model-mlperf-dlrm-pytorch",
+  "tags": [
+    "octoml",
+    "ml-model",
+    "model",
+    "recommendation",
+    "pytorch",
+    "dlrm",
+    "mlperf",
+    "downloaded",
+    "criteo-terabyte"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "download-and-install-package",
+    "module_uoa": "script"
+  },
+  "variations": {
+    "debugging-10m": {
+      "extra_customize": {
+        "package_extra_name": " (MLPerf DLRM, PyTorch, fp32, debugging 10M output size)"
+      },
+      "extra_env": {
+        "MLPERF_DATA_SUB_SAMPLE_RATE": "0.875",
+        "MLPERF_MAX_IND_RANGE": "10000000",
+        "MODEL_ACCURACY_10M": "81.07",
+        "PACKAGE_NAME": "tb0875_10M.pt"
+      },
+      "extra_tags": [
+        "10m",
+        "10m-output",
+        "debugging"
+      ],
+      "on_by_default": "no"
+    },
+    "official-40m": {
+      "extra_customize": {
+        "package_extra_name": " (MLPerf DLRM, PyTorch, fp32, offical 40M output size)"
+      },
+      "extra_env": {
+        "MLPERF_MAX_IND_RANGE": "40000000",
+        "MODEL_AUC": "80.25",
+        "PACKAGE_NAME": "tb00_40M.pt"
+      },
+      "extra_tags": [
+        "40m",
+        "40m-output",
+        "official"
+      ],
+      "on_by_default": "yes"
+    }
+  }
+}

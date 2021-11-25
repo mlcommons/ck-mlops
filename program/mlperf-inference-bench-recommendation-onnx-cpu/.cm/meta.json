@@ -1,0 +1,41 @@
+{
+  "_base_entry": "program.template:e724ce18347308b1",
+  "_base_entry#": "program.template:mlperf-inference-bench-recommendation",
+  "run_deps": {
+    "lib-python-onnx-support": {
+      "local": "yes",
+      "name": "Python ONNX runtime (CPU)",
+      "sort": 80,
+      "tags": "lib,python-package,onnxruntime-cpu"
+    },
+    "model": {
+      "force_target_as_host": "yes",
+      "local": "yes",
+      "name": "Model for recommendation (mlperf, onnx)",
+      "sort": 40,
+      "tags": "model,recommendation,mlperf,onnx"
+    }
+  },
+  "run_vars": {
+    "CK_LOADGEN_OPTS": "",
+    "CUDA_VISIBLE_DEVICES": "",
+    "MLPERF_BACKEND": "onnxruntime",
+    "MLPERF_DEVICE": "cpu"
+  },
+  "tags": [
+    "mlperf",
+    "loadgen",
+    "mlperf-loadgen",
+    "mlperf-benchmark",
+    "mlperf-inference-benchmark",
+    "mlperf-benchmark-loadgen",
+    "lang-python",
+    "recommendation",
+    "dlrm",
+    "onnx",
+    "onnxruntime",
+    "task.recommendation",
+    "framework.onnx",
+    "target.cpu"
+  ]
+}
