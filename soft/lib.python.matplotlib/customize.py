@@ -28,11 +28,14 @@ def version_cmd(i):
 
     if rx['return']==0:
         loaded_package      = rx['code']
-        version_string_json = getattr(loaded_package, version_variable_name)
 
-        version_string_dict = json.loads(version_string_json)
-
-        version_string=version_string_dict['version']
+        try:
+           version_string_json = getattr(loaded_package, version_variable_name)
+           version_string_dict = json.loads(version_string_json)
+           version_string=version_string_dict['version']
+        except:
+           # 20211212: support for the new matplotlib
+           version_string=getattr(loaded_package, 'version')
     else:
         ck.out('Failed to import package '+package_name+' : '+rx['error'])
         version_string  = ''
