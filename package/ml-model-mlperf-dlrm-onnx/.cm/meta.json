@@ -1,0 +1,97 @@
+{
+  "check_exit_status": "yes",
+  "customize": {
+    "install_env": {
+      "MLPERF_MODEL_NAME": "dlrm",
+      "MLPERF_PROFILE_EXT": "",
+      "ML_MODEL_INPUT_LAYERS": "?",
+      "ML_MODEL_INPUT_SHAPES": "?",
+      "ML_MODEL_OUTPUT_LAYERS": "?",
+      "MODEL_FRAMEWORK": "onnx",
+      "MODEL_INPUT_LAYERS": "?",
+      "MODEL_INPUT_LAYER_NAME": "?",
+      "MODEL_NORMALIZE_DATA": "0",
+      "MODEL_ONNX_OPSET": "",
+      "MODEL_OUTPUT_LAYERS": "?",
+      "MODEL_OUTPUT_LAYER_NAME": "?",
+      "MODEL_RETRAINING": "no",
+      "MODEL_SUBTRACT_MEAN": "?",
+      "MODEL_VERSION": "1",
+      "MODEL_WEIGHT_TRANSFORMATIONS": "no",
+      "MODEL_INPUT_DATA_TYPES": "fp32",
+      "MODEL_PRECISION": "fp32",
+      "MODEL_WEIGHT_DATA_TYPES": "fp32",
+      "MODEL_DATASET": "criteo-terabyte",
+      "PACKAGE_URL": "https://dlrm.s3-us-west-1.amazonaws.com/models",
+      "PACKAGE_VERSION": "1",
+      "PACKAGE_SKIP_CLEAN_PACKAGE": "NO",
+      "PACKAGE_SKIP_LINUX_MAKE": "YES",
+      "PACKAGE_UNGZIP": "NO",
+      "PACKAGE_UNTAR": "YES",
+      "PACKAGE_WGET": "YES"
+    },
+    "model_notes": "DLRM model from https://github.com/mlcommons/inference/tree/master/recommendation/dlrm/pytorch",
+    "no_os_in_suggested_path": "yes",
+    "no_ver_in_suggested_path": "yes",
+    "skip_file_check": "yes"
+  },
+  "end_full_path_universal": "dlrm_s_pytorch.onnx",
+  "only_for_host_os_tags": [],
+  "only_for_target_os_tags": [],
+  "process_script": "install",
+  "soft_uoa": "bcaac306e9041879",
+  "soft_uoa#": "model.onnx",
+  "suggested_path": "ml-model-mlperf-dlrm-onnx",
+  "tags": [
+    "octoml",
+    "ml-model",
+    "model",
+    "recommendation",
+    "onnx",
+    "dlrm",
+    "mlperf",
+    "downloaded",
+    "criteo-terabyte"
+  ],
+  "use_scripts_from_another_entry": {
+    "data_uoa": "download-and-install-package",
+    "module_uoa": "script"
+  },
+  "variations": {
+    "official-40m": {
+      "extra_customize": {
+        "package_extra_name": " (MLPerf DLRM, ONNX, fp32, offical 40M output size)"
+      },
+      "extra_env": {
+        "MODEL_AUC": "80.25",
+        "PACKAGE_NAME": "tb00_40M.onnx.tar",
+        "PACKAGE_NAME1": "tb00_40M.onnx.tar",
+        "MLPERF_MAX_IND_RANGE": "40000000"
+      },
+      "extra_tags": [
+        "40m",
+        "40m-output",
+        "official"
+      ],
+      "on_by_default": "yes"
+    },
+    "debugging-10m": {
+      "extra_customize": {
+        "package_extra_name": " (MLPerf DLRM, ONNX, fp32, debugging 10M output size)"
+      },
+      "extra_env": {
+        "MODEL_ACCURACY_10M": "81.07",
+        "PACKAGE_NAME": "tb0875_10M.onnx.tar",
+        "PACKAGE_NAME1": "tb0875_10M.onnx.tar",
+        "MLPERF_MAX_IND_RANGE": "10000000",
+        "MLPERF_DATA_SUB_SAMPLE_RATE": "0.875"
+      },
+      "extra_tags": [
+        "10m",
+        "10m-output",
+        "debugging"
+      ],
+      "on_by_default": "no"
+    }
+  }
+}

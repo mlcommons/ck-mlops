@@ -1,0 +1,27 @@
+{
+  "auto_detect": "yes",
+  "customize": {
+    "check_that_exists": "yes",
+    "ck_version": 10,
+    "env_prefix": "CK_ENV_DATASET_CRITEO_TERABYTE",
+    "install_env": {
+      "MLPERF_DATASET": "terabyte"
+    },
+    "limit_recursion_dir_search": {
+      "linux": 3,
+      "win": 3
+    },
+    "soft_file_universal": "day_23"
+  },
+  "deps": {},
+  "soft_name": "Criteo Terabyte Click Logs dataset",
+  "tags": [
+    "recommendation",
+    "dlrm",
+    "dataset",
+    "criteo-terabyte",
+    "criteo",
+    "terabyte",
+    "binary"
+  ]
+}

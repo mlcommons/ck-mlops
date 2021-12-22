@@ -1,0 +1,15 @@
+{
+  "backup_data_uid": "98c4b48e1aad744b",
+  "backup_module_uid": "1dc07ee0f4742028",
+  "backup_module_uoa": "package",
+  "control": {
+    "engine": "CK",
+    "iso_datetime": "2021-08-31T06:24:46.571915",
+    "version": [
+      "2",
+      "5",
+      "8"
+    ]
+  },
+  "data_name": "ml-model-mlperf-dlrm-onnx"
+}
