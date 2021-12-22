@@ -1,3 +1,6 @@
+20211212:
+  * fixed version detection for the new matplotlib
+
 20210927:
   * added ONNX/PyTorch workflows for MLPerf medical imaging and a package for BraTS 2019 data set
   * added CK package for MLPerf inference results v1.1
