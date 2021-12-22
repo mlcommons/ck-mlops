@@ -79,7 +79,7 @@ def ck_postprocess(i):
     dlrm_dir = os.path.join(inference_src_env['CK_ENV_MLPERF_INFERENCE'],
                             'recommendation', 'dlrm', 'pytorch')
 
-    # TODO: add numpy<1.21 to sys.path
+    os.environ['PYTHONPATH'] = deps['lib-python-numpy']['dict']['env']['PYTHONPATH'].split(':')[0] +':'+os.environ.get('PYTHONPATH','')
 
     accuracy_script = os.path.join(dlrm_dir, 'tools', 'accuracy-dlrm.py')
 

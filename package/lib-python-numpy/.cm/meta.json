@@ -35,5 +35,19 @@
   "use_scripts_from_another_entry": {
     "data_uoa": "e4d8d3d2c4c67902",
     "module_uoa": "package"
+  },
+  "variations": {
+    "v1.18.5": {
+      "extra_customize": {
+        "version": "1.18.5"
+      },
+      "extra_env": {
+        "PACKAGE_VERSION": "1.18.5"
+      },
+      "extra_tags": [
+        "v1.18.5"
+      ],
+      "on_by_default": "no"
+    }
   }
 }

@@ -14,6 +14,18 @@
     "script_name": "loadgen_preprocess"
   },
   "run_deps": {
+    "lib-python-opencv": {
+      "local": "yes",
+      "name": "Python OpenCV library",
+      "sort": 0,
+      "tags": "lib,python-package,cv2"
+    },
+    "lib-python-numpy": {
+      "local": "yes",
+      "name": "Python NumPy library (compatibility <1.19 override)",
+      "sort": 10,
+      "tags": "lib,python-package,numpy,v1.18.5"
+    },
     "tool-dlrm": {
       "force_target_as_host": "yes",
       "local": "yes",
@@ -27,12 +39,6 @@
       "name": "Recommendation dataset",
       "sort": 30,
       "tags": "dataset,recommendation"
-    },
-    "lib-python-opencv": {
-      "local": "yes",
-      "name": "Python OpenCV library",
-      "sort": 50,
-      "tags": "lib,python-package,cv2"
     },
     "lib-python-torch": {
       "local": "yes",

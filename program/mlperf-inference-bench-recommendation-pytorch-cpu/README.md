@@ -3,8 +3,8 @@
 * Automation: [CK](https://github.com/ctuning/ck)
 * Task: Recommendation (DLRM)
 * Dataset: Criteo Terabyte or Kaggle DAC
-* Framework: [ONNX runtime](https://github.com/microsoft/onnxruntime)
-* Models: ONNX format
+* Framework: [PyTorch](https://pytorch.org)
+* Models: PyTorch format
 * Target device: CPU
 
 # Preparation
@@ -25,13 +25,13 @@ Docs TODO
 ## Models
 
 ```bash
-ck install package --tags=model,recommendation,mlperf,onnx
+ck install package --tags=model,recommendation,mlperf,pytorch
 ```
 
 ## Python prerequisites
 
 ```bash
-ck run program:mlperf-inference-bench-recommendation-onnx-cpu \
+ck run program:mlperf-inference-bench-recommendation-pytorch-cpu \
         --cmd_key=install-python-requirements
 ```
 
@@ -41,7 +41,7 @@ ck run program:mlperf-inference-bench-recommendation-onnx-cpu \
 
 Run with default parameters
 ```bash
-ck run program:mlperf-inference-bench-recommendation-onnx-cpu \
+ck run program:mlperf-inference-bench-recommendation-pytorch-cpu \
         --cmd_key=accuracy-offline
 ```
 
@@ -53,14 +53,14 @@ TODO
 ## Server
 
 ```bash
-ck run program:mlperf-inference-bench-recommendation-onnx-cpu \
+ck run program:mlperf-inference-bench-recommendation-pytorch-cpu \
         --cmd_key=accuracy-server
 ```
 
 ## SingleStream
 
 ```bash
-ck run program:mlperf-inference-bench-recommendation-onnx-cpu \
+ck run program:mlperf-inference-bench-recommendation-pytorch-cpu \
         --cmd_key=accuracy-singlestream
 ```
 
@@ -72,20 +72,20 @@ ck run program:mlperf-inference-bench-recommendation-onnx-cpu \
 
 Run with default parameters
 ```bash
-ck run program:mlperf-inference-bench-recommendation-onnx-cpu \
+ck run program:mlperf-inference-bench-recommendation-pytorch-cpu \
         --cmd_key=performance-offline
 ```
 
 ## Server
 
 ```bash
-ck run program:mlperf-inference-bench-recommendation-onnx-cpu \
+ck run program:mlperf-inference-bench-recommendation-pytorch-cpu \
         --cmd_key=performance-server
 ```
 
 ## SingleStream
 
 ```bash
-ck run program:mlperf-inference-bench-recommendation-onnx-cpu \
+ck run program:mlperf-inference-bench-recommendation-pytorch-cpu \
         --cmd_key=performance-singlestream
 ```

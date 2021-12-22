@@ -26,10 +26,9 @@
     "lang-python",
     "recommendation",
     "dlrm",
-    "onnx",
-    "onnxruntime",
+    "pytorch",
     "task.recommendation",
-    "framework.onnx",
+    "framework.pytorch",
     "target.cpu"
   ]
 }
