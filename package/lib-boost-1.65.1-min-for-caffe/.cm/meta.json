@@ -12,7 +12,7 @@
       "PACKAGE_SUB_DIR": "boost_1_65_1",
       "PACKAGE_SUB_DIR1": "boost_1_65_1",
       "PACKAGE_UNZIP": "YES",
-      "PACKAGE_URL": "https://dl.bintray.com/boostorg/release/1.65.1/source",
+      "PACKAGE_URL": "https://boostorg.jfrog.io/artifactory/main/release/1.65.1/source",
       "PACKAGE_WGET": "YES",
       "SUBSTITUTE_ORIGINAL_PACKAGE_DIR": "$#path_to_cid=package:44094af948731a1c#$"
     },
