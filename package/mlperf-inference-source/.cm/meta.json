@@ -29,6 +29,26 @@
     "source"
   ],
   "variations": {
+    "r2.1": {
+      "extra_env": {
+        "PACKAGE_URL": "https://github.com/mlcommons/inference",
+        "PACKAGE_GIT_CHECKOUT": "r2.1"
+      },
+      "extra_customize": {
+        "package_extra_name": " (official v2.1 branch)",
+        "version": "r2.1"
+      }
+    },
+    "r2.0": {
+      "extra_env": {
+        "PACKAGE_URL": "https://github.com/mlcommons/inference",
+        "PACKAGE_GIT_CHECKOUT": "r2.0"
+      },
+      "extra_customize": {
+        "package_extra_name": " (official v2.0 branch)",
+        "version": "r2.0"
+      }
+    },
     "r1.1": {
       "extra_env": {
         "PACKAGE_URL": "https://github.com/mlcommons/inference",
